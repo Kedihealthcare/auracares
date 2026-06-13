@@ -1,0 +1,383 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthPulse | AI Health News, Smart Product Recommendations & Quiz</title>
+    <meta name="description" content="HealthPulse delivers AI-powered health news, product intelligence, and clinical quiz recommendations across nutrition, biotech, pharma, and wellness.">
+    <meta name="keywords" content="health intelligence, AI health quiz, wellness products, biotech news, nutrition advice, smart upsell engine">
+    <meta name="short-tail-keywords" content="health news, AI quiz, wellness products">
+    <meta name="long-tail-keywords" content="AI-powered health product recommendation engine for wellness and clinical nutrition">
+    <meta name="search-tags" content="health feed, product recommendations, wellness quiz, medical news">
+    <meta name="smart-tags" content="AI health quiz, product upsell, health newspaper, wellness intelligence">
+    <meta name="data-schema" content="NewsArticle, Product, BreadcrumbList, Organization">
+    <meta name="data-keywords" content="health AI, smart upsell, product catalog, wellness news, nutrition insights">
+    <link rel="canonical" href="https://healthpulse.example.com/index.html">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="geo.region" content="US-CA">
+    <meta name="geo.placename" content="San Francisco">
+    <meta name="geo.position" content="37.7749;-122.4194">
+    <meta name="ICBM" content="37.7749, -122.4194">
+    <meta property="og:site_name" content="HealthPulse">
+    <meta property="og:title" content="HealthPulse | AI Health News, Smart Product Recommendations & Quiz">
+    <meta property="og:description" content="HealthPulse delivers AI-powered health news, product intelligence, and clinical quiz recommendations across nutrition, biotech, pharma, and wellness.">
+    <meta property="og:image" content="https://healthpulse.example.com/share-image.png">
+    <meta property="og:url" content="https://healthpulse.example.com/index.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HealthPulse | AI Health News, Smart Product Recommendations & Quiz">
+    <meta name="twitter:description" content="HealthPulse delivers AI-powered health news, product intelligence, and clinical quiz recommendations across nutrition, biotech, pharma, and wellness.">
+    <meta name="twitter:image" content="https://healthpulse.example.com/share-image.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Firebase Integration -->
+    <script type="module" src="../assets/js/firebase-init.js"></script>
+</head>
+<body class="selection:bg-blue-100 antialiased">
+
+    <!-- Section 1: Global Intelligence Pulse -->
+    <div class="bg-slate-950 text-white py-2 px-4 overflow-hidden whitespace-nowrap border-b border-white/10">
+        <div class="max-w-[1600px] mx-auto flex items-center">
+            <span class="bg-blue-600 text-[9px] font-black px-2 py-0.5 rounded mr-4 uppercase tracking-tighter shrink-0">Health Pulse</span>
+            <div class="text-[10px] font-medium tracking-wide flex space-x-12 animate-marquee">
+                <span>• CARDIO: NEW GLOBAL GUIDELINES LOWER STATIN THRESHOLDS</span>
+                <span>• NUTRITION: SCHOOL MEALS GO 100% WHOLE GRAIN BY 2027</span>
+                <span>• MENTAL HEALTH: DIGITAL THERAPIES RAISE $420M IN SERIES D</span>
+                <span>• PHARMA: FEMTECH APPROVALS SET NEW R&D BENCHMARK</span>
+                <span>• PUBLIC HEALTH: VACCINE ACCESS PLEDGE EXPANDS TO 120 COUNTRIES</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 2: Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-slate-200">
+        <div class="max-w-[1600px] mx-auto px-4 md:px-8">
+            <div class="flex items-center justify-between py-4 lg:py-6">
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2 -ml-2 text-slate-900">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+
+                <div class="flex-1 lg:flex-none text-center lg:text-left">
+                    <h1 class="text-2xl md:text-3xl lg:text-4xl font-[900] tracking-tighter text-slate-950 cursor-pointer" onclick="window.location.reload()">
+                        NEWSTANT<span class="text-blue-600">.</span>
+                    </h1>
+                </div>
+
+                <nav class="hidden lg:flex items-center space-x-8 text-[11px] font-black uppercase tracking-widest text-slate-500">
+                    <a href="#" onclick="filterCategory('All'); return false;" class="text-slate-900 border-b-2 border-blue-600 pb-1">Home</a>
+                    <a href="#" onclick="filterCategory('Wellness'); return false;" class="hover:text-blue-600 transition">Wellness</a>
+                    <a href="#" onclick="filterCategory('BioTech'); return false;" class="hover:text-blue-600 transition">BioTech</a>
+                    <a href="#" onclick="filterCategory('Nutrition'); return false;" class="hover:text-blue-600 transition">Nutrition</a>
+                    <a href="#" onclick="filterCategory('Mental Health'); return false;" class="hover:text-blue-600 transition">Mental Health</a>
+                    <a href="quiz.html" class="hover:text-blue-600 transition">Quiz</a>
+                </nav>
+
+                <div class="flex items-center space-x-4">
+                    <button class="hidden md:block bg-slate-950 text-white px-5 py-2 text-[10px] font-black uppercase tracking-widest rounded hover:bg-blue-600 transition">Subscribe</button>
+                    <button class="p-2 text-slate-900">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Section 3: Health Quick-Jump Bar -->
+            <div class="flex items-center space-x-2 pb-4 overflow-x-auto scrollbar-hide border-t border-slate-50 pt-4">
+                <button onclick="filterCategory('All')" class="category-btn active px-4 py-1.5 rounded-full bg-slate-950 text-white text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">All Health</button>
+                <button onclick="filterCategory('Nutrition')" class="category-btn px-4 py-1.5 rounded-full bg-slate-100 text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">Nutrition</button>
+                <button onclick="filterCategory('Wellness')" class="category-btn px-4 py-1.5 rounded-full bg-slate-100 text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">Wellness</button>
+                <button onclick="filterCategory('Pharma')" class="category-btn px-4 py-1.5 rounded-full bg-slate-100 text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">Pharma</button>
+                <button onclick="filterCategory('Mental Health')" class="category-btn px-4 py-1.5 rounded-full bg-slate-100 text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">Mental Health</button>
+                <button onclick="filterCategory('BioTech')" class="category-btn px-4 py-1.5 rounded-full bg-slate-100 text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">BioTech</button>
+                <button onclick="filterCategory('Med Devices')" class="category-btn px-4 py-1.5 rounded-full bg-slate-100 text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">Med Devices</button>
+                <button onclick="filterCategory('Public Health')" class="category-btn px-4 py-1.5 rounded-full bg-slate-100 text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">Public Health</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-[60] hidden" onclick="toggleMobileMenu()"></div>
+    <div id="mobile-nav" class="fixed inset-y-0 left-0 w-80 bg-white z-[70] hidden p-8 flex flex-col">
+        <h2 class="text-3xl font-black mb-12">HealthPulse</h2>
+        <nav class="flex flex-col space-y-6 text-sm font-bold uppercase tracking-widest text-slate-500">
+            <a href="#" onclick="filterCategory('All'); toggleMobileMenu(); return false;" class="text-slate-900 border-l-4 border-blue-600 pl-4">All Health</a>
+            <a href="#" onclick="filterCategory('Wellness'); toggleMobileMenu(); return false;" class="pl-4 hover:text-blue-600">Wellness</a>
+            <a href="#" onclick="filterCategory('BioTech'); toggleMobileMenu(); return false;" class="pl-4 hover:text-blue-600">BioTech</a>
+            <a href="#" onclick="filterCategory('Nutrition'); toggleMobileMenu(); return false;" class="pl-4 hover:text-blue-600">Nutrition</a>
+            <a href="#" onclick="filterCategory('Mental Health'); toggleMobileMenu(); return false;" class="pl-4 hover:text-blue-600">Mental Health</a>
+            <a href="#" onclick="filterCategory('Pharma'); toggleMobileMenu(); return false;" class="pl-4 hover:text-blue-600">Pharma</a>
+            <a href="#" onclick="filterCategory('Public Health'); toggleMobileMenu(); return false;" class="pl-4 hover:text-blue-600">Public Health</a>
+            <a href="quiz.html" class="pl-4 hover:text-blue-600">Quiz</a>
+        </nav>
+        <div class="mt-auto pt-12 border-t border-slate-100">
+            <button class="w-full bg-slate-950 text-white py-4 rounded font-bold uppercase tracking-widest text-xs">Join</button>
+        </div>
+    </div>
+
+    <main class="max-w-[1600px] mx-auto px-4 md:px-8 py-8 lg:py-12">
+        
+        <!-- Section 4: The Anchor Story (Hero) -->
+        <section id="hero-block" class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-16 lg:mb-24">
+            <div class="lg:col-span-8 group cursor-pointer">
+                <div class="relative aspect-video lg:aspect-[16/9] bg-slate-900 rounded-2xl overflow-hidden mb-6 lg:mb-10 shadow-lg">
+                    <!-- Real Hero Image -->
+                    <img id="hero-image" loading="lazy" src="https://raw.githubusercontent.com/farazc60/Project-Images/refs/heads/main/News%20Website%20Landing%20Page/nvidia-deal-clean.webp" 
+                         alt="Healthcare Innovation" 
+                         class="absolute inset-0 w-full h-full object-cover img-transition opacity-60">
+                    
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent z-10"></div>
+                    
+                    <div class="absolute bottom-6 left-6 right-6 lg:bottom-12 lg:left-12 lg:right-12 z-20">
+                        <span class="inline-block bg-blue-600 text-white text-[10px] lg:text-xs font-black px-3 py-1 rounded-sm mb-4 tracking-widest uppercase">Health Intelligence</span>
+                        <h2 class="serif-heading text-3xl md:text-5xl lg:text-6xl text-white leading-[1.05] group-hover:text-blue-200 transition-colors">Global Health Systems Deploy AI to Predict Cardiac Risk Before Symptoms Appear</h2>
+                        <p class="hidden md:block text-slate-300 text-lg mt-6 max-w-2xl line-clamp-2">Hospitals across three continents are integrating predictive analytics into routine care, aiming to catch high-risk heart patients months earlier and cut emergency admissions.</p>
+                        <a href="quiz.html" class="inline-flex mt-8 items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-black uppercase tracking-widest text-white shadow-lg shadow-blue-500/10 hover:bg-blue-500 transition">Take AI Health Quiz</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section 5: Side Desks -->
+            <div class="lg:col-span-4 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-slate-100 lg:pl-12 pt-8 lg:pt-0">
+                <div class="space-y-10">
+                    <div class="group cursor-pointer">
+                        <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest">Nutrition</span>
+                        <h3 class="text-xl lg:text-2xl font-bold mt-2 leading-tight group-hover:underline">New Plant-Based Clinical Guidelines Redefine Post-Surgery Recovery Diets</h3>
+                        <p class="text-slate-500 text-sm mt-3 line-clamp-2">A global coalition of surgeons now recommends protein-rich plant sources for faster wound healing and lower inflammation after major procedures.</p>
+                    </div>
+                    <div class="group cursor-pointer">
+                        <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest">Wellness</span>
+                        <h3 class="text-xl lg:text-2xl font-bold mt-2 leading-tight group-hover:underline">Corporate Wellness Programs Add Sleep Coaching to Reduce Burnout</h3>
+                        <p class="text-slate-500 text-sm mt-3 line-clamp-2">Fortune 500 employers are funding digital sleep clinics and policy changes as part of employee retention and mental resilience strategies.</p>
+                    </div>
+                    <div class="group cursor-pointer">
+                        <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest">BioTech</span>
+                        <h3 class="text-xl lg:text-2xl font-bold mt-2 leading-tight group-hover:underline">CRISPR Therapy Shows Promise in Early-Stage Diabetes Reversal</h3>
+                        <p class="text-slate-500 text-sm mt-3 line-clamp-2">A Phase 1 trial demonstrates sustained insulin independence in patients treated with a new gene-editing regimen.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5.5: Reader View -->
+        <section id="reader-view" class="hidden mb-24">
+            <div class="space-y-8">
+                <div class="flex flex-col gap-4 lg:flex-row lg:items-center justify-between mb-6">
+                    <div>
+                        <p id="reader-category" class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-600"></p>
+                        <h2 id="reader-title" class="serif-heading text-4xl lg:text-5xl font-black leading-tight mt-4"></h2>
+                        <p id="reader-meta" class="text-slate-500 text-sm uppercase tracking-[0.25em] mt-3"></p>
+                    </div>
+                    <button onclick="closeReader()" class="text-slate-600 border border-slate-200 px-4 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition">Back to Feed</button>
+                </div>
+                <div class="grid gap-8 lg:grid-cols-[1fr_320px]">
+                    <div class="space-y-6">
+                        <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-100">
+                            <img id="reader-image" class="w-full h-[420px] object-cover" alt="">
+                        </div>
+                        <p id="reader-content" class="text-base leading-relaxed text-slate-700"></p>
+
+                        <div id="reader-comments" class="space-y-6 bg-slate-50 border border-slate-100 rounded-3xl p-6">
+                            <h3 class="text-sm font-black uppercase tracking-[0.2em] text-slate-500 mb-4">Comments</h3>
+                            <div id="reader-comments-list" class="space-y-6"></div>
+                            <div class="space-y-3 pt-4 border-t border-slate-200">
+                                <textarea id="comment-input" rows="4" class="w-full border border-slate-200 rounded-xl p-4 text-sm" placeholder="Leave your comment"></textarea>
+                                <button onclick="postComment()" class="bg-slate-900 text-white px-6 py-3 rounded-full text-sm font-black uppercase tracking-widest hover:bg-blue-600 transition">Post Comment</button>
+                            </div>
+                        </div>
+
+                        <div class="grid gap-4 md:grid-cols-2">
+                            <div class="rounded-3xl border border-slate-100 p-6 bg-slate-50">
+                                <h3 class="text-sm font-black uppercase tracking-[0.2em] text-slate-400 mb-3">By</h3>
+                                <p id="reader-author" class="text-sm font-bold text-slate-900"></p>
+                            </div>
+                            <div class="rounded-3xl border border-slate-100 p-6 bg-slate-50">
+                                <h3 class="text-sm font-black uppercase tracking-[0.2em] text-slate-400 mb-3">Published</h3>
+                                <p id="reader-date" class="text-sm font-bold text-slate-900"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <aside class="space-y-8">
+                        <div class="p-6 rounded-3xl border border-slate-100 bg-slate-950 text-white">
+                            <h3 class="text-xs font-black uppercase tracking-[0.22em] text-blue-300 mb-4">Quick Take</h3>
+                            <p id="reader-quick-take" class="text-sm leading-relaxed"></p>
+                        </div>
+                        <div class="p-6 rounded-3xl border border-slate-100 bg-white">
+                            <h3 class="text-xs font-black uppercase tracking-[0.22em] text-slate-400 mb-4">Related stories</h3>
+                            <div id="reader-related" class="space-y-4"></div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: M&A Tracker -->
+        <section class="mb-24">
+            <div class="flex items-center justify-between mb-8 pb-4 border-b border-slate-900">
+                <h2 class="text-xs font-black uppercase tracking-[0.3em]">Strategic M&A Tracker</h2>
+                <a href="#" class="text-[10px] font-bold text-blue-600 uppercase">View All Deals →</a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 hover:border-blue-200 transition">
+                    <p class="text-[9px] font-black text-slate-400 uppercase mb-2">Acquirer: Roche</p>
+                    <h4 class="font-bold text-base mb-1">Target: ImmunoTech Labs</h4>
+                    <p class="text-blue-600 font-black text-lg">$4.7 Billion</p>
+                    <span class="inline-block mt-4 text-[9px] font-bold bg-green-100 text-green-700 px-2 py-0.5 rounded">REGULATORY CLEARANCE</span>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 hover:border-blue-200 transition">
+                    <p class="text-[9px] font-black text-slate-400 uppercase mb-2">Acquirer: Abbott</p>
+                    <h4 class="font-bold text-base mb-1">Target: BioTrack Diagnostics</h4>
+                    <p class="text-blue-600 font-black text-lg">$2.3 Billion</p>
+                    <span class="inline-block mt-4 text-[9px] font-bold bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded">PENDING APPROVAL</span>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 hover:border-blue-200 transition">
+                    <p class="text-[9px] font-black text-slate-400 uppercase mb-2">Acquirer: Amgen</p>
+                    <h4 class="font-bold text-base mb-1">Target: NeuroHealth Innovations</h4>
+                    <p class="text-blue-600 font-black text-lg">$8.9 Billion</p>
+                    <span class="inline-block mt-4 text-[9px] font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded">COMPLETED</span>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 hover:border-blue-200 transition">
+                    <p class="text-[9px] font-black text-slate-400 uppercase mb-2">Acquirer: Medtronic</p>
+                    <h4 class="font-bold text-base mb-1">Target: BioSense Wearables</h4>
+                    <p class="text-blue-600 font-black text-lg">$1.2 Billion</p>
+                    <span class="inline-block mt-4 text-[9px] font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded">STRATEGIC STAKE</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Intelligence Feed -->
+        <div id="main-feed" class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div class="lg:col-span-8">
+                <div class="flex items-center justify-between mb-12">
+                    <h3 id="category-title" class="text-3xl font-black tracking-tighter serif-heading italic">Latest Health Feed</h3>
+                </div>
+
+                <div id="news-container" class="space-y-16">
+                    <!-- Dynamic Articles Injected by JS -->
+                </div>
+                
+                <div class="mt-20 py-10 border-t border-slate-100 flex justify-center">
+                    <button id="load-archive-btn" onclick="loadMoreArticles()" class="bg-slate-900 text-white px-10 py-4 rounded-full text-xs font-black uppercase tracking-widest hover:bg-blue-600 transition shadow-xl">Load More Archives</button>
+                </div>
+            </div>
+
+            <aside class="lg:col-span-4 space-y-16">
+                <!-- Section 9: Boardroom Ledger -->
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden">
+                    <div class="bg-slate-950 text-white p-6">
+                        <h4 class="text-xs font-black uppercase tracking-[0.2em]">Boardroom Ledger</h4>
+                        <p class="text-[10px] text-slate-400 mt-1 uppercase">Executive Transitions • Q2 2026</p>
+                    </div>
+                    <div class="p-6 space-y-8">
+                        <div class="group cursor-pointer">
+                            <h5 class="font-bold text-lg leading-tight group-hover:text-blue-600">Satya Nadella named Chairman of OpenAI Non-Profit Board</h5>
+                            <p class="text-[10px] font-black text-slate-400 uppercase mt-2">Microsoft / OpenAI Alliance</p>
+                        </div>
+                        <div class="group cursor-pointer">
+                            <h5 class="font-bold text-lg leading-tight group-hover:text-blue-600">Linda Yaccarino to join Board of Directors at Unilever</h5>
+                            <p class="text-[10px] font-black text-slate-400 uppercase mt-2">Consumer Goods / Media</p>
+                        </div>
+                        <div class="group cursor-pointer">
+                            <h5 class="font-bold text-lg leading-tight group-hover:text-blue-600">Former FDA Chief appointed as Executive Chair at Sanofi</h5>
+                            <p class="text-[10px] font-black text-slate-400 uppercase mt-2">Health Policy / Pharma</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="testimonial-feed" class="p-6 bg-slate-50 border border-slate-100 rounded-3xl space-y-6">
+                    <h4 class="text-xs font-black uppercase tracking-[0.22em] text-blue-600">Reader Testimonials</h4>
+                </div>
+
+                <div id="ai-quiz" class="p-6 bg-white border border-slate-100 rounded-3xl space-y-6">
+                    <h4 class="text-xs font-black uppercase tracking-[0.22em] text-slate-600">Kedi Health AI Quiz</h4>
+                </div>
+
+                <!-- Section 10: Infrastructure -->
+                <div class="p-8 bg-blue-50 border border-blue-100 rounded-2xl">
+                    <h4 class="text-[10px] font-black uppercase tracking-widest text-blue-600 mb-6">Mega-Project Watch</h4>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <span class="text-2xl font-black text-blue-200">01</span>
+                            <div>
+                                <h6 class="font-bold text-sm">NEOM Oxagon Floating Industrial Port Phase 2 Starts</h6>
+                                <p class="text-xs text-slate-500 mt-1">SAUDI ARABIA • $20B</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <span class="text-2xl font-black text-blue-200">02</span>
+                            <div>
+                                <h6 class="font-bold text-sm">Western Sydney Airport Terminal Integration</h6>
+                                <p class="text-xs text-slate-500 mt-1">AUSTRALIA • $5.3B</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Section 11: Smart Product Catalog -->
+    <section id="product-catalog" class="max-w-[1600px] mx-auto px-4 md:px-8 py-16">
+        <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-10">
+            <div>
+                <p class="text-xs font-bold uppercase tracking-[0.35em] text-blue-600 mb-3">Smart Product Intelligence</p>
+                <h2 class="text-3xl lg:text-4xl font-black tracking-tighter serif-heading">AI-Powered Product Articles & Upsell Engine</h2>
+                <p class="max-w-2xl text-slate-500 mt-4">Explore the full HealthPulse product library, see related smart bundles, and discover recommended pairings for every health challenge.</p>
+            </div>
+            <a href="quiz.html" class="inline-flex items-center justify-center rounded-full bg-slate-950 px-6 py-3 text-xs font-black uppercase tracking-widest text-white hover:bg-blue-600 transition">Launch Quiz Navigator</a>
+        </div>
+
+        <div class="mb-10">
+            <label for="product-search" class="sr-only">Search products</label>
+            <input id="product-search" type="search" placeholder="Search products, symptoms, or smart tags" class="w-full rounded-3xl border border-slate-200 bg-white px-6 py-4 text-sm shadow-sm outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100" />
+        </div>
+
+        <div id="product-catalog-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+
+        <div id="upsell-panel" class="mt-12 rounded-3xl border border-slate-200 bg-slate-50 p-8 text-slate-700"></div>
+
+        <div id="ai-agents" class="mt-10 rounded-3xl border border-slate-200 bg-white p-6">
+            <h3 class="text-sm font-black uppercase tracking-[0.2em] text-slate-500 mb-4">AI Agents & Model Engine</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="ai-agents-grid"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-white pt-24 pb-12 mt-20">
+        <div class="max-w-[1600px] mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 mb-24">
+                <div class="lg:col-span-5">
+                    <h2 class="text-4xl font-black tracking-tighter mb-8 italic serif-heading">NEWSTANT<span class="text-blue-600">.</span></h2>
+                    <p class="text-slate-500 text-lg max-w-md leading-relaxed mb-10">High-fidelity corporate intelligence for global decision-makers. Factual, industry-specific analysis covering the world's most critical business sectors.</p>
+                </div>
+                <div class="lg:col-span-2">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-8">Intelligence</h4>
+                    <ul class="space-y-4 text-xs font-bold text-slate-500">
+                        <li><a href="#" class="hover:text-white transition uppercase">M&A Tracker</a></li>
+                        <li><a href="#" class="hover:text-white transition uppercase">Boardroom</a></li>
+                        <li><a href="#" class="hover:text-white transition uppercase">Sustainability</a></li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-2">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-8">Sectors</h4>
+                    <ul class="space-y-4 text-xs font-bold text-slate-500">
+                        <li><a href="#" class="hover:text-white transition uppercase">IT & Semiconductors</a></li>
+                        <li><a href="#" class="hover:text-white transition uppercase">Defence & Aero</a></li>
+                        <li><a href="#" class="hover:text-white transition uppercase">Energy Grid</a></li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-3">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-8">Briefing</h4>
+                    <div class="flex">
+                        <input type="email" placeholder="Corporate email" class="bg-white/5 border-none p-4 text-xs w-full rounded-l">
+                        <button class="bg-blue-600 px-6 py-4 text-xs font-black uppercase rounded-r">Join</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

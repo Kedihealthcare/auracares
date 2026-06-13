@@ -1,0 +1,7 @@
+﻿User-agent: *
+Allow: /
+
+Sitemap: https://www.auraherbs.vercel.app/sitemap.xml
+Sitemap: https://www.auraherbs.vercel.app/image-sitemap.xml
+Sitemap: https://www.auraherbs.vercel.app/video-sitemap.xml
+Sitemap: https://www.auraherbs.vercel.app/social-sitemap.xml

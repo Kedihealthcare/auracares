@@ -1,0 +1,832 @@
+<!doctype html>
+<html lang="zxx" data-theme="light">
+
+<head>
+
+    <!--========= Required meta tags =========-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Kedi Healthcare - Clinical Protocols</title>
+
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="images/x-icon"/>
+
+    <!-- css include -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/metisMenu.css">
+    <link rel="stylesheet" href="assets/css/uikit.min.css">
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <meta property="og:title" content="Kedi Healthcare - Clinical Protocols">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.auraherbs.vercel.app/404.html">
+    <meta property="og:site_name" content="Kedi Healthcare (Kedi-J)">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="index, follow">
+                <!-- Firebase Integration -->
+    <script type="module" src="assets/js/firebase-init.js"></script>
+    <link rel="stylesheet" href="assets/css/kedi-optimise.css">
+    <link rel="stylesheet" href="assets/css/responsive.css"/>
+</head>
+
+<body>
+
+    <div class="body_wrap">
+
+        <!-- preloder start  -->
+        <div class="preloder_part">
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>
+        <!-- preloder end  -->
+
+        <!-- back to top start -->
+        <div class="progress-wrap">
+            <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+            </svg>
+        </div>
+        <!-- back to top end -->
+
+        <!-- header start -->
+        <header class="header header__style-three">
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span class="icon-menu"></span></button>
+            <div class="header__top">
+                <div class="container mxw_1360">
+                    <div class="header__top-info ul_li_between mt-none-10">
+                        <ul class="header__top-left ul_li mt-10">
+                            <li><a href="#!">Call us</a> free 24/7 : (555) 172-244-7888</li>
+                            <li><i class="fas fa-envelope"></i> info@kedihealth.com</li>
+                        </ul>
+                        <ul class="header__top-right ul_li mt-10">
+                            <li><i class="fas fa-leaf"></i>Wellness First</li>
+                            <li><i class="fas fa-map-marker-alt"></i>Lagos, Nigeria</li>
+                            <li><a href="#!"><i class="fas fa-star"></i>My Wishlist</a></li>
+                            <li><a href="checkout.html"><i class="far fa-check-circle"></i>Checkout</a></li>
+                            <li>
+                                <div class="header__language currency aura-currency-switcher">
+                                    <ul>
+                                        <li>
+                                            <a href="#!" class="lang-btn">
+                                                <span class="current-currency-symbol">&#8358;</span>
+                                                <i class="far fa-chevron-down"></i>
+                                            </a>
+                                            <ul class="lang_sub_list">
+                                                <li><a href="#" data-currency-set="NGN">&#8358; NGN</a></li>
+                                                <li><a href="#" data-currency-set="USD">$ USD</a></li>
+                                                <li><a href="#" data-currency-set="PI">&#960; Pi</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container mxw_1360">
+                <div class="header__middle ul_li_between">
+                    <div class="header__logo">
+                        <a href="index.html">
+                            <img src="assets/img/logo/logo.svg" alt="Kedi Healthcare">
+                        </a>
+                    </div>
+                    <div class="header-date">
+                        <i class="far fa-calendar-alt"></i><span id="header-live-date">Loading...</span>
+                        <script>
+                            (function(){
+                                var d = new Date();
+                                var opts = { weekday:'long', year:'numeric', month:'short', day:'numeric' };
+                                var el = document.getElementById('header-live-date');
+                                if(el) el.textContent = d.toLocaleDateString('en-US', opts);
+                            })();
+                        </script>
+                    </div>
+                    <div class="add">
+                        <a href="shop.html">
+                            <img src="assets/img/product/beaty soap.jpeg" alt="Kedi Soap" style="max-height: 80px; width: auto; object-fit: contain;">
+                        </a>
+                    </div>
+                    <div class="d-none d-lg-block">
+                        <div class="ul_li">
+                            <div class="header__language style-2 mr-25">
+                                <ul>
+                                    <li>
+                                        <a href="#!" class="lang-btn"><img src="assets/img/icon/usd_flag.png" alt=""> English <i class="far fa-chevron-down"></i></a>
+                                        <ul class="lang_sub_list">
+                                            <li><a href="#">English</a></li>
+                                            <li><a href="#">Yoruba</a></li>
+                                            <li><a href="#">Hausa</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header__social">
+                                <a href="#!"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#!"><i class="fab fa-twitter"></i></a>
+                                <a href="#!"><i class="fab fa-instagram"></i></a>
+                                <a href="#!"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header__wrap" data-uk-sticky="top: 250; animation: uk-animation-slide-top;">
+                <div class="container mxw_1360">
+                    <div class="header__main ul_li">
+                        <div class="header__logo">
+                            <a href="index.html">
+                                <img src="assets/img/logo/logo.svg" alt="Kedi Healthcare">
+                            </a>
+                        </div>
+                        <div class="header__category">
+                            <a class="header__category-nav" href="#!"><img class="bar" src="assets/img/icon/bar.svg" alt="">Browse Categories<i class="fas fa-chevron-down"></i></a>
+                        </div>
+                        <div class="hamburger_menu d-lg-none">
+                            <a href="javascript:void(0);" class="active">
+                                <div class="icon bar">
+                                    <span><i class="fal fa-bars"></i></span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="main-menu navbar navbar-expand-lg">
+                            <nav class="main-menu__nav collapse navbar-collapse">
+                                <ul>
+                                    <li class="menu-item-has-children has-mega-menu active"><a href="index.html">Home</a>
+                                        <ul class="mega-menu">
+                                            <li>
+                                                <div class="mega-menu-content">
+                                                    <div class="row">
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="index.html">
+                                                                    <img src="assets/img/demo/demo-1.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 1</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="home-2.html">
+                                                                    <img src="assets/img/demo/demo-2.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 2</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="home-3.html">
+                                                                    <img src="assets/img/demo/demo-3.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 3</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic coming-soon">
+                                                                <span>Coming Soon</span>
+                                                            </div>
+                                                            <h3>Coming Soon</h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Shop</a>
+                                        <ul class="submenu">
+                                            <li><a href="shop.html">Shop Default</a></li>
+                                            <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
+                                            <li><a href="shop-single.html">Shop Single</a></li>
+                                            <li><a href="cart.html">Shop Cart</a></li>
+                                            <li><a href="checkout.html">Shop Checkout</a></li>
+                                            <li><a href="account.html">Account</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="health-challenges.html">Clinical Encyclopedia</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Blog</a>
+                                        <ul class="submenu">
+                                            <li><a href="blog.html">Blog</a></li>
+                                            <li><a href="news-single.html">Blog Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Pages</a>
+                                        <ul class="submenu">
+                                            <li><a href="about.html">About Us</a></li>
+                                            <li><a href="account.html">Account</a></li>
+                                            <li><a href="ai-doctor.html">AI Doctor</a></li>
+                                            <li><a href="franchise.html">Franchise</a></li>
+                                            <li><a href="404.html">404</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="header__main-right ul_li">
+                            <div class="header__icons ul_li mr-15">
+                                <div class="icon">
+                                    <a href="account.html"><img src="assets/img/icon/user.svg" alt="Account"></a>
+                                </div>
+                                <div class="icon wishlist-icon">
+                                    <a href="#!" aria-label="Wishlist">
+                                        <img src="assets/img/icon/heart.svg" alt="Wishlist">
+                                        <span class="wish-count">0</span>
+                                    </a>
+                                </div>
+                                <div class="icon cart-icon">
+                                    <a href="cart.html" aria-label="Cart">
+                                        <img src="assets/img/icon/cart.svg" alt="Cart">
+                                        <span class="cart-count">0</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="login-sign-btn">
+                                <a class="thm-btn thm-btn__2 text-black" href="account.html">
+                                    <span class="btn-wrap">
+                                        <span>Login / Sign Up</span>
+                                        <span>Login / Sign Up</span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header end -->
+
+        <!-- slide-bar start -->
+        <aside class="slide-bar">
+            <div class="close-mobile-menu">
+                <a href="javascript:void(0);"><i class="fal fa-times"></i></a>
+            </div>
+
+            <!-- sidebar-info start -->
+            <div class="cart_sidebar">
+                <button type="button" class="cart_close_btn"><i class="fal fa-times"></i></button>
+                <h2 class="heading_title text-uppercase">Cart Items - <span>4</span></h2>
+                <div class="cart_items_list">
+                    <div class="cart_item">
+                        <div class="item_image">
+                            <img src="assets/img/product/img_01.png" alt="Constilease Digestive Aid">
+                        </div>
+                        <div class="item_content">
+                            <h4 class="item_title">
+                                Rorem ipsum dolor sit amet.
+                            </h4>
+                            <span class="item_price">0.00008107Ï€</span>
+                            <button type="button" class="remove_btn"><i class="fal fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="cart_item">
+                        <div class="item_image">
+                            <img src="assets/img/product/img_02.png" alt="Colon Cleansing Tea">
+                        </div>
+                        <div class="item_content">
+                            <h4 class="item_title">
+                                Rorem ipsum dolor sit amet.
+                            </h4>
+                            <span class="item_price">0.00010317Ï€</span>
+                            <button type="button" class="remove_btn"><i class="fal fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="cart_item">
+                        <div class="item_image">
+                            <img src="assets/img/product/img_03.png" alt="Faforon Stem Cell Therapy">
+                        </div>
+                        <div class="item_content">
+                            <h4 class="item_title">
+                                Rorem ipsum dolor sit amet.
+                            </h4>
+                            <span class="item_price">0.00003566Ï€</span>
+                            <button type="button" class="remove_btn"><i class="fal fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="cart_item">
+                        <div class="item_image">
+                            <img src="assets/img/product/img_04.png" alt="Lycovite For Men">
+                        </div>
+                        <div class="item_content">
+                            <h4 class="item_title">
+                                Rorem ipsum dolor sit amet.
+                            </h4>
+                            <span class="item_price">0.00003821Ï€</span>
+                            <button type="button" class="remove_btn"><i class="fal fa-times"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="total_price text-uppercase">
+                    <span>Sub Total:</span>
+                    <span>0.00004582Ï€</span>
+                </div>
+                <ul class="btns_group ul_li">
+                    <li><a href="cart.html" class="add-to-cart-btn" class="thm-btn">
+                        <span class="btn-wrap">
+                            <span>View Cart</span>
+                            <span>View Cart</span>
+                        </span>
+                    </a></li>
+                    <li><a href="checkout.html" class="add-to-cart-btn" class="thm-btn thm-btn__black">
+                        <span class="btn-wrap">
+                            <span>Checkout</span>
+                            <span>Checkout</span>
+                        </span>
+                    </a></li>
+                </ul>
+            </div>
+            <!-- sidebar-info end -->
+
+            <!-- side-mobile-menu start -->
+            <nav class="side-mobile-menu">
+                <div class="header-mobile-search">
+                    <form role="search" method="get" action="shop.html">
+                        <input type="text" name="search" placeholder="Search verified protocols...">
+                        <button type="submit"><i class="ti-search"></i></button>
+                    </form>
+                </div>
+                <ul id="mobile-menu-active">
+                    <li class="dropdown"><a href="index.html">Home</a>
+                        <ul class="sub-menu">
+                            <li><a href="index.html">Clinical Home 1</a></li>
+                            <li><a href="home-2.html">Home Two</a></li>
+                            <li><a href="home-3.html">Clinical Home 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Protocols &amp; Shop</a>
+                        <ul class="sub-menu">
+                            <li><a href="shop.html">Shop Catalog</a></li>
+                            <li><a href="shop-left-sidebar.html">Shop Sidebar</a></li>
+                            <li><a href="shop-single.html">Product Detail</a></li>
+                            <li><a href="cart.html">View Cart</a></li>
+                            <li><a href="checkout.html">Checkout</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="shop.html">Clinical Instruments</a></li>
+                    <li class="dropdown">
+                        <a href="#!">Health Insights</a>
+                        <ul class="sub-menu">
+                            <li><a href="news.html">Clinical Blog</a></li>
+                            <li><a href="news-single.html">Insight Details</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#!">Dashboard &amp; Pages</a>
+                        <ul class="submenu">
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="auth.html" class="login-sign-btn">Patient Portal</a></li>
+                            <li><a href="admin.html">Admin Panel</a></li>
+                            <li><a href="404.html">Error 404</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <!-- side-mobile-menu end -->
+        </aside>
+        <div class="body-overlay"></div>
+        <!-- slide-bar end -->
+
+        <main>
+
+<!-- KEDI PROMO BANNER START -->
+<style>
+.kedi-promo-banner {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 12px;
+    margin: 30px auto;
+    max-width: 1200px;
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 10;
+}
+.kedi-promo-banner:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.3);
+}
+.kedi-promo-banner-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.kedi-promo-banner-thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 2px solid white;
+}
+.kedi-promo-banner-text h4 {
+    color: white;
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.kedi-promo-banner-text p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+.kedi-promo-banner-actions {
+    display: flex;
+    gap: 10px;
+}
+.kedi-promo-btn {
+    background: white;
+    color: #10B981;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.kedi-promo-btn:hover {
+    background: #f0fdf4;
+}
+.kedi-promo-btn.share {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+.kedi-promo-btn.share:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Modal Styles */
+.kedi-promo-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+.kedi-promo-modal.active {
+    display: flex;
+}
+.kedi-promo-modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+    animation: promoZoom 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes promoZoom {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.kedi-promo-modal-img {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+.kedi-promo-modal-close {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px;
+    transition: color 0.3s;
+}
+.kedi-promo-modal-close:hover {
+    color: #10B981;
+}
+@media (max-width: 768px) {
+    .kedi-promo-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        margin: 15px;
+    }
+    .kedi-promo-banner-content {
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+    .kedi-promo-modal-close {
+        top: -40px;
+        right: 0;
+    }
+}
+</style>
+
+<div class="container px-md-0">
+    <div class="kedi-promo-banner" onclick="openPromoModal()">
+        <div class="kedi-promo-banner-content">
+            <img src="assets/img/promo/kedi-2026-award.jpg" alt="Kedi 2026 Perform and Win Award" class="kedi-promo-banner-thumb">
+            <div class="kedi-promo-banner-text">
+                <h4>KEDI 2026 Perform and Win Award ðŸ†</h4>
+                <p>Register and upgrade to Three Star Consultant to win amazing prizes. Offer valid March 10th - May 31st, 2026.</p>
+            </div>
+        </div>
+        <div class="kedi-promo-banner-actions">
+            <button class="kedi-promo-btn" onclick="event.stopPropagation(); openPromoModal()"><i class="fas fa-eye"></i> View Poster</button>
+            <button class="kedi-promo-btn share" onclick="event.stopPropagation(); sharePromo()"><i class="fas fa-share-alt"></i> Share</button>
+        </div>
+    </div>
+</div>
+
+<div class="kedi-promo-modal" id="kediPromoModal" onclick="closePromoModal()">
+    <div class="kedi-promo-modal-content" onclick="event.stopPropagation()">
+        <button class="kedi-promo-modal-close" onclick="closePromoModal()"><i class="fas fa-times"></i></button>
+        <img src="assets/img/promo/kedi-2026-award.jpg" alt="Kedi 2026 Promo Full" class="kedi-promo-modal-img">
+    </div>
+</div>
+
+<script>
+function openPromoModal() {
+    document.getElementById('kediPromoModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closePromoModal() {
+    document.getElementById('kediPromoModal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+function sharePromo() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'KEDI 2026 Perform and Win Award',
+            text: 'Register and upgrade to Three Star Consultant to win amazing prizes! TVs, Refrigerators, Air Conditioners and more! Offer valid till May 31st, 2026.',
+            url: window.location.href
+        }).catch(console.error);
+    } else {
+        alert('Share feature is not supported on this browser. Copy the page URL to share!');
+    }
+}
+</script>
+<!-- KEDI PROMO BANNER END -->
+
+            
+            <!-- breadcrumb start -->
+            <section class="breadcrumb-area">
+                <div class="container">
+                    <div class="Aura Herbs-breadcrumb breadcrumbs">
+                        <ul class="list-unstyled d-flex align-items-center">
+                            <li class="Aura Herbsbcrumb-item Aura Herbsbcrumb-begin">
+                                <a href="kedi.html"><span>Home</span></a>
+                            </li>
+                            <li class="Aura Herbsbcrumb-item Aura Herbsbcrumb-end">
+                                <span>404</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb end -->
+            
+            <!-- error page start -->
+            <section class="error__page pb-90">
+                <div class="container">
+                    <div class="error__text text-center">
+                        <h1>404</h1>
+                        <h3>Oops... It looks like you â€˜re lost !</h3>
+                        <p>Oops! The page you are looking for does not exist. It might have been moved or deleted.</p>
+                        <div class="go-back-btn mt-50">
+                            <a class="thm-btn thm-btn__2" href="#!" >
+                                <span class="btn-wrap">
+                                    <span>Go Back Home</span>
+                                    <span>Go Back Home</span>
+                                </span>
+                                <i class="far fa-long-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- error page end -->
+            
+        </main>
+
+        <!-- footer start -->
+        <footer class="footer" data-background="assets/img/bg/footer_bg.jpg">
+            <div class="newslater newslater__border pt-30 pb-30">
+                <div class="container">
+                    <div class="newslater__two ul_li">
+                        <div class="newslater__content">
+                            <h2 class="title">We are ready to <span>help</span></h2>
+                            <p>For information Consult with our expert members</p>
+                        </div>
+                        <form class="newslater__form" action="#!">
+                            <input placeholder="Enter your Email" type="text">
+                            <button>Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="footer__main pt-90 pb-90">
+                    <div class="row mt-none-40">
+                        <div class="footer__widget col-lg-3 col-md-6 mt-40">
+                            <div class="footer__logo mb-20">
+                                <a href="kedi.html"><img src="assets/img/logo/logo.svg" alt=""></a>
+                            </div>
+                            <p>Lagos, Nigeria ashington Ave. Manchester,</p>
+                            <ul class="footer__info mt-30">
+                                <li><i class="far fa-map-marker-alt"></i>Ikeja, Lagos</li>
+                                <li><i class="fas fa-phone"></i>+234 800 KEDI HELP</li>
+                            </ul>
+                            <div class="apps-img mt-15 ul_li">
+                                <div class="app mt-15">
+                                    <a href="#!"><img src="assets/img/icon/google_play.png" alt=""></a>
+                                </div>
+                                <div class="app mt-15">
+                                    <a href="#!"><img src="assets/img/icon/app_store.png" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer__widget col-lg-3 col-md-6 mt-40">
+                            <h2 class="title">Find It Fast</h2>
+                            <ul class="quick-links">
+                                <li><a href="#!">Cellular Detox</a></li>
+                                <li><a href="#!">Cellular Detox</a></li>
+                                <li><a href="#!">Digestive Health</a></li>
+                                <li><a href="#!">Cardiovascular Care</a></li>
+                                <li><a href="#!">Vitality Series</a></li>
+                                <li><a href="#!">Gadgets</a></li>
+                                <li><a href="#!">Stem Cell Flow</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer__widget col-lg-3 col-md-6 mt-40">
+                            <h2 class="title">Quick Links</h2>
+                            <ul class="quick-links">
+                                <li><a href="#!">Your Account</a></li>
+                                <li><a href="#!">Returns & Exchanges</a></li>
+                                <li><a href="#!">Return Center</a></li>
+                                <li><a href="#!">Purchase Hisotry</a></li>
+                                <li><a href="#!">App Download</a></li>
+                                <li><a href="#!">Latest News Blog</a></li>
+                                <li><a href="#!">Shipping & Delivery</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer__widget col-lg-3 col-md-6 mt-40">
+                            <h2 class="title">Service us</h2>
+                            <ul class="category">
+                                <li><a href="#!">Support Center</a></li>
+                                <li><a href="#!">Term & Conditions</a></li>
+                                <li><a href="#!">Shipping</a></li>
+                                <li><a href="#!">Privacy Policy</a></li>
+                                <li><a href="#!">Help</a></li>
+                                <li><a href="#!">Products Return</a></li>
+                                <li><a href="#!">FAQS</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__bottom ul_li_center">
+                    <div class="footer__copyright mt-15">
+                        &copy; 2026 <a href="#!">Kedi Healthcare (Kedi-J)</a> . All Rights Reserved.
+                    </div>
+                    <div class="footer__social mt-15">
+                        <a href="#!"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#!"><i class="fab fa-twitter"></i></a>
+                        <a href="#!"><i class="fab fa-instagram"></i></a>
+                        <a href="#!"><i class="fab fa-youtube"></i></a>
+                        <a href="#!"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                    <div class="payment_method mt-15">
+                        <img src="assets/img/bg/payment_method.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer end -->
+
+        <!-- start newsletter-popup-area-section -->
+        <section class="newsletter-popup-area-section">
+            <div class="newsletter-popup-area">
+                <div class="newsletter-popup-ineer">
+                    <button class="btn newsletter-close-btn"><i class="fal fa-times"></i></button>
+                    <div class="img-holder">
+                        <img src="assets/img/bg/newsletter.jpg" alt>
+                    </div>
+                    <div class="details">
+                        <h4>Get 45% discount shipped to your inbox</h4>
+                        <p>Subscribe to the Kedi Healthcare newsletter to receive timely updates to your favorite products</p>
+                        <form>
+                            <div>
+                                <input type="email" placeholder="Enter your email" />
+                                <button type="submit">Subscribe</button>
+                            </div>
+                            <div>
+                                <label class="checkbox-holder"> Don't show this popup again!
+                                    <input type="checkbox" class="show-message">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div> 
+        </section>
+        <!-- end newsletter-popup-area-section -->
+
+
+        <!-- start cookies-area -->    
+        <div class="cookies-area">
+            <p> This website uses cookies to improve your experience. By using this website you agree to our <a href="#">Data Protection Policy</a>. </p>
+            <a href="#" class="read-more">Read more</a>
+            <div>
+                <button class="cookie-btn">Accept</button>
+            </div>
+        </div>
+        <!-- end cookies-area -->
+
+
+    </div>
+
+    <!-- jquery include -->
+    <script src="assets/js/jquery-3.5.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/slick.js"></script>
+    <script src="assets/js/backToTop.js"></script>
+    <script src="assets/js/uikit.min.js"></script>
+    <script src="assets/js/resize-sensor.min.js"></script>
+    <script src="assets/js/theia-sticky-sidebar.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/jqueryui.js"></script>
+    <script src="assets/js/touchspin.js"></script>
+    <script src="assets/js/countdown.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/metisMenu.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script src="assets/js/cart.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Update Dynamic Dates
+            const dateEls = document.querySelectorAll('.header-date, .current-date');
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+            dateEls.forEach(el => el.innerHTML = '<i class="far fa-calendar-alt"></i> ' + dateStr);
+
+            // 2. Auth State Management
+            const userSession = JSON.parse(localStorage.getItem('kedi_user_session'));
+            const authLinks = document.querySelectorAll('a[href*="account.html"], a[href*="login"], a[href*="register"]');
+            
+            if (userSession) {
+                authLinks.forEach(link => {
+                    if (link.innerText.toLowerCase().includes('sign in') || link.innerText.toLowerCase().includes('register')) {
+                        link.innerHTML = '<i class="fas fa-user-circle"></i> ' + userSession.name.split(' ')[0];
+                        link.href = '#!';
+                        // Add logout listener
+                        link.title = 'Click to Logout';
+                        link.onclick = () => {
+                            if(confirm('Logout of clinical ecosystem?')) {
+                                localStorage.removeItem('kedi_user_session');
+                                window.location.reload();
+                            }
+                        };
+                    }
+                });
+            } else {
+                authLinks.forEach(link => {
+                    link.href = 'auth.html';
+                });
+            }
+        });
+    </script>
+    <script src="assets/js/aeo-schema.js" defer></script>
+    <script src="assets/js/mobile-wa.js" defer></script>
+<script src="assets/js/auth.js"></script><script src="assets/js/currency-manager.js"></script></body>
+
+</html>
+
+
+
+
+
+
+

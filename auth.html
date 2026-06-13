@@ -1,0 +1,1165 @@
+<!doctype html>
+<html lang="zxx" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kedi Healthcare | Login & Registration</title>
+    
+    <!-- Required meta tags -->
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="images/x-icon"/>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+
+    <!-- css include -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/metisMenu.css">
+    <link rel="stylesheet" href="assets/css/uikit.min.css">
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/kedi-optimise.css">
+
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
+    
+    <style>
+        .serif-heading { font-family: 'Playfair Display', serif; }
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(20px) saturate(190%);
+            -webkit-backdrop-filter: blur(20px) saturate(190%);
+            border: 1px solid rgba(255, 255, 255, 0.5); 
+            box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .auth-input {
+            background: rgba(248, 250, 252, 0.8);
+            border: 1.5px solid #e2e8f0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .auth-input:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
+            background: #ffffff;
+            outline: none;
+        }
+        .hidden { display: none; }
+        .auth-section {
+            background: radial-gradient(circle at 10% 20%, rgba(240, 253, 244, 0.5) 0%, rgba(255, 255, 255, 1) 90%), url('assets/img/bg/footer_bg.jpg') no-repeat center center;
+            background-size: cover;
+            padding: 120px 0;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+        .otp-box:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
+            background: #ffffff;
+            outline: none;
+        }
+    </style>
+
+    <meta property="og:title" content="Kedi Healthcare | Login & Registration">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.auraherbs.vercel.app/auth.html">
+    <meta property="og:site_name" content="Kedi Healthcare (Kedi-J)">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="index, follow">
+                <!-- Firebase Integration -->
+    <script type="module" src="assets/js/firebase-init.js"></script>
+    <link rel="stylesheet" href="assets/css/responsive.css"/>
+</head>
+
+<body>
+
+    <div class="body_wrap">
+
+        <!-- header start -->
+        <!-- header start -->
+<header class="header header__style-three">
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span class="icon-menu"></span></button>
+            <div class="header__top">
+                <div class="container mxw_1360">
+                    <div class="header__top-info ul_li_between mt-none-10">
+                        <ul class="header__top-left ul_li mt-10">
+                            <li><a href="#!">Call us</a> free 24/7 : (555) 172-244-7888</li>
+                            <li><i class="fas fa-envelope"></i> info@kedihealth.com</li>
+                        </ul>
+                        <ul class="header__top-right ul_li mt-10">
+                            <li><i class="fas fa-leaf"></i>Wellness First</li>
+                            <li><i class="fas fa-map-marker-alt"></i>Lagos, Nigeria</li>
+                            <li><a href="#!"><i class="fas fa-star"></i>My Wishlist</a></li>
+                            <li><a href="checkout.html"><i class="far fa-check-circle"></i>Checkout</a></li>
+                            <li>
+                                <div class="header__language currency aura-currency-switcher">
+                                    <ul>
+                                        <li>
+                                            <a href="#!" class="lang-btn">
+                                                <span class="current-currency-symbol">&#8358;</span>
+                                                <i class="far fa-chevron-down"></i>
+                                            </a>
+                                            <ul class="lang_sub_list">
+                                                <li><a href="#" data-currency-set="NGN">&#8358; NGN</a></li>
+                                                <li><a href="#" data-currency-set="USD">$ USD</a></li>
+                                                <li><a href="#" data-currency-set="PI">&#960; Pi</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container mxw_1360">
+                <div class="header__middle ul_li_between">
+                    <div class="header__logo">
+                        <a href="index.html">
+                            <img src="assets/img/logo/logo.svg" alt="Kedi Healthcare">
+                        </a>
+                    </div>
+                    <div class="header-date">
+                        <i class="far fa-calendar-alt"></i><span id="header-live-date">Loading...</span>
+                        <script>
+                            (function(){
+                                var d = new Date();
+                                var opts = { weekday:'long', year:'numeric', month:'short', day:'numeric' };
+                                var el = document.getElementById('header-live-date');
+                                if(el) el.textContent = d.toLocaleDateString('en-US', opts);
+                            })();
+                        </script>
+                    </div>
+                    <div class="add">
+                        <a href="shop.html">
+                            <img src="assets/img/product/beaty soap.jpeg" alt="Kedi Soap" style="max-height: 80px; width: auto; object-fit: contain;">
+                        </a>
+                    </div>
+                    <div class="d-none d-lg-block">
+                        <div class="ul_li">
+                            <div class="header__language style-2 mr-25">
+                                <ul>
+                                    <li>
+                                        <a href="#!" class="lang-btn"><img src="assets/img/icon/usd_flag.png" alt=""> English <i class="far fa-chevron-down"></i></a>
+                                        <ul class="lang_sub_list">
+                                            <li><a href="#">English</a></li>
+                                            <li><a href="#">Yoruba</a></li>
+                                            <li><a href="#">Hausa</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header__social">
+                                <a href="#!"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#!"><i class="fab fa-twitter"></i></a>
+                                <a href="#!"><i class="fab fa-instagram"></i></a>
+                                <a href="#!"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header__wrap" data-uk-sticky="top: 250; animation: uk-animation-slide-top;">
+                <div class="container mxw_1360">
+                    <div class="header__main ul_li">
+                        <div class="header__logo">
+                            <a href="index.html">
+                                <img src="assets/img/logo/logo.svg" alt="Kedi Healthcare">
+                            </a>
+                        </div>
+                        <div class="header__category">
+                            <a class="header__category-nav" href="#!"><img class="bar" src="assets/img/icon/bar.svg" alt="">Browse Categories<i class="fas fa-chevron-down"></i></a>
+                        </div>
+                        <div class="hamburger_menu d-lg-none">
+                            <a href="javascript:void(0);" class="active">
+                                <div class="icon bar">
+                                    <span><i class="fal fa-bars"></i></span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="main-menu navbar navbar-expand-lg">
+                            <nav class="main-menu__nav collapse navbar-collapse">
+                                <ul>
+                                    <li class="menu-item-has-children has-mega-menu active"><a href="index.html">Home</a>
+                                        <ul class="mega-menu">
+                                            <li>
+                                                <div class="mega-menu-content">
+                                                    <div class="row">
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="index.html">
+                                                                    <img src="assets/img/demo/demo-1.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 1</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="home-2.html">
+                                                                    <img src="assets/img/demo/demo-2.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 2</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="home-3.html">
+                                                                    <img src="assets/img/demo/demo-3.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 3</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic coming-soon">
+                                                                <span>Coming Soon</span>
+                                                            </div>
+                                                            <h3>Coming Soon</h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Shop</a>
+                                        <ul class="submenu">
+                                            <li><a href="shop.html">Shop Default</a></li>
+                                            <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
+                                            <li><a href="shop-single.html">Shop Single</a></li>
+                                            <li><a href="cart.html">Shop Cart</a></li>
+                                            <li><a href="checkout.html">Shop Checkout</a></li>
+                                            <li><a href="account.html">Account</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="health-challenges.html">Clinical Encyclopedia</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Blog</a>
+                                        <ul class="submenu">
+                                            <li><a href="blog.html">Blog</a></li>
+                                            <li><a href="news-single.html">Blog Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Pages</a>
+                                        <ul class="submenu">
+                                            <li><a href="about.html">About Us</a></li>
+                                            <li><a href="account.html">Account</a></li>
+                                            <li><a href="ai-doctor.html">AI Doctor</a></li>
+                                            <li><a href="franchise.html">Franchise</a></li>
+                                            <li><a href="404.html">404</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="header__main-right ul_li">
+                            <div class="header__icons ul_li mr-15">
+                                <div class="icon">
+                                    <a href="account.html"><img src="assets/img/icon/user.svg" alt="Account"></a>
+                                </div>
+                                <div class="icon wishlist-icon">
+                                    <a href="#!" aria-label="Wishlist">
+                                        <img src="assets/img/icon/heart.svg" alt="Wishlist">
+                                        <span class="wish-count">0</span>
+                                    </a>
+                                </div>
+                                <div class="icon cart-icon">
+                                    <a href="cart.html" aria-label="Cart">
+                                        <img src="assets/img/icon/cart.svg" alt="Cart">
+                                        <span class="cart-count">0</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="login-sign-btn">
+                                <a class="thm-btn thm-btn__2 text-black" href="account.html">
+                                    <span class="btn-wrap">
+                                        <span>Login / Sign Up</span>
+                                        <span>Login / Sign Up</span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header end -->
+
+            <!-- ======= COMMUNITY PULSE TICKER ======= -->
+            <div class="community-pulse bg-[#4d231c] py-2 overflow-hidden" style="position: relative; z-index: 10;">
+                <div class="pulse-wrapper" style="display: flex; white-space: nowrap; animation: pulse-scroll 60s linear infinite; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase;">
+                    <span style="color: #d4a017; font-weight: 900; margin-right: 50px;"><i class="fas fa-bolt"></i> COMMUNITY PULSE:</span>
+                    <span style="color: white; margin-right: 50px;">New Ï€ protocol activated in Lagos (2m ago)</span>
+                    <span style="color: white; margin-right: 50px;">Dr. Amadi verified a 4x4 Success Grid (15m ago)</span>
+                    <span style="color: white; margin-right: 50px;">Reishi Immune Guard back in stock!</span>
+                    <span style="color: white; margin-right: 50px;">Community reaching 50,000+ wellness members</span>
+                    <span style="color: white; margin-right: 50px;">New Ï€ protocol activated in Abuja (45m ago)</span>
+                    <span style="color: white; margin-right: 50px;">Golden Six restocked for VIP members</span>
+                </div>
+            </div>
+            <style>
+                @keyframes pulse-scroll {
+                    0% { transform: translateX(50%); }
+                    100% { transform: translateX(-100%); }
+                }
+            </style>
+
+
+        <main>
+
+<!-- KEDI PROMO BANNER START -->
+<style>
+.kedi-promo-banner {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 12px;
+    margin: 30px auto;
+    max-width: 1200px;
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 10;
+}
+.kedi-promo-banner:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.3);
+}
+.kedi-promo-banner-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.kedi-promo-banner-thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 2px solid white;
+}
+.kedi-promo-banner-text h4 {
+    color: white;
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.kedi-promo-banner-text p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+.kedi-promo-banner-actions {
+    display: flex;
+    gap: 10px;
+}
+.kedi-promo-btn {
+    background: white;
+    color: #10B981;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.kedi-promo-btn:hover {
+    background: #f0fdf4;
+}
+.kedi-promo-btn.share {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+.kedi-promo-btn.share:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Modal Styles */
+.kedi-promo-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+.kedi-promo-modal.active {
+    display: flex;
+}
+.kedi-promo-modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+    animation: promoZoom 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes promoZoom {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.kedi-promo-modal-img {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+.kedi-promo-modal-close {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px;
+    transition: color 0.3s;
+}
+.kedi-promo-modal-close:hover {
+    color: #10B981;
+}
+@media (max-width: 768px) {
+    .kedi-promo-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        margin: 15px;
+    }
+    .kedi-promo-banner-content {
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+    .kedi-promo-modal-close {
+        top: -40px;
+        right: 0;
+    }
+}
+</style>
+
+<div class="container px-md-0">
+    <div class="kedi-promo-banner" onclick="openPromoModal()">
+        <div class="kedi-promo-banner-content">
+            <img src="assets/img/promo/kedi-2026-award.jpg" alt="Kedi 2026 Perform and Win Award" class="kedi-promo-banner-thumb">
+            <div class="kedi-promo-banner-text">
+                <h4>KEDI 2026 Perform and Win Award ðŸ†</h4>
+                <p>Register and upgrade to Three Star Consultant to win amazing prizes. Offer valid March 10th - May 31st, 2026.</p>
+            </div>
+        </div>
+        <div class="kedi-promo-banner-actions">
+            <button class="kedi-promo-btn" onclick="event.stopPropagation(); openPromoModal()"><i class="fas fa-eye"></i> View Poster</button>
+            <button class="kedi-promo-btn share" onclick="event.stopPropagation(); sharePromo()"><i class="fas fa-share-alt"></i> Share</button>
+        </div>
+    </div>
+</div>
+
+<div class="kedi-promo-modal" id="kediPromoModal" onclick="closePromoModal()">
+    <div class="kedi-promo-modal-content" onclick="event.stopPropagation()">
+        <button class="kedi-promo-modal-close" onclick="closePromoModal()"><i class="fas fa-times"></i></button>
+        <img src="assets/img/promo/kedi-2026-award.jpg" alt="Kedi 2026 Promo Full" class="kedi-promo-modal-img">
+    </div>
+</div>
+
+<script>
+function openPromoModal() {
+    document.getElementById('kediPromoModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closePromoModal() {
+    document.getElementById('kediPromoModal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+function sharePromo() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'KEDI 2026 Perform and Win Award',
+            text: 'Register and upgrade to Three Star Consultant to win amazing prizes! TVs, Refrigerators, Air Conditioners and more! Offer valid till May 31st, 2026.',
+            url: window.location.href
+        }).catch(console.error);
+    } else {
+        alert('Share feature is not supported on this browser. Copy the page URL to share!');
+    }
+}
+</script>
+<!-- KEDI PROMO BANNER END -->
+
+            <section class="auth-section">
+                <div class="container flex justify-center">
+                    <div class="w-full max-w-md glass-card rounded-3xl p-8 md:p-10 relative overflow-hidden">
+                        
+                        <!-- Premium sliding tab selector -->
+                        <div class="flex border-b border-slate-200/60 mb-8 relative">
+                            <button onclick="toggleAuth(true)" id="tab-login" class="flex-1 pb-4 text-sm font-bold uppercase tracking-wider text-green-600 transition-all text-center focus:outline-none border-b-2 border-green-600">Sign In</button>
+                            <button onclick="toggleAuth(false)" id="tab-register" class="flex-1 pb-4 text-sm font-bold uppercase tracking-wider text-slate-400 hover:text-slate-600 transition-all text-center focus:outline-none border-b-2 border-transparent">Register</button>
+                        </div>
+
+                        <div class="text-center mb-8">
+                            <h2 class="text-3xl font-black italic serif-heading tracking-tighter mb-2 text-slate-900">Aura Herbs<span class="text-green-600">.</span></h2>
+                            <p id="auth-subtitle" class="text-slate-500 text-sm">Welcome back to the clinical ecosystem</p>
+                        </div>
+
+                        <!-- Feedback Message Area -->
+                        <div id="auth-feedback" class="hidden mb-6 p-4 rounded-xl text-xs font-bold text-center transition-all"></div>
+
+                        <!-- Login Form -->
+                        <form id="login-form" class="space-y-6">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Email Address</label>
+                                <input type="email" id="login-email" required class="auth-input w-full p-4 rounded-xl text-sm text-slate-800" placeholder="clinical@example.com">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Password</label>
+                                <div class="relative">
+                                    <input type="password" id="login-password" required class="auth-input w-full p-4 pr-12 rounded-xl text-sm text-slate-800" placeholder="••••••••">
+                                    <button type="button" onclick="togglePassword('login-password', this)" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 focus:outline-none">
+                                        <i class="far fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <input type="checkbox" id="remember-me" class="w-4 h-4 rounded border-slate-300 text-green-600 focus:ring-green-500">
+                                <label for="remember-me" class="text-xs text-slate-500 font-bold uppercase tracking-widest cursor-pointer select-none">Remember Me?</label>
+                            </div>
+                            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-green-500/20 active:scale-[0.98]">
+                                Sign In
+                            </button>
+
+                            <div class="relative py-4">
+                                <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-200/60"></div></div>
+                                <div class="relative flex justify-center text-xs uppercase"><span class="bg-white px-2 text-slate-400 font-bold tracking-widest">Or continue with</span></div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <button type="button" onclick="handleSocial('google')" class="flex items-center justify-center gap-2 p-3 border border-slate-200 rounded-xl hover:bg-slate-50 transition-all text-xs font-bold uppercase tracking-widest text-slate-600">
+                                    <i class="fab fa-google text-red-500"></i> Google
+                                </button>
+                                <button type="button" onclick="handleSocial('facebook')" class="flex items-center justify-center gap-2 p-3 border border-slate-200 rounded-xl hover:bg-slate-50 transition-all text-xs font-bold uppercase tracking-widest text-slate-600">
+                                    <i class="fab fa-facebook-f text-blue-600"></i> Facebook
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- OTP Form -->
+                        <form id="otp-form" class="space-y-6 hidden">
+                            <div class="text-center p-4 bg-green-50 rounded-2xl mb-6 border border-green-100">
+                                <p class="text-xs text-green-600 font-bold uppercase tracking-widest mb-1">Verification Required</p>
+                                <p class="text-[10px] text-green-500 font-medium">We've sent a 6-digit code to <br><span id="otp-email-display" class="font-bold text-green-600"></span></p>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-center text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Enter 6-Digit OTP</label>
+                                <div class="flex justify-center gap-2" id="otp-inputs-container">
+                                    <input type="text" maxlength="1" class="otp-box w-12 h-12 text-center text-xl font-bold border border-slate-200 rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-500/20 bg-slate-50 transition-all" />
+                                    <input type="text" maxlength="1" class="otp-box w-12 h-12 text-center text-xl font-bold border border-slate-200 rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-500/20 bg-slate-50 transition-all" />
+                                    <input type="text" maxlength="1" class="otp-box w-12 h-12 text-center text-xl font-bold border border-slate-200 rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-500/20 bg-slate-50 transition-all" />
+                                    <input type="text" maxlength="1" class="otp-box w-12 h-12 text-center text-xl font-bold border border-slate-200 rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-500/20 bg-slate-50 transition-all" />
+                                    <input type="text" maxlength="1" class="otp-box w-12 h-12 text-center text-xl font-bold border border-slate-200 rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-500/20 bg-slate-50 transition-all" />
+                                    <input type="text" maxlength="1" class="otp-box w-12 h-12 text-center text-xl font-bold border border-slate-200 rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-500/20 bg-slate-50 transition-all" />
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-green-500/20 active:scale-[0.98]">
+                                Verify & Access Full Features
+                            </button>
+                            <p class="text-center text-xs text-slate-400">
+                                Didn't receive code? <a href="#" onclick="location.reload()" class="text-green-600 font-bold hover:underline">Try again</a>
+                            </p>
+                        </form>
+
+                        <!-- Register Form -->
+                        <form id="register-form" class="space-y-6 hidden">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Full Name</label>
+                                <input type="text" id="reg-name" required class="auth-input w-full p-4 rounded-xl text-sm text-slate-800" placeholder="Dr. John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Email Address</label>
+                                <input type="email" id="reg-email" required class="auth-input w-full p-4 rounded-xl text-sm text-slate-800" placeholder="clinical@example.com">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Create Password</label>
+                                <div class="relative">
+                                    <input type="password" id="reg-password" required class="auth-input w-full p-4 pr-12 rounded-xl text-sm text-slate-800" placeholder="••••••••">
+                                    <button type="button" onclick="togglePassword('reg-password', this)" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 focus:outline-none">
+                                        <i class="far fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-emerald-500/20 active:scale-[0.98]">
+                                Create Account
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        
+    <!-- KEDI GLOBAL PROMO BANNER -->
+    <section class="kedi-promo-banner py-12" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
+        <div class="container mx-auto px-4">
+            <div class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-[40px] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="text-left">
+                    <span class="text-blue-400 text-xs font-black uppercase tracking-[0.4em] mb-4 block">Limited Clinical Offer</span>
+                    <h2 class="text-white text-3xl md:text-4xl font-black tracking-tighter serif-heading italic mb-4">Unlock Your Vitality Protocol <br> <span class="text-blue-400">Save 10% on your first Ï€-order</span></h2>
+                    <p class="text-slate-400 max-w-xl">Join 500,000+ members using AI-driven clinical diagnostics to optimize their health with Kedi herbal intelligence.</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="shop.html" class="bg-blue-600 text-white px-8 py-4 rounded-full font-black uppercase tracking-widest text-[10px] hover:bg-white hover:text-blue-600 transition shadow-2xl shadow-blue-600/20 text-center">Start Shopping</a>
+                    <a href="quiz.html" class="bg-white/10 text-white border border-white/20 px-8 py-4 rounded-full font-black uppercase tracking-widest text-[10px] hover:bg-white/20 transition text-center">Take AI Quiz</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" style="background: #0f172a; color: white; padding: 60px 0;">
+            <div class="container text-center">
+                <div class="footer__logo mb-30">
+                    <a href="kedi.html"><img src="assets/img/logo/logo.svg" alt="" style="filter: brightness(0) invert(1); max-height: 50px;"></a>
+                </div>
+                <p class="text-slate-400 text-sm">Â© 2026 Kedi Healthcare. All Rights Reserved. Clinical Excellence & Herbal Intelligence.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- jquery include -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        const AUTH_API = 'http://localhost:3003/api/auth';
+        let offlineMode = false;
+        let mockOtpCode = '123456';
+
+        window.addEventListener('load', () => {
+            const rememberedEmail = localStorage.getItem('kedi_remembered_email');
+            const rememberedPass = localStorage.getItem('kedi_remembered_password');
+            if (rememberedEmail) {
+                document.getElementById('login-email').value = rememberedEmail;
+                document.getElementById('remember-me').checked = true;
+                if (rememberedPass) {
+                    document.getElementById('login-password').value = rememberedPass;
+                }
+            }
+            
+            // Bypass if already logged in
+            if (localStorage.getItem('kedi_user')) {
+                window.location.href = 'account.html';
+            }
+
+            // Bind OTP input key behaviors
+            document.querySelectorAll('.otp-box').forEach((box, idx, arr) => {
+                box.oninput = (e) => {
+                    box.value = box.value.replace(/[^0-9]/g, '');
+                    if (box.value.length === 1 && idx < arr.length - 1) {
+                        arr[idx + 1].focus();
+                    }
+                };
+                box.onkeydown = (e) => {
+                    if (e.key === 'Backspace' && box.value.length === 0 && idx > 0) {
+                        arr[idx - 1].focus();
+                        arr[idx - 1].value = '';
+                    }
+                };
+            });
+        });
+
+        function togglePassword(inputId, btn) {
+            const input = document.getElementById(inputId);
+            const icon = btn.querySelector('i');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.className = 'far fa-eye-slash';
+            } else {
+                input.type = 'password';
+                icon.className = 'far fa-eye';
+            }
+        }
+
+        function showFeedback(type, text) {
+            const feedback = document.getElementById('auth-feedback');
+            feedback.className = `mb-6 p-4 rounded-xl text-xs font-bold text-center transition-all ${
+                type === 'success' ? 'bg-green-50 text-green-600 border border-green-200' : 'bg-red-50 text-red-600 border border-red-200'
+            }`;
+            feedback.innerHTML = text;
+        }
+
+        function toggleAuth(isLogin) {
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+            const otpForm = document.getElementById('otp-form');
+            const subtitle = document.getElementById('auth-subtitle');
+            const tabLogin = document.getElementById('tab-login');
+            const tabRegister = document.getElementById('tab-register');
+            const feedback = document.getElementById('auth-feedback');
+
+            feedback.className = "hidden";
+            otpForm.classList.add('hidden');
+
+            if (isLogin) {
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+                subtitle.innerText = "Welcome back to the clinical ecosystem";
+                tabLogin.className = "flex-1 pb-4 text-sm font-bold uppercase tracking-wider text-green-600 transition-all text-center focus:outline-none border-b-2 border-green-600";
+                tabRegister.className = "flex-1 pb-4 text-sm font-bold uppercase tracking-wider text-slate-400 hover:text-slate-600 transition-all text-center focus:outline-none border-b-2 border-transparent";
+            } else {
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+                subtitle.innerText = "Join our global health network";
+                tabLogin.className = "flex-1 pb-4 text-sm font-bold uppercase tracking-wider text-slate-400 hover:text-slate-600 transition-all text-center focus:outline-none border-b-2 border-transparent";
+                tabRegister.className = "flex-1 pb-4 text-sm font-bold uppercase tracking-wider text-green-600 transition-all text-center focus:outline-none border-b-2 border-green-600";
+            }
+        }
+
+        function showOTPSection(email) {
+            document.getElementById('login-form').classList.add('hidden');
+            document.getElementById('register-form').classList.add('hidden');
+            document.getElementById('otp-form').classList.remove('hidden');
+            document.getElementById('otp-email-display').innerText = email;
+            document.getElementById('auth-subtitle').innerText = "Verify your clinical identity";
+            
+            // Focus first OTP block
+            setTimeout(() => {
+                const boxes = document.querySelectorAll('.otp-box');
+                if (boxes.length > 0) boxes[0].focus();
+            }, 100);
+        }
+
+        // Registration
+        document.getElementById('register-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('reg-name').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+            const btn = e.target.querySelector('button');
+
+            btn.innerText = 'Creating Account...';
+            btn.disabled = true;
+
+            try {
+                if (!window.AuraFirebase) {
+                    const offlineAccounts = JSON.parse(localStorage.getItem('kedi_offline_accounts') || '{}');
+                    offlineAccounts[email] = {
+                        password: password,
+                        name: name,
+                        role: 'consultant'
+                    };
+                    localStorage.setItem('kedi_offline_accounts', JSON.stringify(offlineAccounts));
+                    showFeedback('success', '<i class="fas fa-info-circle text-orange-500 mr-1"></i> [OFFLINE MODE] Account registered locally! Switch tabs to login.');
+                    setTimeout(() => toggleAuth(true), 1500);
+                    return;
+                }
+                const { auth, createUserWithEmailAndPassword, updateProfile } = window.AuraFirebase;
+                
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                
+                await updateProfile(user, { displayName: name });
+                
+                showFeedback('success', '<i class="fas fa-check-circle"></i> Registration successful! Switch to Sign In tab to enter.');
+                setTimeout(() => toggleAuth(true), 1500);
+            } catch (err) {
+                console.error("Firebase registration error:", err);
+                if (err.code === 'auth/configuration-not-found' || err.message.includes('configuration-not-found') || err.message.includes('API key')) {
+                    const offlineAccounts = JSON.parse(localStorage.getItem('kedi_offline_accounts') || '{}');
+                    offlineAccounts[email] = {
+                        password: password,
+                        name: name,
+                        role: 'consultant'
+                    };
+                    localStorage.setItem('kedi_offline_accounts', JSON.stringify(offlineAccounts));
+                    showFeedback('success', '<i class="fas fa-info-circle text-orange-500 mr-1"></i> [OFFLINE FALLBACK] Account registered locally! Switch tabs to login.');
+                    setTimeout(() => toggleAuth(true), 1500);
+                    return;
+                }
+                showFeedback('error', err.message || "Registration failed");
+            } finally {
+                btn.innerText = 'Create Account';
+                btn.disabled = false;
+            }
+        };
+
+        // Login (Step 1: Credentials)
+        document.getElementById('login-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const remember = document.getElementById('remember-me').checked;
+            const btn = e.target.querySelector('button');
+
+            btn.innerText = 'Verifying...';
+            btn.disabled = true;
+
+            try {
+                // Offline / Pre-load Check
+                const mockCredentials = {
+                    'admin@auraherbs.com': 'password123',
+                    'patient@aura.com': 'patient2026',
+                    'user': 'pass'
+                };
+
+                const offlineAccounts = JSON.parse(localStorage.getItem('kedi_offline_accounts') || '{}');
+                const registeredUser = offlineAccounts[email];
+
+                let offlineMatch = false;
+                let offlineName = '';
+
+                if (mockCredentials[email] && mockCredentials[email] === password) {
+                    offlineMatch = true;
+                    offlineName = email.split('@')[0].toUpperCase();
+                } else if (registeredUser && registeredUser.password === password) {
+                    offlineMatch = true;
+                    offlineName = registeredUser.name || email.split('@')[0].toUpperCase();
+                }
+
+                if (!window.AuraFirebase) {
+                    if (offlineMatch) {
+                        console.log("Offline mode login (SDK not loaded).");
+                        const userData = {
+                            id: 'mock-user-123',
+                            name: offlineName,
+                            email: email,
+                            role: 'consultant'
+                        };
+                        localStorage.setItem('kedi_user', JSON.stringify(userData));
+                        localStorage.setItem('aura_user', JSON.stringify(userData));
+                        localStorage.setItem('kedi_user_session', JSON.stringify(userData));
+                        localStorage.setItem('kedi_token', 'mock-jwt-token-456');
+
+                        if (remember) {
+                            localStorage.setItem('kedi_remembered_email', email);
+                            localStorage.setItem('kedi_remembered_password', password);
+                        }
+
+                        showFeedback('success', '<i class="fas fa-info-circle text-orange-500 mr-1"></i> [OFFLINE MODE] Login successful! Redirecting...');
+                        setTimeout(() => {
+                            window.location.href = 'account.html';
+                        }, 1000);
+                        return;
+                    }
+
+                    if (registeredUser && registeredUser.password !== password) {
+                        throw new Error("Incorrect password for this local offline account.");
+                    }
+
+                    // Dynamic Auto-Registration Fallback
+                    console.log("Offline auto-registration.");
+                    const newOfflineUser = {
+                        password: password,
+                        name: email.split('@')[0].toUpperCase(),
+                        role: 'consultant'
+                    };
+                    offlineAccounts[email] = newOfflineUser;
+                    localStorage.setItem('kedi_offline_accounts', JSON.stringify(offlineAccounts));
+
+                    const userData = {
+                        id: 'mock-user-123',
+                        name: newOfflineUser.name,
+                        email: email,
+                        role: 'consultant'
+                    };
+                    localStorage.setItem('kedi_user', JSON.stringify(userData));
+                    localStorage.setItem('aura_user', JSON.stringify(userData));
+                    localStorage.setItem('kedi_user_session', JSON.stringify(userData));
+                    localStorage.setItem('kedi_token', 'mock-jwt-token-456');
+
+                    if (remember) {
+                        localStorage.setItem('kedi_remembered_email', email);
+                        localStorage.setItem('kedi_remembered_password', password);
+                    }
+
+                    showFeedback('success', '<i class="fas fa-info-circle text-orange-500 mr-1"></i> [OFFLINE MODE] No local account existed. Automatically registered and logged in!');
+                    setTimeout(() => {
+                        window.location.href = 'account.html';
+                    }, 1500);
+                    return;
+                }
+
+                const { auth, signInWithEmailAndPassword } = window.AuraFirebase;
+                
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                if (remember) {
+                    localStorage.setItem('kedi_remembered_email', email);
+                    localStorage.setItem('kedi_remembered_password', password);
+                } else {
+                    localStorage.removeItem('kedi_remembered_email');
+                    localStorage.removeItem('kedi_remembered_password');
+                }
+
+                const userData = {
+                    id: user.uid,
+                    name: user.displayName || email.split('@')[0].toUpperCase(),
+                    email: email,
+                    role: 'consultant'
+                };
+                
+                localStorage.setItem('kedi_user', JSON.stringify(userData));
+                localStorage.setItem('aura_user', JSON.stringify(userData));
+                localStorage.setItem('kedi_user_session', JSON.stringify(userData));
+                localStorage.setItem('kedi_token', user.accessToken || 'firebase-token');
+
+                showFeedback('success', '<i class="fas fa-check-circle"></i> Login successful! Redirecting to dashboard...');
+                setTimeout(() => {
+                    window.location.href = 'account.html';
+                }, 1000);
+            } catch (err) {
+                console.error("Firebase login error:", err);
+                if (err.code === 'auth/configuration-not-found' || err.message.includes('configuration-not-found') || err.message.includes('API key')) {
+                    console.log("Falling back to local clinical mock credentials.");
+                    
+                    const mockCredentials = {
+                        'admin@auraherbs.com': 'password123',
+                        'patient@aura.com': 'patient2026',
+                        'user': 'pass'
+                    };
+                    
+                    const offlineAccounts = JSON.parse(localStorage.getItem('kedi_offline_accounts') || '{}');
+                    const registeredUser = offlineAccounts[email];
+
+                    let offlineMatch = false;
+                    let offlineName = '';
+
+                    if (mockCredentials[email] && mockCredentials[email] === password) {
+                        offlineMatch = true;
+                        offlineName = email.split('@')[0].toUpperCase();
+                    } else if (registeredUser && registeredUser.password === password) {
+                        offlineMatch = true;
+                        offlineName = registeredUser.name || email.split('@')[0].toUpperCase();
+                    }
+
+                    if (offlineMatch) {
+                        const userData = {
+                            id: 'mock-user-123',
+                            name: offlineName,
+                            email: email,
+                            role: 'consultant'
+                        };
+                        localStorage.setItem('kedi_user', JSON.stringify(userData));
+                        localStorage.setItem('aura_user', JSON.stringify(userData));
+                        localStorage.setItem('kedi_user_session', JSON.stringify(userData));
+                        localStorage.setItem('kedi_token', 'mock-jwt-token-456');
+
+                        if (remember) {
+                            localStorage.setItem('kedi_remembered_email', email);
+                            localStorage.setItem('kedi_remembered_password', password);
+                        }
+
+                        showFeedback('success', '<i class="fas fa-info-circle text-orange-500 mr-1"></i> [OFFLINE FALLBACK] Login successful! Redirecting...');
+                        setTimeout(() => {
+                            window.location.href = 'account.html';
+                        }, 1000);
+                        return;
+                    }
+
+                    if (registeredUser && registeredUser.password !== password) {
+                        showFeedback('error', "Incorrect password for this local offline account.");
+                        return;
+                    }
+
+                    // Dynamic Auto-Registration Fallback
+                    console.log("Fallback offline auto-registration.");
+                    const newOfflineUser = {
+                        password: password,
+                        name: email.split('@')[0].toUpperCase(),
+                        role: 'consultant'
+                    };
+                    offlineAccounts[email] = newOfflineUser;
+                    localStorage.setItem('kedi_offline_accounts', JSON.stringify(offlineAccounts));
+
+                    const userData = {
+                        id: 'mock-user-123',
+                        name: newOfflineUser.name,
+                        email: email,
+                        role: 'consultant'
+                    };
+                    localStorage.setItem('kedi_user', JSON.stringify(userData));
+                    localStorage.setItem('aura_user', JSON.stringify(userData));
+                    localStorage.setItem('kedi_user_session', JSON.stringify(userData));
+                    localStorage.setItem('kedi_token', 'mock-jwt-token-456');
+
+                    if (remember) {
+                        localStorage.setItem('kedi_remembered_email', email);
+                        localStorage.setItem('kedi_remembered_password', password);
+                    }
+
+                    showFeedback('success', '<i class="fas fa-info-circle text-orange-500 mr-1"></i> [OFFLINE FALLBACK] Automatically registered local account and logged in!');
+                    setTimeout(() => {
+                        window.location.href = 'account.html';
+                    }, 1500);
+                    return;
+                }
+                showFeedback('error', err.message || "Invalid clinical credentials!");
+            } finally {
+                btn.innerText = 'Sign In';
+                btn.disabled = false;
+            }
+        };
+
+        // OTP Verification (Step 2 - keeping for layout compatibility/manual verification)
+        document.getElementById('otp-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('otp-email-display').innerText;
+            const boxes = document.querySelectorAll('.otp-box');
+            const otp = Array.from(boxes).map(box => box.value).join('');
+            const btn = e.target.querySelector('button');
+
+            if (otp.length < 6) {
+                showFeedback('error', 'Please enter the complete 6-digit OTP code.');
+                return;
+            }
+
+            btn.innerText = 'Authorizing...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                if (otp === '123456') {
+                    const mockUser = {
+                        id: 'mock-user-123',
+                        name: email.split('@')[0].toUpperCase(),
+                        email: email,
+                        role: 'consultant'
+                    };
+                    localStorage.setItem('kedi_user', JSON.stringify(mockUser));
+                    localStorage.setItem('aura_user', JSON.stringify(mockUser));
+                    localStorage.setItem('kedi_user_session', JSON.stringify(mockUser));
+                    localStorage.setItem('kedi_token', 'mock-jwt-token-456');
+                    showFeedback('success', 'Access Authorized! Redirecting to dashboard...');
+                    setTimeout(() => {
+                        window.location.href = 'account.html';
+                    }, 1000);
+                } else {
+                    showFeedback('error', 'Invalid OTP Code. (Default code is 123456)');
+                    btn.innerText = 'Verify & Access Full Features';
+                    btn.disabled = false;
+                }
+            }, 800);
+        };
+
+        async function handleSocial(providerName) {
+            try {
+                if (!window.AuraFirebase) {
+                    throw new Error("Firebase SDK not loaded yet.");
+                }
+                const { auth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } = window.AuraFirebase;
+                
+                let provider;
+                if (providerName === 'google') {
+                    provider = new GoogleAuthProvider();
+                } else if (providerName === 'facebook') {
+                    provider = new FacebookAuthProvider();
+                } else {
+                    throw new Error("Unsupported provider");
+                }
+                
+                const result = await signInWithPopup(auth, provider);
+                const user = result.user;
+                
+                const userData = {
+                    id: user.uid,
+                    name: user.displayName || user.email.split('@')[0].toUpperCase(),
+                    email: user.email,
+                    role: 'consultant'
+                };
+                
+                localStorage.setItem('kedi_user', JSON.stringify(userData));
+                localStorage.setItem('aura_user', JSON.stringify(userData));
+                localStorage.setItem('kedi_user_session', JSON.stringify(userData));
+                localStorage.setItem('kedi_token', user.accessToken || 'firebase-token');
+                
+                showFeedback('success', `Logged in via ${providerName}! Redirecting...`);
+                setTimeout(() => {
+                    window.location.href = 'account.html';
+                }, 1000);
+            } catch (err) {
+                console.error("Firebase social login error:", err);
+                if (err.code === 'auth/configuration-not-found' || err.message.includes('configuration-not-found') || err.message.includes('API key')) {
+                    const userData = {
+                        id: 'mock-social-123',
+                        name: 'Mock ' + providerName.charAt(0).toUpperCase() + providerName.slice(1) + ' User',
+                        email: providerName + '-user@example.com',
+                        role: 'consultant'
+                    };
+                    
+                    localStorage.setItem('kedi_user', JSON.stringify(userData));
+                    localStorage.setItem('aura_user', JSON.stringify(userData));
+                    localStorage.setItem('kedi_user_session', JSON.stringify(userData));
+                    localStorage.setItem('kedi_token', 'mock-social-token-123');
+                    
+                    showFeedback('success', `<i class="fas fa-info-circle text-orange-500 mr-1"></i> [OFFLINE FALLBACK] Logged in via ${providerName}! Redirecting...`);
+                    setTimeout(() => {
+                        window.location.href = 'account.html';
+                    }, 1000);
+                    return;
+                }
+                showFeedback('error', err.message || `Social login with ${providerName} failed.`);
+            }
+        }
+    </script>
+
+    
+
+    <script src="assets/js/cart.js"></script>
+<script src="assets/js/kedi-notify.js" defer></script>
+<script src="assets/js/kedi-email.js" defer></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Update Dynamic Dates
+            const dateEls = document.querySelectorAll('.header-date, .current-date');
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+            dateEls.forEach(el => el.innerHTML = '<i class="far fa-calendar-alt"></i> ' + dateStr);
+
+            // 2. Auth State Management
+            const userSession = JSON.parse(localStorage.getItem('kedi_user'));
+            const authLinks = document.querySelectorAll('a[href*="account.html"], a[href*="login"], a[href*="register"], a[href*="auth.html"]');
+            
+            if (userSession) {
+                authLinks.forEach(link => {
+                    if (link.innerText.toLowerCase().includes('sign in') || link.innerText.toLowerCase().includes('register') || link.innerText.toLowerCase().includes('login')) {
+                        link.innerHTML = '<i class="fas fa-user-circle"></i> ' + userSession.name.split(' ')[0];
+                        link.href = 'account.html';
+                        link.title = 'Go to Account';
+                    }
+                });
+            } else {
+                authLinks.forEach(link => {
+                    if (!link.classList.contains('logout')) {
+                        link.href = 'auth.html';
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="assets/js/currency-manager.js"></script>
+    <script src="assets/js/aeo-schema.js" defer></script>
+    <script src="assets/js/mobile-wa.js" defer></script>
+<script src="assets/js/auth.js"></script></body>
+</html>
+
+
+
+
+
+

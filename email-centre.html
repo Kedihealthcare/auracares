@@ -1,0 +1,399 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kedi Healthcare â€” Email Centre</title>
+<link rel="shortcut icon" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/fontawesome.css">
+<link rel="stylesheet" href="assets/css/kedi-optimise.css">
+<script src="assets/js/kedi-notify.js" defer></script>
+<script src="assets/js/kedi-email.js" defer></script>
+<style>
+:root{--kedi:#4d231c;--gold:#d4a017;--green:#10b981;--bg:#f8f6f3;--card:#fff;--border:#e8ddd6;--text:#1e293b;--muted:#64748b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text)}
+.hdr{background:linear-gradient(135deg,var(--kedi),#2a1310);padding:18px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.hdr h1{color:#fff;font-size:1.1rem;font-weight:900}
+.badge-live{background:var(--green);color:#fff;padding:3px 10px;border-radius:50px;font-size:.7rem;font-weight:800;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.5}}
+.wrap{max-width:1200px;margin:0 auto;padding:28px 16px 60px}
+.grid{display:grid;grid-template-columns:1fr 360px;gap:22px}
+@media(max-width:768px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border-radius:16px;border:1px solid var(--border);padding:22px;margin-bottom:20px}
+.card h2{font-size:.92rem;font-weight:900;color:var(--kedi);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.stat{background:var(--card);border-radius:12px;border:1px solid var(--border);padding:14px;text-align:center}
+.stat .sv{font-size:1.5rem;font-weight:900;color:var(--kedi)}
+.stat .sl{font-size:.7rem;color:var(--muted);font-weight:700;margin-top:2px}
+@media(max-width:480px){.stats{grid-template-columns:1fr 1fr}}
+.type-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:14px}
+.type-btn{padding:8px 4px;border:2px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;text-align:center;font-size:.68rem;font-weight:700;color:var(--muted);transition:.2s}
+.type-btn .ti{font-size:1.2rem;display:block;margin-bottom:2px}
+.type-btn.on{border-color:var(--kedi);color:var(--kedi);background:#fdf8f6}
+.fg{margin-bottom:12px}
+.fg label{font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:4px}
+.fg input,.fg textarea,.fg select{width:100%;padding:10px 14px;border-radius:10px;border:1.5px solid var(--border);font-size:.87rem;font-family:inherit;background:#fdfbf9;resize:vertical}
+.fg input:focus,.fg textarea:focus,.fg select:focus{outline:none;border-color:var(--kedi)}
+.btn{width:100%;padding:13px;border:none;border-radius:50px;color:#fff;font-weight:900;font-size:.9rem;cursor:pointer;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s}
+.btn.kedi{background:var(--kedi)}.btn.gold{background:var(--gold);color:var(--kedi)}.btn.green{background:var(--green)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.tpl-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tpl-btn{padding:9px 12px;border:1.5px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;font-size:.72rem;font-weight:700;text-align:left;transition:.2s;line-height:1.4}
+.tpl-btn:hover{border-color:var(--kedi);color:var(--kedi)}
+.tpl-btn .tl{display:block;color:var(--muted);font-size:.65rem;margin-bottom:2px}
+.log-item{padding:11px 14px;border-radius:10px;border:1px solid var(--border);margin-bottom:8px;font-size:.8rem;background:var(--card)}
+.log-item .lt{font-weight:800;color:var(--text);margin-bottom:3px}
+.log-item .lm{color:var(--muted);font-size:.73rem}
+.log-item.success{border-left:4px solid var(--green)}
+.log-item.promo{border-left:4px solid var(--gold)}
+.log-item.info{border-left:4px solid #3b82f6}
+.log-item.warning{border-left:4px solid #f59e0b}
+.log-item.alert{border-left:4px solid #ef4444}
+.sub-item{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);font-size:.8rem}
+.sub-avatar{width:32px;height:32px;border-radius:50%;background:var(--kedi);color:#fff;font-weight:900;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+#send-status{margin-top:10px;font-size:.82rem;font-weight:700;display:none;padding:10px 14px;border-radius:8px}
+#send-status.ok{background:#d1fae5;color:#065f46;display:block}
+#send-status.err{background:#fee2e2;color:#dc2626;display:block}
+.progress-bar{height:6px;background:#e8ddd6;border-radius:3px;margin-top:10px;overflow:hidden;display:none}
+.progress-fill{height:100%;background:var(--green);border-radius:3px;transition:width .3s;width:0}
+.spin{width:15px;height:15px;border:3px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;display:inline-block}
+@keyframes sp{to{transform:rotate(360deg)}}
+</style>
+
+    <meta property="og:title" content="Kedi Healthcare â€” Email Centre">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.auraherbs.vercel.app/email-centre.html">
+    <meta property="og:site_name" content="Kedi Healthcare (Kedi-J)">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="index, follow">
+                <!-- Firebase Integration -->
+    <script type="module" src="assets/js/firebase-init.js"></script>
+</head>
+<body>
+<div class="hdr">
+  <h1>ðŸ“§ Email Centre <span class="badge-live">â— LIVE</span></h1>
+  <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+    <span id="sub-count-hdr" style="color:var(--gold);font-size:.8rem;font-weight:700">Loading subscribers...</span>
+    <a href="notifications.html" style="color:rgba(255,255,255,.7);font-size:.78rem;text-decoration:none">ðŸ”” Notifications</a>
+    <a href="home-3.html" style="color:rgba(255,255,255,.7);font-size:.78rem;text-decoration:none">â† Site</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><div class="sv" id="st-subs">â€”</div><div class="sl">Subscribers</div></div>
+    <div class="stat"><div class="sv" id="st-sent">0</div><div class="sl">Emails Sent</div></div>
+    <div class="stat"><div class="sv" id="st-sched">0</div><div class="sl">Scheduled</div></div>
+    <div class="stat"><div class="sv" id="st-today">0</div><div class="sl">Sent Today</div></div>
+  </div>
+
+  <div class="grid">
+    <!-- LEFT -->
+    <div>
+      <!-- Templates -->
+      <div class="card">
+        <h2>âš¡ Quick Templates</h2>
+        <div class="tpl-grid">
+          <button class="tpl-btn" onclick="loadTpl('promo','ðŸŽ Perform & Win Award 2026','<p>Register this month and earn amazing prizes! <strong>25+ placements = 1.5HP AC or 55&quot; TV</strong>.</p>','Join Now','auth.html')">
+            <span class="tl">PROMO</span>ðŸŽ Perform & Win
+          </button>
+          <button class="tpl-btn" onclick="loadTpl('alert','ðŸ”¥ Flash Sale â€” Today Only','<p>Get <strong>50% off Reishi Immune Guard</strong> for the next 3 hours only. Limited stock!</p>','Shop Now','kedi.html')">
+            <span class="tl">FLASH SALE</span>ðŸ”¥ Flash Sale
+          </button>
+          <button class="tpl-btn" onclick="loadTpl('info','ðŸ’Š Your Weekly Health Tip','<p>This week: Support your immunity with <strong>Reishi Capsules</strong> (3 caps twice daily) with warm water.</p>','View Products','kedi.html')">
+            <span class="tl">HEALTH TIP</span>ðŸ’Š Health Tip
+          </button>
+          <button class="tpl-btn" onclick="loadTpl('success','ðŸ“¦ New Products In Stock','<p><strong>Cordy Active</strong> and <strong>Gynapharm</strong> are back in stock. Order now before they sell out!</p>','Shop Now','kedi.html')">
+            <span class="tl">STOCK</span>ðŸ“¦ New Stock
+          </button>
+          <button class="tpl-btn" onclick="loadTpl('info','ðŸ§ª Take Your Free Health Quiz','<p>Get a <strong>personalised herbal protocol</strong> in 2 minutes. Our AI matches your symptoms to exact Kedi products.</p>','Take Quiz','quiz.html')">
+            <span class="tl">QUIZ</span>ðŸ§ª Free Quiz CTA
+          </button>
+          <button class="tpl-btn" onclick="loadTpl('warning','âš ï¸ Low Stock Alert','<p><strong>Golden Hypha</strong> is almost sold out â€” only 3 packs left. Order before it&apos;s gone!</p>','Order Now','kedi.html')">
+            <span class="tl">STOCK</span>âš ï¸ Low Stock
+          </button>
+        </div>
+      </div>
+
+      <!-- Composer -->
+      <div class="card">
+        <h2>âœï¸ Compose Email Campaign</h2>
+        <div class="type-grid">
+          <div class="type-btn on" onclick="selType('info',this)"><span class="ti">â„¹ï¸</span>Info</div>
+          <div class="type-btn" onclick="selType('success',this)"><span class="ti">âœ…</span>Success</div>
+          <div class="type-btn" onclick="selType('warning',this)"><span class="ti">âš ï¸</span>Warning</div>
+          <div class="type-btn" onclick="selType('promo',this)"><span class="ti">ðŸŽ</span>Promo</div>
+          <div class="type-btn" onclick="selType('alert',this)"><span class="ti">ðŸ”¥</span>Alert</div>
+        </div>
+        <div class="fg"><label>Subject Line</label><input id="e-subject" placeholder="ðŸ“§ Your email subject..."></div>
+        <div class="fg"><label>Headline</label><input id="e-title" placeholder="Bold headline inside email..."></div>
+        <div class="fg"><label>Body (HTML allowed)</label><textarea id="e-body" rows="4" placeholder="<p>Your message...</p>"></textarea></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="fg"><label>CTA Button Text</label><input id="e-cta" placeholder="Shop Now"></div>
+          <div class="fg"><label>CTA URL</label><input id="e-ctaurl" placeholder="kedi.html"></div>
+        </div>
+        <div class="fg">
+          <label>Schedule</label>
+          <select id="e-sched">
+            <option value="0">Send Immediately</option>
+            <option value="30">In 30 minutes</option>
+            <option value="60">In 1 hour</option>
+            <option value="360">In 6 hours</option>
+            <option value="1440">Tomorrow (24h)</option>
+          </select>
+        </div>
+        <button class="btn kedi" id="btn-broadcast" onclick="doBroadcast()">ðŸ“¡ Broadcast to All Subscribers</button>
+        <button class="btn gold" onclick="doPreview()">ðŸ‘ Preview Email (Send to Admin)</button>
+        <div class="progress-bar" id="prog-bar"><div class="progress-fill" id="prog-fill"></div></div>
+        <div id="send-status"></div>
+      </div>
+
+      <!-- Single Email -->
+      <div class="card">
+        <h2>ðŸ“© Send to Single Address</h2>
+        <div class="fg"><label>Recipient Email</label><input id="single-email" type="email" placeholder="customer@email.com"></div>
+        <div class="fg"><label>Subject</label><input id="single-subject" placeholder="Subject..."></div>
+        <div class="fg"><label>Message</label><textarea id="single-body" rows="3" placeholder="<p>Your message...</p>"></textarea></div>
+        <button class="btn green" onclick="doSingle()">ðŸ“¤ Send Email</button>
+        <div id="single-status" style="margin-top:8px;font-size:.8rem;font-weight:700"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div>
+      <!-- Subscribers -->
+      <div class="card">
+        <h2 style="justify-content:space-between">
+          ðŸ‘¥ Subscribers
+          <button onclick="loadSubs()" style="background:none;border:none;cursor:pointer;color:var(--kedi);font-size:.75rem;font-weight:700">â†» Refresh</button>
+        </h2>
+        <!-- Quick subscribe form -->
+        <div style="display:flex;gap:8px;margin-bottom:14px">
+          <input id="add-email" type="email" placeholder="Add subscriber email" style="flex:1;padding:9px 12px;border-radius:10px;border:1.5px solid var(--border);font-size:.82rem;font-family:inherit;background:#fdfbf9">
+          <button onclick="addSub()" style="background:var(--kedi);color:#fff;border:none;padding:9px 16px;border-radius:10px;font-weight:800;font-size:.8rem;cursor:pointer;white-space:nowrap">+ Add</button>
+        </div>
+        <div id="sub-list" style="max-height:340px;overflow-y:auto">
+          <div style="text-align:center;color:var(--muted);font-size:.82rem;padding:20px">Loading...</div>
+        </div>
+      </div>
+
+      <!-- Sent Log -->
+      <div class="card">
+        <h2>ðŸ“œ Sent Log</h2>
+        <div id="sent-log" style="max-height:300px;overflow-y:auto">
+          <div style="font-size:.8rem;color:var(--muted)">No emails sent this session.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const API_EMAIL = 'https://www.auraherbs.com/api/email';
+let selType_ = 'info';
+const sentSession = [];
+
+function selType(t, el) {
+  selType_ = t;
+  document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('on'));
+  el.classList.add('on');
+}
+
+function loadTpl(type, subject, body, cta, ctaUrl) {
+  document.getElementById('e-subject').value = subject;
+  document.getElementById('e-title').value = subject.replace(/^[^\w]+/,'');
+  document.getElementById('e-body').value = body;
+  document.getElementById('e-cta').value = cta;
+  document.getElementById('e-ctaurl').value = ctaUrl;
+  const map = {info:0,success:1,warning:2,promo:3,alert:4};
+  document.querySelectorAll('.type-btn').forEach((b,i)=>b.classList.toggle('on',i===map[type]));
+  selType_ = type;
+}
+
+function setStatus(id, cls, msg) {
+  const el = document.getElementById(id);
+  el.className = cls; el.textContent = msg;
+}
+
+function buildPayload() {
+  return {
+    subject: document.getElementById('e-subject').value.trim(),
+    type: selType_,
+    title: document.getElementById('e-title').value.trim(),
+    body: document.getElementById('e-body').value.trim(),
+    cta: document.getElementById('e-cta').value.trim(),
+    ctaUrl: document.getElementById('e-ctaurl').value.trim()
+  };
+}
+
+async function doBroadcast() {
+  const p = buildPayload();
+  if (!p.subject || !p.title || !p.body) { setStatus('send-status','err','Fill in subject, headline, and body.'); return; }
+
+  const mins = parseInt(document.getElementById('e-sched').value) || 0;
+  const btn = document.getElementById('btn-broadcast');
+  btn.innerHTML = '<div class="spin"></div> Sending...'; btn.disabled = true;
+  document.getElementById('prog-bar').style.display = 'block';
+  animateProgress();
+
+  try {
+    let url = API_EMAIL + '/broadcast';
+    let body = p;
+    if (mins > 0) { url = API_EMAIL + '/schedule'; body = { ...p, delayMs: mins * 60000 }; }
+
+    const r = await fetch(url, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+    const data = await r.json();
+    if (data.success) {
+      const msg = mins > 0
+        ? `â° Scheduled in ${mins} mins`
+        : `âœ… Sent to ${data.sent||'all'} subscribers! (${data.failed||0} failed)`;
+      setStatus('send-status','ok', msg);
+      addToLog({ type: selType_, subject: p.subject, to: mins>0?'Scheduled':'All subscribers' });
+      document.getElementById('st-sent').textContent = sentSession.length;
+    } else {
+      setStatus('send-status','err', 'âŒ ' + (data.error||'Failed'));
+    }
+  } catch {
+    setStatus('send-status','ok','ðŸ“¡ (Demo) Would broadcast to all subscribers when server is live.');
+    addToLog({ type: selType_, subject: p.subject, to: 'All subscribers (demo)' });
+  }
+  btn.innerHTML = 'ðŸ“¡ Broadcast to All Subscribers'; btn.disabled = false;
+  document.getElementById('prog-bar').style.display = 'none';
+  document.getElementById('st-sent').textContent = sentSession.length;
+}
+
+async function doPreview() {
+  const p = buildPayload();
+  const adminEmail = prompt('Preview to which email?');
+  if (!adminEmail) return;
+  try {
+    await fetch(API_EMAIL + '/send', { method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ to: adminEmail, ...p }) });
+    setStatus('send-status','ok','ðŸ‘ Preview sent to ' + adminEmail);
+  } catch {
+    setStatus('send-status','ok','ðŸ“¡ (Demo) Preview would be sent to ' + adminEmail);
+  }
+}
+
+async function doSingle() {
+  const to = document.getElementById('single-email').value.trim();
+  const subject = document.getElementById('single-subject').value.trim();
+  const body = document.getElementById('single-body').value.trim();
+  if (!to || !subject || !body) { document.getElementById('single-status').textContent = 'âš ï¸ Fill all fields.'; return; }
+  try {
+    const r = await fetch(API_EMAIL + '/send', { method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ to, subject, type: selType_, title: subject, body }) });
+    const d = await r.json();
+    document.getElementById('single-status').textContent = d.success ? 'âœ… Sent to '+to : 'âŒ '+d.error;
+    if (d.success) addToLog({ type: selType_, subject, to });
+  } catch {
+    document.getElementById('single-status').textContent = 'ðŸ“¡ (Demo) Would send to '+to+' when server is live.';
+    addToLog({ type: selType_, subject, to });
+  }
+}
+
+async function loadSubs() {
+  try {
+    const r = await fetch(API_EMAIL + '/subscribers');
+    const d = await r.json();
+    document.getElementById('st-subs').textContent = d.active || d.total || 0;
+    document.getElementById('sub-count-hdr').textContent = `${d.active||0} active subscribers`;
+    const list = document.getElementById('sub-list');
+    if (!d.subscribers?.length) { list.innerHTML = '<div style="font-size:.8rem;color:var(--muted);padding:16px;text-align:center">No subscribers yet.</div>'; return; }
+    list.innerHTML = d.subscribers.map(s => `
+      <div class="sub-item">
+        <div class="sub-avatar">${(s.name||s.email)[0].toUpperCase()}</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-weight:700;font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${s.email}</div>
+          <div style="font-size:.68rem;color:var(--muted)">${s.name||''} Â· ${new Date(s.subscribedAt).toLocaleDateString()}</div>
+        </div>
+      </div>`).join('');
+  } catch {
+    document.getElementById('sub-count-hdr').textContent = 'Server offline (demo mode)';
+    document.getElementById('st-subs').textContent = 'â€”';
+    document.getElementById('sub-list').innerHTML = '<div style="font-size:.8rem;color:var(--muted);padding:16px;text-align:center">Email server offline. Start with <code>node api/email-server.js</code></div>';
+  }
+}
+
+async function addSub() {
+  const email = document.getElementById('add-email').value.trim();
+  if (!email) return;
+  try {
+    const r = await fetch(API_EMAIL + '/subscribe', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email }) });
+    const d = await r.json();
+    if (d.success) { document.getElementById('add-email').value = ''; loadSubs(); }
+    else alert(d.message || d.error);
+  } catch { alert('Server offline. Subscriber saved locally.'); }
+}
+
+function addToLog(item) {
+  sentSession.unshift({ ...item, ts: new Date().toLocaleTimeString() });
+  const el = document.getElementById('sent-log');
+  el.innerHTML = sentSession.map(s => `
+    <div class="log-item ${s.type||'info'}">
+      <div class="lt">${s.subject}</div>
+      <div class="lm">To: ${s.to} Â· ${s.ts}</div>
+    </div>`).join('');
+  document.getElementById('st-sent').textContent = sentSession.length;
+  document.getElementById('st-today').textContent = sentSession.length;
+}
+
+let progInterval;
+function animateProgress() {
+  const fill = document.getElementById('prog-fill');
+  let w = 0; fill.style.width = '0%';
+  clearInterval(progInterval);
+  progInterval = setInterval(() => { w = Math.min(w + 2, 90); fill.style.width = w + '%'; if (w >= 90) clearInterval(progInterval); }, 80);
+}
+
+loadSubs();
+</script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Update Dynamic Dates
+            const dateEls = document.querySelectorAll('.header-date, .current-date');
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+            dateEls.forEach(el => el.innerHTML = '<i class="far fa-calendar-alt"></i> ' + dateStr);
+
+            // 2. Auth State Management
+            const userSession = JSON.parse(localStorage.getItem('kedi_user_session'));
+            const authLinks = document.querySelectorAll('a[href*="account.html"], a[href*="login"], a[href*="register"]');
+            
+            if (userSession) {
+                authLinks.forEach(link => {
+                    if (link.innerText.toLowerCase().includes('sign in') || link.innerText.toLowerCase().includes('register')) {
+                        link.innerHTML = '<i class="fas fa-user-circle"></i> ' + userSession.name.split(' ')[0];
+                        link.href = '#!';
+                        // Add logout listener
+                        link.title = 'Click to Logout';
+                        link.onclick = () => {
+                            if(confirm('Logout of clinical ecosystem?')) {
+                                localStorage.removeItem('kedi_user_session');
+                                window.location.reload();
+                            }
+                        };
+                    }
+                });
+            } else {
+                authLinks.forEach(link => {
+                    link.href = 'auth.html';
+                });
+            }
+        });
+    </script>
+
+    <script src="assets/js/cart.js"></script>
+<script src="assets/js/auth.js"></script><script src="assets/js/currency-manager.js"></script></body>
+</html>
+
+
+
+
+
+
+
+

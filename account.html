@@ -1,0 +1,1650 @@
+<!doctype html>
+<html lang="zxx" data-theme="light">
+
+<head>
+
+    <!--========= Required meta tags =========-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Kedi Healthcare - Clinical Dashboard</title>
+
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="images/x-icon"/>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+
+    <!-- css include -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/metisMenu.css">
+    <link rel="stylesheet" href="assets/css/uikit.min.css">
+    <link rel="stylesheet" href="assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/kedi-optimise.css">
+    
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <meta property="og:title" content="Kedi Healthcare - Clinical Dashboard">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.auraherbs.vercel.app/account.html">
+    <meta property="og:site_name" content="Kedi Healthcare (Kedi-J)">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="index, follow">
+                <!-- Firebase Integration -->
+    <script type="module" src="assets/js/firebase-init.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="assets/css/responsive.css"/>
+</head>
+
+<body>
+
+    <div class="body_wrap">
+
+        <!-- preloder start  -->
+        <div class="preloder_part">
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>
+        <!-- preloder end  -->
+
+        <!-- back to top start -->
+        <div class="progress-wrap">
+            <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+            </svg>
+        </div>
+        <!-- back to top end -->
+
+        <!-- header start -->
+        <header class="header header__style-three">
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span class="icon-menu"></span></button>
+            <div class="header__top">
+                <div class="container mxw_1360">
+                    <div class="header__top-info ul_li_between mt-none-10">
+                        <ul class="header__top-left ul_li mt-10">
+                            <li><a href="#!">Call us</a> free 24/7 : (555) 172-244-7888</li>
+                            <li><i class="fas fa-envelope"></i> info@kedihealth.com</li>
+                        </ul>
+                        <ul class="header__top-right ul_li mt-10">
+                            <li><i class="fas fa-leaf"></i>Wellness First</li>
+                            <li><i class="fas fa-map-marker-alt"></i>Lagos, Nigeria</li>
+                            <li><a href="#!"><i class="fas fa-star"></i>My Wishlist</a></li>
+                            <li><a href="checkout.html"><i class="far fa-check-circle"></i>Checkout</a></li>
+                            <li>
+                                <div class="header__language currency aura-currency-switcher">
+                                    <ul>
+                                        <li>
+                                            <a href="#!" class="lang-btn">
+                                                <span class="current-currency-symbol">&#8358;</span>
+                                                <i class="far fa-chevron-down"></i>
+                                            </a>
+                                            <ul class="lang_sub_list">
+                                                <li><a href="#" data-currency-set="NGN">&#8358; NGN</a></li>
+                                                <li><a href="#" data-currency-set="USD">$ USD</a></li>
+                                                <li><a href="#" data-currency-set="PI">&#960; Pi</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container mxw_1360">
+                <div class="header__middle ul_li_between">
+                    <div class="header__logo">
+                        <a href="index.html">
+                            <img src="assets/img/logo/logo.svg" alt="Kedi Healthcare">
+                        </a>
+                    </div>
+                    <div class="header-date">
+                        <i class="far fa-calendar-alt"></i><span id="header-live-date">Loading...</span>
+                        <script>
+                            (function(){
+                                var d = new Date();
+                                var opts = { weekday:'long', year:'numeric', month:'short', day:'numeric' };
+                                var el = document.getElementById('header-live-date');
+                                if(el) el.textContent = d.toLocaleDateString('en-US', opts);
+                            })();
+                        </script>
+                    </div>
+                    <div class="add">
+                        <a href="shop.html">
+                            <img src="assets/img/product/beaty soap.jpeg" alt="Kedi Soap" style="max-height: 80px; width: auto; object-fit: contain;">
+                        </a>
+                    </div>
+                    <div class="d-none d-lg-block">
+                        <div class="ul_li">
+                            <div class="header__language style-2 mr-25">
+                                <ul>
+                                    <li>
+                                        <a href="#!" class="lang-btn"><img src="assets/img/icon/usd_flag.png" alt=""> English <i class="far fa-chevron-down"></i></a>
+                                        <ul class="lang_sub_list">
+                                            <li><a href="#">English</a></li>
+                                            <li><a href="#">Yoruba</a></li>
+                                            <li><a href="#">Hausa</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header__social">
+                                <a href="#!"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#!"><i class="fab fa-twitter"></i></a>
+                                <a href="#!"><i class="fab fa-instagram"></i></a>
+                                <a href="#!"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header__wrap" data-uk-sticky="top: 250; animation: uk-animation-slide-top;">
+                <div class="container mxw_1360">
+                    <div class="header__main ul_li">
+                        <div class="header__logo">
+                            <a href="index.html">
+                                <img src="assets/img/logo/logo.svg" alt="Kedi Healthcare">
+                            </a>
+                        </div>
+                        <div class="header__category">
+                            <a class="header__category-nav" href="#!"><img class="bar" src="assets/img/icon/bar.svg" alt="">Browse Categories<i class="fas fa-chevron-down"></i></a>
+                        </div>
+                        <div class="hamburger_menu d-lg-none">
+                            <a href="javascript:void(0);" class="active">
+                                <div class="icon bar">
+                                    <span><i class="fal fa-bars"></i></span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="main-menu navbar navbar-expand-lg">
+                            <nav class="main-menu__nav collapse navbar-collapse">
+                                <ul>
+                                    <li class="menu-item-has-children has-mega-menu active"><a href="index.html">Home</a>
+                                        <ul class="mega-menu">
+                                            <li>
+                                                <div class="mega-menu-content">
+                                                    <div class="row">
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="index.html">
+                                                                    <img src="assets/img/demo/demo-1.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 1</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="home-2.html">
+                                                                    <img src="assets/img/demo/demo-2.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 2</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="home-3.html">
+                                                                    <img src="assets/img/demo/demo-3.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 3</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic coming-soon">
+                                                                <span>Coming Soon</span>
+                                                            </div>
+                                                            <h3>Coming Soon</h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Shop</a>
+                                        <ul class="submenu">
+                                            <li><a href="shop.html">Shop Default</a></li>
+                                            <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
+                                            <li><a href="shop-single.html">Shop Single</a></li>
+                                            <li><a href="cart.html">Shop Cart</a></li>
+                                            <li><a href="checkout.html">Shop Checkout</a></li>
+                                            <li><a href="account.html">Account</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="health-challenges.html">Clinical Encyclopedia</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Blog</a>
+                                        <ul class="submenu">
+                                            <li><a href="blog.html">Blog</a></li>
+                                            <li><a href="news-single.html">Blog Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Pages</a>
+                                        <ul class="submenu">
+                                            <li><a href="about.html">About Us</a></li>
+                                            <li><a href="account.html">Account</a></li>
+                                            <li><a href="ai-doctor.html">AI Doctor</a></li>
+                                            <li><a href="franchise.html">Franchise</a></li>
+                                            <li><a href="404.html">404</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="header__main-right ul_li">
+                            <div class="header__icons ul_li mr-15">
+                                <div class="icon">
+                                    <a href="account.html"><img src="assets/img/icon/user.svg" alt="Account"></a>
+                                </div>
+                                <div class="icon wishlist-icon">
+                                    <a href="#!" aria-label="Wishlist">
+                                        <img src="assets/img/icon/heart.svg" alt="Wishlist">
+                                        <span class="wish-count">0</span>
+                                    </a>
+                                </div>
+                                <div class="icon cart-icon">
+                                    <a href="cart.html" aria-label="Cart">
+                                        <img src="assets/img/icon/cart.svg" alt="Cart">
+                                        <span class="cart-count">0</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="login-sign-btn">
+                                <a class="thm-btn thm-btn__2 text-black" href="account.html">
+                                    <span class="btn-wrap">
+                                        <span>Login / Sign Up</span>
+                                        <span>Login / Sign Up</span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header end -->
+
+        <!-- slide-bar start -->
+        <aside class="slide-bar">
+            <div class="close-mobile-menu">
+                <a href="javascript:void(0);"><i class="fal fa-times"></i></a>
+            </div>
+
+            <!-- sidebar-info start -->
+            <div class="cart_sidebar">
+                <button type="button" class="cart_close_btn"><i class="fal fa-times"></i></button>
+                <h2 class="heading_title text-uppercase">Cart Items - <span>4</span></h2>
+                <div class="cart_items_list">
+                    <div class="cart_item">
+                        <div class="item_image">
+                            <img src="assets/img/product/Golden Six.png" alt="Faforon Stem Cell Therapy">
+                        </div>
+                        <div class="item_content">
+                            <h4 class="item_title">
+                                Rorem ipsum dolor sit amet.
+                            </h4>
+                            <span class="item_price">0.00003566Ï€</span>
+                            <button type="button" class="remove_btn"><i class="fal fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="cart_item">
+                        <div class="item_image">
+                            <img src="assets/img/product/Cardibetter.png" alt="Lycovite For Men">
+                        </div>
+                        <div class="item_content">
+                            <h4 class="item_title">
+                                Rorem ipsum dolor sit amet.
+                            </h4>
+                            <span class="item_price">0.00003821Ï€</span>
+                            <button type="button" class="remove_btn"><i class="fal fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="cart_item">
+                        <div class="item_image">
+                            <img src="assets/img/product/Lycovite.png" alt="Vitamin C 1000mg">
+                        </div>
+                        <div class="item_content">
+                            <h4 class="item_title">
+                                Rorem ipsum dolor sit amet.
+                            </h4>
+                            <span class="item_price">0.00004582Ï€</span>
+                            <button type="button" class="remove_btn"><i class="fal fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="cart_item">
+                        <div class="item_image">
+                            <img src="assets/img/product/V-Ca.png" alt="Gastrifort Gastro Care">
+                        </div>
+                        <div class="item_content">
+                            <h4 class="item_title">
+                                Rorem ipsum dolor sit amet.
+                            </h4>
+                            <span class="item_price">0.00004073Ï€</span>
+                            <button type="button" class="remove_btn"><i class="fal fa-times"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="total_price text-uppercase">
+                    <span>Sub Total:</span>
+                    <span>0.00003054Ï€</span>
+                </div>
+                <ul class="btns_group ul_li">
+                    <li><a href="cart.html" class="add-to-cart-btn" class="thm-btn">
+                        <span class="btn-wrap">
+                            <span>View Cart</span>
+                            <span>View Cart</span>
+                        </span>
+                    </a></li>
+                    <li><a href="checkout.html" class="add-to-cart-btn" class="thm-btn thm-btn__black">
+                        <span class="btn-wrap">
+                            <span>Checkout</span>
+                            <span>Checkout</span>
+                        </span>
+                    </a></li>
+                </ul>
+            </div>
+            <!-- sidebar-info end -->
+
+            <!-- side-mobile-menu start -->
+            <nav class="side-mobile-menu">
+                <div class="header-mobile-search">
+                    <form role="search" method="get" action="shop.html">
+                        <input type="text" name="search" placeholder="Search verified protocols...">
+                        <button type="submit"><i class="ti-search"></i></button>
+                    </form>
+                </div>
+                <ul id="mobile-menu-active">
+                    <li class="dropdown"><a href="index.html">Home</a>
+                        <ul class="sub-menu">
+                            <li><a href="index.html">Clinical Home 1</a></li>
+                            <li><a href="home-2.html">Home Two</a></li>
+                            <li><a href="home-3.html">Clinical Home 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Protocols &amp; Shop</a>
+                        <ul class="sub-menu">
+                            <li><a href="shop.html">Shop Catalog</a></li>
+                            <li><a href="shop-left-sidebar.html">Shop Sidebar</a></li>
+                            <li><a href="shop-single.html">Product Detail</a></li>
+                            <li><a href="cart.html">View Cart</a></li>
+                            <li><a href="checkout.html">Checkout</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="shop.html">Clinical Instruments</a></li>
+                    <li class="dropdown">
+                        <a href="#!">Health Insights</a>
+                        <ul class="sub-menu">
+                            <li><a href="news.html">Clinical Blog</a></li>
+                            <li><a href="news-single.html">Insight Details</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#!">Dashboard &amp; Pages</a>
+                        <ul class="submenu">
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="auth.html" class="login-sign-btn">Patient Portal</a></li>
+                            <li><a href="admin.html">Admin Panel</a></li>
+                            <li><a href="404.html">Error 404</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <!-- side-mobile-menu end -->
+        </aside>
+        <div class="body-overlay"></div>
+        <!-- slide-bar end -->
+
+        <main>
+
+<!-- KEDI PROMO BANNER START -->
+<style>
+.kedi-promo-banner {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 12px;
+    margin: 30px auto;
+    max-width: 1200px;
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 10;
+}
+.kedi-promo-banner:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.3);
+}
+.kedi-promo-banner-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.kedi-promo-banner-thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 2px solid white;
+}
+.kedi-promo-banner-text h4 {
+    color: white;
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.kedi-promo-banner-text p {
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+.kedi-promo-banner-actions {
+    display: flex;
+    gap: 10px;
+}
+.kedi-promo-btn {
+    background: white;
+    color: #10B981;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.kedi-promo-btn:hover {
+    background: #f0fdf4;
+}
+.kedi-promo-btn.share {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+.kedi-promo-btn.share:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Modal Styles */
+.kedi-promo-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+.kedi-promo-modal.active {
+    display: flex;
+}
+.kedi-promo-modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+    animation: promoZoom 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes promoZoom {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.kedi-promo-modal-img {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+.kedi-promo-modal-close {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px;
+    transition: color 0.3s;
+}
+.kedi-promo-modal-close:hover {
+    color: #10B981;
+}
+@media (max-width: 768px) {
+    .kedi-promo-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        margin: 15px;
+    }
+    .kedi-promo-banner-content {
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+    .kedi-promo-modal-close {
+        top: -40px;
+        right: 0;
+    }
+}
+</style>
+
+<div class="container px-md-0">
+    <div class="kedi-promo-banner" onclick="openPromoModal()">
+        <div class="kedi-promo-banner-content">
+            <img src="assets/img/promo/kedi-2026-award.jpg" alt="Kedi 2026 Perform and Win Award" class="kedi-promo-banner-thumb">
+            <div class="kedi-promo-banner-text">
+                <h4>KEDI 2026 Perform and Win Award ðŸ†</h4>
+                <p>Register and upgrade to Three Star Consultant to win amazing prizes. Offer valid March 10th - May 31st, 2026.</p>
+            </div>
+        </div>
+        <div class="kedi-promo-banner-actions">
+            <button class="kedi-promo-btn" onclick="event.stopPropagation(); openPromoModal()"><i class="fas fa-eye"></i> View Poster</button>
+            <button class="kedi-promo-btn share" onclick="event.stopPropagation(); sharePromo()"><i class="fas fa-share-alt"></i> Share</button>
+        </div>
+    </div>
+</div>
+
+<div class="kedi-promo-modal" id="kediPromoModal" onclick="closePromoModal()">
+    <div class="kedi-promo-modal-content" onclick="event.stopPropagation()">
+        <button class="kedi-promo-modal-close" onclick="closePromoModal()"><i class="fas fa-times"></i></button>
+        <img src="assets/img/promo/kedi-2026-award.jpg" alt="Kedi 2026 Promo Full" class="kedi-promo-modal-img">
+    </div>
+</div>
+
+<script>
+function openPromoModal() {
+    document.getElementById('kediPromoModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closePromoModal() {
+    document.getElementById('kediPromoModal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+function sharePromo() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'KEDI 2026 Perform and Win Award',
+            text: 'Register and upgrade to Three Star Consultant to win amazing prizes! TVs, Refrigerators, Air Conditioners and more! Offer valid till May 31st, 2026.',
+            url: window.location.href
+        }).catch(console.error);
+    } else {
+        alert('Share feature is not supported on this browser. Copy the page URL to share!');
+    }
+}
+</script>
+<!-- KEDI PROMO BANNER END -->
+
+            
+            <!-- breadcrumb start -->
+            <section class="breadcrumb-area">
+                <div class="container">
+                    <div class="Aura Herbs-breadcrumb breadcrumbs">
+                        <ul class="list-unstyled d-flex align-items-center">
+                            <li class="Aura Herbsbcrumb-item Aura Herbsbcrumb-begin">
+                                <a href="kedi.html"><span>Home</span></a>
+                            </li>
+                            <li class="Aura Herbsbcrumb-item Aura Herbsbcrumb-end">
+                                <span>Account</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!-- breadcrumb end -->
+
+            <!-- account start -->
+            <section class="account pb-90" id="kedi-dashboard-area">
+                <div class="container">
+                    <div class="dashboard-wrapper bg-white rounded-[40px] shadow-2xl shadow-slate-200/50 overflow-hidden flex flex-col md:flex-row min-h-[600px]">
+                        <!-- Sidebar -->
+                        <div class="w-full md:w-80 bg-slate-50 border-r border-slate-100 p-8 flex flex-col">
+                            <div class="flex items-center gap-4 mb-10">
+                                <div class="w-16 h-16 rounded-2xl bg-[#4d231c] flex items-center justify-center text-white text-2xl font-black italic shadow-lg" id="user-avatar-initial">K</div>
+                                <div>
+                                    <h4 class="font-black text-slate-900 leading-tight" id="user-name-display">Guest User</h4>
+                                    <p class="text-xs text-slate-400 font-bold uppercase tracking-widest" id="user-status">Clinical Member</p>
+                                </div>
+                            </div>
+
+                            <nav class="flex-grow">
+                                <ul class="space-y-2">
+                                    <li><a href="javascript:void(0)" onclick="dashSwitch('overview')" class="dash-link on"><i class="fas fa-th-large mr-3"></i> Overview</a></li>
+                                    <li><a href="javascript:void(0)" onclick="dashSwitch('orders')" class="dash-link"><i class="fas fa-shopping-basket mr-3"></i> Order History</a></li>
+                                    <li><a href="javascript:void(0)" onclick="dashSwitch('profile')" class="dash-link"><i class="fas fa-user-cog mr-3"></i> Profile Settings</a></li>
+                                    <li><a href="javascript:void(0)" onclick="dashSwitch('health')" class="dash-link"><i class="fas fa-heartbeat mr-3"></i> Health Stats</a></li>
+                                    <li><a href="javascript:void(0)" onclick="dashSwitch('tracker')" class="dash-link" id="dash-link-tracker"><i class="fas fa-map-marker-alt mr-3"></i> Track Order</a></li>
+                                </ul>
+                            </nav>
+
+                            <button onclick="handleLogout()" class="mt-10 flex items-center gap-3 text-red-500 font-black uppercase tracking-widest text-[10px] hover:text-red-700 transition">
+                                <i class="fas fa-sign-out-alt"></i> Secure Logout
+                            </button>
+                        </div>
+
+                        <!-- Content Area -->
+                        <div class="flex-grow p-8 md:p-12 bg-white">
+                            <!-- OVERVIEW PANE -->
+                            <div id="pane-overview" class="dash-pane on">
+                                <div class="mb-10">
+                                    <h2 class="text-3xl font-black italic serif-heading tracking-tighter text-slate-900 mb-2">Welcome back, <span id="user-firstname">User</span>!</h2>
+                                    <p class="text-slate-500 text-sm">Your clinical profile is active and synced with the Kedi ecosystem.</p>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+                                    <div class="bg-blue-50 p-6 rounded-[30px] border border-blue-100">
+                                        <p class="text-[10px] font-black uppercase tracking-widest text-blue-400 mb-2">Active Orders</p>
+                                        <h3 class="text-3xl font-black text-blue-900" id="dash-order-count">0</h3>
+                                    </div>
+                                    <div class="bg-purple-50 p-6 rounded-[30px] border border-purple-100">
+                                        <p class="text-[10px] font-black uppercase tracking-widest text-purple-400 mb-2">Clinical Tokens</p>
+                                        <h3 class="text-3xl font-black text-purple-900">450 <span class="text-xs uppercase">k-pts</span></h3>
+                                    </div>
+            <div class="bg-orange-50 p-6 rounded-[30px] border border-orange-100">
+                <p class="text-[10px] font-black uppercase tracking-widest text-orange-400 mb-2">Pi GCV</p>
+                <h3 class="text-3xl font-black text-orange-900" id="gcv-value">$314,159</h3>
+            </div>
+                                    <div class="bg-green-50 p-6 rounded-[30px] border border-green-100">
+                                        <p class="text-[10px] font-black uppercase tracking-widest text-green-400 mb-2">Success Grid</p>
+                                        <h3 class="text-3xl font-black text-green-900">4/4 <span class="text-xs uppercase">Verified</span></h3>
+                                    </div>
+                                </div>
+
+                                <div class="bg-slate-900 rounded-[35px] p-8 text-white relative overflow-hidden">
+                                    <div class="relative z-10">
+                                        <h4 class="text-xl font-bold mb-2 italic serif-heading">Premium Clinical Access</h4>
+                                        <p class="text-slate-400 text-sm mb-6 max-w-sm">Upgrade your account to unlock advanced AI diagnostics and priority shipping on all Ï€-protocols.</p>
+                                        <a href="#!" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-slate-900 transition">Upgrade Now</a>
+                                    </div>
+                                    <i class="fas fa-shield-alt absolute -right-10 -bottom-10 text-[200px] text-white/5 rotate-12"></i>
+                                </div>
+                            </div>
+
+                            <!-- ORDERS PANE -->
+                            <div id="pane-orders" class="dash-pane">
+                                <h2 class="text-2xl font-black italic serif-heading tracking-tighter text-slate-900 mb-8">Clinical Order History</h2>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-left">
+                                        <thead>
+                                            <tr class="border-b border-slate-100">
+                                                <th class="pb-4 text-[10px] font-black uppercase tracking-widest text-slate-400">Order ID</th>
+                                                <th class="pb-4 text-[10px] font-black uppercase tracking-widest text-slate-400">Date</th>
+                                                <th class="pb-4 text-[10px] font-black uppercase tracking-widest text-slate-400">Total</th>
+                                                <th class="pb-4 text-[10px] font-black uppercase tracking-widest text-slate-400">Status</th>
+                                                <th class="pb-4 text-[10px] font-black uppercase tracking-widest text-slate-400">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="dash-orders-list">
+                                            <tr><td colspan="5" class="py-10 text-center text-slate-400 text-sm italic">No clinical orders found in your history.</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- PROFILE PANE -->
+                            <div id="pane-profile" class="dash-pane">
+                                <h2 class="text-2xl font-black italic serif-heading tracking-tighter text-slate-900 mb-8">Profile Settings</h2>
+                                <form class="space-y-6 max-w-lg">
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Full Name</label>
+                                            <input type="text" id="dash-name-input" class="w-full bg-slate-50 border border-slate-100 p-4 rounded-2xl text-sm" value="User">
+                                        </div>
+                                        <div>
+                                            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Display Name</label>
+                                            <input type="text" class="w-full bg-slate-50 border border-slate-100 p-4 rounded-2xl text-sm" placeholder="e.g. Clinical Master">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Email Identity</label>
+                                        <input type="email" id="dash-email-input" class="w-full bg-slate-200 border border-slate-300 p-4 rounded-2xl text-sm text-slate-500 cursor-not-allowed" readonly>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="bg-slate-900 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-blue-600 transition">Update Clinical Profile</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- HEALTH PANE -->
+                            <div id="pane-health" class="dash-pane">
+                                <h2 class="text-2xl font-black italic serif-heading tracking-tighter text-slate-900 mb-4">Health & Vitality Stats</h2>
+                                <p class="text-slate-500 text-sm mb-8 italic">Data synchronized from your last AI Wellness Quiz.</p>
+                                
+                                <div class="space-y-8">
+                                    <div>
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span class="text-[10px] font-black uppercase tracking-widest text-slate-900">Cellular Detox Score</span>
+                                            <span class="text-[10px] font-black text-blue-600">82%</span>
+                                        </div>
+                                        <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-blue-500" style="width: 82%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span class="text-[10px] font-black uppercase tracking-widest text-slate-900">Immune Resilience</span>
+                                            <span class="text-[10px] font-black text-green-600">94%</span>
+                                        </div>
+                                        <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-green-500" style="width: 94%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span class="text-[10px] font-black uppercase tracking-widest text-slate-900">Vitality Index</span>
+                                            <span class="text-[10px] font-black text-purple-600">65%</span>
+                                        </div>
+                                        <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-purple-500" style="width: 65%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- TRACKER PANE -->
+                            <div id="pane-tracker" class="dash-pane">
+                                <h2 class="text-2xl font-black italic serif-heading tracking-tighter text-slate-900 mb-8">Package Delivery Tracker</h2>
+                                
+                                <!-- Search Input Form -->
+                                <div class="bg-slate-50 border border-slate-100 rounded-3xl p-6 mb-8 flex flex-col sm:flex-row gap-4 items-end">
+                                    <div class="flex-grow w-full">
+                                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Order Tracking ID</label>
+                                        <input type="text" id="track-order-id-input" placeholder="e.g. ORD-171829381" class="w-full bg-white border border-slate-200 rounded-2xl px-6 py-4 text-sm font-bold text-slate-700 focus:outline-none focus:border-[#4d231c] transition">
+                                    </div>
+                                    <button onclick="handleTrackSearch()" class="w-full sm:w-auto bg-[#4d231c] hover:bg-[#3d1b16] text-white font-black text-[10px] uppercase tracking-widest px-8 py-4 rounded-2xl transition shadow-lg whitespace-nowrap">Track Package</button>
+                                </div>
+
+                                <!-- Tracker Status Details -->
+                                <div id="tracker-details" class="hidden">
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                                        <div class="bg-slate-50 p-6 rounded-3xl border border-slate-100">
+                                            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Status</p>
+                                            <h3 class="text-lg font-black text-slate-900 uppercase" id="track-status-text">Pending</h3>
+                                        </div>
+                                        <div class="bg-slate-50 p-6 rounded-3xl border border-slate-100">
+                                            <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Estimated Delivery</p>
+                                            <h3 class="text-lg font-black text-[#4d231c]" id="track-est-delivery">Pending</h3>
+                                        </div>
+                                    </div>
+
+                                    <!-- Status Progress Timeline -->
+                                    <div class="status-timeline mb-10" id="tracker-timeline">
+                                        <div class="progress-bar" id="tracker-progress-bar"></div>
+                                        <div class="status-step" id="track-step-pending">
+                                            <div class="status-icon"><i class="fas fa-clipboard-list"></i></div>
+                                            <div class="status-label">Pending</div>
+                                        </div>
+                                        <div class="status-step" id="track-step-processing">
+                                            <div class="status-icon"><i class="fas fa-box-open"></i></div>
+                                            <div class="status-label">Processing</div>
+                                        </div>
+                                        <div class="status-step" id="track-step-transit">
+                                            <div class="status-icon"><i class="fas fa-truck"></i></div>
+                                            <div class="status-label">In Transit</div>
+                                        </div>
+                                        <div class="status-step" id="track-step-delivered">
+                                            <div class="status-icon"><i class="fas fa-home"></i></div>
+                                            <div class="status-label">Delivered</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Map View -->
+                                    <div class="bg-slate-50 rounded-3xl p-4 border border-slate-100 shadow-sm relative">
+                                        <div id="tracker-map" style="height: 350px; border-radius: 20px; z-index: 1;"></div>
+                                        <div class="mt-4 flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-slate-400 px-2">
+                                            <span><i class="fas fa-satellite-dish text-[#4d231c] mr-2"></i>Live GPS Sync Active</span>
+                                            <span>Last Update: <span id="track-last-updated" class="font-bold text-slate-700">Just now</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div id="tracker-placeholder" class="py-20 text-center text-slate-400 text-sm italic">
+                                    Please enter an Order ID or click "Track" next to an order in your history.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                    .dash-link {
+                        display: block; padding: 14px 20px; border-radius: 15px;
+                        font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; color: #64748b; transition: all 0.2s;
+                    }
+                    .dash-link.on { background: #4d231c; color: white; box-shadow: 0 10px 20px rgba(77,35,28,0.2); }
+                    .dash-link:hover:not(.on) { background: #f1f5f9; color: #4d231c; }
+                    .dash-pane { display: none; animation: fadeIn 0.4s ease-out; }
+                    .dash-pane.on { display: block; }
+                    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+                    /* Order Action Buttons */
+                    .order-action-btns { display: flex; gap: 6px; flex-wrap: nowrap; align-items: center; }
+                    .btn-oaction {
+                        display: inline-flex; align-items: center; gap: 4px;
+                        padding: 6px 10px; border-radius: 20px;
+                        font-size: 9px; font-weight: 900; text-transform: uppercase;
+                        letter-spacing: 0.05em; cursor: pointer; border: none;
+                        transition: all 0.2s; white-space: nowrap;
+                    }
+                    .btn-oaction.view { background: #f1f5f9; color: #334155; }
+                    .btn-oaction.view:hover { background: #e2e8f0; color: #1e293b; }
+                    .btn-oaction.track { background: #1e293b; color: #fff; }
+                    .btn-oaction.track:hover { background: #3b82f6; color: #fff; }
+                    .btn-oaction.reorder { background: #ecfdf5; color: #059669; }
+                    .btn-oaction.reorder:hover { background: #d1fae5; color: #047857; }
+
+                    /* Order Detail Modal */
+                    #order-detail-modal {
+                        position: fixed; inset: 0; z-index: 99999;
+                        background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
+                        display: flex; align-items: center; justify-content: center;
+                        opacity: 0; pointer-events: none; transition: opacity 0.3s;
+                    }
+                    #order-detail-modal.open { opacity: 1; pointer-events: all; }
+                    .odm-box {
+                        background: #fff; border-radius: 28px;
+                        width: 90%; max-width: 560px; max-height: 85vh; overflow-y: auto;
+                        padding: 36px; box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+                        transform: translateY(30px); transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+                        position: relative;
+                    }
+                    #order-detail-modal.open .odm-box { transform: translateY(0); }
+                    .odm-close {
+                        position: absolute; top: 20px; right: 20px;
+                        background: #f1f5f9; border: none; border-radius: 50%;
+                        width: 36px; height: 36px; cursor: pointer;
+                        display: flex; align-items: center; justify-content: center;
+                        color: #64748b; font-size: 14px; transition: background 0.2s;
+                    }
+                    .odm-close:hover { background: #e2e8f0; color: #1e293b; }
+                    .odm-badge {
+                        display: inline-block; padding: 4px 12px; border-radius: 50px;
+                        font-size: 9px; font-weight: 900; text-transform: uppercase;
+                        letter-spacing: 0.1em;
+                    }
+                    .odm-item-row {
+                        display: flex; justify-content: space-between; align-items: center;
+                        padding: 10px 0; border-bottom: 1px solid #f1f5f9;
+                        font-size: 13px;
+                    }
+                    .odm-item-row:last-child { border-bottom: none; }
+
+                    /* Tracker status timeline styles */
+                    .status-timeline {
+                        display: flex;
+                        justify-content: space-between;
+                        position: relative;
+                        margin-top: 40px;
+                        margin-bottom: 20px;
+                    }
+                    .status-timeline::before {
+                        content: '';
+                        position: absolute;
+                        top: 15px;
+                        left: 0;
+                        width: 100%;
+                        height: 4px;
+                        background: #e2e8f0;
+                        z-index: 0;
+                    }
+                    .status-timeline .progress-bar {
+                        position: absolute;
+                        top: 15px;
+                        left: 0;
+                        height: 4px;
+                        background: #10B981;
+                        z-index: 1;
+                        transition: width 0.5s ease;
+                        width: 0%;
+                    }
+                    .status-step {
+                        position: relative;
+                        z-index: 2;
+                        text-align: center;
+                        width: 25%;
+                    }
+                    .status-icon {
+                        width: 34px;
+                        height: 34px;
+                        border-radius: 50%;
+                        background: #e2e8f0;
+                        color: #94a3b8;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 0 auto 10px;
+                        font-size: 14px;
+                        border: 4px solid white;
+                        transition: all 0.3s;
+                    }
+                    .status-step.completed .status-icon {
+                        background: #10B981;
+                        color: white;
+                        box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+                    }
+                    .status-step.active .status-icon {
+                        background: #3b82f6;
+                        color: white;
+                        box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.2);
+                        animation: pulse 2s infinite;
+                    }
+                    @keyframes pulse {
+                        0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+                        70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+                        100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+                    }
+                    .status-label {
+                        font-weight: 700;
+                        font-size: 10px;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                        color: #64748b;
+                    }
+                    .status-step.completed .status-label,
+                    .status-step.active .status-label {
+                        color: #0f172a;
+                    }
+                </style>
+
+                <!-- ORDER DETAIL MODAL -->
+                <div id="order-detail-modal" role="dialog" aria-modal="true" aria-label="Order Details">
+                    <div class="odm-box">
+                        <button class="odm-close" onclick="closeOrderModal()" aria-label="Close"><i class="fas fa-times"></i></button>
+                        <p class="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-1">Order Receipt</p>
+                        <h2 class="text-2xl font-black text-slate-900 mb-1" id="odm-id">ORD-XXXXXXX</h2>
+                        <div class="flex items-center gap-3 mb-6 flex-wrap">
+                            <span id="odm-status-badge" class="odm-badge bg-amber-100 text-amber-700">Pending</span>
+                            <span class="text-xs text-slate-400" id="odm-date">—</span>
+                            <span class="text-xs text-slate-400" id="odm-method">—</span>
+                        </div>
+
+                        <div class="bg-slate-50 rounded-2xl p-5 mb-5">
+                            <p class="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-3">Items Ordered</p>
+                            <div id="odm-items"></div>
+                        </div>
+
+                        <div class="bg-slate-50 rounded-2xl p-5 mb-5">
+                            <p class="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-3">Delivery Details</p>
+                            <div id="odm-patient" class="text-sm text-slate-700 space-y-1"></div>
+                        </div>
+
+                        <div class="flex justify-between items-center bg-slate-900 text-white rounded-2xl px-6 py-4 mb-5">
+                            <span class="text-[9px] font-black uppercase tracking-widest">Grand Total</span>
+                            <span class="text-xl font-black" id="odm-total">₦0.00</span>
+                        </div>
+
+                        <div class="flex gap-3 flex-wrap">
+                            <button onclick="closeOrderModal(); setTimeout(()=>trackOrder(currentModalOrderId), 100)" class="flex-1 bg-slate-900 text-white py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-600 transition flex items-center justify-center gap-2">
+                                <i class="fas fa-map-marker-alt"></i> Track Package
+                            </button>
+                            <button onclick="reorderFromModal()" class="flex-1 bg-green-50 text-green-700 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-green-100 transition flex items-center justify-center gap-2">
+                                <i class="fas fa-redo"></i> Reorder
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    let trackerMap = null;
+                    let trackerMarker = null;
+                    let trackerPolyline = null;
+                    let trackerUnsubscribe = null;
+
+                    function dashSwitch(p) {
+                        document.querySelectorAll('.dash-pane').forEach(el => el.classList.remove('on'));
+                        document.querySelectorAll('.dash-link').forEach(el => el.classList.remove('on'));
+                        document.getElementById('pane-' + p).classList.add('on');
+                        
+                        // Highlight corresponding sidebar link
+                        const links = document.querySelectorAll('.dash-link');
+                        links.forEach(l => {
+                            if (l.getAttribute('onclick') && l.getAttribute('onclick').includes(`'${p}'`)) {
+                                l.classList.add('on');
+                            }
+                        });
+
+                        // Special Leaflet invalidate size
+                        if (p === 'tracker' && trackerMap) {
+                            setTimeout(() => {
+                                trackerMap.invalidateSize();
+                            }, 200);
+                        }
+                    }
+
+                    function handleLogout() {
+                        localStorage.removeItem('kedi_user');
+                        localStorage.removeItem('kedi_user_session');
+                        localStorage.removeItem('kedi_token');
+                        alert("Securely Logged Out. Redirecting to Entry...");
+                        window.location.href = 'auth.html';
+                    }
+
+                    window.trackOrder = function(orderId) {
+                        dashSwitch('tracker');
+                        document.getElementById('track-order-id-input').value = orderId;
+                        loadTrackingDetails(orderId);
+                    };
+
+                    window.handleTrackSearch = function() {
+                        const orderId = document.getElementById('track-order-id-input').value.trim();
+                        if (orderId) {
+                            loadTrackingDetails(orderId);
+                        } else {
+                            alert("Please enter a valid Order ID.");
+                        }
+                    };
+
+                    function loadTrackingDetails(orderId) {
+                        if (trackerUnsubscribe) {
+                            trackerUnsubscribe();
+                            trackerUnsubscribe = null;
+                        }
+
+                        document.getElementById('tracker-details').classList.remove('hidden');
+                        document.getElementById('tracker-placeholder').classList.add('hidden');
+
+                        if (!trackerMap) {
+                            trackerMap = L.map('tracker-map').setView([6.5244, 3.3792], 12);
+                            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                                maxZoom: 19
+                            }).addTo(trackerMap);
+
+                            const truckIcon = L.icon({
+                                iconUrl: 'https://cdn-icons-png.flaticon.com/512/2769/2769339.png',
+                                iconSize: [40, 40],
+                                iconAnchor: [20, 20],
+                                popupAnchor: [0, -20]
+                            });
+
+                            trackerMarker = L.marker([6.5244, 3.3792], {icon: truckIcon}).addTo(trackerMap)
+                                .bindPopup('<b>Delivery Vehicle</b><br>Active routing');
+                        }
+
+                        // Try Firestore first
+                        if (window.AuraFirebase && window.AuraFirebase.db) {
+                            const { db, doc, onSnapshot } = window.AuraFirebase;
+                            try {
+                                const orderRef = doc(db, "orders", orderId);
+                                trackerUnsubscribe = onSnapshot(orderRef, (docSnap) => {
+                                    if (docSnap.exists()) {
+                                        const data = docSnap.data();
+                                        updateTrackerUI(data, orderId);
+                                    } else {
+                                        checkLocalStorageOrder(orderId);
+                                    }
+                                }, (err) => {
+                                    console.warn("Firestore live track listener failed:", err);
+                                    checkLocalStorageOrder(orderId);
+                                });
+                            } catch(e) {
+                                checkLocalStorageOrder(orderId);
+                            }
+                        } else {
+                            checkLocalStorageOrder(orderId);
+                        }
+                    }
+
+                    function checkLocalStorageOrder(orderId) {
+                        const localOrders = JSON.parse(localStorage.getItem('kedi_orders') || '[]');
+                        const match = localOrders.find(o => 
+                            (o.orderId && o.orderId.toString() === orderId) || 
+                            (o.id && o.id.toString() === orderId) ||
+                            (o.id && 'ORD-' + o.id === orderId)
+                        );
+
+                        if (match) {
+                            const simulatedData = {
+                                status: match.status || 'Pending Verification',
+                                estimatedDelivery: '1-3 Business Days',
+                                lastUpdated: match.date || new Date().toISOString(),
+                                location: { lat: 6.5244, lng: 3.3792 }
+                            };
+                            updateTrackerUI(simulatedData, orderId);
+                        } else {
+                            document.getElementById('track-status-text').textContent = "Not Found";
+                            document.getElementById('track-est-delivery').textContent = "N/A";
+                            document.getElementById('track-last-updated').textContent = "N/A";
+                            alert("Tracking ID not found in remote database or local device history.");
+                        }
+                    }
+
+                    function updateTrackerUI(data, orderId) {
+                        const status = data.status || 'Pending';
+                        document.getElementById('track-status-text').textContent = status;
+                        document.getElementById('track-est-delivery').textContent = data.estimatedDelivery || '1-3 Business Days';
+                        
+                        if (data.lastUpdated) {
+                            const date = data.lastUpdated.toDate ? data.lastUpdated.toDate() : new Date(data.lastUpdated);
+                            document.getElementById('track-last-updated').textContent = date.toLocaleTimeString();
+                        }
+
+                        if (data.location && data.location.lat && data.location.lng) {
+                            const latLng = new L.LatLng(data.location.lat, data.location.lng);
+                            trackerMarker.setLatLng(latLng);
+                            trackerMap.panTo(latLng);
+
+                            if (trackerPolyline) {
+                                trackerPolyline.addLatLng(latLng);
+                            } else {
+                                trackerPolyline = L.polyline([latLng], {color: '#4d231c', weight: 4}).addTo(trackerMap);
+                            }
+                        }
+
+                        // Determine current step index
+                        const steps = ['pending', 'processing', 'transit', 'delivered'];
+                        const statusLower = status.toLowerCase();
+                        let index = 0;
+                        if (statusLower.includes('pending') || statusLower.includes('escrow')) index = 0;
+                        else if (statusLower.includes('processing') || statusLower.includes('awaiting') || statusLower.includes('receipt')) index = 1;
+                        else if (statusLower.includes('transit') || statusLower.includes('ship') || statusLower.includes('route')) index = 2;
+                        else if (statusLower.includes('deliver') || statusLower.includes('complete') || statusLower.includes('success')) index = 3;
+
+                        steps.forEach((step, idx) => {
+                            const el = document.getElementById('track-step-' + step);
+                            if (el) {
+                                el.classList.remove('completed', 'active');
+                                if (idx < index) el.classList.add('completed');
+                                else if (idx === index) el.classList.add(index === 3 ? 'completed' : 'active');
+                            }
+                        });
+
+                        const pct = index === 0 ? 0 : index === 1 ? 33 : index === 2 ? 66 : 100;
+                        document.getElementById('tracker-progress-bar').style.width = pct + '%';
+                        
+                        setTimeout(() => {
+                            trackerMap.invalidateSize();
+                        }, 100);
+                    }
+
+                    // Populate Dashboard
+                    window.addEventListener('load', () => {
+                        const userData = JSON.parse(localStorage.getItem('kedi_user')) || JSON.parse(localStorage.getItem('kedi_user_session'));
+                        if (!userData) {
+                            window.location.href = 'auth.html';
+                            return;
+                        }
+
+                        document.getElementById('user-name-display').innerText = userData.name;
+                        document.getElementById('user-firstname').innerText = userData.name.split(' ')[0];
+                        document.getElementById('user-avatar-initial').innerText = userData.name.charAt(0);
+                        document.getElementById('dash-name-input').value = userData.name;
+                        document.getElementById('dash-email-input').value = userData.email;
+                        
+                        if(userData.picture && userData.picture.startsWith('http')) {
+                             document.getElementById('user-avatar-initial').innerHTML = `<img src="${userData.picture}" class="w-full h-full object-cover rounded-2xl">`;
+                        }
+
+                        // Load combined orders from Firestore and Local Storage
+                        const userEmail = userData.email.toLowerCase();
+                        const userId = userData.id;
+
+                        function renderOrders(ordersList) {
+                            const list = document.getElementById('dash-orders-list');
+                            if (!ordersList || ordersList.length === 0) {
+                                list.innerHTML = '<tr><td colspan="5" class="py-10 text-center text-slate-400 text-sm italic">No clinical orders found in your history.</td></tr>';
+                                document.getElementById('dash-order-count').innerText = '0';
+                                return;
+                            }
+
+                            // Sort by date descending
+                            ordersList.sort((a,b) => new Date(b.date) - new Date(a.date));
+                            document.getElementById('dash-order-count').innerText = ordersList.length;
+
+                            let html = '';
+                            // Store full order objects in a registry for button access
+                            window._kediOrdersRegistry = ordersList;
+
+                            ordersList.forEach((o, idx) => {
+                                const dateStr = new Date(o.date).toLocaleDateString();
+                                const statusRaw = o.status || 'Pending';
+                                const status = statusRaw.toUpperCase();
+                                const statusColor = statusRaw.toLowerCase().includes('deliver') || statusRaw.toLowerCase().includes('complete')
+                                    ? 'bg-green-100 text-green-700'
+                                    : statusRaw.toLowerCase().includes('transit') || statusRaw.toLowerCase().includes('ship')
+                                    ? 'bg-blue-100 text-blue-700'
+                                    : statusRaw.toLowerCase().includes('cancel')
+                                    ? 'bg-red-100 text-red-700'
+                                    : 'bg-amber-100 text-amber-700';
+                                const safeRawId = (o.rawId || o.orderId || '').replace(/'/g, "\\'");
+
+                                html += `
+                                    <tr class="border-b border-slate-50 last:border-0 hover:bg-slate-50 transition">
+                                        <td class="py-4 pr-2">
+                                            <span class="text-xs font-black text-slate-900 block">${(o.orderId||'').substring(0,12)}</span>
+                                            <span class="text-[9px] text-slate-400">${o.method || ''}</span>
+                                        </td>
+                                        <td class="py-4 text-xs text-slate-500 pr-2">${dateStr}</td>
+                                        <td class="py-4 text-sm font-black text-slate-900 pr-2">₦${(o.grandTotal||0).toLocaleString('en-NG', {minimumFractionDigits:2})}</td>
+                                        <td class="py-4 pr-2"><span class="odm-badge ${statusColor}">${status}</span></td>
+                                        <td class="py-4">
+                                            <div class="order-action-btns">
+                                                <button data-order-idx="${idx}" onclick="viewOrderDetails(window._kediOrdersRegistry[this.dataset.orderIdx])" class="btn-oaction view" title="View Details">
+                                                    <i class="fas fa-eye"></i> View
+                                                </button>
+                                                <button onclick="trackOrder('${safeRawId}')" class="btn-oaction track" title="Track Package">
+                                                    <i class="fas fa-map-marker-alt"></i> Track
+                                                </button>
+                                                <button data-order-idx="${idx}" onclick="reorderItems(window._kediOrdersRegistry[this.dataset.orderIdx])" class="btn-oaction reorder" title="Reorder Items">
+                                                    <i class="fas fa-redo"></i> Reorder
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                `;
+                            });
+                            list.innerHTML = html;
+                        }
+
+                        // 1. Load from localStorage first (immediate feedback)
+                        const localOrders = JSON.parse(localStorage.getItem('kedi_orders') || '[]');
+                        let mergedOrdersMap = new Map();
+
+                        localOrders.forEach(o => {
+                            // Check match
+                            const matchEmail = (o.email && o.email.toLowerCase() === userEmail) || 
+                                               (o.patientDetails && o.patientDetails.email && o.patientDetails.email.toLowerCase() === userEmail);
+                            const matchUid = (o.userUid && o.userUid === userId);
+                            
+                            if (matchEmail || matchUid) {
+                                const normId = o.orderId || (o.id ? o.id.toString() : 'ORD-' + new Date(o.date).getTime());
+                                const rawId = o.orderId || o.id?.toString() || normId;
+                                mergedOrdersMap.set(normId, {
+                                    orderId: normId.substring(0,12),
+                                    rawId: rawId,
+                                    date: o.date || new Date().toISOString(),
+                                    grandTotal: o.grandTotal || o.amount || 0,
+                                    status: o.status || 'Pending',
+                                    method: o.paymentMethod || o.method || 'Unknown',
+                                    items: o.items || o.cartItems || [],
+                                    patientDetails: o.patientDetails || o.patient || {}
+                                });
+                            }
+                        });
+
+                        // Render local ones initially
+                        renderOrders(Array.from(mergedOrdersMap.values()));
+
+                        // 2. Fetch from Firebase and overlay/merge
+                        if (window.AuraFirebase && window.AuraFirebase.db) {
+                            const { db, collection, getDocs } = window.AuraFirebase;
+                            const ordersRef = collection(db, "orders");
+                            
+                            getDocs(ordersRef).then(snapshot => {
+                                snapshot.forEach(docSnap => {
+                                    const o = docSnap.data();
+                                    const docId = docSnap.id;
+                                    
+                                    const matchEmail = (o.email && o.email.toLowerCase() === userEmail) || 
+                                                       (o.patientDetails && o.patientDetails.email && o.patientDetails.email.toLowerCase() === userEmail);
+                                    const matchUid = (o.userUid && o.userUid === userId);
+                                    
+                                    if (matchEmail || matchUid) {
+                                        const normId = o.orderId || docId;
+                                        // Overwrite or add (include items + patient for modal)
+                                        mergedOrdersMap.set(normId, {
+                                            orderId: normId.substring(0,12),
+                                            rawId: docId, // use Firestore doc ID for tracking
+                                            date: o.date || (o.createdAt?.toDate ? o.createdAt.toDate().toISOString() : o.createdAt) || new Date().toISOString(),
+                                            grandTotal: o.grandTotal || o.amount || 0,
+                                            status: o.status || 'Pending',
+                                            method: o.paymentMethod || o.method || 'Unknown',
+                                            items: o.items || o.cartItems || [],
+                                            patientDetails: o.patientDetails || o.patient || {}
+                                        });
+                                    }
+                                });
+                                // Re-render with merged data
+                                renderOrders(Array.from(mergedOrdersMap.values()));
+                            }).catch(err => {
+                                console.error("Error fetching orders from Firestore:", err);
+                            });
+                        }
+
+                    });
+
+                    /* =============================================
+                     * ORDER DETAIL MODAL LOGIC
+                     * =============================================*/
+                    let currentModalOrderId = null;
+                    let currentModalItems = [];
+
+                    window.viewOrderDetails = function(o) {
+                        if (!o) return;
+                        currentModalOrderId = o.rawId || o.orderId;
+                        currentModalItems = o.items || [];
+
+                        document.getElementById('odm-id').textContent = o.orderId || currentModalOrderId || 'N/A';
+                        document.getElementById('odm-date').textContent = o.date ? new Date(o.date).toLocaleString() : '—';
+                        document.getElementById('odm-method').textContent = o.method ? '· ' + o.method : '';
+
+                        // Status badge
+                        const statusRaw = o.status || 'Pending';
+                        const badge = document.getElementById('odm-status-badge');
+                        badge.textContent = statusRaw.toUpperCase();
+                        badge.className = 'odm-badge ' + (statusRaw.toLowerCase().includes('deliver') || statusRaw.toLowerCase().includes('complete')
+                            ? 'bg-green-100 text-green-700'
+                            : statusRaw.toLowerCase().includes('transit') || statusRaw.toLowerCase().includes('ship')
+                            ? 'bg-blue-100 text-blue-700'
+                            : statusRaw.toLowerCase().includes('cancel')
+                            ? 'bg-red-100 text-red-700'
+                            : 'bg-amber-100 text-amber-700');
+
+                        // Items
+                        const itemsEl = document.getElementById('odm-items');
+                        if (currentModalItems && currentModalItems.length > 0) {
+                            itemsEl.innerHTML = currentModalItems.map(it => `
+                                <div class="odm-item-row">
+                                    <span class="font-semibold text-slate-800">${it.name || it.title || 'Product'} <span class="text-slate-400 font-normal">x${it.qty || it.quantity || 1}</span></span>
+                                    <span class="font-black text-slate-900">₦${((it.price || 0) * (it.qty || it.quantity || 1)).toLocaleString('en-NG', {minimumFractionDigits:2})}</span>
+                                </div>
+                            `).join('');
+                        } else {
+                            itemsEl.innerHTML = '<p class="text-sm text-slate-400 italic">No item breakdown available.</p>';
+                        }
+
+                        // Patient / delivery details
+                        const pd = o.patientDetails || {};
+                        const patEl = document.getElementById('odm-patient');
+                        if (pd.name || pd.address || pd.phone) {
+                            patEl.innerHTML = [
+                                pd.name   ? `<p><i class="fas fa-user mr-2 text-slate-400"></i>${pd.name}</p>` : '',
+                                pd.phone  ? `<p><i class="fas fa-phone mr-2 text-slate-400"></i>${pd.phone}</p>` : '',
+                                pd.email  ? `<p><i class="fas fa-envelope mr-2 text-slate-400"></i>${pd.email}</p>` : '',
+                                pd.address ? `<p><i class="fas fa-map-marker-alt mr-2 text-slate-400"></i>${pd.address}${pd.city ? ', ' + pd.city : ''}${pd.state ? ', ' + pd.state : ''}</p>` : '',
+                            ].filter(Boolean).join('');
+                        } else {
+                            patEl.innerHTML = '<p class="text-sm text-slate-400 italic">No delivery details saved.</p>';
+                        }
+
+                        // Grand total
+                        document.getElementById('odm-total').textContent = '₦' + (o.grandTotal || 0).toLocaleString('en-NG', {minimumFractionDigits: 2});
+
+                        document.getElementById('order-detail-modal').classList.add('open');
+                        document.body.style.overflow = 'hidden';
+                    };
+
+                    window.closeOrderModal = function() {
+                        document.getElementById('order-detail-modal').classList.remove('open');
+                        document.body.style.overflow = '';
+                    };
+
+                    // Close modal on backdrop click
+                    document.getElementById('order-detail-modal').addEventListener('click', function(e) {
+                        if (e.target === this) closeOrderModal();
+                    });
+
+                    window.reorderFromModal = function() {
+                        reorderItems({ items: currentModalItems });
+                    };
+
+                    window.reorderItems = function(o) {
+                        if (!o || !o.items || o.items.length === 0) {
+                            alert('No items found to reorder.');
+                            return;
+                        }
+                        // Load existing cart
+                        let cart = JSON.parse(localStorage.getItem('kedi_cart') || '[]');
+                        o.items.forEach(item => {
+                            const existing = cart.find(c => c.id === item.id || c.name === item.name);
+                            if (existing) {
+                                existing.qty = (existing.qty || 1) + (item.qty || item.quantity || 1);
+                            } else {
+                                cart.push({
+                                    id: item.id || item.name,
+                                    name: item.name || item.title || 'Product',
+                                    price: item.price || 0,
+                                    qty: item.qty || item.quantity || 1,
+                                    image: item.image || item.img || 'assets/img/product/placeholder.png'
+                                });
+                            }
+                        });
+                        localStorage.setItem('kedi_cart', JSON.stringify(cart));
+                        // Update cart count badge if present
+                        const countEls = document.querySelectorAll('.cart-count');
+                        const total = cart.reduce((sum, c) => sum + (c.qty || 1), 0);
+                        countEls.forEach(el => el.textContent = total);
+                        closeOrderModal();
+                        if (confirm(`✅ ${o.items.length} item(s) added to cart! Go to cart now?`)) {
+                            window.location.href = 'cart.html';
+                        }
+                    };
+                </script>
+            </section>
+            <!-- account end -->
+            <!-- account end -->
+            
+        </main>
+
+        <!-- footer start -->
+        <footer class="footer" data-background="assets/img/bg/footer_bg.jpg">
+            <div class="newslater newslater__border pt-30 pb-30">
+                <div class="container">
+                    <div class="newslater__two ul_li">
+                        <div class="newslater__content">
+                            <h2 class="title">We are ready to <span>help</span></h2>
+                            <p>For information Consult with our expert members</p>
+                        </div>
+                        <form class="newslater__form" action="#!">
+                            <input placeholder="Enter your Email" type="text">
+                            <button>Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="footer__main pt-90 pb-90">
+                    <div class="row mt-none-40">
+                        <div class="footer__widget col-lg-3 col-md-6 mt-40">
+                            <div class="footer__logo mb-20">
+                                <a href="kedi.html"><img src="assets/img/logo/logo.svg" alt=""></a>
+                            </div>
+                            <p>Lagos, Nigeria ashington Ave. Manchester,</p>
+                            <ul class="footer__info mt-30">
+                                <li><i class="far fa-map-marker-alt"></i>Ikeja, Lagos</li>
+                                <li><i class="fas fa-phone"></i>+234 800 KEDI HELP</li>
+                            </ul>
+                            <div class="apps-img mt-15 ul_li">
+                                <div class="app mt-15">
+                                    <a href="#!"><img src="assets/img/icon/google_play.png" alt=""></a>
+                                </div>
+                                <div class="app mt-15">
+                                    <a href="#!"><img src="assets/img/icon/app_store.png" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer__widget col-lg-3 col-md-6 mt-40">
+                            <h2 class="title">Find It Fast</h2>
+                            <ul class="quick-links">
+                                <li><a href="#!">Cellular Detox</a></li>
+                                <li><a href="#!">Cellular Detox</a></li>
+                                <li><a href="#!">Digestive Health</a></li>
+                                <li><a href="#!">Cardiovascular Care</a></li>
+                                <li><a href="#!">Vitality Series</a></li>
+                                <li><a href="#!">Stem Cell Flow</a></li>
+                                <li><a href="#!">Stem Cell Flow</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer__widget col-lg-3 col-md-6 mt-40">
+                            <h2 class="title">Quick Links</h2>
+                            <ul class="quick-links">
+                                <li><a href="#!">Your Account</a></li>
+                                <li><a href="#!">Returns & Exchanges</a></li>
+                                <li><a href="#!">Return Center</a></li>
+                                <li><a href="#!">Purchase Hisotry</a></li>
+                                <li><a href="#!">App Download</a></li>
+                                <li><a href="#!">Latest News Blog</a></li>
+                                <li><a href="#!">Shipping & Delivery</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer__widget col-lg-3 col-md-6 mt-40">
+                            <h2 class="title">Service us</h2>
+                            <ul class="category">
+                                <li><a href="#!">Support Center</a></li>
+                                <li><a href="#!">Term & Conditions</a></li>
+                                <li><a href="#!">Shipping</a></li>
+                                <li><a href="#!">Privacy Policy</a></li>
+                                <li><a href="#!">Help</a></li>
+                                <li><a href="#!">Products Return</a></li>
+                                <li><a href="#!">FAQS</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__bottom ul_li_center">
+                    <div class="footer__copyright mt-15">
+                        &copy; 2026 <a href="#!">Kedi Healthcare (Kedi-J)</a> . All Rights Reserved.
+                    </div>
+                    <div class="footer__social mt-15">
+                        <a href="#!"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#!"><i class="fab fa-twitter"></i></a>
+                        <a href="#!"><i class="fab fa-instagram"></i></a>
+                        <a href="#!"><i class="fab fa-youtube"></i></a>
+                        <a href="#!"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                    <div class="payment_method mt-15">
+                        <img src="assets/img/bg/payment_method.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer end -->
+
+        <!-- start newsletter-popup-area-section -->
+        <section class="newsletter-popup-area-section">
+            <div class="newsletter-popup-area">
+                <div class="newsletter-popup-ineer">
+                    <button class="btn newsletter-close-btn"><i class="fal fa-times"></i></button>
+                    <div class="img-holder">
+                        <img src="assets/img/bg/newsletter.jpg" alt>
+                    </div>
+                    <div class="details">
+                        <h4>Get 45% discount shipped to your inbox</h4>
+                        <p>Subscribe to the Kedi Healthcare newsletter to receive timely updates to your favorite products</p>
+                        <form>
+                            <div>
+                                <input type="email" placeholder="Enter your email" />
+                                <button type="submit">Subscribe</button>
+                            </div>
+                            <div>
+                                <label class="checkbox-holder"> Don't show this popup again!
+                                    <input type="checkbox" class="show-message">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div> 
+        </section>
+        <!-- end newsletter-popup-area-section -->  
+
+
+        <!-- start cookies-area -->    
+        <div class="cookies-area">
+            <p> This website uses cookies to improve your experience. By using this website you agree to our <a href="#">Data Protection Policy</a>. </p>
+            <a href="#" class="read-more">Read more</a>
+            <div>
+                <button class="cookie-btn">Accept</button>
+            </div>
+        </div>
+        <!-- end cookies-area -->
+
+
+    </div>
+
+    <!-- jquery include -->
+    <script src="assets/js/jquery-3.5.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/slick.js"></script>
+    <script src="assets/js/backToTop.js"></script>
+    <script src="assets/js/uikit.min.js"></script>
+    <script src="assets/js/resize-sensor.min.js"></script>
+    <script src="assets/js/theia-sticky-sidebar.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/jqueryui.js"></script>
+    <script src="assets/js/touchspin.js"></script>
+    <script src="assets/js/countdown.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/metisMenu.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script src="assets/js/cart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="assets/js/mobile-wa.js" defer></script>
+<script src="assets/js/kedi-notify.js" defer></script>
+<script src="assets/js/kedi-email.js" defer></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Update Dynamic Dates
+            const dateEls = document.querySelectorAll('.header-date, .current-date');
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+            dateEls.forEach(el => el.innerHTML = '<i class="far fa-calendar-alt"></i> ' + dateStr);
+
+            // 2. Auth State Management
+            const userSession = JSON.parse(localStorage.getItem('kedi_user_session'));
+            const authLinks = document.querySelectorAll('a[href*="account.html"], a[href*="login"], a[href*="register"]');
+            
+            if (userSession) {
+                authLinks.forEach(link => {
+                    if (link.innerText.toLowerCase().includes('sign in') || link.innerText.toLowerCase().includes('register')) {
+                        link.innerHTML = '<i class="fas fa-user-circle"></i> ' + userSession.name.split(' ')[0];
+                        link.href = '#!';
+                        // Add logout listener
+                        link.title = 'Click to Logout';
+                        link.onclick = () => {
+                            if(confirm('Logout of clinical ecosystem?')) {
+                                localStorage.removeItem('kedi_user_session');
+                                window.location.reload();
+                            }
+                        };
+                    }
+                });
+            } else {
+                authLinks.forEach(link => {
+                    link.href = 'auth.html';
+                });
+            }
+        });
+    </script>
+    <script src="assets/js/aeo-schema.js" defer></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/currency-manager.js"></script>
+    <script src="assets/js/social.js" defer></script>
+</body>
+
+</html>
+
+
+
+
+
+
+

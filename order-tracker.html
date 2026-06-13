@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zxx" data-theme="light">
+<head>
+    <!--========= Required meta tags =========-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Kedi Healthcare - Live Order Tracker</title>
+    
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="images/x-icon"/>
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+
+    <!-- css include -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/kedi-optimise.css">
+    <link rel="stylesheet" href="assets/css/responsive.css"/>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS for Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    
+    <!-- Firebase Integration -->
+    <script type="module" src="assets/js/firebase-init.js"></script>
+
+    <style>
+        .tracker-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        #map {
+            height: 450px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            z-index: 1; /* Keep map below fixed headers if any */
+        }
+        
+        .status-timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .status-timeline::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #e2e8f0;
+            z-index: 0;
+        }
+        
+        .status-timeline .progress-bar {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            height: 4px;
+            background: #10B981;
+            z-index: 1;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+
+        .status-step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 25%;
+        }
+
+        .status-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 14px;
+            border: 4px solid white;
+            transition: all 0.3s;
+        }
+
+        .status-step.completed .status-icon {
+            background: #10B981;
+            color: white;
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+        }
+        
+        .status-step.active .status-icon {
+            background: #3b82f6;
+            color: white;
+            box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
+
+        .status-label {
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+        }
+        
+        .status-step.completed .status-label,
+        .status-step.active .status-label {
+            color: #0f172a;
+        }
+
+        .tracker-info {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <!-- Simple Header -->
+    <header class="bg-white shadow-sm py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="index.html">
+                <img src="assets/img/logo/logo.svg" alt="Kedi Healthcare" class="h-10">
+            </a>
+            <a href="account.html" class="text-sm font-bold text-slate-500 hover:text-slate-900 uppercase tracking-wider">Back to Account</a>
+        </div>
+    </header>
+
+    <div class="tracker-container">
+        
+        <!-- User Search Form -->
+        <div class="bg-white rounded-[20px] p-6 shadow-xl mb-6 flex flex-col md:flex-row gap-4 items-center">
+            <div class="flex-grow w-full">
+                <input type="text" id="user-search-id" placeholder="Enter your Tracking ID (e.g. ORD-...)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-6 py-4 text-sm font-bold text-slate-700 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition">
+            </div>
+            <button onclick="window.searchUserOrder()" class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-black text-sm uppercase tracking-widest px-8 py-4 rounded-xl transition shadow-lg shadow-blue-600/20 whitespace-nowrap">Track Package</button>
+        </div>
+        
+        <div class="tracker-info">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 border-b border-slate-100 pb-6">
+                <div>
+                    <h1 class="text-3xl font-black italic serif-heading text-slate-900 mb-2">Live Order Tracker</h1>
+                    <p class="text-slate-500 font-medium">Order ID: <span id="display-order-id" class="text-blue-600 font-mono font-bold">Loading...</span></p>
+                </div>
+                <div class="mt-4 md:mt-0 text-right">
+                    <p class="text-xs uppercase font-black tracking-widest text-slate-400 mb-1">Est. Delivery</p>
+                    <p class="text-xl font-bold text-slate-800" id="est-delivery">Pending</p>
+                </div>
+            </div>
+
+            <div class="status-timeline" id="status-timeline">
+                <div class="progress-bar" id="timeline-progress"></div>
+                
+                <div class="status-step" id="step-pending">
+                    <div class="status-icon"><i class="fas fa-clipboard-list"></i></div>
+                    <div class="status-label">Pending</div>
+                </div>
+                <div class="status-step" id="step-processing">
+                    <div class="status-icon"><i class="fas fa-box-open"></i></div>
+                    <div class="status-label">Processing</div>
+                </div>
+                <div class="status-step" id="step-transit">
+                    <div class="status-icon"><i class="fas fa-truck"></i></div>
+                    <div class="status-label">In Transit</div>
+                </div>
+                <div class="status-step" id="step-delivered">
+                    <div class="status-icon"><i class="fas fa-home"></i></div>
+                    <div class="status-label">Delivered</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-[20px] p-4 shadow-xl">
+            <div id="map"></div>
+            <div class="mt-4 flex items-center justify-between px-2">
+                <p class="text-sm text-slate-500 font-medium"><i class="fas fa-satellite-dish text-blue-500 mr-2"></i>Live GPS Tracking Active</p>
+                <p class="text-xs text-slate-400">Last updated: <span id="last-updated">Just now</span></p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <script type="module">
+        // Ensure firebase is loaded
+        const checkFirebase = setInterval(() => {
+            if (window.AuraFirebase && window.AuraFirebase.db) {
+                clearInterval(checkFirebase);
+                initTracker();
+            }
+        }, 100);
+
+        let map;
+        let deliveryMarker;
+        let routePolyline;
+
+        function initTracker() {
+            window.searchUserOrder = function() {
+                const val = document.getElementById('user-search-id').value.trim();
+                if (val) {
+                    window.location.href = 'order-tracker.html?id=' + encodeURIComponent(val);
+                }
+            };
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('id');
+
+            if (!orderId) {
+                document.getElementById('display-order-id').textContent = "No Order ID Provided. Please use the search bar above.";
+                return;
+            }
+
+            document.getElementById('user-search-id').value = orderId;
+            document.getElementById('display-order-id').textContent = orderId;
+
+            // Initialize Map
+            map = L.map('map').setView([6.5244, 3.3792], 12); // Default Lagos
+
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                maxZoom: 19
+            }).addTo(map);
+
+            // Custom truck icon
+            const truckIcon = L.icon({
+                iconUrl: 'https://cdn-icons-png.flaticon.com/512/2769/2769339.png', // Fallback truck icon
+                iconSize: [40, 40],
+                iconAnchor: [20, 20],
+                popupAnchor: [0, -20]
+            });
+
+            deliveryMarker = L.marker([6.5244, 3.3792], {icon: truckIcon}).addTo(map)
+                .bindPopup('<b>Your Package</b><br>On the way!');
+
+            // Start listening to Firestore
+            const { db, doc, onSnapshot } = window.AuraFirebase;
+            
+            try {
+                const orderRef = doc(db, "orders", orderId);
+                onSnapshot(orderRef, (docSnap) => {
+                    if (docSnap.exists()) {
+                        const data = docSnap.data();
+                        updateTrackerUI(data);
+                    } else {
+                        console.error("Order not found!");
+                        document.getElementById('display-order-id').textContent = "Order Not Found";
+                    }
+                }, (error) => {
+                    console.error("Error fetching order live updates:", error);
+                });
+            } catch (err) {
+                console.error("Firebase connection error", err);
+            }
+        }
+
+        function updateTrackerUI(data) {
+            // Update Location
+            if (data.location && data.location.lat && data.location.lng) {
+                const newLatLng = new L.LatLng(data.location.lat, data.location.lng);
+                deliveryMarker.setLatLng(newLatLng);
+                map.panTo(newLatLng);
+                
+                // Keep track of route if possible (basic trail)
+                if(!routePolyline) {
+                    routePolyline = L.polyline([newLatLng], {color: '#3b82f6', weight: 4}).addTo(map);
+                } else {
+                    routePolyline.addLatLng(newLatLng);
+                }
+            }
+
+            // Update Est Delivery
+            if (data.estimatedDelivery) {
+                document.getElementById('est-delivery').textContent = data.estimatedDelivery;
+            }
+
+            // Update Timestamp
+            if (data.lastUpdated) {
+                const date = data.lastUpdated.toDate ? data.lastUpdated.toDate() : new Date(data.lastUpdated);
+                document.getElementById('last-updated').textContent = date.toLocaleTimeString();
+            }
+
+            // Update Status Timeline
+            const statuses = ['pending', 'processing', 'transit', 'delivered'];
+            const currentStatus = (data.status || 'pending').toLowerCase();
+            const currentIndex = statuses.indexOf(currentStatus);
+
+            statuses.forEach((status, idx) => {
+                const el = document.getElementById('step-' + status);
+                if (!el) return;
+                
+                el.classList.remove('completed', 'active');
+                
+                if (idx < currentIndex) {
+                    el.classList.add('completed');
+                } else if (idx === currentIndex) {
+                    el.classList.add(currentStatus === 'delivered' ? 'completed' : 'active');
+                }
+            });
+
+            // Update Progress Bar Width
+            const progressWidth = currentIndex === 0 ? 0 : 
+                                  currentIndex === 1 ? 33 : 
+                                  currentIndex === 2 ? 66 : 100;
+            document.getElementById('timeline-progress').style.width = progressWidth + '%';
+        }
+    </script>
+</body>
+</html>

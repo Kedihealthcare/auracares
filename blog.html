@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Herbs - Clinical Intelligence & Health Research</title>
+    <meta name="description" content="Aura Herbs Clinical Global delivers AI-powered health diagnostics, clinical research, and verified herbal protocols for advanced wellness.">
+    <meta name="keywords" content="Aura Herbs, Clinical Protocols, Health Intelligence, AI Diagnostics, Reishi, Golden Six, Cardiovascular Health">
+    
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="images/x-icon"/>
+
+    <!-- ======= AURA HERBS CLINICAL SEO & ARCHITECTURE ======= -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "MedicalOrganization",
+          "@id": "https://www.auraherbs.vercel.app/#organization",
+          "name": "Aura Herbs Clinical Global",
+          "url": "https://www.auraherbs.vercel.app",
+          "logo": "https://www.auraherbs.vercel.app/assets/img/logo/logo.svg",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+234-901-509-2132",
+            "contactType": "customer service",
+            "areaServed": "NG",
+            "availableLanguage": "en"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.auraherbs.vercel.app/#website",
+          "url": "https://www.auraherbs.vercel.app",
+          "name": "Aura Herbs",
+          "publisher": {"@id": "https://www.auraherbs.vercel.app/#organization"}
+        }
+      ]
+    }
+    </script>
+
+    <!-- OG / Twitter -->
+    <meta property="og:site_name" content="Aura Herbs Clinical">
+    <meta property="og:title" content="Aura Herbs - Clinical Intelligence & Health Research">
+    <meta property="og:description" content="Verified clinical protocols and AI-driven health research.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/kedi-optimise.css">
+    <!-- Firebase Integration -->
+    <script type="module" src="assets/js/firebase-init.js"></script>
+</head>
+
+<body class="selection:bg-emerald-100 antialiased bg-slate-50">
+
+    <!-- ======= GLOBAL INTELLIGENCE PULSE ======= -->
+    <div class="bg-slate-950 text-white py-2 px-4 overflow-hidden whitespace-nowrap border-b border-white/10 sticky top-0 z-[100]">
+        <div class="max-w-[1600px] mx-auto flex items-center">
+            <span class="bg-emerald-600 text-[9px] font-black px-2 py-0.5 rounded mr-4 uppercase tracking-tighter shrink-0">Health Pulse</span>
+            <div class="text-[10px] font-medium tracking-wide flex space-x-12 animate-pulse-scroll">
+                <span>&bull; CARDIO: NEW AURA GUIDELINES ACTIVATE &pi;-BASED PROTOCOLS</span>
+                <span>&bull; NUTRITION: REISHI EXTRACTS REDUCE INFLAMMATION MARKERS BY 40%</span>
+                <span>&bull; CLINICAL: AI DIAGNOSTICS REACH 98% ACCURACY IN RECENT TRIALS</span>
+                <span>&bull; COMMUNITY: OVER 1.2M WELLNESS MEMBERS SYNCED TO ECOSYSTEM</span>
+            </div>
+        </div>
+    </div>
+    <style>
+        @keyframes pulse-scroll {
+            0% { transform: translateX(50%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-pulse-scroll {
+            animation: pulse-scroll 40s linear infinite;
+        }
+    </style>
+
+    <!-- ======= HEADER & NAVIGATION ======= -->
+    <!-- header start -->
+<header class="header header__style-three">
+            <div class="header__top">
+                <div class="container mxw_1360">
+                    <div class="header__top-info ul_li_between mt-none-10">
+                        <ul class="header__top-left ul_li mt-10">
+                            <li><a href="#!">Call us</a> free 24/7 : (555) 172-244-7888</li>
+                            <li><i class="fas fa-envelope"></i> info@kedihealth.com</li>
+                        </ul>
+                        <ul class="header__top-right ul_li mt-10">
+                            <li><i class="fas fa-leaf"></i>Wellness First</li>
+                            <li><i class="fas fa-map-marker-alt"></i>Lagos, Nigeria</li>
+                            <li><a href="#!"><i class="fas fa-star"></i>My Wishlist</a></li>
+                            <li><a href="checkout.html"><i class="far fa-check-circle"></i>Checkout</a></li>
+                            <li>
+                                <div class="header__language currency aura-currency-switcher">
+                                    <ul>
+                                        <li>
+                                            <a href="#!" class="lang-btn">
+                                                <span class="current-currency-symbol">&#8358;</span>
+                                                <i class="far fa-chevron-down"></i>
+                                            </a>
+                                            <ul class="lang_sub_list">
+                                                <li><a href="#" data-currency-set="NGN">&#8358; NGN</a></li>
+                                                <li><a href="#" data-currency-set="USD">$ USD</a></li>
+                                                <li><a href="#" data-currency-set="PI">&#960; Pi</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container mxw_1360">
+                <div class="header__middle ul_li_between">
+                    <div class="header__logo">
+                        <a href="index.html">
+                            <img src="assets/img/logo/logo.svg" alt="Kedi Healthcare">
+                        </a>
+                    </div>
+                    <div class="header-date">
+                        <i class="far fa-calendar-alt"></i><span id="header-live-date">Loading...</span>
+                        <script>
+                            (function(){
+                                var d = new Date();
+                                var opts = { weekday:'long', year:'numeric', month:'short', day:'numeric' };
+                                var el = document.getElementById('header-live-date');
+                                if(el) el.textContent = d.toLocaleDateString('en-US', opts);
+                            })();
+                        </script>
+                    </div>
+                    <div class="add">
+                        <a href="shop.html">
+                            <img src="assets/img/product/beaty soap.jpeg" alt="Kedi Soap" style="max-height: 80px; width: auto; object-fit: contain;">
+                        </a>
+                    </div>
+                    <div class="d-none d-lg-block">
+                        <div class="ul_li">
+                            <div class="header__language style-2 mr-25">
+                                <ul>
+                                    <li>
+                                        <a href="#!" class="lang-btn"><img src="assets/img/icon/usd_flag.png" alt=""> English <i class="far fa-chevron-down"></i></a>
+                                        <ul class="lang_sub_list">
+                                            <li><a href="#">English</a></li>
+                                            <li><a href="#">Yoruba</a></li>
+                                            <li><a href="#">Hausa</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header__social">
+                                <a href="#!"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#!"><i class="fab fa-twitter"></i></a>
+                                <a href="#!"><i class="fab fa-instagram"></i></a>
+                                <a href="#!"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header__wrap" data-uk-sticky="top: 250; animation: uk-animation-slide-top;">
+                <div class="container mxw_1360">
+                    <div class="header__main ul_li">
+                        <div class="header__logo">
+                            <a href="index.html">
+                                <img src="assets/img/logo/logo.svg" alt="Kedi Healthcare">
+                            </a>
+                        </div>
+                        <div class="header__category">
+                            <a class="header__category-nav" href="#!"><img class="bar" src="assets/img/icon/bar.svg" alt="">Browse Categories<i class="fas fa-chevron-down"></i></a>
+                        </div>
+                        <div class="hamburger_menu d-lg-none">
+                            <a href="javascript:void(0);" class="active">
+                                <div class="icon bar">
+                                    <span><i class="fal fa-bars"></i></span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="main-menu navbar navbar-expand-lg">
+                            <nav class="main-menu__nav collapse navbar-collapse">
+                                <ul>
+                                    <li class="menu-item-has-children has-mega-menu active"><a href="index.html">Home</a>
+                                        <ul class="mega-menu">
+                                            <li>
+                                                <div class="mega-menu-content">
+                                                    <div class="row">
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="index.html">
+                                                                    <img src="assets/img/demo/demo-1.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 1</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="home-2.html">
+                                                                    <img src="assets/img/demo/demo-2.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 2</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="home-3.html">
+                                                                    <img src="assets/img/demo/demo-3.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 3</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic coming-soon">
+                                                                <span>Coming Soon</span>
+                                                            </div>
+                                                            <h3>Coming Soon</h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Shop</a>
+                                        <ul class="submenu">
+                                            <li><a href="shop.html">Shop Default</a></li>
+                                            <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
+                                            <li><a href="shop-single.html">Shop Single</a></li>
+                                            <li><a href="cart.html">Shop Cart</a></li>
+                                            <li><a href="checkout.html">Shop Checkout</a></li>
+                                            <li><a href="account.html">Account</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="health-challenges.html">Clinical Encyclopedia</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Blog</a>
+                                        <ul class="submenu">
+                                            <li><a href="blog.html">Blog</a></li>
+                                            <li><a href="news-single.html">Blog Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Pages</a>
+                                        <ul class="submenu">
+                                            <li><a href="about.html">About Us</a></li>
+                                            <li><a href="account.html">Account</a></li>
+                                            <li><a href="ai-doctor.html">AI Doctor</a></li>
+                                            <li><a href="franchise.html">Franchise</a></li>
+                                            <li><a href="404.html">404</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="header__main-right ul_li">
+                            <div class="header__icons ul_li mr-15">
+                                <div class="icon">
+                                    <a href="account.html"><img src="assets/img/icon/user.svg" alt="Account"></a>
+                                </div>
+                                <div class="icon wishlist-icon">
+                                    <a href="#!" aria-label="Wishlist">
+                                        <img src="assets/img/icon/heart.svg" alt="Wishlist">
+                                        <span class="wish-count">0</span>
+                                    </a>
+                                </div>
+                                <div class="icon cart-icon">
+                                    <a href="cart.html" aria-label="Cart">
+                                        <img src="assets/img/icon/cart.svg" alt="Cart">
+                                        <span class="cart-count">0</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="login-sign-btn">
+                                <a class="thm-btn thm-btn__2 text-black" href="account.html">
+                                    <span class="btn-wrap">
+                                        <span>Login / Sign Up</span>
+                                        <span>Login / Sign Up</span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header end -->
+
+    <main class="max-w-[1600px] mx-auto px-4 md:px-8 py-8 lg:py-12">
+        
+        <!-- ======= HERO STORY ======= -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-16 lg:mb-24">
+            <div class="lg:col-span-8 group cursor-pointer" onclick="window.location.href='news-single.html?id=immune-system'">
+                <div class="relative aspect-video bg-slate-900 rounded-3xl overflow-hidden mb-6 shadow-2xl">
+                    <img src="assets/img/news/img_16.jpg" alt="Clinical Research" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                    <div class="absolute bottom-8 left-8 right-8 z-20">
+                        <span class="inline-block bg-emerald-600 text-white text-[10px] font-black px-3 py-1 rounded-sm mb-4 tracking-widest uppercase">Research Breakthrough</span>
+                        <h2 class="text-3xl md:text-5xl lg:text-6xl text-white font-black leading-tight tracking-tighter group-hover:text-emerald-200 transition-colors">Aura Herbs Deploys Advanced Clinical Protocols for Cellular Rejuvenation</h2>
+                        <p class="hidden md:block text-slate-300 text-lg mt-6 max-w-2xl">New 2026 guidelines integrate &pi;-powered diagnostics with ancient herbal wisdom to reset metabolic baselines across global populations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-4 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-slate-200 lg:pl-12 pt-8 lg:pt-0">
+                <div class="space-y-10">
+                    <div class="group cursor-pointer" onclick="window.location.href='news-single.html?id=toilet-infection'">
+                        <span class="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Infection Control</span>
+                        <h3 class="text-xl lg:text-2xl font-bold mt-2 leading-tight group-hover:text-emerald-600 transition">How Reishi Ganoderma Combats Stubborn Chronic Infections</h3>
+                        <p class="text-slate-500 text-sm mt-3">Verified clinical trials show Reishi extracts effectively modulate urogenital immunity.</p>
+                    </div>
+                    <div class="group cursor-pointer">
+                        <span class="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Cardio Health</span>
+                        <h3 class="text-xl lg:text-2xl font-bold mt-2 leading-tight group-hover:text-emerald-600 transition">Cardibetter Protocol: Protecting the Heart in the Digital Age</h3>
+                        <p class="text-slate-500 text-sm mt-3">Reducing oxidative stress through targeted herbal supplementation and &pi;-denominated wellness access.</p>
+                    </div>
+                    <div class="group cursor-pointer">
+                        <span class="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Metabolic Reset</span>
+                        <h3 class="text-xl lg:text-2xl font-bold mt-2 leading-tight group-hover:text-emerald-600 transition">The Golden Six Effect: Kidney Support and Hormonal Balance</h3>
+                        <p class="text-slate-500 text-sm mt-3">Why this ancient protocol remains the cornerstone of modern clinical vitality.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= CLINICAL INTELLIGENCE FEED ======= -->
+        <section class="mb-24">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 pb-6 border-b border-slate-200">
+                <h2 class="text-2xl font-black tracking-tighter italic text-slate-900">Clinical Research Feed</h2>
+                <div class="flex flex-wrap items-center gap-4">
+                    <!-- Sleek Search Input -->
+                    <div class="relative w-full sm:w-72">
+                        <input type="text" id="blog-search-input" placeholder="Search clinical research paper or symptom..." class="w-full pl-9 pr-4 py-2.5 text-xs font-semibold bg-white border border-slate-200 rounded-full focus:outline-none focus:border-emerald-500 transition-colors shadow-sm">
+                        <span class="absolute left-3.5 top-3.5 text-xs text-slate-400"><i class="fas fa-search"></i></span>
+                    </div>
+                    <!-- Topic Filter Tabs -->
+                    <div class="flex space-x-1 bg-slate-100 p-1 rounded-xl">
+                        <button class="blog-filter-btn px-4 py-2 text-[10px] font-black uppercase tracking-widest rounded-lg bg-white text-emerald-600 shadow-sm transition-all duration-200" data-category="all">All</button>
+                        <button class="blog-filter-btn px-4 py-2 text-[10px] font-black uppercase tracking-widest rounded-lg text-slate-500 hover:text-emerald-600 transition-all duration-200" data-category="immunity">Immunity</button>
+                        <button class="blog-filter-btn px-4 py-2 text-[10px] font-black uppercase tracking-widest rounded-lg text-slate-500 hover:text-emerald-600 transition-all duration-200" data-category="metabolic">Metabolic</button>
+                        <button class="blog-filter-btn px-4 py-2 text-[10px] font-black uppercase tracking-widest rounded-lg text-slate-500 hover:text-emerald-600 transition-all duration-200" data-category="cardio">Cardiovascular</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Research Feed Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" id="blog-feed-container">
+                <div class="col-span-full text-center py-12">
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600"></div>
+                    <p class="text-xs text-slate-400 mt-3 font-semibold uppercase tracking-widest">Initializing Clinical Feed...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= PATIENT SUCCESS SPOTLIGHT ======= -->
+        <section class="mb-24 p-12 bg-slate-900 rounded-[3rem] text-white overflow-hidden relative">
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-emerald-600/10 blur-[120px] rounded-full translate-x-1/2"></div>
+            <div class="relative z-10">
+                <h2 class="text-xs font-black uppercase tracking-[0.3em] text-emerald-400 mb-12">Verified Patient Success</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h3 class="text-4xl md:text-5xl font-black leading-tight tracking-tighter mb-8">"The &pi;-denominated access model allowed me to start the Reishi protocol immediately."</h3>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-16 h-16 rounded-full bg-emerald-600 flex items-center justify-center text-2xl font-black">AD</div>
+                            <div>
+                                <p class="font-bold text-xl">Adebayo D.</p>
+                                <p class="text-emerald-400 text-sm">Verified Success Story &bull; Lagos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white/5 backdrop-blur-lg p-8 rounded-3xl border border-white/10">
+                            <p class="text-3xl font-black text-emerald-400">98%</p>
+                            <p class="text-xs uppercase tracking-widest mt-2 text-slate-400">Protocol Compliance</p>
+                        </div>
+                        <div class="bg-white/5 backdrop-blur-lg p-8 rounded-3xl border border-white/10">
+                            <p class="text-3xl font-black text-emerald-400">24/7</p>
+                            <p class="text-xs uppercase tracking-widest mt-2 text-slate-400">Clinical Support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ======= FOOTER ======= -->
+    <footer class="bg-slate-950 text-white py-24 px-8 border-t border-white/10">
+        <div class="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
+            <div>
+                <h4 class="text-2xl font-black tracking-tighter mb-8">Aura Herbs<span class="text-emerald-600">.</span></h4>
+                <p class="text-slate-400 text-sm leading-relaxed">Leading the global transition to decentralized clinical wellness through &pi;-powered diagnostics and verified herbal protocols.</p>
+            </div>
+            <div>
+                <h5 class="text-xs font-black uppercase tracking-widest text-emerald-600 mb-8">Clinical Hub</h5>
+                <ul class="space-y-4 text-sm text-slate-400">
+                    <li><a href="shop.html" class="hover:text-white transition">Product Catalog</a></li>
+                    <li><a href="quiz.html" class="hover:text-white transition">AI Diagnostic Engine</a></li>
+                    <li><a href="blog.html" class="hover:text-white transition">Research Blog</a></li>
+                    <li><a href="franchise.html" class="hover:text-white transition">Partner With Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-xs font-black uppercase tracking-widest text-emerald-600 mb-8">Support</h5>
+                <ul class="space-y-4 text-sm text-slate-400">
+                    <li><a href="contact.html" class="hover:text-white transition">Contact Clinical Desk</a></li>
+                    <li><a href="auth.html" class="hover:text-white transition">Member Portal</a></li>
+                    <li><a href="#!" class="hover:text-white transition">Privacy & Data</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-xs font-black uppercase tracking-widest text-emerald-600 mb-8">Ecosystem</h5>
+                <p class="text-slate-400 text-sm mb-6">Join 1.2M+ members transforming their health through decentralized intelligence.</p>
+                <div class="flex space-x-4">
+                    <a href="#!" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-emerald-600 transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#!" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-emerald-600 transition"><i class="fab fa-twitter"></i></a>
+                    <a href="#!" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-emerald-600 transition"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-[1600px] mx-auto mt-24 pt-8 border-t border-white/5 text-center text-[10px] text-slate-500 uppercase tracking-widest">
+            &copy; 2026 Aura Herbs Clinical Global. All Protocols Verified. Denominated in &pi;.
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            // Implementation if needed
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const feedContainer = document.getElementById('blog-feed-container');
+            const searchInput = document.getElementById('blog-search-input');
+            const filterBtns = document.querySelectorAll('.blog-filter-btn');
+            
+            let articles = [];
+            let activeCategory = 'all';
+            let searchQuery = '';
+
+            // Fetch and render articles
+            fetch('blog_data.json')
+                .then(res => res.json())
+                .then(data => {
+                    articles = data;
+                    renderArticles();
+                })
+                .catch(err => {
+                    console.error("Error loading clinical papers:", err);
+                    feedContainer.innerHTML = `
+                        <div class="col-span-full text-center py-12 text-slate-500">
+                            <i class="fas fa-exclamation-circle text-3xl text-red-500 mb-3"></i>
+                            <p class="text-sm font-semibold">Failed to load clinical research papers. Please check back later.</p>
+                        </div>`;
+                });
+
+            function renderArticles() {
+                const query = searchQuery.toLowerCase().trim();
+                const filtered = articles.filter(post => {
+                    // Category filter
+                    const matchesCategory = activeCategory === 'all' || 
+                        post.category.toLowerCase().includes(activeCategory) || 
+                        post.category.toLowerCase() === activeCategory;
+                    
+                    // Search query filter
+                    const matchesSearch = !query || 
+                        post.title.toLowerCase().includes(query) || 
+                        post.category.toLowerCase().includes(query) || 
+                        post.excerpt.toLowerCase().includes(query) ||
+                        post.content.toLowerCase().includes(query);
+                        
+                    return matchesCategory && matchesSearch;
+                });
+
+                if (filtered.length === 0) {
+                    feedContainer.innerHTML = `
+                        <div class="col-span-full text-center py-16 text-slate-500 bg-white border border-slate-100 rounded-[2rem] shadow-sm">
+                            <span class="text-4xl text-slate-300 mb-4 block"><i class="fas fa-microscope"></i></span>
+                            <h5 class="font-bold text-slate-700 text-base">No Research Papers Found</h5>
+                            <p class="text-xs text-slate-400 mt-2">Try modifying your search query or choosing another topic category.</p>
+                        </div>`;
+                    return;
+                }
+
+                feedContainer.innerHTML = filtered.map(post => {
+                    // Direct links to individual guide pages
+                    let link = 'blog.html';
+                    if (post.id === 'tcm-immune-defense') link = 'blog-immune-system.html';
+                    else if (post.id === 'metabolic-syndrome-reversal') link = 'blog-metabolic-health.html';
+                    else if (post.id === 'male-vitality-beyond-the-pill') link = 'blog-male-vitality.html';
+                    else link = `news-single.html?id=${post.id}`;
+
+                    return `
+                        <div class="group cursor-pointer bg-white border border-slate-100 rounded-[2rem] p-6 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between" onclick="window.location.href='${link}'">
+                            <div>
+                                <div class="aspect-[16/10] rounded-2xl overflow-hidden mb-6 relative bg-slate-100 border border-slate-100">
+                                    <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                                    <span class="absolute top-4 left-4 bg-emerald-600/90 text-white text-[9px] font-black tracking-widest uppercase px-3 py-1 rounded-full shadow-sm">${post.category}</span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-[10px] text-slate-400 font-bold mb-3 uppercase tracking-wider">
+                                    <span>${post.date}</span>
+                                    <span>&bull;</span>
+                                    <span>${post.readTime}</span>
+                                </div>
+                                <h4 class="text-lg font-bold text-slate-900 leading-snug group-hover:text-emerald-600 transition duration-200 mb-3">${post.title}</h4>
+                                <p class="text-xs text-slate-500 leading-relaxed mb-6 line-clamp-3">${post.excerpt}</p>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-slate-100 pt-4 mt-auto">
+                                <span class="text-[10px] font-black text-emerald-600 uppercase tracking-widest flex items-center gap-2 group-hover:gap-3 transition-all duration-200">Read Clinical Paper <i class="fas fa-arrow-right"></i></span>
+                                <span class="text-[9px] font-black text-slate-400 bg-slate-50 border border-slate-100 px-2 py-0.5 rounded uppercase">Verified</span>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            // Search input handler
+            searchInput.addEventListener('input', function(e) {
+                searchQuery = e.target.value;
+                renderArticles();
+            });
+
+            // Filter button handler
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-white', 'text-emerald-600', 'shadow-sm');
+                        b.classList.add('text-slate-500');
+                    });
+                    
+                    this.classList.add('bg-white', 'text-emerald-600', 'shadow-sm');
+                    this.classList.remove('text-slate-500');
+                    
+                    activeCategory = this.getAttribute('data-category');
+                    renderArticles();
+                });
+            });
+        });
+    </script>
+    <script src="assets/js/currency-manager.js"></script>
+    <script src="assets/js/aeo-schema.js" defer></script>
+    <script src="assets/js/mobile-wa.js" defer></script>
+    <script src="assets/js/kedi-notify.js" defer></script>
+    <script src="assets/js/kedi-email.js" defer></script>
+    <script src="assets/js/auth.js"></script></body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,519 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kedi Health ROI Calculator â€” What Could You Save?</title>
+<meta name="description" content="Calculate how much you could save on clinic visits, drugs, and hospital bills by switching to Kedi herbal healthcare protocols. Free instant estimate.">
+<link rel="canonical" href="https://www.auraherbs.com/roi-calculator.html">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="assets/js/aeo-schema.js" defer></script>
+<style>
+  :root {
+    --kedi:#4d231c; --gold:#d4a017; --green:#10b981;
+    --bg:#f8f6f3; --card:#fff; --border:#e8ddd6;
+    --text:#1e293b; --muted:#64748b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text)}
+
+  /* Hero */
+  .hero{background:linear-gradient(135deg,var(--kedi),#2a1310);color:#fff;padding:60px 20px;text-align:center}
+  .hero h1{font-size:clamp(1.8rem,4vw,3rem);font-weight:900;line-height:1.2;margin-bottom:16px}
+  .hero h1 span{color:var(--gold)}
+  .hero p{font-size:1.1rem;opacity:.85;max-width:620px;margin:0 auto 30px}
+  .bluf{background:rgba(255,255,255,.12);border-left:4px solid var(--gold);padding:16px 20px;border-radius:0 12px 12px 0;max-width:680px;margin:0 auto;text-align:left;font-size:.95rem;line-height:1.6}
+  .bluf strong{color:var(--gold)}
+
+  /* Layout */
+  .container{max-width:960px;margin:0 auto;padding:40px 20px}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:640px){.grid-2{grid-template-columns:1fr}}
+
+  /* Card */
+  .card{background:var(--card);border-radius:20px;border:1px solid var(--border);padding:28px;margin-bottom:20px}
+  .card h2{font-size:1.05rem;font-weight:900;color:var(--kedi);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+
+  /* Slider inputs */
+  .field{margin-bottom:18px}
+  label{display:flex;justify-content:space-between;font-size:.82rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px}
+  label span{color:var(--kedi);font-size:1rem;font-weight:900}
+  input[type=range]{width:100%;-webkit-appearance:none;height:6px;border-radius:3px;background:#e8ddd6;outline:none;cursor:pointer}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--kedi);cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+  select,input[type=text]{width:100%;padding:10px 14px;border-radius:10px;border:1.5px solid var(--border);font-size:.9rem;background:#fdfbf9;font-family:inherit}
+
+  /* Results */
+  .results{background:linear-gradient(135deg,var(--kedi),#2a1310);border-radius:20px;padding:32px;color:#fff;margin-top:4px}
+  .results h3{font-size:1rem;font-weight:700;opacity:.7;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+  .big-saving{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:900;color:var(--gold);line-height:1}
+  .saving-sub{font-size:.9rem;opacity:.7;margin-top:6px;margin-bottom:24px}
+  .breakdown{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+  .bk-item{background:rgba(255,255,255,.08);border-radius:12px;padding:14px}
+  .bk-item .lbl{font-size:.7rem;opacity:.6;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+  .bk-item .val{font-size:1.2rem;font-weight:900;color:var(--gold)}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+  .btn{padding:13px 26px;border-radius:50px;border:none;font-weight:800;font-size:.9rem;cursor:pointer;transition:.2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+  .btn-gold{background:var(--gold);color:var(--kedi)}
+  .btn-gold:hover{filter:brightness(1.1)}
+  .btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4)}
+  .btn-outline:hover{background:rgba(255,255,255,.1)}
+
+  /* Comparison table */
+  table{width:100%;border-collapse:collapse;font-size:.85rem;margin-top:8px}
+  thead th{background:var(--kedi);color:#fff;padding:10px 14px;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:.04em}
+  thead th:first-child{border-radius:10px 0 0 0}
+  thead th:last-child{border-radius:0 10px 0 0}
+  tbody tr{border-bottom:1px solid var(--border)}
+  tbody tr:hover{background:#fdf8f6}
+  tbody td{padding:10px 14px}
+  .td-green{color:var(--green);font-weight:800}
+  .td-red{color:#dc2626;font-weight:700}
+
+  /* Soft CTA */
+  .soft-cta{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1px solid #86efac;border-radius:20px;padding:28px;text-align:center;margin-top:24px}
+  .soft-cta h3{color:#065f46;font-size:1.2rem;font-weight:900;margin-bottom:8px}
+  .soft-cta p{color:#047857;font-size:.9rem;margin-bottom:18px}
+</style>
+  <link rel="stylesheet" href="assets/css/kedi-optimise.css">
+
+    <meta property="og:title" content="Kedi Health ROI Calculator â€” What Could You Save?">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.auraherbs.vercel.app/roi-calculator.html">
+    <meta property="og:site_name" content="Kedi Healthcare (Kedi-J)">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="index, follow">
+                <!-- Firebase Integration -->
+    <script type="module" src="assets/js/firebase-init.js"></script>
+</head>
+<body>
+    <!-- ======= MODERN HEADER ======= -->
+    <!-- header start -->
+<header class="header header__style-three">
+            <div class="header__top">
+                <div class="container mxw_1360">
+                    <div class="header__top-info ul_li_between mt-none-10">
+                        <ul class="header__top-left ul_li mt-10">
+                            <li><a href="#!">Call us</a> free 24/7 : (555) 172-244-7888</li>
+                            <li><i class="fas fa-envelope"></i> info@kedihealth.com</li>
+                        </ul>
+                        <ul class="header__top-right ul_li mt-10">
+                            <li><i class="fas fa-leaf"></i>Wellness First</li>
+                            <li><i class="fas fa-map-marker-alt"></i>Lagos, Nigeria</li>
+                            <li><a href="#!"><i class="fas fa-star"></i>My Wishlist</a></li>
+                            <li><a href="checkout.html"><i class="far fa-check-circle"></i>Checkout</a></li>
+                            <li>
+                                <div class="header__language currency aura-currency-switcher">
+                                    <ul>
+                                        <li>
+                                            <a href="#!" class="lang-btn">
+                                                <span class="current-currency-symbol">&#8358;</span>
+                                                <i class="far fa-chevron-down"></i>
+                                            </a>
+                                            <ul class="lang_sub_list">
+                                                <li><a href="#" data-currency-set="NGN">&#8358; NGN</a></li>
+                                                <li><a href="#" data-currency-set="USD">$ USD</a></li>
+                                                <li><a href="#" data-currency-set="PI">&#960; Pi</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container mxw_1360">
+                <div class="header__middle ul_li_between">
+                    <div class="header__logo">
+                        <a href="index.html">
+                            <img src="assets/img/logo/logo.svg" alt="Kedi Healthcare">
+                        </a>
+                    </div>
+                    <div class="header-date">
+                        <i class="far fa-calendar-alt"></i><span id="header-live-date">Loading...</span>
+                        <script>
+                            (function(){
+                                var d = new Date();
+                                var opts = { weekday:'long', year:'numeric', month:'short', day:'numeric' };
+                                var el = document.getElementById('header-live-date');
+                                if(el) el.textContent = d.toLocaleDateString('en-US', opts);
+                            })();
+                        </script>
+                    </div>
+                    <div class="add">
+                        <a href="shop.html">
+                            <img src="assets/img/product/beaty soap.jpeg" alt="Kedi Soap" style="max-height: 80px; width: auto; object-fit: contain;">
+                        </a>
+                    </div>
+                    <div class="d-none d-lg-block">
+                        <div class="ul_li">
+                            <div class="header__language style-2 mr-25">
+                                <ul>
+                                    <li>
+                                        <a href="#!" class="lang-btn"><img src="assets/img/icon/usd_flag.png" alt=""> English <i class="far fa-chevron-down"></i></a>
+                                        <ul class="lang_sub_list">
+                                            <li><a href="#">English</a></li>
+                                            <li><a href="#">Yoruba</a></li>
+                                            <li><a href="#">Hausa</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header__social">
+                                <a href="#!"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#!"><i class="fab fa-twitter"></i></a>
+                                <a href="#!"><i class="fab fa-instagram"></i></a>
+                                <a href="#!"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header__wrap" data-uk-sticky="top: 250; animation: uk-animation-slide-top;">
+                <div class="container mxw_1360">
+                    <div class="header__main ul_li">
+                        <div class="header__logo">
+                            <a href="index.html">
+                                <img src="assets/img/logo/logo.svg" alt="Kedi Healthcare">
+                            </a>
+                        </div>
+                        <div class="header__category">
+                            <a class="header__category-nav" href="#!"><img class="bar" src="assets/img/icon/bar.svg" alt="">Browse Categories<i class="fas fa-chevron-down"></i></a>
+                        </div>
+                        <div class="hamburger_menu d-lg-none">
+                            <a href="javascript:void(0);" class="active">
+                                <div class="icon bar">
+                                    <span><i class="fal fa-bars"></i></span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="main-menu navbar navbar-expand-lg">
+                            <nav class="main-menu__nav collapse navbar-collapse">
+                                <ul>
+                                    <li class="menu-item-has-children has-mega-menu active"><a href="index.html">Home</a>
+                                        <ul class="mega-menu">
+                                            <li>
+                                                <div class="mega-menu-content">
+                                                    <div class="row">
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="index.html">
+                                                                    <img src="assets/img/demo/demo-1.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 1</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="home-2.html">
+                                                                    <img src="assets/img/demo/demo-2.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 2</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="home-3.html">
+                                                                    <img src="assets/img/demo/demo-3.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 3</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic coming-soon">
+                                                                <span>Coming Soon</span>
+                                                            </div>
+                                                            <h3>Coming Soon</h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Shop</a>
+                                        <ul class="submenu">
+                                            <li><a href="shop.html">Shop Default</a></li>
+                                            <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
+                                            <li><a href="shop-single.html">Shop Single</a></li>
+                                            <li><a href="cart.html">Shop Cart</a></li>
+                                            <li><a href="checkout.html">Shop Checkout</a></li>
+                                            <li><a href="account.html">Account</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="health-challenges.html">Clinical Encyclopedia</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Blog</a>
+                                        <ul class="submenu">
+                                            <li><a href="blog.html">Blog</a></li>
+                                            <li><a href="news-single.html">Blog Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Pages</a>
+                                        <ul class="submenu">
+                                            <li><a href="about.html">About Us</a></li>
+                                            <li><a href="account.html">Account</a></li>
+                                            <li><a href="ai-doctor.html">AI Doctor</a></li>
+                                            <li><a href="franchise.html">Franchise</a></li>
+                                            <li><a href="404.html">404</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="header__main-right ul_li">
+                            <div class="header__icons ul_li mr-15">
+                                <div class="icon">
+                                    <a href="account.html"><img src="assets/img/icon/user.svg" alt="Account"></a>
+                                </div>
+                                <div class="icon wishlist-icon">
+                                    <a href="#!" aria-label="Wishlist">
+                                        <img src="assets/img/icon/heart.svg" alt="Wishlist">
+                                        <span class="wish-count">0</span>
+                                    </a>
+                                </div>
+                                <div class="icon cart-icon">
+                                    <a href="cart.html" aria-label="Cart">
+                                        <img src="assets/img/icon/cart.svg" alt="Cart">
+                                        <span class="cart-count">0</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="login-sign-btn">
+                                <a class="thm-btn thm-btn__2 text-black" href="account.html">
+                                    <span class="btn-wrap">
+                                        <span>Login / Sign Up</span>
+                                        <span>Login / Sign Up</span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header end -->
+
+<!-- HERO with BLUF -->
+<div class="hero">
+  <h1>ðŸ’° How Much Could You <span>Save</span> with Kedi Healthcare?</h1>
+  <p>Stop spending on revolving clinic visits. Estimate your annual savings with Kedi's herbal protocols.</p>
+  <div class="bluf">
+    <strong>Bottom Line:</strong> The average Nigerian family spends â‚¦180,000â€“â‚¦420,000 per year on drugs and clinic visits for chronic conditions. A targeted Kedi herbal protocol costs â‚¦15,000â€“â‚¦45,000 and addresses the root cause â€” not just symptoms. Use the calculator below to see your personal estimate.
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="grid-2">
+    <!-- INPUT PANEL -->
+    <div>
+      <div class="card">
+        <h2><i class="fas fa-sliders-h" style="color:var(--gold)"></i> Your Current Health Spend</h2>
+
+        <div class="field">
+          <label>Monthly clinic visits <span id="v-visits">2</span></label>
+          <input type="range" id="r-visits" min="0" max="12" value="2" oninput="calc()">
+        </div>
+        <div class="field">
+          <label>Cost per visit (â‚¦) <span id="v-visit-cost">5,000</span></label>
+          <input type="range" id="r-visit-cost" min="1000" max="30000" step="500" value="5000" oninput="calc()">
+        </div>
+        <div class="field">
+          <label>Monthly drug spend (â‚¦) <span id="v-drugs">8,000</span></label>
+          <input type="range" id="r-drugs" min="0" max="80000" step="1000" value="8000" oninput="calc()">
+        </div>
+        <div class="field">
+          <label>Annual hospital bills (â‚¦) <span id="v-hospital">50,000</span></label>
+          <input type="range" id="r-hospital" min="0" max="500000" step="5000" value="50000" oninput="calc()">
+        </div>
+        <div class="field">
+          <label>Number of family members <span id="v-family">3</span></label>
+          <input type="range" id="r-family" min="1" max="10" value="3" oninput="calc()">
+        </div>
+      </div>
+
+      <div class="card">
+        <h2><i class="fas fa-capsules" style="color:var(--green)"></i> Kedi Protocol Selection</h2>
+        <div class="field">
+          <label style="text-transform:none;font-size:.85rem;font-weight:600">Primary health concern</label>
+          <select id="sel-condition" onchange="calc()">
+            <option value="15500" data-base-price="15500">Kidney / Hormonal â€” Golden Six (â‚¦15,500)</option>
+            <option value="32000" data-base-price="32000">Diabetes â€” Diawell (â‚¦32,000)</option>
+            <option value="35000" data-base-price="35000">Hypertension â€” Cardibetter (â‚¦35,000)</option>
+            <option value="44000" data-base-price="44000">Male Vitality â€” Re-Vive (â‚¦44,000)</option>
+            <option value="30000" data-base-price="30000">Weight Loss â€” Magilim (â‚¦30,000)</option>
+            <option value="28000" data-base-price="28000">Joint Pain â€” Jointeez (â‚¦28,000)</option>
+            <option value="35000" data-base-price="35000">Stomach Ulcer â€” Gastrifort (â‚¦35,000)</option>
+            <option value="42000" data-base-price="42000">Fibroids / Immune â€” Golden Hypha (â‚¦42,000)</option>
+            <option value="38000" data-base-price="38000">Female Infertility â€” Gynapharm (â‚¦38,000)</option>
+            <option value="35000" data-base-price="35000">Immunity / Fatigue â€” Reishi (â‚¦35,000)</option>
+            <option value="45000" data-base-price="45000">Heart Health â€” Cello Q10 (â‚¦45,000)</option>
+            <option value="25000" data-base-price="25000">Respiratory â€” Cordy Active (â‚¦25,000)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label style="text-transform:none;font-size:.85rem;font-weight:600">Protocol duration (months)</label>
+          <select id="sel-duration" onchange="calc()">
+            <option value="1">1 month (Acute)</option>
+            <option value="3" selected>3 months (Standard)</option>
+            <option value="6">6 months (Deep Restoration)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULTS PANEL -->
+    <div>
+      <div class="results">
+        <h3>Your Estimated Annual Saving</h3>
+        <div class="big-saving" id="res-saving" data-base-price="0">â‚¦0</div>
+        <div class="saving-sub" id="res-saving-sub">Adjust the sliders to see your estimate</div>
+
+        <div class="breakdown">
+          <div class="bk-item">
+            <div class="lbl">Current annual spend</div>
+            <div class="val" id="res-current" data-base-price="0">â‚¦0</div>
+          </div>
+          <div class="bk-item">
+            <div class="lbl">Kedi protocol cost</div>
+            <div class="val" id="res-kedi" data-base-price="0">â‚¦0</div>
+          </div>
+          <div class="bk-item">
+            <div class="lbl">% Cost Reduction</div>
+            <div class="val" id="res-pct">0%</div>
+          </div>
+          <div class="bk-item">
+            <div class="lbl">Monthly net saving</div>
+            <div class="val" id="res-monthly" data-base-price="0">â‚¦0</div>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a href="auth.html" class="btn btn-gold"><i class="fas fa-user-plus"></i> Register & Start Saving</a>
+          <a href="kedi.html" class="btn btn-outline"><i class="fas fa-capsules"></i> View Products</a>
+        </div>
+      </div>
+
+      <!-- Comparison Table -->
+      <div class="card" style="margin-top:20px">
+        <h2><i class="fas fa-table" style="color:var(--gold)"></i> Conventional vs Kedi</h2>
+        <table>
+          <thead><tr><th>Factor</th><th>Conventional</th><th>Kedi Protocol</th></tr></thead>
+          <tbody>
+            <tr><td>Treatment approach</td><td class="td-red">Symptomatic</td><td class="td-green">Root Cause</td></tr>
+            <tr><td>Monthly cost</td><td class="td-red" data-base-price="15">â‚¦15kâ€“â‚¦90k</td><td class="td-green" data-base-price="5">â‚¦5kâ€“â‚¦15k</td></tr>
+            <tr><td>Side effects</td><td class="td-red">Common</td><td class="td-green">Minimal (herbal)</td></tr>
+            <tr><td>Repeat visits needed</td><td class="td-red">Ongoing</td><td class="td-green">3â€“6 month cycle</td></tr>
+            <tr><td>Home delivery</td><td class="td-red">No</td><td class="td-green">Yes (via consultant)</td></tr>
+            <tr><td>AI diagnostic support</td><td class="td-red">No</td><td class="td-green">Yes (free quiz)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Soft CTA -->
+  <div class="soft-cta">
+    <h3>ðŸ“‹ Want a Personalised Protocol Recommendation?</h3>
+    <p>Take our free 3-minute AI Health Quiz and get a clinical protocol mapped to your exact symptoms â€” at no cost.</p>
+    <a href="quiz.html" class="btn btn-gold" style="margin:0 auto"><i class="fas fa-brain"></i> Take the Free AI Health Quiz</a>
+  </div>
+
+</div>
+
+<script>
+const fmt = n => 'â‚¦' + Math.round(n).toLocaleString('en-NG');
+
+function calc() {
+  const visits     = +document.getElementById('r-visits').value;
+  const visitCost  = +document.getElementById('r-visit-cost').value;
+  const drugs      = +document.getElementById('r-drugs').value;
+  const hospital   = +document.getElementById('r-hospital').value;
+  const family     = +document.getElementById('r-family').value;
+  const protocol   = +document.getElementById('sel-condition').value;
+  const duration   = +document.getElementById('sel-duration').value;
+
+  // Update labels
+  document.getElementById('v-visits').textContent = visits;
+  document.getElementById('v-visit-cost').textContent = visitCost.toLocaleString('en-NG');
+  document.getElementById('v-drugs').textContent = drugs.toLocaleString('en-NG');
+  document.getElementById('v-hospital').textContent = hospital.toLocaleString('en-NG');
+  document.getElementById('v-family').textContent = family;
+
+  // Current annual spend
+  const monthlyConv = (visits * visitCost + drugs) * family;
+  const annualConv  = monthlyConv * 12 + hospital * family;
+
+  // Kedi cost
+  const kediTotal = protocol * duration * family;
+
+  // Savings
+  const saving     = Math.max(0, annualConv - kediTotal);
+  const pct        = annualConv > 0 ? Math.round((saving / annualConv) * 100) : 0;
+  const monthlySav = saving / 12;
+
+  document.getElementById('res-current').textContent  = fmt(annualConv);
+  document.getElementById('res-kedi').textContent     = fmt(kediTotal);
+  document.getElementById('res-saving').textContent   = fmt(saving);
+  document.getElementById('res-pct').textContent      = pct + '%';
+  document.getElementById('res-monthly').textContent  = fmt(monthlySav);
+  document.getElementById('res-saving-sub').textContent =
+    saving > 0
+      ? `Based on your inputs, Kedi protocols could save your family ${fmt(saving)} this year.`
+      : 'Your Kedi protocol cost may be close to current spend â€” benefits include addressing root cause.';
+}
+
+calc();
+</script>
+<script src="assets/js/mobile-wa.js" defer></script>
+<script src="assets/js/kedi-notify.js" defer></script>
+<script src="assets/js/kedi-email.js" defer></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Update Dynamic Dates
+            const dateEls = document.querySelectorAll('.header-date, .current-date');
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+            dateEls.forEach(el => el.innerHTML = '<i class="far fa-calendar-alt"></i> ' + dateStr);
+
+            // 2. Auth State Management
+            const userSession = JSON.parse(localStorage.getItem('kedi_user_session'));
+            const authLinks = document.querySelectorAll('a[href*="account.html"], a[href*="login"], a[href*="register"]');
+            
+            if (userSession) {
+                authLinks.forEach(link => {
+                    if (link.innerText.toLowerCase().includes('sign in') || link.innerText.toLowerCase().includes('register')) {
+                        link.innerHTML = '<i class="fas fa-user-circle"></i> ' + userSession.name.split(' ')[0];
+                        link.href = '#!';
+                        // Add logout listener
+                        link.title = 'Click to Logout';
+                        link.onclick = () => {
+                            if(confirm('Logout of clinical ecosystem?')) {
+                                localStorage.removeItem('kedi_user_session');
+                                window.location.reload();
+                            }
+                        };
+                    }
+                });
+            } else {
+                authLinks.forEach(link => {
+                    link.href = 'auth.html';
+                });
+            }
+        });
+    </script>
+
+    <script src="assets/js/currency-manager.js"></script>
+    <script src="assets/js/cart.js"></script>
+<script src="assets/js/auth.js"></script></body>
+</html>
+
+
+
+
+
+

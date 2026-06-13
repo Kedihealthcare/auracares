@@ -1,0 +1,885 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franchise Opportunity | Aura Herbs Clinical Healthcare</title>
+    <meta name="description" content="Join the Aura Herbs clinical franchise network. Build a profitable healthcare business with Kedi-J protocols, full training, and digital health tools.">
+    
+    <!-- Primary Styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/kedi-optimise.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --aura-primary: #064e3b;
+            --aura-secondary: #10b981;
+            --aura-accent: #f59e0b;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .serif-heading { font-family: 'Playfair Display', serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #064e3b, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .franchise-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .franchise-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+        .hero-overlay {
+            background: linear-gradient(to right, rgba(6, 78, 59, 0.95), rgba(6, 78, 59, 0.4));
+        }
+    </style>
+    <!-- Firebase Integration -->
+    <script type="module" src="assets/js/firebase-init.js"></script>
+    <link rel="stylesheet" href="assets/css/responsive.css"/>
+
+<!-- AURA-SCHEMA-START -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Aura Herbs",
+  "url": "https://www.auraherbs.vercel.app",
+  "logo": "https://www.auraherbs.vercel.app/assets/img/logo/logo.svg",
+  "sameAs": [
+    "https://www.facebook.com/auraherbs",
+    "https://twitter.com/auraherbs"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+234-901-509-2132",
+    "contactType": "customer service",
+    "areaServed": "NG",
+    "availableLanguage": "English"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Aura Herbs",
+  "url": "https://www.auraherbs.vercel.app",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.auraherbs.vercel.app/shop.html?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "name": "Aura Herbs Health Centre",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1 Adekunle Street Ijoko",
+    "addressLocality": "Sango-Otta",
+    "addressRegion": "Ogun State",
+    "addressCountry": "NG"
+  },
+  "telephone": "+234-901-509-2132",
+  "url": "https://www.auraherbs.vercel.app/kedicenter.html",
+  "openingHours": "Mo-Fr 08:00-18:00",
+  "priceRange": "₦₦"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.auraherbs.vercel.app/kedi.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Aura Herbs Franchise Program",
+      "item": "https://www.auraherbs.vercel.app/franchise.html"
+    }
+  ]
+}
+</script>
+<!-- AURA-SCHEMA-END -->
+</head>
+<body class="bg-slate-50">
+
+    <!-- Header Section (Synchronized) -->
+    <!-- header start -->
+<header class="header header__style-three">
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span class="icon-menu"></span></button>
+            <div class="header__top">
+                <div class="container mxw_1360">
+                    <div class="header__top-info ul_li_between mt-none-10">
+                        <ul class="header__top-left ul_li mt-10">
+                            <li><a href="#!">Call us</a> free 24/7 : (555) 172-244-7888</li>
+                            <li><i class="fas fa-envelope"></i> info@kedihealth.com</li>
+                        </ul>
+                        <ul class="header__top-right ul_li mt-10">
+                            <li><i class="fas fa-leaf"></i>Wellness First</li>
+                            <li><i class="fas fa-map-marker-alt"></i>Lagos, Nigeria</li>
+                            <li><a href="#!"><i class="fas fa-star"></i>My Wishlist</a></li>
+                            <li><a href="checkout.html"><i class="far fa-check-circle"></i>Checkout</a></li>
+                            <li>
+                                <div class="header__language currency aura-currency-switcher">
+                                    <ul>
+                                        <li>
+                                            <a href="#!" class="lang-btn">
+                                                <span class="current-currency-symbol">&#8358;</span>
+                                                <i class="far fa-chevron-down"></i>
+                                            </a>
+                                            <ul class="lang_sub_list">
+                                                <li><a href="#" data-currency-set="NGN">&#8358; NGN</a></li>
+                                                <li><a href="#" data-currency-set="USD">$ USD</a></li>
+                                                <li><a href="#" data-currency-set="PI">&#960; Pi</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container mxw_1360">
+                <div class="header__middle ul_li_between">
+                    <div class="header__logo">
+                        <a href="index.html">
+                            <img src="assets/img/logo/logo.svg" alt="Kedi Healthcare">
+                        </a>
+                    </div>
+                    <div class="header-date">
+                        <i class="far fa-calendar-alt"></i><span id="header-live-date">Loading...</span>
+                        <script>
+                            (function(){
+                                var d = new Date();
+                                var opts = { weekday:'long', year:'numeric', month:'short', day:'numeric' };
+                                var el = document.getElementById('header-live-date');
+                                if(el) el.textContent = d.toLocaleDateString('en-US', opts);
+                            })();
+                        </script>
+                    </div>
+                    <div class="add">
+                        <a href="shop.html">
+                            <img src="assets/img/product/beaty soap.jpeg" alt="Kedi Soap" style="max-height: 80px; width: auto; object-fit: contain;">
+                        </a>
+                    </div>
+                    <div class="d-none d-lg-block">
+                        <div class="ul_li">
+                            <div class="header__language style-2 mr-25">
+                                <ul>
+                                    <li>
+                                        <a href="#!" class="lang-btn"><img src="assets/img/icon/usd_flag.png" alt=""> English <i class="far fa-chevron-down"></i></a>
+                                        <ul class="lang_sub_list">
+                                            <li><a href="#">English</a></li>
+                                            <li><a href="#">Yoruba</a></li>
+                                            <li><a href="#">Hausa</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header__social">
+                                <a href="#!"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#!"><i class="fab fa-twitter"></i></a>
+                                <a href="#!"><i class="fab fa-instagram"></i></a>
+                                <a href="#!"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header__wrap" data-uk-sticky="top: 250; animation: uk-animation-slide-top;">
+                <div class="container mxw_1360">
+                    <div class="header__main ul_li">
+                        <div class="header__logo">
+                            <a href="index.html">
+                                <img src="assets/img/logo/logo.svg" alt="Kedi Healthcare">
+                            </a>
+                        </div>
+                        <div class="header__category">
+                            <a class="header__category-nav" href="#!"><img class="bar" src="assets/img/icon/bar.svg" alt="">Browse Categories<i class="fas fa-chevron-down"></i></a>
+                        </div>
+                        <div class="hamburger_menu d-lg-none">
+                            <a href="javascript:void(0);" class="active">
+                                <div class="icon bar">
+                                    <span><i class="fal fa-bars"></i></span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="main-menu navbar navbar-expand-lg">
+                            <nav class="main-menu__nav collapse navbar-collapse">
+                                <ul>
+                                    <li class="menu-item-has-children has-mega-menu active"><a href="index.html">Home</a>
+                                        <ul class="mega-menu">
+                                            <li>
+                                                <div class="mega-menu-content">
+                                                    <div class="row">
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="index.html">
+                                                                    <img src="assets/img/demo/demo-1.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 1</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="home-2.html">
+                                                                    <img src="assets/img/demo/demo-2.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 2</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="home-3.html">
+                                                                    <img src="assets/img/demo/demo-3.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 3</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic coming-soon">
+                                                                <span>Coming Soon</span>
+                                                            </div>
+                                                            <h3>Coming Soon</h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Shop</a>
+                                        <ul class="submenu">
+                                            <li><a href="shop.html">Shop Default</a></li>
+                                            <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
+                                            <li><a href="shop-single.html">Shop Single</a></li>
+                                            <li><a href="cart.html">Shop Cart</a></li>
+                                            <li><a href="checkout.html">Shop Checkout</a></li>
+                                            <li><a href="account.html">Account</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="health-challenges.html">Clinical Encyclopedia</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Blog</a>
+                                        <ul class="submenu">
+                                            <li><a href="blog.html">Blog</a></li>
+                                            <li><a href="news-single.html">Blog Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Pages</a>
+                                        <ul class="submenu">
+                                            <li><a href="about.html">About Us</a></li>
+                                            <li><a href="account.html">Account</a></li>
+                                            <li><a href="ai-doctor.html">AI Doctor</a></li>
+                                            <li><a href="franchise.html">Franchise</a></li>
+                                            <li><a href="404.html">404</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="header__main-right ul_li">
+                            <div class="header__icons ul_li mr-15">
+                                <div class="icon">
+                                    <a href="account.html"><img src="assets/img/icon/user.svg" alt="Account"></a>
+                                </div>
+                                <div class="icon wishlist-icon">
+                                    <a href="#!" aria-label="Wishlist">
+                                        <img src="assets/img/icon/heart.svg" alt="Wishlist">
+                                        <span class="wish-count">0</span>
+                                    </a>
+                                </div>
+                                <div class="icon cart-icon">
+                                    <a href="cart.html" aria-label="Cart">
+                                        <img src="assets/img/icon/cart.svg" alt="Cart">
+                                        <span class="cart-count">0</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="login-sign-btn">
+                                <a class="thm-btn thm-btn__2 text-black" href="account.html">
+                                    <span class="btn-wrap">
+                                        <span>Login / Sign Up</span>
+                                        <span>Login / Sign Up</span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header end -->
+
+    <!-- Hero Section -->
+    <section class="relative h-[600px] flex items-center overflow-hidden">
+        <img src="franchise_hero_1778233773835.png" alt="Franchise Opportunity" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 hero-overlay"></div>
+        <div class="container relative z-10 mx-auto px-4">
+            <div class="max-w-3xl">
+                <span class="inline-block bg-emerald-500 text-white text-xs font-bold px-4 py-1 rounded-full mb-6 tracking-widest uppercase">Global Expansion 2026</span>
+                <h1 class="serif-heading text-5xl md:text-7xl text-white leading-tight mb-6">Build Your Own Clinical Wellness Empire</h1>
+                <p class="text-xl text-emerald-50 text-emerald-100/80 mb-6 max-w-xl">Join Africa's premier healthcare network. Deploy proven clinical protocols, leverage AI diagnostics, and build a high-margin business that saves lives.</p>
+                <div class="mb-10 flex items-center gap-6">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-coins text-amber-400"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest text-white">Cool Wealth</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-heartbeat text-emerald-400"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest text-white">Sound Health</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-plane-departure text-blue-400"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest text-white">Freedom & Lifestyle</span>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="Farforlife.html#clinical-hub" class="bg-white text-emerald-900 px-8 py-4 rounded-xl font-black uppercase tracking-widest text-sm hover:bg-emerald-50 transition shadow-2xl">View Clinical Hub</a>
+                    <a href="#tiers" class="bg-emerald-800/50 backdrop-blur-md text-white border border-emerald-400/30 px-8 py-4 rounded-xl font-black uppercase tracking-widest text-sm hover:bg-emerald-800/70 transition">View Franchise Tiers</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KEDI PROMO BANNER (Mini Version) -->
+    <div class="container mx-auto px-4 -mt-10 relative z-20">
+        <div class="bg-white rounded-2xl shadow-xl p-6 border border-emerald-100 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-4">
+                <div class="flex -space-x-3">
+                    <img src="assets/img/promo/kedi-2026-award.jpg" class="w-12 h-12 rounded-full border-2 border-white" alt="Promo">
+                    <img src="assets/img/promo/kedi-promo-2.jpg" class="w-12 h-12 rounded-full border-2 border-white" alt="Promo">
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900">KEDI 2026 Perform & Win Award</h4>
+                    <p class="text-sm text-slate-500">New franchisees are eligible for car awards, air fryers, and smart TVs!</p>
+                </div>
+            </div>
+            <a href="auth.html" class="text-emerald-600 font-bold flex items-center gap-2 hover:gap-4 transition-all">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+                <div>
+                    <div class="text-4xl font-black text-emerald-600 mb-2">20+</div>
+                    <div class="text-xs font-bold uppercase tracking-widest text-slate-400">Years of Heritage</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-black text-emerald-600 mb-2">50k+</div>
+                    <div class="text-xs font-bold uppercase tracking-widest text-slate-400">Success Stories</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-black text-emerald-600 mb-2">350+</div>
+                    <div class="text-xs font-bold uppercase tracking-widest text-slate-400">Active Centers</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-black text-emerald-600 mb-2">45%</div>
+                    <div class="text-xs font-bold uppercase tracking-widest text-slate-400">Avg. Margin</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Infrastructure Deep Dive -->
+    <section class="py-24 bg-slate-50 border-y border-slate-200">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2">
+                    <h2 class="serif-heading text-4xl mb-6">Cutting-Edge Digital Health Infrastructure</h2>
+                    <p class="text-slate-600 mb-8 leading-relaxed">Unlike traditional retail franchises, Aura Herbs provides a full-stack clinical operating system. You don't just get products; you get the intelligence to sell them effectively.</p>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-emerald-600 shrink-0"><i class="fas fa-magic"></i></div>
+                            <div>
+                                <h4 class="font-bold">AI Diagnostic Quiz Engine</h4>
+                                <p class="text-sm text-slate-500">Every franchisee gets a personalized link to our AI quiz. When patients take it, they are automatically mapped to your center for fulfillment.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-emerald-600 shrink-0"><i class="fas fa-chart-line"></i></div>
+                            <div>
+                                <h4 class="font-bold">4x4 Success Grid Analytics</h4>
+                                <p class="text-sm text-slate-500">Track patient progress through our proprietary recovery thresholds. High-fidelity data that builds long-term clinical trust.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-emerald-600 shrink-0"><i class="fas fa-wallet"></i></div>
+                            <div>
+                                <h4 class="font-bold">Pi-Native Payment Gateway</h4>
+                                <p class="text-sm text-slate-500">Accept &pi;, BTC, and USDT alongside local currency. Future-proof your business with global digital currency integration.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 relative">
+                    <div class="bg-emerald-600 rounded-[40px] p-2 rotate-2 shadow-2xl">
+                        <img src="assets/img/bg/newsletter.jpg" class="rounded-[38px] w-full -rotate-2" alt="Digital Platform">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-emerald-100 hidden md:block">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">Live Diagnostic Feed</span>
+                        </div>
+                        <div class="text-lg font-black text-slate-900">1,240+ Quizzes Today</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Clinical Tools CTA Banner -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+
+            <div class="text-center mb-10">
+                <span style="color:#10b981;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:2px;">⚕ Clinical Intelligence</span>
+                <h2 style="font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:#0f172a;margin:8px 0 6px;">Power Your Franchise with AI Tools</h2>
+                <p style="color:#64748b;font-size:15px;max-width:560px;margin:0 auto;">Equip every patient interaction with our AI Diagnostic Engine and clinical screeners — the same tools your franchise center will deploy.</p>
+            </div>
+
+            <style>
+                .fr-cta-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:900px; margin:0 auto; }
+                @media(max-width:640px){ .fr-cta-grid{ grid-template-columns:1fr; } }
+                .fr-cta-card {
+                    position:relative; display:flex; align-items:center; gap:18px;
+                    padding:24px 26px; border-radius:20px; text-decoration:none;
+                    overflow:hidden; transition:transform .32s cubic-bezier(.23,1,.32,1), box-shadow .32s cubic-bezier(.23,1,.32,1);
+                    border:1.5px solid transparent;
+                }
+                .fr-cta-card:hover { transform:translateY(-6px) scale(1.015); text-decoration:none; }
+                .fr-cta-card--ai  { background:linear-gradient(135deg,#064e3b,#065f46 55%,#047857); border-color:rgba(16,185,129,.38); box-shadow:0 8px 30px rgba(16,185,129,.22); }
+                .fr-cta-card--ai:hover  { box-shadow:0 18px 48px rgba(16,185,129,.42); }
+                .fr-cta-card--quiz { background:linear-gradient(135deg,#0f172a,#1e293b 55%,#1a3050); border-color:rgba(99,179,237,.28); box-shadow:0 8px 30px rgba(14,165,233,.18); }
+                .fr-cta-card--quiz:hover { box-shadow:0 18px 48px rgba(14,165,233,.36); }
+                .fr-cta-card::before {
+                    content:''; position:absolute; inset:0;
+                    background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.07) 50%,transparent 70%);
+                    background-size:200% 100%; animation:fr-shimmer 3.8s infinite linear; pointer-events:none;
+                }
+                @keyframes fr-shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+                .fr-cta-icon {
+                    flex-shrink:0; width:60px; height:60px; border-radius:16px;
+                    display:flex; align-items:center; justify-content:center; font-size:26px; position:relative;
+                }
+                .fr-cta-card--ai  .fr-cta-icon { background:rgba(16,185,129,.22); color:#6ee7b7; }
+                .fr-cta-card--quiz .fr-cta-icon { background:rgba(14,165,233,.20); color:#7dd3fc; }
+                .fr-cta-icon::after {
+                    content:''; position:absolute; inset:-7px; border-radius:22px;
+                    border:2px solid currentColor; opacity:0; animation:fr-ring 2.4s ease-out infinite;
+                }
+                .fr-cta-card--ai  .fr-cta-icon::after { color:#10b981; }
+                .fr-cta-card--quiz .fr-cta-icon::after { color:#0ea5e9; }
+                @keyframes fr-ring { 0%{opacity:.65;transform:scale(1)} 100%{opacity:0;transform:scale(1.6)} }
+                .fr-cta-body { flex:1; }
+                .fr-cta-badge { display:inline-block; font-size:10px; font-weight:800; letter-spacing:1.3px; text-transform:uppercase; padding:2px 10px; border-radius:50px; margin-bottom:5px; }
+                .fr-cta-card--ai  .fr-cta-badge { background:rgba(16,185,129,.25); color:#6ee7b7; }
+                .fr-cta-card--quiz .fr-cta-badge { background:rgba(14,165,233,.20); color:#7dd3fc; }
+                .fr-cta-title { font-size:17px; font-weight:800; color:#fff; margin-bottom:3px; line-height:1.25; }
+                .fr-cta-sub   { font-size:12px; color:rgba(255,255,255,.52); line-height:1.45; }
+                .fr-cta-chips { display:flex; gap:7px; margin-top:10px; flex-wrap:wrap; }
+                .fr-cta-chip  { font-size:10px; font-weight:700; padding:3px 10px; border-radius:50px; color:#fff; background:rgba(255,255,255,.10); }
+                .fr-cta-arrow { flex-shrink:0; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; color:#fff; transition:transform .3s; }
+                .fr-cta-card--ai  .fr-cta-arrow { background:rgba(16,185,129,.35); }
+                .fr-cta-card--quiz .fr-cta-arrow { background:rgba(14,165,233,.25); }
+                .fr-cta-card:hover .fr-cta-arrow { transform:translateX(5px); }
+            </style>
+
+            <div class="fr-cta-grid">
+
+                <!-- AI Doctor -->
+                <a href="ai-doctor.html" class="fr-cta-card fr-cta-card--ai" id="fr-cta-ai-doctor">
+                    <div class="fr-cta-icon"><i class="fas fa-stethoscope"></i></div>
+                    <div class="fr-cta-body">
+                        <span class="fr-cta-badge">AI-Powered</span>
+                        <div class="fr-cta-title">AI Doctor Diagnosis</div>
+                        <div class="fr-cta-sub">20 clinical screeners — BP, Diabetes, Kidney, PCOS &amp; more</div>
+                        <div class="fr-cta-chips">
+                            <span class="fr-cta-chip">🩺 14+ Tools</span>
+                            <span class="fr-cta-chip">⚡ Instant Results</span>
+                            <span class="fr-cta-chip">💊 Kedi Protocols</span>
+                        </div>
+                    </div>
+                    <div class="fr-cta-arrow"><i class="fas fa-arrow-right"></i></div>
+                </a>
+
+                <!-- Health Quiz -->
+                <a href="quiz.html" class="fr-cta-card fr-cta-card--quiz" id="fr-cta-health-quiz">
+                    <div class="fr-cta-icon"><i class="fas fa-clipboard-list"></i></div>
+                    <div class="fr-cta-body">
+                        <span class="fr-cta-badge">Classic Screener</span>
+                        <div class="fr-cta-title">Wellness Health Quiz</div>
+                        <div class="fr-cta-sub">Guided questions to map your health profile &amp; risks</div>
+                        <div class="fr-cta-chips">
+                            <span class="fr-cta-chip">ðŸ“‹ 200+ Questions</span>
+                            <span class="fr-cta-chip">ðŸŽ¯ Risk Score</span>
+                            <span class="fr-cta-chip">ðŸ“„ Report</span>
+                        </div>
+                    </div>
+                    <div class="fr-cta-arrow"><i class="fas fa-arrow-right"></i></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expanded Benefits Matrix -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="serif-heading text-4xl mb-4">Comprehensive Partner Benefits</h2>
+                <p class="text-slate-500 max-w-2xl mx-auto">We've audited 20 years of Kedi Healthcare success to build a support package that ensures your ROI.</p>
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+                <div class="text-center">
+                    <div class="text-3xl mb-4">ðŸ†</div>
+                    <h4 class="font-bold mb-2">Global Awards</h4>
+                    <p class="text-xs text-slate-500">Qualify for annual car awards, international travel, and luxury lifestyle incentives.</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl mb-4">ðŸšš</div>
+                    <h4 class="font-bold mb-2">Priority Logistics</h4>
+                    <p class="text-xs text-slate-500">24-hour dispatch on all protocol restocks via our premium logistics network.</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl mb-4">ðŸ“¢</div>
+                    <h4 class="font-bold mb-2">Ad Co-Op Fund</h4>
+                    <p class="text-xs text-slate-500">We contribute to your local marketing efforts with branded materials and digital spend.</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl mb-4">ðŸ›¡ï¸</div>
+                    <h4 class="font-bold mb-2">Legal Protection</h4>
+                    <p class="text-xs text-slate-500">Full regulatory and legal support for clinical operations in your territory.</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl mb-4">ðŸŽ“</div>
+                    <h4 class="font-bold mb-2">LMS Access</h4>
+                    <p class="text-xs text-slate-500">Continuous education via our Learning Management System for your staff.</p>
+                </div><div class="text-center">
+                    <div class="text-3xl mb-4">ðŸ¤</div>
+                    <h4 class="font-bold mb-2">Referral Overrides</h4>
+                    <p class="text-xs text-slate-500">Earn from sub-franchisees and partner networks you bring into the ecosystem.</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl mb-4">ðŸ¢</div>
+                    <h4 class="font-bold mb-2">Branding Kit</h4>
+                    <p class="text-xs text-slate-500">Premium signage, apparel, and clinic interior design guidelines provided.</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl mb-4">ðŸ“±</div>
+                    <h4 class="font-bold mb-2">CRM Integration</h4>
+                    <p class="text-xs text-slate-500">Manage patient history and follow-ups with our custom healthcare CRM.</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl mb-4">ðŸ©º</div>
+                    <h4 class="font-bold mb-2">Therapist Network</h4>
+                    <p class="text-xs text-slate-500">Access and recruit certified clinical therapists to power your center's expertise.</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl mb-4">ðŸ“Š</div>
+                    <h4 class="font-bold mb-2">Clinical Slides</h4>
+                    <p class="text-xs text-slate-500">Full access to professional business and clinical presentation materials.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works / Roadmap -->
+    <section class="py-24 bg-emerald-950 text-white overflow-hidden">
+        <div class="container mx-auto px-4">
+            <h2 class="serif-heading text-4xl text-center mb-16">The Partnership Roadmap</h2>
+            <div class="relative">
+                <div class="hidden lg:block absolute top-1/2 left-0 w-full h-1 bg-emerald-800 -translate-y-1/2"></div>
+                <div class="grid lg:grid-cols-4 gap-12 relative z-10">
+                    <div class="bg-emerald-900 p-8 rounded-3xl border border-emerald-800">
+                        <div class="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center font-black mb-6">01</div>
+                        <h4 class="font-bold text-xl mb-3">Application</h4>
+                        <p class="text-sm text-emerald-100/60">Submit your interest and location details. Initial screening takes 24-48 hours.</p>
+                    </div>
+                    <div class="bg-emerald-900 p-8 rounded-3xl border border-emerald-800">
+                        <div class="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center font-black mb-6">02</div>
+                        <h4 class="font-bold text-xl mb-3">Verification</h4>
+                        <p class="text-sm text-emerald-100/60">Virtual interview and territory assessment to ensure market sustainability.</p>
+                    </div>
+                    <div class="bg-emerald-900 p-8 rounded-3xl border border-emerald-800">
+                        <div class="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center font-black mb-6">03</div>
+                        <h4 class="font-bold text-xl mb-3">Activation</h4>
+                        <p class="text-sm text-emerald-100/60">Complete investment, receive your Clinical Kit, and start LMS training.</p>
+                    </div>
+                    <div class="bg-emerald-900 p-8 rounded-3xl border border-emerald-800">
+                        <div class="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center font-black mb-6">04</div>
+                        <h4 class="font-bold text-xl mb-3">Launch</h4>
+                        <p class="text-sm text-emerald-100/60">Grand opening with regional support and AI-lead generation activated.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Franchise Tiers -->
+    <section id="tiers" class="py-24 bg-slate-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="serif-heading text-4xl mb-4">Franchise Investment Tiers</h2>
+                <p class="text-slate-400">Scale your commitment based on your vision and capital.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Starter -->
+                <div class="franchise-card bg-slate-800 p-8 rounded-3xl border border-slate-700">
+                    <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Entry Level</span>
+                    <h3 class="text-2xl font-black mt-4 mb-2">Starter Associate</h3>
+                    <div class="text-4xl font-black mb-8" data-base-price="150000">&#8358;150,000</div>
+                    <ul class="space-y-4 text-sm text-slate-300 mb-10">
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-emerald-500"></i> Clinical Starter Kit</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-emerald-500"></i> Online Protocol Training</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-emerald-500"></i> Digital Marketing Suite</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-emerald-500"></i> 30% Base Profit Margin</li>
+                    </ul>
+                    <a href="#apply" class="block text-center py-4 rounded-xl border border-emerald-500 text-emerald-400 font-bold hover:bg-emerald-500 hover:text-white transition">Choose Starter</a>
+                </div>
+                <!-- Pro -->
+                <div class="franchise-card bg-emerald-600 p-8 rounded-3xl border-4 border-emerald-400 relative overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-emerald-400 text-emerald-900 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter">Most Popular</div>
+                    <span class="text-xs font-bold text-emerald-100 uppercase tracking-widest">Growth Level</span>
+                    <h3 class="text-2xl font-black mt-4 mb-2 text-white">Pro Clinical Center</h3>
+                    <div class="text-4xl font-black mb-8 text-white" data-base-price="450000">&#8358;450,000</div>
+                    <ul class="space-y-4 text-sm text-emerald-50 mb-10">
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-white"></i> Full Inventory Stock</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-white"></i> 3-Day On-Site Certification</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-white"></i> Branded Micro-Site & App</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-white"></i> 40% Base Profit Margin</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-white"></i> Territorial Exclusivity</li>
+                    </ul>
+                    <a href="#apply" class="block text-center py-4 rounded-xl bg-white text-emerald-900 font-bold hover:bg-emerald-50 transition shadow-xl">Apply for Pro</a>
+                </div>
+                <!-- Enterprise -->
+                <div class="franchise-card bg-slate-800 p-8 rounded-3xl border border-slate-700">
+                    <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Master Level</span>
+                    <h3 class="text-2xl font-black mt-4 mb-2">Master Enterprise</h3>
+                    <div class="text-4xl font-black mb-8" data-base-price="1200000">&#8358;1,200,000</div>
+                    <ul class="space-y-4 text-sm text-slate-300 mb-10">
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-emerald-500"></i> Regional License Rights</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-emerald-500"></i> Sub-Franchise Commissions</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-emerald-500"></i> Master Logistics Hub access</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-emerald-500"></i> 50% Max Profit Margin</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-emerald-500"></i> State-Level Protection</li>
+                    </ul>
+                    <a href="#apply" class="block text-center py-4 rounded-xl border border-slate-500 text-slate-300 font-bold hover:border-white hover:text-white transition">Inquire Enterprise</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="serif-heading text-4xl text-center mb-16">Stories from the Network</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-slate-50 p-10 rounded-3xl flex flex-col justify-between">
+                    <p class="text-xl text-slate-700 italic mb-8 leading-relaxed" data-base-price="50">"I transitioned from a traditional retail business to an Aura Herbs franchise. The ability to offer real clinical solutions changed my monthly revenue from &#8358;50k to over &#8358;400k. The system works."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="assets/img/avatar/img_02.jpg" class="w-14 h-14 rounded-full object-cover" alt="Partner">
+                        <div>
+                            <div class="font-bold text-slate-950">Amara Okonkwo</div>
+                            <div class="text-xs text-emerald-600 font-bold uppercase tracking-widest">Lagos Pro Franchisee</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-emerald-950 p-10 rounded-3xl flex flex-col justify-between text-white">
+                    <p class="text-xl text-emerald-100/80 italic mb-8 leading-relaxed">"As a health professional, I wanted a business that maintained clinical integrity. Aura Herbs protocols are world-class, and the master license has allowed me to empower 12 sub-franchisees in Abuja."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="assets/img/avatar/img_02.jpg" class="w-14 h-14 rounded-full object-cover" alt="Partner">
+                        <div>
+                            <div class="font-bold text-white">Dr. Chidi Eze</div>
+                            <div class="text-xs text-emerald-400 font-bold uppercase tracking-widest">Abuja Master Licensee</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section id="apply" class="py-24 bg-slate-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto bg-white rounded-[40px] shadow-2xl overflow-hidden flex flex-col lg:flex-row">
+                <div class="lg:w-2/5 bg-emerald-900 p-12 text-white">
+                    <h2 class="serif-heading text-4xl mb-6">Take the First Step</h2>
+                    <p class="text-emerald-100/70 mb-10">Submit your application for review. Our franchise board evaluates candidates based on commitment, location, and professional background.</p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 bg-emerald-800 rounded-lg flex items-center justify-center shrink-0">1</div>
+                            <p class="text-sm">Submit your initial application form</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 bg-emerald-800 rounded-lg flex items-center justify-center shrink-0">2</div>
+                            <p class="text-sm">Interview with a Regional Franchise Manager</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 bg-emerald-800 rounded-lg flex items-center justify-center shrink-0">3</div>
+                            <p class="text-sm">Receive your Clinical Onboarding Package</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-20 pt-10 border-t border-emerald-800">
+                        <p class="text-xs font-bold uppercase tracking-[0.2em] text-emerald-500 mb-4">Direct Support</p>
+                        <p class="text-lg font-bold">franchise@auraherbs.com</p>
+                        <p class="text-emerald-100/50 text-sm mt-1"><a href="tel:+2349015092132" class="hover:text-white transition">+234 901 509 2132</a></p>
+                    </div>
+                </div>
+                
+                <div class="lg:w-3/5 p-12">
+                    <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Full Name</label>
+                            <input type="text" placeholder="John Doe" class="w-full bg-slate-50 border-none p-4 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Email Address</label>
+                            <input type="email" placeholder="john@example.com" class="w-full bg-slate-50 border-none p-4 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Phone Number</label>
+                            <input type="tel" placeholder="+234 ..." class="w-full bg-slate-50 border-none p-4 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Location (State/City)</label>
+                            <input type="text" placeholder="Lagos, Nigeria" class="w-full bg-slate-50 border-none p-4 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none">
+                        </div>
+                        <div class="space-y-2 md:col-span-2">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Proposed Franchise Tier</label>
+                            <select class="w-full bg-slate-50 border-none p-4 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none appearance-none">
+                                <option data-base-price="150">Starter Associate (&#8358;150k)</option>
+                                <option selected data-base-price="450">Pro Clinical Center (&#8358;450k)</option>
+                                <option data-base-price="1">Master Enterprise (&#8358;1.2m)</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2 md:col-span-2">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Professional Background / Vision</label>
+                            <textarea rows="4" placeholder="Tell us about your experience in healthcare or business..." class="w-full bg-slate-50 border-none p-4 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none resize-none"></textarea>
+                        </div>
+                        <div class="md:col-span-2 pt-4">
+                            <button type="submit" class="w-full bg-emerald-600 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-emerald-700 transition shadow-xl shadow-emerald-200">
+                                Submit Application for Review
+                            </button>
+                            <p class="text-[10px] text-center text-slate-400 mt-6 uppercase tracking-wider">By submitting, you agree to our Franchise Privacy Policy & Candidate Evaluation Terms.</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="serif-heading text-4xl text-center mb-16">Common Questions</h2>
+            <div class="space-y-4">
+                <details class="group bg-slate-50 rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex items-center justify-between cursor-pointer">
+                        <h4 class="font-bold text-slate-900">How soon can I start operating?</h4>
+                        <span class="shrink-0 transition duration-300 group-open:-rotate-180">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-sm text-slate-600 leading-relaxed">
+                        After your application is approved and payment is processed, you will receive your digital assets and online training modules within 48 hours. Physical stock delivery typically takes 3-7 business days depending on your location.
+                    </p>
+                </details>
+                <details class="group bg-slate-50 rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex items-center justify-between cursor-pointer">
+                        <h4 class="font-bold text-slate-900">Do I need a medical license?</h4>
+                        <span class="shrink-0 transition duration-300 group-open:-rotate-180">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-sm text-slate-600 leading-relaxed">
+                        While a medical background is beneficial, it is not required for Starter or Pro levels. We provide comprehensive clinical protocol training. However, for specialized medical services, we recommend partnering with a certified practitioner.
+                    </p>
+                </details>
+                <details class="group bg-slate-50 rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex items-center justify-between cursor-pointer">
+                        <h4 class="font-bold text-slate-900">Can I run this as a side-business?</h4>
+                        <span class="shrink-0 transition duration-300 group-open:-rotate-180">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </summary>
+                    <p class="mt-4 text-sm text-slate-600 leading-relaxed">
+                        The Starter Associate level is designed for entrepreneurs looking for a flexible side-income. Pro and Enterprise levels typically require full-time commitment or dedicated management staff.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-white pt-24 pb-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+                <div class="md:col-span-2">
+                    <h2 class="text-3xl font-black tracking-tighter mb-8">Aura<span class="text-emerald-500">Cares</span></h2>
+                    <p class="text-slate-500 max-w-sm mb-10">Redefining clinical healthcare in Africa through innovation, AI-driven diagnostics, and high-fidelity herbal protocols.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center hover:bg-emerald-600 transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center hover:bg-emerald-600 transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center hover:bg-emerald-600 transition"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-8">Quick Links</h4>
+                    <ul class="space-y-4 text-sm text-slate-500">
+                        <li><a href="shop.html" class="hover:text-white transition">Product Library</a></li>
+                        <li><a href="quiz.html" class="hover:text-white transition">AI Diagnostic Quiz</a></li>
+                        <li><a href="about.html" class="hover:text-white transition">Our Clinical Science</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-emerald-500 mb-8">Resources</h4>
+                    <ul class="space-y-4 text-sm text-slate-500">
+                        <li><a href="#" class="hover:text-white transition">Partner Dashboard</a></li>
+                        <li><a href="#" class="hover:text-white transition">Clinical FAQ</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition">Support Centre</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-white/5 text-center text-xs text-slate-600">
+                &copy; 2026 Aura Herbs Clinical Healthcare. All rights reserved. Powered by Kedi-J Intelligence.
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/currency-manager.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/aeo-schema.js" defer></script>
+    <script src="assets/js/mobile-wa.js" defer></script>
+<script src="assets/js/auth.js"></script></body>
+</html>
+
+
+
+
+
+

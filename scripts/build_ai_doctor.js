@@ -1,0 +1,341 @@
+﻿const path = require('path');
+const fs = require('fs');
+
+const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Kedi-J AI Doctor - Clinical Diagnostic Engine | Kedi Healthcare</title>
+<meta name="description" content="Free AI-powered clinical diagnosis. 18,700+ questions across diabetes, blood pressure, fertility, immunity and more. Get your personalized Kedi protocol.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<meta property="og:title" content="Kedi-J AI Doctor - Clinical Diagnostic Engine">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kedi Healthcare (Kedi-J)">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow">
+<style>
+  body { font-family: 'Outfit', sans-serif; background: #05070A; color: white; overflow-x: hidden; }
+  .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; }
+  .chip { padding: 14px 20px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s; font-weight: 600; text-align: left; width: 100%; }
+  .chip:hover, .chip.selected { background: #10B981; border-color: #10B981; color: white; }
+  .progress-bar { height: 4px; background: rgba(255,255,255,0.05); border-radius: 100px; overflow: hidden; }
+  .progress-fill { height: 100%; background: #10B981; transition: 0.5s ease; }
+  .cat-pill { padding: 8px 16px; border-radius: 100px; border: 1px solid rgba(16,185,129,0.2); background: rgba(16,185,129,0.05); cursor: pointer; font-size: 0.75rem; font-weight: 700; color: #10B981; transition: all 0.2s; }
+  .cat-pill:hover, .cat-pill.active { background: #10B981; color: white; border-color: #10B981; }
+  input, textarea, select { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 14px 18px; color: white; width: 100%; font-family: 'Outfit', sans-serif; }
+  input:focus, textarea:focus { outline: none; border-color: #10B981; }
+  .btn-em { background: #10B981; color: white; border: none; border-radius: 16px; padding: 14px 28px; font-weight: 800; cursor: pointer; transition: all 0.2s; }
+  .btn-em:hover { background: #059669; transform: translateY(-2px); }
+  .btn-ghost { background: rgba(255,255,255,0.06); color: white; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 14px 28px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+  .btn-ghost:hover { background: rgba(255,255,255,0.1); }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+  .fade-up { animation: fadeUp 0.4s ease forwards; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .pulse { animation: pulse 1.5s infinite; }
+  .risk-low { color: #10B981; }
+  .risk-mod { color: #F59E0B; }
+  .risk-high { color: #EF4444; }
+  .score-bar { height: 8px; border-radius: 100px; background: rgba(255,255,255,0.06); overflow: hidden; margin: 8px 0; }
+  .score-fill-low { height: 100%; background: #10B981; border-radius: 100px; }
+  .score-fill-mod { height: 100%; background: #F59E0B; border-radius: 100px; }
+  .score-fill-high { height: 100%; background: #EF4444; border-radius: 100px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav style="padding:20px 32px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.05);max-width:1200px;margin:0 auto;">
+  <a href="home-3.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:white;">
+    <div style="width:40px;height:40px;background:#10B981;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;">A</div>
+    <span style="font-size:18px;font-weight:900;">AURA <span style="color:#10B981;">AI DOCTOR</span></span>
+  </a>
+  <div style="display:flex;gap:20px;align-items:center;">
+    <a href="quiz.html" style="color:#9ca3af;font-weight:700;font-size:13px;text-decoration:none;">Full Body Scan</a>
+    <a href="shop.html" style="color:#9ca3af;font-weight:700;font-size:13px;text-decoration:none;">Protocols</a>
+    <a href="franchise.html" style="color:#9ca3af;font-weight:700;font-size:13px;text-decoration:none;">Franchise</a>
+    <a href="news.html" style="color:#9ca3af;font-weight:700;font-size:13px;text-decoration:none;">Blog</a>
+    <a href="cart.html" style="color:#10B981;font-weight:800;font-size:13px;text-decoration:none;">🛒 Cart</a>
+  </div>
+</nav>
+
+<main id="app" style="max-width:900px;margin:0 auto;padding:40px 24px 80px;"></main>
+
+<script>
+const BANK_URL = 'assets/js/question-bank.json';
+let bank = {}, session = { category:null, questions:[], answers:[], index:0, scores:{}, userName:'', userPhone:'' };
+
+const app = document.getElementById('app');
+function render(html) { app.innerHTML = html; }
+
+// ---- INIT ----
+async function init() {
+  render('<div style="text-align:center;padding:80px 20px;"><div class="pulse" style="font-size:48px;margin-bottom:16px;">🩺</div><p style="color:#6b7280;">Loading clinical database...</p></div>');
+  try {
+    const r = await fetch(BANK_URL);
+    bank = await r.json();
+    renderWelcome();
+  } catch(e) { render('<div style="text-align:center;padding:80px;"><h2>Could not load question bank.</h2><p style="color:#6b7280;">Run node build_qbank.js first.</p></div>'); }
+}
+
+// ---- WELCOME ----
+function renderWelcome() {
+  const cats = (bank.categories || []);
+  render(\`
+    <div class="fade-up" style="text-align:center;padding:40px 0 20px;">
+      <div style="display:inline-flex;width:80px;height:80px;background:rgba(16,185,129,0.15);border-radius:50%;align-items:center;justify-content:center;font-size:40px;margin-bottom:24px;">🩺</div>
+      <span style="background:rgba(16,185,129,0.1);color:#10B981;padding:6px 16px;border-radius:100px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;">18,700+ Clinical Questions</span>
+      <h1 style="font-size:clamp(42px,8vw,80px);font-weight:900;margin:20px 0 12px;line-height:1.1;">AI <span style="color:#10B981;">Doctor</span></h1>
+      <p style="color:#9ca3af;font-size:18px;max-width:560px;margin:0 auto 40px;">Personalized clinical diagnosis powered by disease-based intelligent scoring. Free. Private. Instant.</p>
+
+      <div style="margin-bottom:40px;">
+        <p style="color:#6b7280;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;">Choose a Health Category</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:700px;margin:0 auto;">
+          \${cats.map(c => \`<button class="cat-pill" onclick="selectCategory('\${c.key}')">\${c.label} <span style="opacity:0.5;font-size:10px;">\${c.count}</span></button>\`).join('')}
+        </div>
+      </div>
+
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn-em" style="font-size:16px;padding:18px 36px;" onclick="selectCategory('all')">🔬 Full Body Diagnostic</button>
+        <button class="btn-ghost" style="font-size:16px;" onclick="window.location='quiz.html'">📋 Classic Quiz</button>
+      </div>
+
+      <div style="display:flex;gap:40px;justify-content:center;margin-top:48px;opacity:0.5;">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;">✅ 18,700+ Questions</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;">✅ AI Personalized</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;">✅ Instant Protocol</div>
+      </div>
+    </div>
+  \`);
+}
+
+// ---- SELECT CATEGORY ----
+function selectCategory(cat) {
+  session.category = cat;
+  const pool = cat === 'all' ? bank.questions : bank.questions.filter(q => q.category === cat);
+  // AI personalization: shuffle and pick balanced questions
+  const shuffled = pool.sort(() => Math.random() - 0.5);
+  session.questions = shuffled.slice(0, cat === 'all' ? 30 : 20);
+  session.index = 0;
+  session.answers = new Array(session.questions.length).fill(null);
+  session.scores = {};
+  renderNameForm();
+}
+window.selectCategory = selectCategory;
+
+// ---- NAME FORM ----
+function renderNameForm() {
+  const catLabel = session.category === 'all' ? 'Full Body' : (bank.categories||[]).find(c=>c.key===session.category)?.label || session.category;
+  render(\`
+    <div class="fade-up" style="max-width:480px;margin:0 auto;text-align:center;padding:40px 0;">
+      <div style="font-size:40px;margin-bottom:16px;">👤</div>
+      <h2 style="font-size:32px;font-weight:900;margin-bottom:8px;">Who are we assessing?</h2>
+      <p style="color:#9ca3af;margin-bottom:32px;">Diagnostic: <strong style="color:#10B981;">\${catLabel}</strong></p>
+      <div style="text-align:left;space:16px;">
+        <label style="display:block;font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;">Full Name</label>
+        <input id="uname" type="text" placeholder="Dr./Mr./Mrs. Full Name" style="margin-bottom:16px;">
+        <label style="display:block;font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;">WhatsApp (optional)</label>
+        <input id="uphone" type="tel" placeholder="+234 ...">
+      </div>
+      <button class="btn-em" style="width:100%;margin-top:24px;font-size:16px;padding:18px;" onclick="startDiag()">Start Diagnosis →</button>
+      <button class="btn-ghost" style="width:100%;margin-top:10px;" onclick="renderWelcome()">← Back</button>
+    </div>
+  \`);
+}
+
+function startDiag() {
+  session.userName = document.getElementById('uname').value || 'Patient';
+  session.userPhone = document.getElementById('uphone').value || '';
+  renderQuestion();
+}
+window.startDiag = startDiag;
+
+// ---- RENDER QUESTION ----
+function renderQuestion() {
+  const q = session.questions[session.index];
+  const pct = Math.round((session.index / session.questions.length) * 100);
+  const riskColors = { screening: '#10B981', diagnostic: '#F59E0B', clinical: '#EF4444' };
+  const riskColor = riskColors[q.riskLevel] || '#10B981';
+  const answered = session.answers[session.index];
+
+  render(\`
+    <div class="fade-up">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <span style="font-size:12px;font-weight:700;color:#6b7280;text-transform:uppercase;">Question \${session.index+1} of \${session.questions.length}</span>
+        <span style="font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px;background:rgba(16,185,129,0.1);color:\${riskColor};">\${q.riskLevel?.toUpperCase()} · \${q.categoryLabel}</span>
+      </div>
+      <div class="progress-bar" style="margin-bottom:32px;"><div class="progress-fill" style="width:\${pct}%;"></div></div>
+
+      <div class="glass" style="padding:36px;margin-bottom:24px;min-height:220px;">
+        <p style="font-size:11px;font-weight:700;color:#10B981;text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;">\${q.topic}</p>
+        <h2 style="font-size:clamp(18px,3vw,26px);font-weight:800;line-height:1.4;margin-bottom:32px;">\${q.question}</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;">
+          \${q.options.map(o => \`
+            <button class="chip \${answered===o?'selected':''}" onclick="answer('\${o.replace(/'/g,\\"\\\\\\"\\")}',\${q.weight},'\${q.category}')">
+              \${answered===o?'✓ ':''}\${o}
+            </button>
+          \`).join('')}
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <button class="btn-ghost" onclick="goBack()" \${session.index===0?'disabled style=\\"opacity:0.3;\\"':''}>← Back</button>
+        <div style="font-size:12px;color:#6b7280;">\${pct}% complete</div>
+        <button class="btn-ghost" onclick="skipQ()">Skip →</button>
+      </div>
+
+      <!-- Live insight panel -->
+      \${Object.keys(session.scores).length > 0 ? \`
+        <div style="margin-top:24px;padding:16px 20px;border-radius:16px;background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.1);">
+          <p style="font-size:11px;font-weight:700;color:#10B981;text-transform:uppercase;margin-bottom:10px;">Live Diagnostic Feed</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            \${Object.entries(session.scores).map(([k,s]) => \`<span style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;background:rgba(255,255,255,0.05);\${k} \${s>5?'color:#EF4444':s>2?'color:#F59E0B':'color:#10B981'}">\${k}: \${s}pts</span>\`).join('')}
+          </div>
+        </div>
+      \` : ''}
+    </div>
+  \`);
+}
+
+function answer(val, weight, category) {
+  if (!session.scores[category]) session.scores[category] = { score: 0, max: 0 };
+  const highRisk = ['Yes','Always','Frequently','Severe','Confirmed by doctor','Often','10','9','8','7'];
+  if (highRisk.includes(val)) session.scores[category].score += weight;
+  session.scores[category].max += weight;
+  session.answers[session.index] = val;
+  setTimeout(() => nextQ(), 300);
+}
+window.answer = answer;
+
+function skipQ() { session.answers[session.index] = 'skipped'; nextQ(); }
+function goBack() { if(session.index>0){session.index--;renderQuestion();} }
+function nextQ() { session.index++; if(session.index>=session.questions.length) renderResults(); else renderQuestion(); }
+window.skipQ = skipQ; window.goBack = goBack;
+
+// ---- RESULTS ----
+function renderResults() {
+  const catMeta = (bank.categories||[]).reduce((m,c)=>{ m[c.key]=c; return m; }, {});
+  const scored = Object.entries(session.scores)
+    .map(([k,v]) => ({ key:k, label:catMeta[k]?.label||k, product:catMeta[k]?.product, pct: v.max > 0 ? Math.round((v.score/v.max)*100) : 0, score:v.score, max:v.max }))
+    .sort((a,b) => b.pct - a.pct);
+
+  const totalScore = scored.reduce((a,c)=>a+c.score,0);
+  const totalMax = scored.reduce((a,c)=>a+c.max,0);
+  const overallPct = totalMax > 0 ? Math.round((totalScore/totalMax)*100) : 0;
+  const risk = overallPct < 30 ? 'Low Risk' : overallPct < 60 ? 'Moderate Risk' : 'High Risk';
+  const riskClass = overallPct < 30 ? 'risk-low' : overallPct < 60 ? 'risk-mod' : 'risk-high';
+  const riskEmoji = overallPct < 30 ? '✅' : overallPct < 60 ? '⚠️' : '🚨';
+  const products = [...new Set(scored.slice(0,4).map(s=>s.product).filter(Boolean))];
+
+  const aiNote = overallPct < 30
+    ? \`Based on your responses, \${session.userName}, your clinical indicators appear within healthy ranges. Focus on preventive supplementation and maintain your current lifestyle habits.\`
+    : overallPct < 60
+    ? \`\${session.userName}, your assessment reveals moderate risk signals in \${scored.slice(0,2).map(s=>s.label).join(' and ')}. Early intervention with targeted Kedi protocols is strongly recommended.\`
+    : \`\${session.userName}, your clinical responses indicate elevated risk across multiple systems, especially \${scored.slice(0,2).map(s=>s.label).join(' and ')}. Immediate protocol intervention is advised. Begin the recommended regimen below and consult a clinical advisor.\`;
+
+  render(\`
+    <div class="fade-up">
+      <div style="text-align:center;padding:40px 0 32px;">
+        <div style="font-size:60px;margin-bottom:16px;">\${riskEmoji}</div>
+        <h1 style="font-size:clamp(36px,6vw,64px);font-weight:900;margin-bottom:8px;">Your Clinical <br><span class="\${riskClass}">\${risk}</span></h1>
+        <p style="color:#9ca3af;font-size:16px;">Score: <strong style="color:white;">\${overallPct}%</strong> &bull; \${totalScore}pts of \${totalMax}pts</p>
+      </div>
+
+      <!-- AI NOTE -->
+      <div class="glass" style="padding:32px;margin-bottom:24px;border-color:rgba(16,185,129,0.2);">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <div style="width:40px;height:40px;background:#10B981;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;">🩺</div>
+          <div>
+            <h3 style="font-weight:900;font-size:16px;">AI Doctor Note</h3>
+            <p style="font-size:11px;color:#10B981;font-weight:700;text-transform:uppercase;">Personalized for \${session.userName}</p>
+          </div>
+        </div>
+        <p style="color:#d1d5db;font-size:16px;line-height:1.7;font-style:italic;">\${aiNote}</p>
+      </div>
+
+      <!-- DISEASE SCORES -->
+      <div style="margin-bottom:24px;">
+        <h3 style="font-size:18px;font-weight:900;margin-bottom:16px;">Disease Risk Breakdown</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
+          \${scored.map(s => {
+            const fillClass = s.pct < 30 ? 'score-fill-low' : s.pct < 60 ? 'score-fill-mod' : 'score-fill-high';
+            const textClass = s.pct < 30 ? 'risk-low' : s.pct < 60 ? 'risk-mod' : 'risk-high';
+            return \`<div class="glass" style="padding:20px;">
+              <p style="font-size:12px;font-weight:700;color:#6b7280;text-transform:uppercase;margin-bottom:8px;">\${s.label}</p>
+              <div class="score-bar"><div class="\${fillClass}" style="width:\${Math.min(s.pct,100)}%;"></div></div>
+              <div style="display:flex;justify-content:space-between;margin-top:6px;">
+                <span class="\${textClass}" style="font-size:20px;font-weight:900;">\${s.pct}%</span>
+                <span style="font-size:11px;color:#6b7280;font-weight:700;">\${s.score}/\${s.max}pts</span>
+              </div>
+            </div>\`;
+          }).join('')}
+        </div>
+      </div>
+
+      <!-- PROTOCOL RECS -->
+      <div class="glass" style="padding:28px;margin-bottom:24px;">
+        <h3 style="font-size:18px;font-weight:900;margin-bottom:20px;">Recommended Clinical Protocols</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+          \${products.map(pid => \`
+            <div style="display:flex;gap:14px;align-items:center;padding:16px;background:rgba(255,255,255,0.04);border-radius:16px;border:1px solid rgba(255,255,255,0.06);">
+              <img src="assets/img/product/\${pid}.png" style="width:60px;height:60px;object-fit:contain;border-radius:12px;" onerror="this.src='assets/img/product/Reishi.png'">
+              <div>
+                <h4 style="font-weight:800;font-size:14px;margin-bottom:4px;text-transform:capitalize;">\${pid.replace(/-/g,' ')}</h4>
+                <p style="font-size:11px;color:#6b7280;margin-bottom:8px;">Clinical Protocol</p>
+                <a href="product-template.html?id=\${pid}" style="font-size:12px;font-weight:700;color:#10B981;text-decoration:none;">View Protocol →</a>
+              </div>
+            </div>
+          \`).join('')}
+        </div>
+      </div>
+
+      <!-- UPSELL BUNDLES -->
+      <div style="background:linear-gradient(135deg,#064e3b,#10b981);border-radius:20px;padding:28px;margin-bottom:24px;">
+        <h3 style="font-size:18px;font-weight:900;margin-bottom:8px;">🎁 Clinical Bundle Offer</h3>
+        <p style="color:rgba(255,255,255,0.8);margin-bottom:20px;">Based on your risk profile, our clinical team recommends the <strong>Immune Armor Bundle</strong> (Reishi + Golden Hypha) at 15% off.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="shop.html" style="background:white;color:#064e3b;padding:12px 24px;border-radius:50px;font-weight:800;text-decoration:none;font-size:14px;">Shop Bundles →</a>
+          <a href="franchise.html" style="background:rgba(255,255,255,0.15);color:white;border:1px solid rgba(255,255,255,0.3);padding:12px 24px;border-radius:50px;font-weight:700;text-decoration:none;font-size:14px;">Join Franchise</a>
+        </div>
+      </div>
+
+      <!-- ACTIONS -->
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <button class="btn-em" onclick="shareWA()" style="flex:1;min-width:140px;">📱 WhatsApp</button>
+        <button class="btn-ghost" onclick="downloadJSON()" style="flex:1;min-width:140px;">⬇ Download Report</button>
+        <button class="btn-ghost" onclick="renderWelcome()" style="flex:1;min-width:140px;">🔄 Retake</button>
+        <a href="shop.html" style="flex:1;min-width:140px;background:#10B981;color:white;border-radius:16px;padding:14px 28px;font-weight:800;text-decoration:none;text-align:center;">🛒 Shop</a>
+      </div>
+
+      <!-- SEO SECTION -->
+      <div style="margin-top:60px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.05);">
+        <h3 style="font-size:16px;font-weight:900;margin-bottom:16px;color:#6b7280;">Related Clinical Questions</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          \${(bank.questions||[]).slice(0,20).map(q=>\`<a href="seo-q/\${q.seoSlug}.html" style="font-size:12px;padding:6px 14px;border-radius:100px;background:rgba(255,255,255,0.04);color:#9ca3af;text-decoration:none;border:1px solid rgba(255,255,255,0.06);">\${q.question.substring(0,40)}...</a>\`).join('')}
+        </div>
+      </div>
+    </div>
+  \`);
+}
+
+function shareWA() {
+  const msg = 'I just got my personalized AI health diagnosis from Kedi-J AI Doctor. Get yours FREE at auraherbs.ng/ai-doctor.html';
+  window.open('https://wa.me/?text=' + encodeURIComponent(msg));
+}
+function downloadJSON() {
+  const data = { patient: session.userName, date: new Date().toISOString(), scores: session.scores, answers: session.answers.slice(0,10) };
+  const a = document.createElement('a');
+  a.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data, null, 2));
+  a.download = 'aura-health-report.json';
+  a.click();
+}
+window.shareWA = shareWA; window.downloadJSON = downloadJSON; window.renderWelcome = renderWelcome;
+
+init();
+</script>
+</body>
+</html>`;
+
+fs.writeFileSync('ai-doctor.html', html, 'utf8');
+console.log('ai-doctor.html created successfully (' + html.length + ' bytes)');

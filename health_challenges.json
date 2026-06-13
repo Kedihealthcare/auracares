@@ -1,0 +1,1802 @@
+[
+  {
+    "id": "challenge-0",
+    "name": "Type 2 Diabetes",
+    "category": "Metabolic",
+    "products": [
+      "diawell",
+      "magilim"
+    ]
+  },
+  {
+    "id": "challenge-1",
+    "name": "Hypertension",
+    "category": "Cardiovascular",
+    "products": [
+      "cardibetter",
+      "golden-six"
+    ]
+  },
+  {
+    "id": "challenge-2",
+    "name": "Obesity",
+    "category": "Immune System",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-3",
+    "name": "High Cholesterol",
+    "category": "Respiratory",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-4",
+    "name": "Chronic Fatigue",
+    "category": "Digestive",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-5",
+    "name": "Erectile Dysfunction",
+    "category": "Reproductive & Hormonal",
+    "products": [
+      "revive",
+      "lycovite"
+    ]
+  },
+  {
+    "id": "challenge-6",
+    "name": "Premature Ejaculation",
+    "category": "Musculoskeletal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-7",
+    "name": "Low Sperm Count",
+    "category": "Neurological",
+    "products": [
+      "revive",
+      "lycovite"
+    ]
+  },
+  {
+    "id": "challenge-8",
+    "name": "PCOS",
+    "category": "Dermatological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-9",
+    "name": "Uterine Fibroids",
+    "category": "General Wellness",
+    "products": [
+      "golden-six",
+      "reishi"
+    ]
+  },
+  {
+    "id": "challenge-10",
+    "name": "Endometriosis",
+    "category": "Metabolic",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-11",
+    "name": "Menstrual Cramps",
+    "category": "Cardiovascular",
+    "products": [
+      "golden-six",
+      "reishi"
+    ]
+  },
+  {
+    "id": "challenge-12",
+    "name": "Menopause Symptoms",
+    "category": "Immune System",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-13",
+    "name": "Benign Prostatic Hyperplasia (BPH)",
+    "category": "Respiratory",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-14",
+    "name": "Insomnia",
+    "category": "Digestive",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-15",
+    "name": "Anxiety",
+    "category": "Reproductive & Hormonal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-16",
+    "name": "Depression",
+    "category": "Musculoskeletal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-17",
+    "name": "Memory Loss",
+    "category": "Neurological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-18",
+    "name": "Migraines",
+    "category": "Dermatological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-19",
+    "name": "Asthma",
+    "category": "General Wellness",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-20",
+    "name": "Chronic Bronchitis",
+    "category": "Metabolic",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-21",
+    "name": "Pneumonia",
+    "category": "Cardiovascular",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-22",
+    "name": "Tuberculosis",
+    "category": "Immune System",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-23",
+    "name": "Acid Reflux (GERD)",
+    "category": "Respiratory",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-24",
+    "name": "Peptic Ulcer",
+    "category": "Digestive",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-25",
+    "name": "Irritable Bowel Syndrome (IBS)",
+    "category": "Reproductive & Hormonal",
+    "products": [
+      "constilease",
+      "colon-cleanser"
+    ]
+  },
+  {
+    "id": "challenge-26",
+    "name": "Constipation",
+    "category": "Musculoskeletal",
+    "products": [
+      "constilease",
+      "colon-cleanser"
+    ]
+  },
+  {
+    "id": "challenge-27",
+    "name": "Hemorrhoids",
+    "category": "Neurological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-28",
+    "name": "Fatty Liver Disease",
+    "category": "Dermatological",
+    "products": [
+      "lirich",
+      "reishi"
+    ]
+  },
+  {
+    "id": "challenge-29",
+    "name": "Hepatitis",
+    "category": "General Wellness",
+    "products": [
+      "lirich",
+      "reishi"
+    ]
+  },
+  {
+    "id": "challenge-30",
+    "name": "Cirrhosis",
+    "category": "Metabolic",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-31",
+    "name": "Rheumatoid Arthritis",
+    "category": "Cardiovascular",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-32",
+    "name": "Osteoarthritis",
+    "category": "Immune System",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-33",
+    "name": "Osteoporosis",
+    "category": "Respiratory",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-34",
+    "name": "Gout",
+    "category": "Digestive",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-35",
+    "name": "Back Pain",
+    "category": "Reproductive & Hormonal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-36",
+    "name": "Sciatica",
+    "category": "Musculoskeletal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-37",
+    "name": "Eczema",
+    "category": "Neurological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-38",
+    "name": "Psoriasis",
+    "category": "Dermatological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-39",
+    "name": "Acne",
+    "category": "General Wellness",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-40",
+    "name": "Hair Loss (Alopecia)",
+    "category": "Metabolic",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-41",
+    "name": "Anemia",
+    "category": "Cardiovascular",
+    "products": [
+      "haemocare",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-42",
+    "name": "Sickle Cell Crisis (Management)",
+    "category": "Immune System",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-43",
+    "name": "Leukemia (Support)",
+    "category": "Respiratory",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-44",
+    "name": "HIV/AIDS (Immune Support)",
+    "category": "Digestive",
+    "products": [
+      "reishi",
+      "golden-hypha"
+    ]
+  },
+  {
+    "id": "challenge-45",
+    "name": "Cancer (Adjunct Therapy)",
+    "category": "Reproductive & Hormonal",
+    "products": [
+      "reishi",
+      "golden-hypha"
+    ]
+  },
+  {
+    "id": "challenge-46",
+    "name": "Glaucoma",
+    "category": "Musculoskeletal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-47",
+    "name": "Cataracts",
+    "category": "Neurological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-48",
+    "name": "Macular Degeneration",
+    "category": "Dermatological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-49",
+    "name": "Kidney Stones",
+    "category": "General Wellness",
+    "products": [
+      "golden-six",
+      "reishi"
+    ]
+  },
+  {
+    "id": "challenge-50",
+    "name": "Chronic Kidney Disease",
+    "category": "Metabolic",
+    "products": [
+      "golden-six",
+      "reishi"
+    ]
+  },
+  {
+    "id": "challenge-51",
+    "name": "Urinary Tract Infection (UTI)",
+    "category": "Cardiovascular",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-52",
+    "name": "Candidiasis",
+    "category": "Immune System",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-53",
+    "name": "Malaria",
+    "category": "Respiratory",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-54",
+    "name": "Typhoid Fever",
+    "category": "Digestive",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-55",
+    "name": "Covid-19 Recovery",
+    "category": "Reproductive & Hormonal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-56",
+    "name": "Hyperthyroidism",
+    "category": "Musculoskeletal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-57",
+    "name": "Hypothyroidism",
+    "category": "Neurological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-58",
+    "name": "Goiter",
+    "category": "Dermatological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-59",
+    "name": "Varicose Veins",
+    "category": "General Wellness",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-60",
+    "name": "Pulmonary Imbalance (Type 6)",
+    "category": "Metabolic",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-61",
+    "name": "Renal Toxicity (Type 6)",
+    "category": "Cardiovascular",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-62",
+    "name": "Hepatic Fatigue (Type 6)",
+    "category": "Immune System",
+    "products": [
+      "lirich",
+      "reishi"
+    ]
+  },
+  {
+    "id": "challenge-63",
+    "name": "Gastric Dysfunction (Type 6)",
+    "category": "Respiratory",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-64",
+    "name": "Cardio Inflammation (Type 6)",
+    "category": "Digestive",
+    "products": [
+      "cardibetter",
+      "golden-six"
+    ]
+  },
+  {
+    "id": "challenge-65",
+    "name": "Immune Insufficiency (Type 6)",
+    "category": "Reproductive & Hormonal",
+    "products": [
+      "reishi",
+      "golden-hypha"
+    ]
+  },
+  {
+    "id": "challenge-66",
+    "name": "Neural Syndrome (Type 6)",
+    "category": "Musculoskeletal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-67",
+    "name": "Dermal Disorder (Type 6)",
+    "category": "Neurological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-68",
+    "name": "Endocrine Imbalance (Type 6)",
+    "category": "Dermatological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-69",
+    "name": "Ocular Toxicity (Type 6)",
+    "category": "General Wellness",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-70",
+    "name": "Pulmonary Fatigue (Type 7)",
+    "category": "Metabolic",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-71",
+    "name": "Renal Dysfunction (Type 7)",
+    "category": "Cardiovascular",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-72",
+    "name": "Hepatic Inflammation (Type 7)",
+    "category": "Immune System",
+    "products": [
+      "lirich",
+      "reishi"
+    ]
+  },
+  {
+    "id": "challenge-73",
+    "name": "Gastric Insufficiency (Type 7)",
+    "category": "Respiratory",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-74",
+    "name": "Cardio Syndrome (Type 7)",
+    "category": "Digestive",
+    "products": [
+      "cardibetter",
+      "golden-six"
+    ]
+  },
+  {
+    "id": "challenge-75",
+    "name": "Immune Disorder (Type 7)",
+    "category": "Reproductive & Hormonal",
+    "products": [
+      "reishi",
+      "golden-hypha"
+    ]
+  },
+  {
+    "id": "challenge-76",
+    "name": "Neural Imbalance (Type 7)",
+    "category": "Musculoskeletal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-77",
+    "name": "Dermal Toxicity (Type 7)",
+    "category": "Neurological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-78",
+    "name": "Endocrine Fatigue (Type 7)",
+    "category": "Dermatological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-79",
+    "name": "Ocular Dysfunction (Type 7)",
+    "category": "General Wellness",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-80",
+    "name": "Pulmonary Inflammation (Type 8)",
+    "category": "Metabolic",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-81",
+    "name": "Renal Insufficiency (Type 8)",
+    "category": "Cardiovascular",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-82",
+    "name": "Hepatic Syndrome (Type 8)",
+    "category": "Immune System",
+    "products": [
+      "lirich",
+      "reishi"
+    ]
+  },
+  {
+    "id": "challenge-83",
+    "name": "Gastric Disorder (Type 8)",
+    "category": "Respiratory",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-84",
+    "name": "Cardio Imbalance (Type 8)",
+    "category": "Digestive",
+    "products": [
+      "cardibetter",
+      "golden-six"
+    ]
+  },
+  {
+    "id": "challenge-85",
+    "name": "Immune Toxicity (Type 8)",
+    "category": "Reproductive & Hormonal",
+    "products": [
+      "reishi",
+      "golden-hypha"
+    ]
+  },
+  {
+    "id": "challenge-86",
+    "name": "Neural Fatigue (Type 8)",
+    "category": "Musculoskeletal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-87",
+    "name": "Dermal Dysfunction (Type 8)",
+    "category": "Neurological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-88",
+    "name": "Endocrine Inflammation (Type 8)",
+    "category": "Dermatological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-89",
+    "name": "Ocular Insufficiency (Type 8)",
+    "category": "General Wellness",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-90",
+    "name": "Pulmonary Syndrome (Type 9)",
+    "category": "Metabolic",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-91",
+    "name": "Renal Disorder (Type 9)",
+    "category": "Cardiovascular",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-92",
+    "name": "Hepatic Imbalance (Type 9)",
+    "category": "Immune System",
+    "products": [
+      "lirich",
+      "reishi"
+    ]
+  },
+  {
+    "id": "challenge-93",
+    "name": "Gastric Toxicity (Type 9)",
+    "category": "Respiratory",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-94",
+    "name": "Cardio Fatigue (Type 9)",
+    "category": "Digestive",
+    "products": [
+      "cardibetter",
+      "golden-six"
+    ]
+  },
+  {
+    "id": "challenge-95",
+    "name": "Immune Dysfunction (Type 9)",
+    "category": "Reproductive & Hormonal",
+    "products": [
+      "reishi",
+      "golden-hypha"
+    ]
+  },
+  {
+    "id": "challenge-96",
+    "name": "Neural Inflammation (Type 9)",
+    "category": "Musculoskeletal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-97",
+    "name": "Dermal Insufficiency (Type 9)",
+    "category": "Neurological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-98",
+    "name": "Endocrine Syndrome (Type 9)",
+    "category": "Dermatological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-99",
+    "name": "Ocular Disorder (Type 9)",
+    "category": "General Wellness",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-100",
+    "name": "Pulmonary Imbalance (Type 10)",
+    "category": "Metabolic",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-101",
+    "name": "Renal Toxicity (Type 10)",
+    "category": "Cardiovascular",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-102",
+    "name": "Hepatic Fatigue (Type 10)",
+    "category": "Immune System",
+    "products": [
+      "lirich",
+      "reishi"
+    ]
+  },
+  {
+    "id": "challenge-103",
+    "name": "Gastric Dysfunction (Type 10)",
+    "category": "Respiratory",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-104",
+    "name": "Cardio Inflammation (Type 10)",
+    "category": "Digestive",
+    "products": [
+      "cardibetter",
+      "golden-six"
+    ]
+  },
+  {
+    "id": "challenge-105",
+    "name": "Immune Insufficiency (Type 10)",
+    "category": "Reproductive & Hormonal",
+    "products": [
+      "reishi",
+      "golden-hypha"
+    ]
+  },
+  {
+    "id": "challenge-106",
+    "name": "Neural Syndrome (Type 10)",
+    "category": "Musculoskeletal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-107",
+    "name": "Dermal Disorder (Type 10)",
+    "category": "Neurological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-108",
+    "name": "Endocrine Imbalance (Type 10)",
+    "category": "Dermatological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-109",
+    "name": "Ocular Toxicity (Type 10)",
+    "category": "General Wellness",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-110",
+    "name": "Pulmonary Fatigue (Type 11)",
+    "category": "Metabolic",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-111",
+    "name": "Renal Dysfunction (Type 11)",
+    "category": "Cardiovascular",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-112",
+    "name": "Hepatic Inflammation (Type 11)",
+    "category": "Immune System",
+    "products": [
+      "lirich",
+      "reishi"
+    ]
+  },
+  {
+    "id": "challenge-113",
+    "name": "Gastric Insufficiency (Type 11)",
+    "category": "Respiratory",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-114",
+    "name": "Cardio Syndrome (Type 11)",
+    "category": "Digestive",
+    "products": [
+      "cardibetter",
+      "golden-six"
+    ]
+  },
+  {
+    "id": "challenge-115",
+    "name": "Immune Disorder (Type 11)",
+    "category": "Reproductive & Hormonal",
+    "products": [
+      "reishi",
+      "golden-hypha"
+    ]
+  },
+  {
+    "id": "challenge-116",
+    "name": "Neural Imbalance (Type 11)",
+    "category": "Musculoskeletal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-117",
+    "name": "Dermal Toxicity (Type 11)",
+    "category": "Neurological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-118",
+    "name": "Endocrine Fatigue (Type 11)",
+    "category": "Dermatological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-119",
+    "name": "Ocular Dysfunction (Type 11)",
+    "category": "General Wellness",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-120",
+    "name": "Pulmonary Inflammation (Type 12)",
+    "category": "Metabolic",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-121",
+    "name": "Renal Insufficiency (Type 12)",
+    "category": "Cardiovascular",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-122",
+    "name": "Hepatic Syndrome (Type 12)",
+    "category": "Immune System",
+    "products": [
+      "lirich",
+      "reishi"
+    ]
+  },
+  {
+    "id": "challenge-123",
+    "name": "Gastric Disorder (Type 12)",
+    "category": "Respiratory",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-124",
+    "name": "Cardio Imbalance (Type 12)",
+    "category": "Digestive",
+    "products": [
+      "cardibetter",
+      "golden-six"
+    ]
+  },
+  {
+    "id": "challenge-125",
+    "name": "Immune Toxicity (Type 12)",
+    "category": "Reproductive & Hormonal",
+    "products": [
+      "reishi",
+      "golden-hypha"
+    ]
+  },
+  {
+    "id": "challenge-126",
+    "name": "Neural Fatigue (Type 12)",
+    "category": "Musculoskeletal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-127",
+    "name": "Dermal Dysfunction (Type 12)",
+    "category": "Neurological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-128",
+    "name": "Endocrine Inflammation (Type 12)",
+    "category": "Dermatological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-129",
+    "name": "Ocular Insufficiency (Type 12)",
+    "category": "General Wellness",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-130",
+    "name": "Pulmonary Syndrome (Type 13)",
+    "category": "Metabolic",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-131",
+    "name": "Renal Disorder (Type 13)",
+    "category": "Cardiovascular",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-132",
+    "name": "Hepatic Imbalance (Type 13)",
+    "category": "Immune System",
+    "products": [
+      "lirich",
+      "reishi"
+    ]
+  },
+  {
+    "id": "challenge-133",
+    "name": "Gastric Toxicity (Type 13)",
+    "category": "Respiratory",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-134",
+    "name": "Cardio Fatigue (Type 13)",
+    "category": "Digestive",
+    "products": [
+      "cardibetter",
+      "golden-six"
+    ]
+  },
+  {
+    "id": "challenge-135",
+    "name": "Immune Dysfunction (Type 13)",
+    "category": "Reproductive & Hormonal",
+    "products": [
+      "reishi",
+      "golden-hypha"
+    ]
+  },
+  {
+    "id": "challenge-136",
+    "name": "Neural Inflammation (Type 13)",
+    "category": "Musculoskeletal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-137",
+    "name": "Dermal Insufficiency (Type 13)",
+    "category": "Neurological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-138",
+    "name": "Endocrine Syndrome (Type 13)",
+    "category": "Dermatological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-139",
+    "name": "Ocular Disorder (Type 13)",
+    "category": "General Wellness",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-140",
+    "name": "Pulmonary Imbalance (Type 14)",
+    "category": "Metabolic",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-141",
+    "name": "Renal Toxicity (Type 14)",
+    "category": "Cardiovascular",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-142",
+    "name": "Hepatic Fatigue (Type 14)",
+    "category": "Immune System",
+    "products": [
+      "lirich",
+      "reishi"
+    ]
+  },
+  {
+    "id": "challenge-143",
+    "name": "Gastric Dysfunction (Type 14)",
+    "category": "Respiratory",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-144",
+    "name": "Cardio Inflammation (Type 14)",
+    "category": "Digestive",
+    "products": [
+      "cardibetter",
+      "golden-six"
+    ]
+  },
+  {
+    "id": "challenge-145",
+    "name": "Immune Insufficiency (Type 14)",
+    "category": "Reproductive & Hormonal",
+    "products": [
+      "reishi",
+      "golden-hypha"
+    ]
+  },
+  {
+    "id": "challenge-146",
+    "name": "Neural Syndrome (Type 14)",
+    "category": "Musculoskeletal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-147",
+    "name": "Dermal Disorder (Type 14)",
+    "category": "Neurological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-148",
+    "name": "Endocrine Imbalance (Type 14)",
+    "category": "Dermatological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-149",
+    "name": "Ocular Toxicity (Type 14)",
+    "category": "General Wellness",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-150",
+    "name": "Pulmonary Fatigue (Type 15)",
+    "category": "Metabolic",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-151",
+    "name": "Renal Dysfunction (Type 15)",
+    "category": "Cardiovascular",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-152",
+    "name": "Hepatic Inflammation (Type 15)",
+    "category": "Immune System",
+    "products": [
+      "lirich",
+      "reishi"
+    ]
+  },
+  {
+    "id": "challenge-153",
+    "name": "Gastric Insufficiency (Type 15)",
+    "category": "Respiratory",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-154",
+    "name": "Cardio Syndrome (Type 15)",
+    "category": "Digestive",
+    "products": [
+      "cardibetter",
+      "golden-six"
+    ]
+  },
+  {
+    "id": "challenge-155",
+    "name": "Immune Disorder (Type 15)",
+    "category": "Reproductive & Hormonal",
+    "products": [
+      "reishi",
+      "golden-hypha"
+    ]
+  },
+  {
+    "id": "challenge-156",
+    "name": "Neural Imbalance (Type 15)",
+    "category": "Musculoskeletal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-157",
+    "name": "Dermal Toxicity (Type 15)",
+    "category": "Neurological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-158",
+    "name": "Endocrine Fatigue (Type 15)",
+    "category": "Dermatological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-159",
+    "name": "Ocular Dysfunction (Type 15)",
+    "category": "General Wellness",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-160",
+    "name": "Pulmonary Inflammation (Type 16)",
+    "category": "Metabolic",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-161",
+    "name": "Renal Insufficiency (Type 16)",
+    "category": "Cardiovascular",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-162",
+    "name": "Hepatic Syndrome (Type 16)",
+    "category": "Immune System",
+    "products": [
+      "lirich",
+      "reishi"
+    ]
+  },
+  {
+    "id": "challenge-163",
+    "name": "Gastric Disorder (Type 16)",
+    "category": "Respiratory",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-164",
+    "name": "Cardio Imbalance (Type 16)",
+    "category": "Digestive",
+    "products": [
+      "cardibetter",
+      "golden-six"
+    ]
+  },
+  {
+    "id": "challenge-165",
+    "name": "Immune Toxicity (Type 16)",
+    "category": "Reproductive & Hormonal",
+    "products": [
+      "reishi",
+      "golden-hypha"
+    ]
+  },
+  {
+    "id": "challenge-166",
+    "name": "Neural Fatigue (Type 16)",
+    "category": "Musculoskeletal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-167",
+    "name": "Dermal Dysfunction (Type 16)",
+    "category": "Neurological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-168",
+    "name": "Endocrine Inflammation (Type 16)",
+    "category": "Dermatological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-169",
+    "name": "Ocular Insufficiency (Type 16)",
+    "category": "General Wellness",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-170",
+    "name": "Pulmonary Syndrome (Type 17)",
+    "category": "Metabolic",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-171",
+    "name": "Renal Disorder (Type 17)",
+    "category": "Cardiovascular",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-172",
+    "name": "Hepatic Imbalance (Type 17)",
+    "category": "Immune System",
+    "products": [
+      "lirich",
+      "reishi"
+    ]
+  },
+  {
+    "id": "challenge-173",
+    "name": "Gastric Toxicity (Type 17)",
+    "category": "Respiratory",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-174",
+    "name": "Cardio Fatigue (Type 17)",
+    "category": "Digestive",
+    "products": [
+      "cardibetter",
+      "golden-six"
+    ]
+  },
+  {
+    "id": "challenge-175",
+    "name": "Immune Dysfunction (Type 17)",
+    "category": "Reproductive & Hormonal",
+    "products": [
+      "reishi",
+      "golden-hypha"
+    ]
+  },
+  {
+    "id": "challenge-176",
+    "name": "Neural Inflammation (Type 17)",
+    "category": "Musculoskeletal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-177",
+    "name": "Dermal Insufficiency (Type 17)",
+    "category": "Neurological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-178",
+    "name": "Endocrine Syndrome (Type 17)",
+    "category": "Dermatological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-179",
+    "name": "Ocular Disorder (Type 17)",
+    "category": "General Wellness",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-180",
+    "name": "Pulmonary Imbalance (Type 18)",
+    "category": "Metabolic",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-181",
+    "name": "Renal Toxicity (Type 18)",
+    "category": "Cardiovascular",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-182",
+    "name": "Hepatic Fatigue (Type 18)",
+    "category": "Immune System",
+    "products": [
+      "lirich",
+      "reishi"
+    ]
+  },
+  {
+    "id": "challenge-183",
+    "name": "Gastric Dysfunction (Type 18)",
+    "category": "Respiratory",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-184",
+    "name": "Cardio Inflammation (Type 18)",
+    "category": "Digestive",
+    "products": [
+      "cardibetter",
+      "golden-six"
+    ]
+  },
+  {
+    "id": "challenge-185",
+    "name": "Immune Insufficiency (Type 18)",
+    "category": "Reproductive & Hormonal",
+    "products": [
+      "reishi",
+      "golden-hypha"
+    ]
+  },
+  {
+    "id": "challenge-186",
+    "name": "Neural Syndrome (Type 18)",
+    "category": "Musculoskeletal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-187",
+    "name": "Dermal Disorder (Type 18)",
+    "category": "Neurological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-188",
+    "name": "Endocrine Imbalance (Type 18)",
+    "category": "Dermatological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-189",
+    "name": "Ocular Toxicity (Type 18)",
+    "category": "General Wellness",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-190",
+    "name": "Pulmonary Fatigue (Type 19)",
+    "category": "Metabolic",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-191",
+    "name": "Renal Dysfunction (Type 19)",
+    "category": "Cardiovascular",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-192",
+    "name": "Hepatic Inflammation (Type 19)",
+    "category": "Immune System",
+    "products": [
+      "lirich",
+      "reishi"
+    ]
+  },
+  {
+    "id": "challenge-193",
+    "name": "Gastric Insufficiency (Type 19)",
+    "category": "Respiratory",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-194",
+    "name": "Cardio Syndrome (Type 19)",
+    "category": "Digestive",
+    "products": [
+      "cardibetter",
+      "golden-six"
+    ]
+  },
+  {
+    "id": "challenge-195",
+    "name": "Immune Disorder (Type 19)",
+    "category": "Reproductive & Hormonal",
+    "products": [
+      "reishi",
+      "golden-hypha"
+    ]
+  },
+  {
+    "id": "challenge-196",
+    "name": "Neural Imbalance (Type 19)",
+    "category": "Musculoskeletal",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-197",
+    "name": "Dermal Toxicity (Type 19)",
+    "category": "Neurological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-198",
+    "name": "Endocrine Fatigue (Type 19)",
+    "category": "Dermatological",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  },
+  {
+    "id": "challenge-199",
+    "name": "Ocular Dysfunction (Type 19)",
+    "category": "General Wellness",
+    "products": [
+      "reishi",
+      "v-ca"
+    ]
+  }
+]

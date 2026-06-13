@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Settlement | Aura Herbs - Global Health Intelligence</title>
+    <meta name="description" content="Complete your clinical protocol acquisition through our secure Nigerian Naira (&#8358;) settlement gateway. Aura Herbs Clinical Global.">
+    
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="images/x-icon"/>
+
+    <!-- ======= AURA HERBS CLINICAL SEO & ARCHITECTURE ======= -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CheckoutPage",
+          "name": "Secure Clinical Settlement",
+          "publisher": {
+            "@type": "MedicalOrganization",
+            "name": "Aura Herbs Clinical Global",
+            "url": "https://www.auraherbs.vercel.app"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- UI/UX Assets -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/kedi-optimise.css">
+    <style>
+        .active-currency { border: 2px solid #10b981 !important; color: #10b981 !important; transform: scale(1.1); font-weight: 900 !important; background: rgba(16, 185, 129, 0.1) !important; }
+        .currency-switch-btn { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+    </style>
+    <!-- Firebase Integration -->
+    <script type="module" src="assets/js/firebase-init.js"></script>
+    <link rel="stylesheet" href="assets/css/responsive.css"/>
+</head>
+
+<body class="selection:bg-emerald-100 antialiased bg-slate-50">
+
+    <!-- ======= HEADER & NAVIGATION (Synchronized) ======= -->
+    <!-- header start -->
+<header class="header header__style-three">
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span class="icon-menu"></span></button>
+            <div class="header__top">
+                <div class="container mxw_1360">
+                    <div class="header__top-info ul_li_between mt-none-10">
+                        <ul class="header__top-left ul_li mt-10">
+                            <li><a href="#!">Call us</a> free 24/7 : (555) 172-244-7888</li>
+                            <li><i class="fas fa-envelope"></i> info@kedihealth.com</li>
+                        </ul>
+                        <ul class="header__top-right ul_li mt-10">
+                            <li><i class="fas fa-leaf"></i>Wellness First</li>
+                            <li><i class="fas fa-map-marker-alt"></i>Lagos, Nigeria</li>
+                            <li><a href="#!"><i class="fas fa-star"></i>My Wishlist</a></li>
+                            <li><a href="checkout.html"><i class="far fa-check-circle"></i>Checkout</a></li>
+                            <li>
+                                <div class="header__language currency aura-currency-switcher">
+                                    <ul>
+                                        <li>
+                                            <a href="#!" class="lang-btn">
+                                                <span class="current-currency-symbol">&#8358;</span>
+                                                <i class="far fa-chevron-down"></i>
+                                            </a>
+                                            <ul class="lang_sub_list">
+                                                <li><a href="#" data-currency-set="NGN">&#8358; NGN</a></li>
+                                                <li><a href="#" data-currency-set="USD">$ USD</a></li>
+                                                <li><a href="#" data-currency-set="PI">&#960; Pi</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container mxw_1360">
+                <div class="header__middle ul_li_between">
+                    <div class="header__logo">
+                        <a href="index.html">
+                            <img src="assets/img/logo/logo.svg" alt="Kedi Healthcare">
+                        </a>
+                    </div>
+                    <div class="header-date">
+                        <i class="far fa-calendar-alt"></i><span id="header-live-date">Loading...</span>
+                        <script>
+                            (function(){
+                                var d = new Date();
+                                var opts = { weekday:'long', year:'numeric', month:'short', day:'numeric' };
+                                var el = document.getElementById('header-live-date');
+                                if(el) el.textContent = d.toLocaleDateString('en-US', opts);
+                            })();
+                        </script>
+                    </div>
+                    <div class="add">
+                        <a href="shop.html">
+                            <img src="assets/img/product/beaty soap.jpeg" alt="Kedi Soap" style="max-height: 80px; width: auto; object-fit: contain;">
+                        </a>
+                    </div>
+                    <div class="d-none d-lg-block">
+                        <div class="ul_li">
+                            <div class="header__language style-2 mr-25">
+                                <ul>
+                                    <li>
+                                        <a href="#!" class="lang-btn"><img src="assets/img/icon/usd_flag.png" alt=""> English <i class="far fa-chevron-down"></i></a>
+                                        <ul class="lang_sub_list">
+                                            <li><a href="#">English</a></li>
+                                            <li><a href="#">Yoruba</a></li>
+                                            <li><a href="#">Hausa</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header__social">
+                                <a href="#!"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#!"><i class="fab fa-twitter"></i></a>
+                                <a href="#!"><i class="fab fa-instagram"></i></a>
+                                <a href="#!"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header__wrap" data-uk-sticky="top: 250; animation: uk-animation-slide-top;">
+                <div class="container mxw_1360">
+                    <div class="header__main ul_li">
+                        <div class="header__logo">
+                            <a href="index.html">
+                                <img src="assets/img/logo/logo.svg" alt="Kedi Healthcare">
+                            </a>
+                        </div>
+                        <div class="header__category">
+                            <a class="header__category-nav" href="#!"><img class="bar" src="assets/img/icon/bar.svg" alt="">Browse Categories<i class="fas fa-chevron-down"></i></a>
+                        </div>
+                        <div class="hamburger_menu d-lg-none">
+                            <a href="javascript:void(0);" class="active">
+                                <div class="icon bar">
+                                    <span><i class="fal fa-bars"></i></span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="main-menu navbar navbar-expand-lg">
+                            <nav class="main-menu__nav collapse navbar-collapse">
+                                <ul>
+                                    <li class="menu-item-has-children has-mega-menu active"><a href="index.html">Home</a>
+                                        <ul class="mega-menu">
+                                            <li>
+                                                <div class="mega-menu-content">
+                                                    <div class="row">
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="index.html">
+                                                                    <img src="assets/img/demo/demo-1.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 1</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="home-2.html">
+                                                                    <img src="assets/img/demo/demo-2.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 2</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="home-3.html">
+                                                                    <img src="assets/img/demo/demo-3.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 3</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic coming-soon">
+                                                                <span>Coming Soon</span>
+                                                            </div>
+                                                            <h3>Coming Soon</h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Shop</a>
+                                        <ul class="submenu">
+                                            <li><a href="shop.html">Shop Default</a></li>
+                                            <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
+                                            <li><a href="shop-single.html">Shop Single</a></li>
+                                            <li><a href="cart.html">Shop Cart</a></li>
+                                            <li><a href="checkout.html">Shop Checkout</a></li>
+                                            <li><a href="account.html">Account</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="health-challenges.html">Clinical Encyclopedia</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Blog</a>
+                                        <ul class="submenu">
+                                            <li><a href="blog.html">Blog</a></li>
+                                            <li><a href="news-single.html">Blog Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Pages</a>
+                                        <ul class="submenu">
+                                            <li><a href="about.html">About Us</a></li>
+                                            <li><a href="account.html">Account</a></li>
+                                            <li><a href="ai-doctor.html">AI Doctor</a></li>
+                                            <li><a href="franchise.html">Franchise</a></li>
+                                            <li><a href="404.html">404</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="header__main-right ul_li">
+                            <div class="header__icons ul_li mr-15">
+                                <div class="icon">
+                                    <a href="account.html"><img src="assets/img/icon/user.svg" alt="Account"></a>
+                                </div>
+                                <div class="icon wishlist-icon">
+                                    <a href="#!" aria-label="Wishlist">
+                                        <img src="assets/img/icon/heart.svg" alt="Wishlist">
+                                        <span class="wish-count">0</span>
+                                    </a>
+                                </div>
+                                <div class="icon cart-icon">
+                                    <a href="cart.html" aria-label="Cart">
+                                        <img src="assets/img/icon/cart.svg" alt="Cart">
+                                        <span class="cart-count">0</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="login-sign-btn">
+                                <a class="thm-btn thm-btn__2 text-black" href="account.html">
+                                    <span class="btn-wrap">
+                                        <span>Login / Sign Up</span>
+                                        <span>Login / Sign Up</span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header end -->
+
+    <main class="max-w-[1600px] mx-auto px-4 md:px-8 py-16">
+        
+        <div class="mb-16">
+            <span class="text-emerald-600 text-[10px] font-black uppercase tracking-[0.4em] mb-4 inline-block">Secure Gateway</span>
+            <h2 class="text-4xl md:text-6xl font-black tracking-tighter italic text-slate-950">Settlement Interface.</h2>
+        </div>
+
+        <form id="checkout-form" class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            
+            <!-- ======= PATIENT & DELIVERY INFO ======= -->
+            <div class="lg:col-span-7 space-y-12">
+                <section>
+                    <h3 class="text-xl font-black italic mb-8 pb-4 border-b border-slate-200">Patient Identity</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">First Name</label>
+                            <input type="text" id="checkout-firstname" required class="w-full bg-white border-slate-200 rounded-2xl px-6 py-4 text-sm focus:ring-2 focus:ring-emerald-600 transition">
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">Last Name</label>
+                            <input type="text" id="checkout-lastname" required class="w-full bg-white border-slate-200 rounded-2xl px-6 py-4 text-sm focus:ring-2 focus:ring-emerald-600 transition">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">Clinical Email</label>
+                            <input type="email" id="checkout-email" required class="w-full bg-white border-slate-200 rounded-2xl px-6 py-4 text-sm focus:ring-2 focus:ring-emerald-600 transition">
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3 class="text-xl font-black italic mb-8 pb-4 border-b border-slate-200">Delivery Vector</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="md:col-span-2">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">Physical Address</label>
+                            <input type="text" id="checkout-address" required class="w-full bg-white border-slate-200 rounded-2xl px-6 py-4 text-sm focus:ring-2 focus:ring-emerald-600 transition">
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">City / State</label>
+                            <input type="text" id="checkout-citystate" required class="w-full bg-white border-slate-200 rounded-2xl px-6 py-4 text-sm focus:ring-2 focus:ring-emerald-600 transition">
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">Mobile Liaison</label>
+                            <input type="tel" id="checkout-phone" required class="w-full bg-white border-slate-200 rounded-2xl px-6 py-4 text-sm focus:ring-2 focus:ring-emerald-600 transition">
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ======= ORDER VALUATION ======= -->
+            <div class="lg:col-span-5">
+                <div class="bg-white rounded-[3rem] border border-slate-100 p-12 shadow-2xl shadow-slate-200/50">
+                    <h3 class="text-xl font-black italic mb-8">Protocol Valuation</h3>
+                    
+                    <div id="checkout-items" class="space-y-6 mb-10 pb-10 border-b border-slate-100">
+                        <!-- Dynamic Checkout Items -->
+                    </div>
+
+                    <div class="space-y-4 text-sm font-bold text-slate-500 mb-10">
+                        <div class="flex justify-between">
+                            <span>Subtotal</span>
+                            <span id="checkout-subtotal" class="text-slate-950">&#8358;0.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Clinical Logistics</span>
+                            <span id="checkout-logistics" class="text-emerald-600" data-base-price="2500">&#8358;2,500</span>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center mb-12">
+                        <span class="text-lg font-black italic text-slate-950">Grand Total</span>
+                        <span id="checkout-total" class="text-3xl font-black text-emerald-600">&#8358;0.00</span>
+                    </div>
+
+                    <div class="bg-slate-50 rounded-[2rem] p-8 mb-10 border border-slate-100">
+                        <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6">Settlement Method</h4>
+                        
+                        <div class="space-y-4">
+                            <!-- Bank Transfer -->
+                            <label class="payment-option relative flex items-center p-5 bg-white rounded-2xl border-2 border-slate-100 cursor-pointer transition-all hover:border-emerald-500 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-50/30">
+                                <input type="radio" name="payment_method" value="bank" class="hidden" checked onchange="updatePaymentUI()">
+                                <div class="flex-grow">
+                                    <span class="block text-sm font-black text-slate-900">Direct Bank Transfer</span>
+                                    <span class="block text-[10px] text-slate-500 uppercase tracking-widest mt-1">Settle via Opay Gateway</span>
+                                </div>
+                                <i class="fas fa-university text-emerald-600"></i>
+                            </label>
+
+                            <!-- Pi Network -->
+                            <label class="payment-option relative flex items-center p-5 bg-white rounded-2xl border-2 border-slate-100 cursor-pointer transition-all hover:border-purple-500 has-[:checked]:border-purple-500 has-[:checked]:bg-purple-50/30">
+                                <input type="radio" name="payment_method" value="pi" class="hidden" onchange="updatePaymentUI()">
+                                <div class="flex-grow">
+                                    <span class="block text-sm font-black text-slate-900">Pi Network Protocol</span>
+                                    <span class="block text-[10px] text-slate-500 uppercase tracking-widest mt-1">Settle via &pi; Blockchain</span>
+                                </div>
+                                <i class="fas fa-link text-purple-600"></i>
+                            </label>
+
+                            <!-- Payment on Delivery -->
+                            <label class="payment-option relative flex items-center p-5 bg-white rounded-2xl border-2 border-slate-100 cursor-pointer transition-all hover:border-orange-500 has-[:checked]:border-orange-500 has-[:checked]:bg-orange-50/30">
+                                <input type="radio" name="payment_method" value="pod" class="hidden" onchange="updatePaymentUI()">
+                                <div class="flex-grow">
+                                    <span class="block text-sm font-black text-slate-900">Payment on Delivery (P.O.D)</span>
+                                    <span class="block text-[10px] text-slate-500 uppercase tracking-widest mt-1">Free Nationwide Delivery — Pay on Arrival</span>
+                                </div>
+                                <i class="fas fa-truck text-orange-600"></i>
+                            </label>
+                        </div>
+
+                        <!-- Dynamic Payment Details -->
+                        <div id="payment-details-box" class="mt-8 p-6 rounded-2xl bg-slate-900 text-white hidden">
+                            <!-- Content Injected by JS -->
+                        </div>
+
+                        <!-- Receipt Upload Container (Visible only for Bank & Pi) -->
+                        <div id="receipt-upload-container" class="mt-6 hidden">
+                            <div>
+                                <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2 block">Transaction Reference / Sender Name</label>
+                                <input type="text" id="payment-reference" placeholder="e.g. Transfer Ref / Sender Account Name" class="w-full bg-white border-slate-200 rounded-2xl px-6 py-4 text-sm focus:ring-2 focus:ring-emerald-600 transition">
+                            </div>
+                        </div>
+
+                        <!-- P.O.D Specific: Terms and Conditions -->
+                        <div id="pod-terms" class="mt-6 hidden space-y-6">
+                            <div class="bg-orange-50 border border-orange-200 rounded-2xl p-6 text-slate-900">
+                                <h5 class="text-xs font-black uppercase tracking-widest text-orange-700 mb-2">Payment on Delivery Protocol</h5>
+                                <p class="text-[10px] text-slate-600 font-bold uppercase leading-relaxed">
+                                    Delivery is completely FREE nationwide. Your order will be shipped directly to your location at no extra cost. Simply settle the full payment upon physical receipt of your products. No hidden charges — no surcharge.
+                                </p>
+                            </div>
+                            <label class="flex items-start space-x-3 cursor-pointer">
+                                <input type="checkbox" id="accept-pod-terms" class="mt-1 rounded text-orange-600 focus:ring-orange-500" checked>
+                                <span class="text-[9px] text-slate-500 font-bold uppercase leading-relaxed">
+                                    I accept the Payment on Delivery terms and commit to settling the full balance on arrival.
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-slate-950 text-white text-center py-6 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-emerald-600 transition shadow-xl shadow-slate-200">Finalize Acquisition</button>
+                    
+                    <p class="mt-8 text-center text-[9px] text-slate-400 uppercase tracking-widest leading-relaxed">By finalizing, you agree to the Aura Clinical Global protocols and economic settlement terms.</p>
+                </div>
+            </div>
+
+        </form>
+    </main>
+
+    <!-- ======= FOOTER (Synchronized) ======= -->
+    <footer class="bg-slate-950 text-white py-24 px-8 border-t border-white/10 mt-24">
+        <div class="max-w-[1600px] mx-auto text-center">
+            <h4 class="text-2xl font-black tracking-tighter mb-4">Aura Herbs<span class="text-emerald-600">.</span></h4>
+            <p class="text-[9px] text-slate-500 uppercase tracking-[0.3em] mb-12">Clinical Intelligence &bull; Multi-Currency Economy &bull; Global Wellness</p>
+            <p class="text-[9px] text-slate-600 uppercase tracking-widest">Â© 2026 Aura Herbs Clinical Global. Accredited Payment Gateway.</p>
+        </div>
+    </footer>
+    <script src="assets/js/jquery-3.5.1.min.js"></script>
+    <script src="assets/js/currency-manager.js"></script>
+    <script>
+        const PAYMENT_DATA = {
+            bank: {
+                title: 'Opay / Palmpay Settlement',
+                details: [
+                    { label: 'Account Number', value: '8162765188' },
+                    { label: 'Account Name', value: 'Oladele jude otokiti' },
+                    { label: 'Bank Name', value: 'Opay / Palmpay' }
+                ],
+                icon: 'university'
+            },
+            pi: {
+                title: 'Pi Network Protocol',
+                details: [
+                    { label: 'Pi Username', value: 'Aura Herbs' },
+                    { label: 'Wallet Address', value: 'gdscgvcjsasdvfdxvytvfuyyvuf' }
+                ],
+                icon: 'link'
+            }
+        };
+
+        function copyToClipboard(text, btn) {
+            navigator.clipboard.writeText(text).then(() => {
+                const original = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check text-emerald-400"></i>';
+                setTimeout(() => btn.innerHTML = original, 2000);
+            });
+        }
+
+        let uploadedReceiptBase64 = null;
+        let uploadedReceiptName = null;
+
+        function updatePaymentUI() {
+            const method = document.querySelector('input[name="payment_method"]:checked').value;
+            const detailsBox = document.getElementById('payment-details-box');
+            const uploadBox = document.getElementById('receipt-upload-container');
+            const podTerms = document.getElementById('pod-terms');
+            const podCheckbox = document.getElementById('accept-pod-terms');
+            
+            if (method === 'pod') {
+                detailsBox.classList.add('hidden');
+                if (uploadBox) uploadBox.classList.add('hidden');
+                podTerms.classList.remove('hidden');
+                if (podCheckbox) podCheckbox.required = true;
+                
+            } else {
+                podTerms.classList.add('hidden');
+                detailsBox.classList.remove('hidden');
+                if (uploadBox) uploadBox.classList.remove('hidden');
+                if (podCheckbox) podCheckbox.required = false;
+                
+                const data = PAYMENT_DATA[method];
+                if (data) {
+                    let detailsHtml = `<p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4">${data.title}</p><div class="space-y-4">`;
+                    
+                    data.details.forEach(item => {
+                        detailsHtml += `
+                            <div class="flex justify-between items-center bg-slate-800 p-3 rounded-xl border border-slate-700">
+                                <div>
+                                    <span class="block text-[9px] text-slate-500 uppercase font-black">${item.label}</span>
+                                    <span class="block text-sm font-bold text-white">${item.value}</span>
+                                </div>
+                                <button type="button" onclick="copyToClipboard('${item.value}', this)" class="w-8 h-8 flex items-center justify-center bg-slate-700 rounded-lg hover:bg-emerald-600 transition text-white">
+                                    <i class="far fa-copy text-xs"></i>
+                                </button>
+                            </div>
+                        `;
+                    });
+                    
+                    detailsHtml += `</div><p class="text-[9px] text-slate-500 mt-4 italic uppercase tracking-widest">* Click the icon to copy credentials</p>`;
+                    detailsBox.innerHTML = detailsHtml;
+                }
+            }
+            
+            renderCheckout();
+        }
+
+        function calculatePodBreakdown() {
+            const cart = JSON.parse(localStorage.getItem('kedi_cart') || '[]');
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const logistics = 0; // Free nationwide delivery
+            const grandTotal = subtotal + logistics;
+            
+            const rateInput = document.querySelector('input[name="pod_deposit_rate"]:checked');
+            const rate = rateInput ? parseInt(rateInput.value) : 30;
+            
+            const depositAmount = grandTotal * (rate / 100);
+            const balanceAmount = grandTotal - depositAmount;
+
+            const format = (p) => window.CurrencyManager ? window.CurrencyManager.format(p) : '₦' + p.toLocaleString();
+
+            const depositEl = document.getElementById('pod-deposit-display');
+            const balanceEl = document.getElementById('pod-balance-display');
+            if (depositEl) depositEl.textContent = format(depositAmount);
+            if (balanceEl) balanceEl.textContent = format(balanceAmount);
+        }
+
+        function renderCheckout() {
+            const cart = JSON.parse(localStorage.getItem('kedi_cart') || '[]');
+            const container = document.getElementById('checkout-items');
+            const subtotalEl = document.getElementById('checkout-subtotal');
+            const totalEl = document.getElementById('checkout-total');
+            const logisticsEl = document.getElementById('checkout-logistics');
+            
+            const format = (p) => window.CurrencyManager ? window.CurrencyManager.format(p) : '₦' + p.toLocaleString();
+            
+            if (cart.length === 0) {
+                window.location.href = 'shop.html';
+                return;
+            }
+
+            let html = '';
+            let subtotal = 0;
+
+            cart.forEach((item) => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                html += `
+                    <div class="flex justify-between items-center">
+                        <div class="flex-grow pr-4">
+                            <p class="text-sm font-black text-slate-950 italic">${item.name} <span class="text-emerald-600 ml-2">x${item.quantity}</span></p>
+                        </div>
+                        <span class="text-sm font-bold text-slate-950">${format(itemTotal)}</span>
+                    </div>
+                `;
+            });
+
+            const method = document.querySelector('input[name="payment_method"]:checked')?.value;
+            const podSurcharge = 0; // No surcharge — free nationwide delivery, pay on arrival
+
+            if (container) container.innerHTML = html;
+            if (subtotalEl) subtotalEl.textContent = format(subtotal);
+            
+            const logistics = 2500;
+            const grandTotal = subtotal + logistics + podSurcharge;
+            if (logisticsEl) logisticsEl.textContent = format(logistics);
+            if (totalEl) totalEl.textContent = format(grandTotal);
+        }
+
+        // Initialize file upload listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropZone = document.getElementById('receipt-drop-zone');
+            const fileInput = document.getElementById('receipt-upload');
+            const uploadPrompt = document.getElementById('upload-prompt');
+            const previewContainer = document.getElementById('upload-preview-container');
+            const fileNameDisplay = document.getElementById('uploaded-file-name');
+            const removeBtn = document.getElementById('btn-remove-file');
+
+            if (dropZone) {
+                dropZone.addEventListener('click', () => fileInput.click());
+                
+                dropZone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    dropZone.classList.add('border-emerald-500', 'bg-emerald-50/20');
+                });
+
+                dropZone.addEventListener('dragleave', () => {
+                    dropZone.classList.remove('border-emerald-500', 'bg-emerald-50/20');
+                });
+
+                dropZone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    dropZone.classList.remove('border-emerald-500', 'bg-emerald-50/20');
+                    if (e.dataTransfer.files.length) {
+                        fileInput.files = e.dataTransfer.files;
+                        handleFileSelection(e.dataTransfer.files[0]);
+                    }
+                });
+            }
+
+            if (fileInput) {
+                fileInput.addEventListener('change', (e) => {
+                    if (e.target.files.length) {
+                        handleFileSelection(e.target.files[0]);
+                    }
+                });
+            }
+
+            if (removeBtn) {
+                removeBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    fileInput.value = '';
+                    uploadedReceiptBase64 = null;
+                    uploadedReceiptName = null;
+                    if (previewContainer) previewContainer.classList.add('hidden');
+                    if (uploadPrompt) uploadPrompt.classList.remove('hidden');
+                });
+            }
+
+            function handleFileSelection(file) {
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File is too large (maximum 5MB).');
+                    fileInput.value = '';
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    uploadedReceiptBase64 = evt.target.result;
+                    uploadedReceiptName = file.name;
+                    if (fileNameDisplay) fileNameDisplay.textContent = file.name;
+                    if (uploadPrompt) uploadPrompt.classList.add('hidden');
+                    if (previewContainer) previewContainer.classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById('checkout-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const method = document.querySelector('input[name="payment_method"]:checked').value;
+            if (method === 'pod' && !document.getElementById('accept-pod-terms').checked) {
+                alert('Please accept the P.O.D clinical protocol terms to proceed.');
+                return;
+            }
+
+            const cart = JSON.parse(localStorage.getItem('kedi_cart') || '[]');
+            if (cart.length === 0) {
+                alert('Your cart is empty.');
+                return;
+            }
+
+            const referenceVal = document.getElementById('payment-reference') ? document.getElementById('payment-reference').value.trim() : '';
+
+            if ((method === 'bank' || method === 'pi') && !referenceVal) {
+                alert('Please enter your Transaction Reference / Sender Name to proceed.');
+                return;
+            }
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const surcharge = 0; // No surcharge — P.O.D is free nationwide delivery
+            const logistics = method === 'pod' ? 0 : 2500; // Free delivery for P.O.D
+            const grandTotal = subtotal + logistics + surcharge;
+            const currency = window.CurrencyManager ? window.CurrencyManager.current : 'NGN';
+            const sym = window.CurrencyManager ? window.CurrencyManager.symbols[currency] : '₦';
+            const orderId = 'ORD-' + Date.now();
+            const transactionId = 'TXN-' + Date.now();
+            
+            const firstName = document.getElementById("checkout-firstname").value;
+            const lastName = document.getElementById("checkout-lastname").value;
+            const email = document.getElementById("checkout-email").value;
+            const phone = document.getElementById("checkout-phone").value;
+            const address = document.getElementById("checkout-address").value;
+            const cityState = document.getElementById("checkout-citystate").value;
+            
+            const activeUser = localStorage.getItem('kedi_user') ? JSON.parse(localStorage.getItem('kedi_user')) : null;
+            const userUid = activeUser ? activeUser.id : 'guest-user';
+
+            const podRate = null;
+            const podDeposit = 0;
+            const podBalance = grandTotal;
+
+            // Construct Order & Transaction objects
+            const orderData = {
+                orderId: orderId,
+                userUid: userUid,
+                patientDetails: {
+                    firstName,
+                    lastName,
+                    email,
+                    phone,
+                    address,
+                    cityState
+                },
+                items: cart.map(i => ({ name: i.name, price: i.price, qty: i.quantity })),
+                subtotal: subtotal,
+                logistics: logistics,
+                surcharge: surcharge,
+                grandTotal: grandTotal,
+                currency: currency,
+                paymentMethod: method.toUpperCase(),
+                status: method === 'pod' ? 'Pending Escrow Deposit' : 'Awaiting Receipt Verification',
+                receiptBase64: uploadedReceiptBase64 || null,
+                receiptName: uploadedReceiptName || null,
+                paymentReference: referenceVal || null,
+                podEscrowRate: podRate,
+                podDepositAmount: podDeposit,
+                podBalanceAmount: podBalance,
+                date: new Date().toISOString()
+            };
+
+            const transactionData = {
+                transactionId: transactionId,
+                orderId: orderId,
+                userUid: userUid,
+                email: email,
+                amount: grandTotal,
+                currency: currency,
+                method: method.toUpperCase(),
+                status: method === 'pod' ? 'Escrow Pending' : 'Awaiting Admin Verification',
+                receiptBase64: uploadedReceiptBase64 || null,
+                receiptName: uploadedReceiptName || null,
+                paymentReference: referenceVal || null,
+                podEscrowRate: podRate,
+                podDepositAmount: podDeposit,
+                podBalanceAmount: podBalance,
+                date: new Date().toISOString()
+            };
+
+            // Save to localStorage
+            const orders = JSON.parse(localStorage.getItem('kedi_orders') || '[]');
+            orders.push(orderData);
+            localStorage.setItem('kedi_orders', JSON.stringify(orders));
+            // Firebase Save
+            if (window.AuraFirebase && window.AuraFirebase.db) {
+                const { db, collection, addDoc } = window.AuraFirebase;
+                try {
+                    console.log("Saving order and transaction to Firebase...");
+                    // Save Order
+                    await addDoc(collection(db, "orders"), orderData);
+                    // Save Transaction
+                    await addDoc(collection(db, "transactions"), transactionData);
+                    console.log("Successfully persisted order and transaction to Firebase Firestore.");
+                } catch (error) {
+                    console.error("Firestore database write failed:", error);
+                }
+            }
+
+            // Send clinical confirmation email receipt
+            if (window.KediEmail) {
+                try {
+                    await window.KediEmail.orderConfirm({
+                        email: email,
+                        name: `${firstName} ${lastName}`,
+                        orderId: orderId,
+                        items: cart.map(i => ({ name: i.name, price: i.price, qty: i.quantity })),
+                        total: grandTotal,
+                        paymentMethod: method === 'pod' ? 'Payment on Delivery (P.O.D) — Free Nationwide Delivery' : method.toUpperCase(),
+                        deliveryAddress: `${address}, ${cityState}`
+                    });
+                } catch (emailErr) {
+                    console.warn("Could not dispatch confirmation email:", emailErr);
+                }
+            }
+
+            // Trigger beautiful in-app toast notification
+            if (window.KediNotify) {
+                window.KediNotify.send({
+                    type: 'success',
+                    title: '📦 Order Acquired Successfully',
+                    body: `Invoice #${orderId} generated! Keep track via WhatsApp or Email.`,
+                    duration: 8000
+                });
+            }
+
+            // Construct WhatsApp message as plain text then encode for URL
+            let waMsgRaw = `🌿 *AURA HERBS - CLINICAL ACQUISITION RECEIPT* 🌿\n`;
+            waMsgRaw += `========================================\n`;
+            waMsgRaw += `🆔 *Order Reference:* #${orderId}\n`;
+            waMsgRaw += `📅 *Date:* ${new Date().toLocaleDateString()}\n`;
+            waMsgRaw += `👤 *Patient:* ${firstName} ${lastName}\n`;
+            waMsgRaw += `📧 *Email:* ${email}\n`;
+            waMsgRaw += `📞 *Liaison:* ${phone}\n`;
+            waMsgRaw += `📍 *Delivery Vector:* ${address}, ${cityState}\n`;
+            waMsgRaw += `========================================\n`;
+            waMsgRaw += `🛒 *ACQUIRED PROTOCOLS:*\n`;
+            cart.forEach((item, idx) => {
+                waMsgRaw += `${idx + 1}. *${item.name}* (x${item.quantity}) - ${sym}${(item.price * item.quantity).toLocaleString()}\n`;
+            });
+            waMsgRaw += `========================================\n`;
+            waMsgRaw += `💵 *FINANCIAL VALUATION:*\n`;
+            waMsgRaw += `🔹 Subtotal: ${sym}${subtotal.toLocaleString()}\n`;
+            if (method !== 'pod') {
+                waMsgRaw += `🔹 Logistics Fee: ${sym}${logistics.toLocaleString()}\n`;
+            } else {
+                waMsgRaw += `🔹 Delivery: FREE Nationwide (Pay on Arrival)\n`;
+            }
+            waMsgRaw += `----------------------------------------\n`;
+            waMsgRaw += `⭐ *Grand Total:* *${sym}${grandTotal.toLocaleString()}*\n`;
+            waMsgRaw += `========================================\n`;
+            waMsgRaw += `💳 *Settlement Method:* ${method === 'pod' ? 'Payment on Delivery (P.O.D)' : method.toUpperCase()}\n`;
+            if (method !== 'pod') {
+                if (referenceVal) {
+                    waMsgRaw += `📝 *Transaction Reference:* ${referenceVal}\n`;
+                }
+                waMsgRaw += `📂 *Receipt Status:* Reference Submitted & Saved\n`;
+                waMsgRaw += `⏳ *Authenticity Check:* Pending Admin Verification\n`;
+            }
+            waMsgRaw += `----------------------------------------\n`;
+            waMsgRaw += `🌿 _Generated via Aura Herbs Global Wellness System_ 🌿`;
+
+            const waLink = `https://api.whatsapp.com/send/?phone=2349015092132&text=${encodeURIComponent(waMsgRaw)}&type=phone_number&app_absent=0`;
+
+            // Clear cart
+            localStorage.removeItem('kedi_cart');
+
+            // Render Thank You / post-acquisition tracking screen
+            renderPostAcquisitionScreen(orderData, transactionData, waLink);
+
+            // Automatically open WhatsApp message
+            window.open(waLink, '_blank');
+        });
+
+        
+        function renderPostAcquisitionScreen(order, txn, waLink) {
+            const mainContainer = document.querySelector('main');
+            if (!mainContainer) return;
+
+            const sym = window.CurrencyManager ? window.CurrencyManager.symbols[order.currency] : '₦';
+            const format = (p) => window.CurrencyManager ? window.CurrencyManager.format(p) : '₦' + p.toLocaleString();
+
+            let itemsHtml = '';
+            order.items.forEach((item, idx) => {
+                itemsHtml += `
+                    <div class="flex justify-between text-sm py-2 border-b border-slate-800/40">
+                        <span class="text-slate-400 font-medium">${idx + 1}. ${item.name} <span class="text-emerald-400 font-black">x${item.qty}</span></span>
+                        <span class="text-white font-bold">${format(item.price * item.qty)}</span>
+                    </div>
+                `;
+            });
+
+            mainContainer.innerHTML = `
+                <div class="max-w-2xl mx-auto my-12 bg-slate-900 border border-slate-800 rounded-[3rem] p-12 shadow-2xl text-white">
+                    <div class="text-center mb-10">
+                        <div class="w-20 h-20 bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-check text-4xl text-emerald-400"></i>
+                        </div>
+                        <h2 class="text-3xl font-black italic tracking-tighter text-white">Thank You! Protocol Acquired Successfully</h2>
+                        <p class="text-[10px] text-slate-500 uppercase tracking-widest mt-2">Invoice #${order.orderId}</p>
+                    </div>
+
+                    <div class="bg-slate-950/50 rounded-2xl p-6 border border-slate-800 mb-8 space-y-4 text-xs font-semibold text-slate-300">
+                        <div class="flex justify-between">
+                            <span class="text-slate-500 uppercase tracking-wider text-[9px]">Patient Identity</span>
+                            <span class="text-white font-bold">${order.patientDetails.firstName} ${order.patientDetails.lastName}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500 uppercase tracking-wider text-[9px]">Clinical Email</span>
+                            <span class="text-white font-bold">${order.patientDetails.email}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500 uppercase tracking-wider text-[9px]">Delivery Vector</span>
+                            <span class="text-white font-bold">${order.patientDetails.address}, ${order.patientDetails.cityState}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-slate-500 uppercase tracking-wider text-[9px]">Settlement Protocol</span>
+                            <span class="text-emerald-400 font-black uppercase tracking-widest">${order.paymentMethod}</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-10">
+                        <span class="block text-[9px] text-slate-500 uppercase tracking-widest font-black mb-4">Acquisition Inventory</span>
+                        <div class="bg-slate-950/30 rounded-2xl p-6 border border-slate-800 space-y-2">
+                            ${itemsHtml}
+                            <div class="pt-4 mt-2 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+                                <div class="flex justify-between">
+                                    <span>Subtotal:</span>
+                                    <span class="text-white">${format(order.subtotal)}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Clinical Logistics:</span>
+                                    <span class="text-white">${format(order.logistics)}</span>
+                                </div>
+                                ${order.surcharge > 0 ? `
+                                <div class="flex justify-between text-orange-400 font-bold">
+                                    <span>P.O.D Surcharge (5%):</span>
+                                    <span>+${format(order.surcharge)}</span>
+                                </div>
+                                ` : ''}
+                                <div class="flex justify-between text-base font-black text-emerald-400 border-t border-slate-800 pt-3 mt-1">
+                                    <span>Grand Total:</span>
+                                    <span>${format(order.grandTotal)}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <a href="${waLink}" target="_blank" rel="noopener" class="w-full flex items-center justify-center space-x-3 bg-emerald-600 hover:bg-emerald-500 text-white font-black uppercase tracking-widest text-[10px] py-5 rounded-2xl transition shadow-lg shadow-emerald-900/30">
+                            <i class="fab fa-whatsapp text-lg"></i>
+                            <span>Message Admin on WhatsApp</span>
+                        </a>
+                        <button type="button" onclick="triggerTrackingEmail('${order.patientDetails.email}', '${order.orderId}')" class="w-full flex items-center justify-center space-x-3 bg-slate-800 hover:bg-slate-700 text-white font-black uppercase tracking-widest text-[10px] py-5 rounded-2xl transition border border-slate-700">
+                            <i class="far fa-envelope text-lg"></i>
+                            <span>Track via Email Invoice</span>
+                        </button>
+                    </div>
+                    
+                    <div class="text-center mt-8">
+                        <a href="shop.html" class="text-[9px] font-black uppercase tracking-widest text-slate-500 hover:text-emerald-400 transition">Return to Clinical Catalog</a>
+                    </div>
+                </div>
+            `;
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.triggerTrackingEmail = function(email, orderId) {
+            if (window.KediNotify) {
+                window.KediNotify.send({
+                    type: 'success',
+                    title: '✉️ Dispatch Successful',
+                    body: `Tracking reference #${orderId} re-dispatched to ${email}.`,
+                    duration: 5000
+                });
+            } else {
+                alert(`Tracking reference #${orderId} sent to ${email}.`);
+            }
+        }
+        // Initialize UI
+        window.addEventListener('auraCurrencyChanged', renderCheckout);
+        document.addEventListener('DOMContentLoaded', () => {
+            updatePaymentUI();
+        });
+    </script>
+
+    <script src="assets/js/mobile-wa.js" defer></script>
+    <script src="assets/js/kedi-notify.js" defer></script>
+    <script src="assets/js/kedi-email.js" defer></script>
+    <script src="assets/js/social.js" defer></script>
+    <script src="assets/js/auth.js"></script>
+</body>
+</html>
+
+
+
+
+
+

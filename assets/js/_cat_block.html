@@ -1,0 +1,239 @@
+<!-- product category start -->
+        <div class="product-cat pt-60">
+            <div class="container">
+                <h2 class="section-heading mb-10"><span>Clinical Product Categories</span></h2>
+                <p class="text-slate-500 mb-30" style="font-size:0.9rem;">Click any category title to read featured health insights published daily from our clinical intelligence hub.</p>
+
+                <!-- Category Blog Drawer -->
+                <div id="kedi-cat-blog" style="display:none; background:#0a0a0a; border:1px solid #d4a017; border-radius:1.5rem; padding:2rem; margin-bottom:2.5rem;">
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
+                        <span id="kedi-cat-blog-label" style="color:#d4a017;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.4em;"></span>
+                        <button onclick="closeCategoryBlog()" style="background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;line-height:1;">&times;</button>
+                    </div>
+                    <div id="kedi-cat-blog-articles" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;"></div>
+                </div>
+
+                <style>
+                @keyframes slideDown { from{opacity:0;transform:translateY(-12px)} to{opacity:1;transform:translateY(0)} }
+                #kedi-cat-blog { animation:slideDown .35s ease; }
+                a.kedi-blog-card{display:flex;gap:1rem;background:#111;border:1px solid #222;border-radius:1rem;padding:.9rem;text-decoration:none;color:#fff;transition:border-color .2s;}
+                a.kedi-blog-card:hover{border-color:#10b981;}
+                a.kedi-blog-card img{width:68px;height:68px;object-fit:cover;border-radius:.6rem;flex-shrink:0;}
+                .kedi-blog-meta{font-size:9px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:#d4a017;margin-bottom:.3rem;}
+                .kedi-blog-title{font-size:.875rem;font-weight:700;color:#fff;line-height:1.3;}
+                .kedi-blog-summary{font-size:.76rem;color:#9ca3af;margin-top:.25rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+                </style>
+
+                <div class="product-cat__wrap">
+                    <div class="row mt-none-50">
+
+                        <!-- COL 1 -->
+                        <div class="col-lg-4">
+                            <!-- Immunity and Defence -->
+                            <div class="product-cat__item mt-50">
+                                <div class="product-cat__images">
+                                    <div class="tab-content" id="fc-myTabContent">
+                                        <div class="tab-pane fade show active" id="fc-home" role="tabpanel" aria-labelledby="fc-home-tab">
+                                            <div class="product-cat__img"><a href="shop.html"><img src="assets/img/product/Reishi.png" alt="Reishi"></a></div>
+                                        </div>
+                                        <div class="tab-pane fade" id="fc-profile" role="tabpanel" aria-labelledby="fc-profile-tab">
+                                            <div class="product-cat__img"><a href="shop.html"><img src="assets/img/product/Golden-Hypha.png" alt="Golden Hypha"></a></div>
+                                        </div>
+                                        <div class="tab-pane fade" id="fc-contact" role="tabpanel" aria-labelledby="fc-contact-tab">
+                                            <div class="product-cat__img"><a href="shop.html"><img src="assets/img/product/Vitamin-C.jpg" alt="Vitamin C"></a></div>
+                                        </div>
+                                    </div>
+                                    <ul class="nav product-cat__nav nav-tabs" id="fc-myTab" role="tablist">
+                                        <li class="nav-item" role="presentation"><button class="nav-link active" id="fc-home-tab" data-bs-toggle="tab" data-bs-target="#fc-home" type="button" role="tab" aria-selected="true"><img src="assets/img/product/Reishi.png" alt=""></button></li>
+                                        <li class="nav-item" role="presentation"><button class="nav-link" id="fc-profile-tab" data-bs-toggle="tab" data-bs-target="#fc-profile" type="button" role="tab" aria-selected="false"><img src="assets/img/product/Golden-Hypha.png" alt=""></button></li>
+                                        <li class="nav-item" role="presentation"><button class="nav-link" id="fc-contact-tab" data-bs-toggle="tab" data-bs-target="#fc-contact" type="button" role="tab" aria-selected="false"><img src="assets/img/product/Vitamin-C.jpg" alt=""></button></li>
+                                    </ul>
+                                </div>
+                                <div class="product-cat__content">
+                                    <h3 class="title" style="cursor:pointer" onclick="openCategoryBlog('Immunity &amp; Defence','Nutrition')">Immunity &amp; Defence <span style="color:#10b981;font-size:11px">&#8599; Blogs</span></h3>
+                                    <ul class="list-unstyled">
+                                        <li><a href="shop.html">Reishi (Big &amp; Small) &#8212; &#8358;15,000&#8211;&#8358;37,800</a></li>
+                                        <li><a href="shop.html">Golden Hypha (Big &amp; Small) &#8212; &#8358;20,400&#8211;&#8358;51,000</a></li>
+                                        <li><a href="shop.html">Vitamin-C Bottle &#8212; &#8358;14,400</a></li>
+                                        <li><a href="shop.html">Multivitamin + Zinc &#8212; &#8358;13,200</a></li>
+                                        <li><a href="shop.html">Qinghao Bottle &#8212; &#8358;10,680</a></li>
+                                        <li><a href="shop.html">+ View All Immunity Protocols</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Metabolic Health -->
+                            <div class="product-cat__item mt-50">
+                                <div class="product-cat__images">
+                                    <div class="tab-content" id="fc-myTabContent2">
+                                        <div class="tab-pane fade show active" id="fc-home2" role="tabpanel" aria-labelledby="fc-home-tab2">
+                                            <div class="product-cat__img"><a href="shop.html"><img src="assets/img/product/Diawell.png" alt="Diawell"></a></div>
+                                        </div>
+                                        <div class="tab-pane fade" id="fc-profile2" role="tabpanel" aria-labelledby="fc-profile-tab2">
+                                            <div class="product-cat__img"><a href="shop.html"><img src="assets/img/product/Magilim.png" alt="Magilim"></a></div>
+                                        </div>
+                                        <div class="tab-pane fade" id="fc-contact2" role="tabpanel" aria-labelledby="fc-contact-tab2">
+                                            <div class="product-cat__img"><a href="shop.html"><img src="assets/img/product/COFFEE.png" alt="Kedi Coffee"></a></div>
+                                        </div>
+                                    </div>
+                                    <ul class="nav product-cat__nav nav-tabs" id="fc-myTab2" role="tablist">
+                                        <li class="nav-item" role="presentation"><button class="nav-link active" id="fc-home-tab2" data-bs-toggle="tab" data-bs-target="#fc-home2" type="button" role="tab" aria-selected="true"><img src="assets/img/product/Diawell.png" alt=""></button></li>
+                                        <li class="nav-item" role="presentation"><button class="nav-link" id="fc-profile-tab2" data-bs-toggle="tab" data-bs-target="#fc-profile2" type="button" role="tab" aria-selected="false"><img src="assets/img/product/Magilim.png" alt=""></button></li>
+                                        <li class="nav-item" role="presentation"><button class="nav-link" id="fc-contact-tab2" data-bs-toggle="tab" data-bs-target="#fc-contact2" type="button" role="tab" aria-selected="false"><img src="assets/img/product/COFFEE.png" alt=""></button></li>
+                                    </ul>
+                                </div>
+                                <div class="product-cat__content">
+                                    <h3 class="title" style="cursor:pointer" onclick="openCategoryBlog('Metabolic Health','Metabolic Health')">Metabolic Health <span style="color:#10b981;font-size:11px">&#8599; Blogs</span></h3>
+                                    <ul class="list-unstyled">
+                                        <li><a href="shop.html">Diawell (Big &amp; Small) &#8212; &#8358;10,680&#8211;&#8358;18,000</a></li>
+                                        <li><a href="shop.html">Magilim (Big &amp; Small) &#8212; &#8358;15,000&#8211;&#8358;31,200</a></li>
+                                        <li><a href="shop.html">Green Coffee Ganoderma &#8212; &#8358;11,500</a></li>
+                                        <li><a href="shop.html">KEDI Ginseng Coffee &#8212; &#8358;30,000</a></li>
+                                        <li><a href="shop.html">Men Coffee &#8212; &#8358;13,500</a></li>
+                                        <li><a href="shop.html">+ View All Metabolic Protocols</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- COL 2 -->
+                        <div class="col-lg-4">
+                            <!-- Detox and Digestive -->
+                            <div class="product-cat__item mt-50">
+                                <div class="product-cat__images">
+                                    <div class="tab-content" id="fc-myTabContent3">
+                                        <div class="tab-pane fade show active" id="fc-home3" role="tabpanel" aria-labelledby="fc-home-tab3">
+                                            <div class="product-cat__img"><a href="shop.html"><img src="assets/img/product/Gastrifort.png" alt="Gastrifort"></a></div>
+                                        </div>
+                                        <div class="tab-pane fade" id="fc-profile3" role="tabpanel" aria-labelledby="fc-profile-tab3">
+                                            <div class="product-cat__img"><a href="shop.html"><img src="assets/img/product/Constilease.png" alt="Constilease"></a></div>
+                                        </div>
+                                        <div class="tab-pane fade" id="fc-contact3" role="tabpanel" aria-labelledby="fc-contact-tab3">
+                                            <div class="product-cat__img"><a href="shop.html"><img src="assets/img/product/colon-tea-cleanser.png" alt="Colon Tea"></a></div>
+                                        </div>
+                                    </div>
+                                    <ul class="nav product-cat__nav nav-tabs" id="fc-myTab3" role="tablist">
+                                        <li class="nav-item" role="presentation"><button class="nav-link active" id="fc-home-tab3" data-bs-toggle="tab" data-bs-target="#fc-home3" type="button" role="tab" aria-selected="true"><img src="assets/img/product/Gastrifort.png" alt=""></button></li>
+                                        <li class="nav-item" role="presentation"><button class="nav-link" id="fc-profile-tab3" data-bs-toggle="tab" data-bs-target="#fc-profile3" type="button" role="tab" aria-selected="false"><img src="assets/img/product/Constilease.png" alt=""></button></li>
+                                        <li class="nav-item" role="presentation"><button class="nav-link" id="fc-contact-tab3" data-bs-toggle="tab" data-bs-target="#fc-contact3" type="button" role="tab" aria-selected="false"><img src="assets/img/product/colon-tea-cleanser.png" alt=""></button></li>
+                                    </ul>
+                                </div>
+                                <div class="product-cat__content">
+                                    <h3 class="title" style="cursor:pointer" onclick="openCategoryBlog('Detox &amp; Digestive','Wellness')">Detox &amp; Digestive <span style="color:#10b981;font-size:11px">&#8599; Blogs</span></h3>
+                                    <ul class="list-unstyled">
+                                        <li><a href="shop.html">Gastrifort (Big &amp; Small) &#8212; &#8358;15,000&#8211;&#8358;44,400</a></li>
+                                        <li><a href="shop.html">Constilease (Big &amp; Small) &#8212; &#8358;15,000&#8211;&#8358;28,000</a></li>
+                                        <li><a href="shop.html">Colon Tea Cleanser &#8212; &#8358;19,200</a></li>
+                                        <li><a href="shop.html">Salud Herbal &#8212; &#8358;19,500</a></li>
+                                        <li><a href="shop.html">Refresh Tea &#8212; &#8358;19,200</a></li>
+                                        <li><a href="shop.html">+ View All Detox Protocols</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Cardiovascular -->
+                            <div class="product-cat__item mt-50">
+                                <div class="product-cat__images">
+                                    <div class="tab-content" id="fc-myTabContent4">
+                                        <div class="tab-pane fade show active" id="fc-home4" role="tabpanel" aria-labelledby="fc-home-tab4">
+                                            <div class="product-cat__img"><a href="shop.html"><img src="assets/img/product/Cardibetter.png" alt="Cardibetter"></a></div>
+                                        </div>
+                                        <div class="tab-pane fade" id="fc-profile4" role="tabpanel" aria-labelledby="fc-profile-tab4">
+                                            <div class="product-cat__img"><a href="shop.html"><img src="assets/img/product/ULTRAMEGA.jpg" alt="Ultramega"></a></div>
+                                        </div>
+                                        <div class="tab-pane fade" id="fc-contact4" role="tabpanel" aria-labelledby="fc-contact-tab4">
+                                            <div class="product-cat__img"><a href="shop.html"><img src="assets/img/product/Hemocare.png" alt="Haemocare"></a></div>
+                                        </div>
+                                    </div>
+                                    <ul class="nav product-cat__nav nav-tabs" id="fc-myTab4" role="tablist">
+                                        <li class="nav-item" role="presentation"><button class="nav-link active" id="fc-home-tab4" data-bs-toggle="tab" data-bs-target="#fc-home4" type="button" role="tab" aria-selected="true"><img src="assets/img/product/Cardibetter.png" alt=""></button></li>
+                                        <li class="nav-item" role="presentation"><button class="nav-link" id="fc-profile-tab4" data-bs-toggle="tab" data-bs-target="#fc-profile4" type="button" role="tab" aria-selected="false"><img src="assets/img/product/ULTRAMEGA.jpg" alt=""></button></li>
+                                        <li class="nav-item" role="presentation"><button class="nav-link" id="fc-contact-tab4" data-bs-toggle="tab" data-bs-target="#fc-contact4" type="button" role="tab" aria-selected="false"><img src="assets/img/product/Hemocare.png" alt=""></button></li>
+                                    </ul>
+                                </div>
+                                <div class="product-cat__content">
+                                    <h3 class="title" style="cursor:pointer" onclick="openCategoryBlog('Cardiovascular','BioTech')">Cardiovascular <span style="color:#10b981;font-size:11px">&#8599; Blogs</span></h3>
+                                    <ul class="list-unstyled">
+                                        <li><a href="shop.html">Cardibetter Tablet &#8212; &#8358;34,200</a></li>
+                                        <li><a href="shop.html">Ultramega Omega-3 (60s) &#8212; &#8358;21,600</a></li>
+                                        <li><a href="shop.html">Haemocare Bottle &#8212; &#8358;24,000</a></li>
+                                        <li><a href="shop.html">Cello Q10 (60s) &#8212; &#8358;36,000</a></li>
+                                        <li><a href="shop.html">Blood Circulatory Instrument &#8212; &#8358;624,000</a></li>
+                                        <li><a href="shop.html">+ View All Cardiovascular Protocols</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- COL 3 -->
+                        <div class="col-lg-4">
+                            <!-- Women's Health -->
+                            <div class="product-cat__item mt-50">
+                                <div class="product-cat__images">
+                                    <div class="tab-content" id="fc-myTabContent5">
+                                        <div class="tab-pane fade show active" id="fc-home5" role="tabpanel" aria-labelledby="fc-home-tab5">
+                                            <div class="product-cat__img"><a href="shop.html"><img src="assets/img/product/GYNAPHARM.png" alt="Gynapharm"></a></div>
+                                        </div>
+                                        <div class="tab-pane fade" id="fc-profile5" role="tabpanel" aria-labelledby="fc-profile-tab5">
+                                            <div class="product-cat__img"><a href="shop.html"><img src="assets/img/product/EVE-COMFORT.png" alt="Eve Comfort"></a></div>
+                                        </div>
+                                        <div class="tab-pane fade" id="fc-contact5" role="tabpanel" aria-labelledby="fc-contact-tab5">
+                                            <div class="product-cat__img"><a href="shop.html"><img src="assets/img/product/VITAPREGO-e1642367642371.png" alt="Vitaprego"></a></div>
+                                        </div>
+                                    </div>
+                                    <ul class="nav product-cat__nav nav-tabs" id="fc-myTab5" role="tablist">
+                                        <li class="nav-item" role="presentation"><button class="nav-link active" id="fc-home-tab5" data-bs-toggle="tab" data-bs-target="#fc-home5" type="button" role="tab" aria-selected="true"><img src="assets/img/product/GYNAPHARM.png" alt=""></button></li>
+                                        <li class="nav-item" role="presentation"><button class="nav-link" id="fc-profile-tab5" data-bs-toggle="tab" data-bs-target="#fc-profile5" type="button" role="tab" aria-selected="false"><img src="assets/img/product/EVE-COMFORT.png" alt=""></button></li>
+                                        <li class="nav-item" role="presentation"><button class="nav-link" id="fc-contact-tab5" data-bs-toggle="tab" data-bs-target="#fc-contact5" type="button" role="tab" aria-selected="false"><img src="assets/img/product/VITAPREGO-e1642367642371.png" alt=""></button></li>
+                                    </ul>
+                                </div>
+                                <div class="product-cat__content">
+                                    <h3 class="title" style="cursor:pointer" onclick="openCategoryBlog('Women\u2019s Health','Public Health')">Women&#8217;s Health <span style="color:#10b981;font-size:11px">&#8599; Blogs</span></h3>
+                                    <ul class="list-unstyled">
+                                        <li><a href="shop.html">Gynapharm Capsule &#8212; &#8358;39,600</a></li>
+                                        <li><a href="shop.html">Eve&#8217;s Comfort Capsule &#8212; &#8358;29,880</a></li>
+                                        <li><a href="shop.html">Vitaprego (60s) &#8212; &#8358;30,000</a></li>
+                                        <li><a href="shop.html">M &amp; V Women (60s) &#8212; &#8358;31,200</a></li>
+                                        <li><a href="shop.html">7-Layer Sanitary Pad &#8212; &#8358;3,240</a></li>
+                                        <li><a href="shop.html">+ View All Women&#8217;s Protocols</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Medical Devices -->
+                            <div class="product-cat__item mt-50">
+                                <div class="product-cat__images">
+                                    <div class="tab-content" id="fc-myTabContent6">
+                                        <div class="tab-pane fade show active" id="fc-home6" role="tabpanel" aria-labelledby="fc-home-tab6">
+                                            <div class="product-cat__img"><a href="shop.html"><img src="assets/img/product/vip-massage_chair.jpg" alt="VIP Massage Chair"></a></div>
+                                        </div>
+                                        <div class="tab-pane fade" id="fc-profile6" role="tabpanel" aria-labelledby="fc-profile-tab6">
+                                            <div class="product-cat__img"><a href="shop.html"><img src="assets/img/product/Blood-circulatory-machine.png" alt="Blood Circulatory"></a></div>
+                                        </div>
+                                        <div class="tab-pane fade" id="fc-contact6" role="tabpanel" aria-labelledby="fc-contact-tab6">
+                                            <div class="product-cat__img"><a href="shop.html"><img src="assets/img/product/Hydrogen cup (1).jpg" alt="Hydrogen Cup"></a></div>
+                                        </div>
+                                    </div>
+                                    <ul class="nav product-cat__nav nav-tabs" id="fc-myTab6" role="tablist">
+                                        <li class="nav-item" role="presentation"><button class="nav-link active" id="fc-home-tab6" data-bs-toggle="tab" data-bs-target="#fc-home6" type="button" role="tab" aria-selected="true"><img src="assets/img/product/vip-massage_chair.jpg" alt=""></button></li>
+                                        <li class="nav-item" role="presentation"><button class="nav-link" id="fc-profile-tab6" data-bs-toggle="tab" data-bs-target="#fc-profile6" type="button" role="tab" aria-selected="false"><img src="assets/img/product/Blood-circulatory-machine.png" alt=""></button></li>
+                                        <li class="nav-item" role="presentation"><button class="nav-link" id="fc-contact-tab6" data-bs-toggle="tab" data-bs-target="#fc-contact6" type="button" role="tab" aria-selected="false"><img src="assets/img/product/Hydrogen cup (1).jpg" alt=""></button></li>
+                                    </ul>
+                                </div>
+                                <div class="product-cat__content">
+                                    <h3 class="title" style="cursor:pointer" onclick="openCategoryBlog('Medical Devices','Med Devices')">Medical Devices <span style="color:#10b981;font-size:11px">&#8599; Blogs</span></h3>
+                                    <ul class="list-unstyled">
+                                        <li><a href="shop.html">VIP Medical Massage Chair &#8212; &#8358;6,500,000</a></li>
+                                        <li><a href="shop.html">Blood Circulatory Instrument &#8212; &#8358;624,000</a></li>
+                                        <li><a href="shop.html">Hydrogen Water Cup &#8212; &#8358;102,000</a></li>
+                                        <li><a href="shop.html">+ View All Medical Devices</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- product category end -->

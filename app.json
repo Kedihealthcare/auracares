@@ -1,0 +1,61 @@
+{
+  "site": {
+    "name": "Kedi Healthcare (Kedi-J)",
+    "description": "Clinical Diagnostics & Herbal Protocols",
+    "support": "+234 9015092132",
+    "email": "kedhealthcaresolution1@gmail.com"
+  },
+  "products": [
+    {
+      "id": "reishi",
+      "name": "KEDI Reishi",
+      "tagline": "Immune Resilience",
+      "category": "IMMUNITY BOOST",
+      "description": "Experience the legendary 'Mushroom of Immortality'. Formulated through advanced biotechnology to maximize Ganoderma Lucidum concentration for ultimate immune resilience.",
+      "price": 35000,
+      "oldPrice": 42000,
+      "image": "assets/img/product/Reishi.png",
+      "features": [
+        { "label": "99.9%", "title": "Purity Grade", "desc": "Triple-distilled extraction for maximum bio-availability." },
+        { "label": "24HRS", "title": "Cellular Repair", "desc": "Continuous support for internal organ detoxification." },
+        { "label": "TCM", "title": "Legacy Formula", "desc": "Based on 2,000 years of clinical herbal wisdom." }
+      ]
+    },
+    {
+      "id": "diawell",
+      "name": "KEDI Diawell",
+      "tagline": "Metabolic Flow",
+      "category": "GLYCEMIC BALANCE",
+      "description": "A specialized herbal protocol designed to support healthy glucose metabolism and pancreatic function.",
+      "price": 25000,
+      "oldPrice": 30000,
+      "image": "assets/img/product/Diawell.png",
+      "features": [
+        { "label": "ISO", "title": "Certified", "desc": "International standards for metabolic support." },
+        { "label": "NATURAL", "title": "Plant Based", "desc": "100% natural ingredients with no synthetic fillers." },
+        { "label": "FAST", "title": "Absorption", "desc": "Micro-particle technology for rapid cellular uptake." }
+      ]
+    },
+    {
+      "id": "magilim",
+      "name": "KEDI Magilim",
+      "tagline": "Weight Management",
+      "category": "METABOLIC BOOST",
+      "description": "Harness the power of Konjac glucomannan to support healthy weight loss and digestive regularity.",
+      "price": 22500,
+      "oldPrice": 28000,
+      "image": "assets/img/product/Magilim.png",
+      "features": [
+        { "label": "FIBER", "title": "High Viscosity", "desc": "Promotes satiety and reduces caloric intake." },
+        { "label": "DETOX", "title": "Colon Cleanse", "desc": "Supports the natural elimination of toxins." },
+        { "label": "SAFE", "title": "Clinically Tested", "desc": "Proven results for sustainable weight management." }
+      ]
+    }
+  ],
+  "categories": [
+    { "id": "metabolic", "name": "Metabolic Health" },
+    { "id": "cardio", "name": "Cardiovascular" },
+    { "id": "immune", "name": "Immune System" },
+    { "id": "vitality", "name": "Vitality & Energy" }
+  ]
+}

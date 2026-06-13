@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kedi Community Admin Panel</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root {
+    --kedi: #4d231c; --gold: #d4a017; --green: #10b981;
+    --bg: #f8f6f3; --card: #fff; --border: #e8ddd6;
+    --text: #1e293b; --muted: #64748b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+  /* ── Header ── */
+  .custom-admin-header {
+    background: linear-gradient(135deg, var(--kedi), #2a1310);
+    color: #fff; padding: 18px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(0,0,0,.3);
+  }
+  .custom-admin-header h1 { font-size: 1.4rem; font-weight: 900; letter-spacing: .03em; }
+  .custom-admin-header h1 span { color: var(--gold); }
+  .header-badge { background: var(--gold); color: var(--kedi); padding: 4px 14px; border-radius: 50px; font-size: .75rem; font-weight: 800; }
+
+  /* Hide client-facing header on mobile viewports for admin dashboard */
+  @media (max-width: 991px) {
+    .header {
+      display: none !important;
+    }
+  }
+
+  /* ── Layout ── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 28px 20px; }
+  .tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+  .tab-btn {
+    padding: 10px 22px; border-radius: 50px; border: 2px solid var(--border);
+    background: var(--card); font-weight: 700; font-size: .85rem; cursor: pointer;
+    transition: .2s; color: var(--muted);
+  }
+  .tab-btn.active { background: var(--kedi); color: #fff; border-color: var(--kedi); }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+
+  /* ── Stats bar ── */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 14px; margin-bottom: 24px; }
+  .stat-card { background: var(--card); border-radius: 16px; padding: 18px 20px; border: 1px solid var(--border); }
+  .stat-card .num { font-size: 2rem; font-weight: 900; color: var(--kedi); }
+  .stat-card .lbl { font-size: .75rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; margin-top: 4px; }
+
+  /* ── Forms ── */
+  .card { background: var(--card); border-radius: 20px; border: 1px solid var(--border); padding: 28px; margin-bottom: 20px; }
+  .card h2 { font-size: 1.1rem; font-weight: 900; color: var(--kedi); margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+  .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 14px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  label { font-size: .78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  input, select, textarea {
+    padding: 10px 14px; border-radius: 10px; border: 1.5px solid var(--border);
+    font-size: .9rem; transition: .2s; background: #fdfbf9; color: var(--text);
+    font-family: inherit;
+  }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--kedi); background: #fff; }
+  textarea { resize: vertical; min-height: 70px; }
+  .btn {
+    padding: 10px 22px; border-radius: 50px; border: none; font-weight: 700;
+    font-size: .85rem; cursor: pointer; transition: .2s; display: inline-flex;
+    align-items: center; gap: 8px;
+  }
+  .btn-primary { background: var(--kedi); color: #fff; }
+  .btn-primary:hover { background: #3a1a14; }
+  .btn-gold { background: var(--gold); color: var(--kedi); }
+  .btn-gold:hover { filter: brightness(1.1); }
+  .btn-danger { background: #fee2e2; color: #dc2626; }
+  .btn-danger:hover { background: #dc2626; color: #fff; }
+  .btn-sm { padding: 6px 14px; font-size: .75rem; }
+  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+
+  /* â”€â”€ Table â”€â”€ */
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+  thead th { background: var(--kedi); color: #fff; padding: 11px 14px; text-align: left; font-weight: 700; font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; }
+  thead th:first-child { border-radius: 10px 0 0 0; }
+  thead th:last-child { border-radius: 0 10px 0 0; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: .15s; }
+  tbody tr:hover { background: #fdf8f6; }
+  tbody td { padding: 10px 14px; vertical-align: middle; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 50px; font-size: .7rem; font-weight: 700; }
+  .badge-buzz { background: #fef3c7; color: #92400e; }
+  .badge-social { background: #d1fae5; color: #065f46; }
+  .empty-state { text-align: center; padding: 40px; color: var(--muted); font-style: italic; }
+
+  /* â”€â”€ Toast â”€â”€ */
+  #toast {
+    position: fixed; bottom: 28px; right: 28px; background: var(--kedi); color: #fff;
+    padding: 12px 22px; border-radius: 50px; font-weight: 700; font-size: .85rem;
+    transform: translateY(80px); opacity: 0; transition: .35s; z-index: 9999;
+    box-shadow: 0 8px 24px rgba(0,0,0,.25); pointer-events: none;
+  }
+  #toast.show { transform: translateY(0); opacity: 1; }
+
+  /* â”€â”€ Export/Import bar â”€â”€ */
+  .io-bar { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; padding: 16px 20px; background: var(--card); border-radius: 16px; border: 1px solid var(--border); margin-bottom: 20px; }
+  .io-bar span { font-weight: 700; color: var(--muted); font-size: .82rem; flex: 1; }
+
+  @media(max-width:600px){ .form-grid { grid-template-columns: 1fr; } }
+</style>
+  <link rel="stylesheet" href="assets/css/kedi-optimise.css">
+  <link rel="stylesheet" href="assets/css/responsive.css"/>
+
+    <meta property="og:title" content="Kedi Community Admin Panel">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.auraherbs.vercel.app/admin-community.html">
+    <meta property="og:site_name" content="Kedi Healthcare (Kedi-J)">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="index, follow">
+                <!-- Firebase Integration -->
+    <script type="module" src="assets/js/firebase-init.js"></script>
+</head>
+<body>
+
+<!-- header start -->
+<header class="header header__style-three">
+            <div class="header__top">
+                <div class="container mxw_1360">
+                    <div class="header__top-info ul_li_between mt-none-10">
+                        <ul class="header__top-left ul_li mt-10">
+                            <li><a href="#!">Call us</a> free 24/7 : (555) 172-244-7888</li>
+                            <li><i class="fas fa-envelope"></i> info@kedihealth.com</li>
+                        </ul>
+                        <ul class="header__top-right ul_li mt-10">
+                            <li><i class="fas fa-leaf"></i>Wellness First</li>
+                            <li><i class="fas fa-map-marker-alt"></i>Lagos, Nigeria</li>
+                            <li><a href="#!"><i class="fas fa-star"></i>My Wishlist</a></li>
+                            <li><a href="checkout.html"><i class="far fa-check-circle"></i>Checkout</a></li>
+                            <li>
+                                <div class="header__language currency aura-currency-switcher">
+                                    <ul>
+                                        <li>
+                                            <a href="#!" class="lang-btn">
+                                                <span class="current-currency-symbol">&#8358;</span>
+                                                <i class="far fa-chevron-down"></i>
+                                            </a>
+                                            <ul class="lang_sub_list">
+                                                <li><a href="#" data-currency-set="NGN">&#8358; NGN</a></li>
+                                                <li><a href="#" data-currency-set="USD">$ USD</a></li>
+                                                <li><a href="#" data-currency-set="PI">&#960; Pi</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container mxw_1360">
+                <div class="header__middle ul_li_between">
+                    <div class="header__logo">
+                        <a href="index.html">
+                            <img src="assets/img/logo/logo.svg" alt="Kedi Healthcare">
+                        </a>
+                    </div>
+                    <div class="header-date">
+                        <i class="far fa-calendar-alt"></i><span id="header-live-date">Loading...</span>
+                        <script>
+                            (function(){
+                                var d = new Date();
+                                var opts = { weekday:'long', year:'numeric', month:'short', day:'numeric' };
+                                var el = document.getElementById('header-live-date');
+                                if(el) el.textContent = d.toLocaleDateString('en-US', opts);
+                            })();
+                        </script>
+                    </div>
+                    <div class="add">
+                        <a href="shop.html">
+                            <img src="assets/img/product/beaty soap.jpeg" alt="Kedi Soap" style="max-height: 80px; width: auto; object-fit: contain;">
+                        </a>
+                    </div>
+                    <div class="d-none d-lg-block">
+                        <div class="ul_li">
+                            <div class="header__language style-2 mr-25">
+                                <ul>
+                                    <li>
+                                        <a href="#!" class="lang-btn"><img src="assets/img/icon/usd_flag.png" alt=""> English <i class="far fa-chevron-down"></i></a>
+                                        <ul class="lang_sub_list">
+                                            <li><a href="#">English</a></li>
+                                            <li><a href="#">Yoruba</a></li>
+                                            <li><a href="#">Hausa</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header__social">
+                                <a href="#!"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#!"><i class="fab fa-twitter"></i></a>
+                                <a href="#!"><i class="fab fa-instagram"></i></a>
+                                <a href="#!"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header__wrap" data-uk-sticky="top: 250; animation: uk-animation-slide-top;">
+                <div class="container mxw_1360">
+                    <div class="header__main ul_li">
+                        <div class="header__logo">
+                            <a href="index.html">
+                                <img src="assets/img/logo/logo.svg" alt="Kedi Healthcare">
+                            </a>
+                        </div>
+                        <div class="header__category">
+                            <a class="header__category-nav" href="#!"><img class="bar" src="assets/img/icon/bar.svg" alt="">Browse Categories<i class="fas fa-chevron-down"></i></a>
+                        </div>
+                        <div class="hamburger_menu d-lg-none">
+                            <a href="javascript:void(0);" class="active">
+                                <div class="icon bar">
+                                    <span><i class="fal fa-bars"></i></span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="main-menu navbar navbar-expand-lg">
+                            <nav class="main-menu__nav collapse navbar-collapse">
+                                <ul>
+                                    <li class="menu-item-has-children has-mega-menu active"><a href="index.html">Home</a>
+                                        <ul class="mega-menu">
+                                            <li>
+                                                <div class="mega-menu-content">
+                                                    <div class="row">
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="index.html">
+                                                                    <img src="assets/img/demo/demo-1.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 1</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="home-2.html">
+                                                                    <img src="assets/img/demo/demo-2.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 2</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic">
+                                                                <a href="home-3.html">
+                                                                    <img src="assets/img/demo/demo-3.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <h3>#Home Demo 3</h3>
+                                                        </div>
+                                                        <div class="col col-md-3">
+                                                            <div class="demo-pic coming-soon">
+                                                                <span>Coming Soon</span>
+                                                            </div>
+                                                            <h3>Coming Soon</h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Shop</a>
+                                        <ul class="submenu">
+                                            <li><a href="shop.html">Shop Default</a></li>
+                                            <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
+                                            <li><a href="shop-single.html">Shop Single</a></li>
+                                            <li><a href="cart.html">Shop Cart</a></li>
+                                            <li><a href="checkout.html">Shop Checkout</a></li>
+                                            <li><a href="account.html">Account</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="health-challenges.html">Clinical Encyclopedia</a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Blog</a>
+                                        <ul class="submenu">
+                                            <li><a href="blog.html">Blog</a></li>
+                                            <li><a href="news-single.html">Blog Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#!">Pages</a>
+                                        <ul class="submenu">
+                                            <li><a href="about.html">About Us</a></li>
+                                            <li><a href="account.html">Account</a></li>
+                                            <li><a href="ai-doctor.html">AI Doctor</a></li>
+                                            <li><a href="franchise.html">Franchise</a></li>
+                                            <li><a href="404.html">404</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="header__main-right ul_li">
+                            <div class="header__icons ul_li mr-15">
+                                <div class="icon">
+                                    <a href="account.html"><img src="assets/img/icon/user.svg" alt="Account"></a>
+                                </div>
+                                <div class="icon wishlist-icon">
+                                    <a href="#!" aria-label="Wishlist">
+                                        <img src="assets/img/icon/heart.svg" alt="Wishlist">
+                                        <span class="wish-count">0</span>
+                                    </a>
+                                </div>
+                                <div class="icon cart-icon">
+                                    <a href="cart.html" aria-label="Cart">
+                                        <img src="assets/img/icon/cart.svg" alt="Cart">
+                                        <span class="cart-count">0</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="login-sign-btn">
+                                <a class="thm-btn thm-btn__2 text-black" href="account.html">
+                                    <span class="btn-wrap">
+                                        <span>Login / Sign Up</span>
+                                        <span>Login / Sign Up</span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header end -->
+
+            <!-- ======= COMMUNITY PULSE TICKER ======= -->
+            <div class="community-pulse bg-[#4d231c] py-2 overflow-hidden" style="position: relative; z-index: 10;">
+                <div class="pulse-wrapper" style="display: flex; white-space: nowrap; animation: pulse-scroll 60s linear infinite; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase;">
+                    <span style="color: #d4a017; font-weight: 900; margin-right: 50px;"><i class="fas fa-bolt"></i> COMMUNITY PULSE:</span>
+                    <span style="color: white; margin-right: 50px;">New Ï€ protocol activated in Lagos (2m ago)</span>
+                    <span style="color: white; margin-right: 50px;">Dr. Amadi verified a 4x4 Success Grid (15m ago)</span>
+                    <span style="color: white; margin-right: 50px;">Reishi Immune Guard back in stock!</span>
+                    <span style="color: white; margin-right: 50px;">Community reaching 50,000+ wellness members</span>
+                    <span style="color: white; margin-right: 50px;">New Ï€ protocol activated in Abuja (45m ago)</span>
+                    <span style="color: white; margin-right: 50px;">Golden Six restocked for VIP members</span>
+                </div>
+            </div>
+            <style>
+                @keyframes pulse-scroll {
+                    0% { transform: translateX(50%); }
+                    100% { transform: translateX(-100%); }
+                }
+            </style>
+
+
+<div class="container">
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-card"><div class="num" id="stat-social">0</div><div class="lbl">Social Feed Entries</div></div>
+    <div class="stat-card"><div class="num" id="stat-buzz">0</div><div class="lbl">Community Buzz Items</div></div>
+    <div class="stat-card"><div class="num" id="stat-total">0</div><div class="lbl">Total Records</div></div>
+    <div class="stat-card"><div class="num" id="stat-auto">10,000</div><div class="lbl">Auto-generated (fallback)</div></div>
+  </div>
+
+  <!-- I/O Bar -->
+  <div class="io-bar">
+    <span><i class="fas fa-database"></i> Saved to localStorage â€” community-engine.js loads these first</span>
+    <button class="btn btn-gold" onclick="exportAll()"><i class="fas fa-download"></i> Export JSON</button>
+    <label class="btn btn-primary" style="cursor:pointer;"><i class="fas fa-upload"></i> Import JSON <input type="file" accept=".json" style="display:none" onchange="importJSON(this)"></label>
+    <button class="btn btn-danger" onclick="clearAll()"><i class="fas fa-trash"></i> Clear All</button>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('social',this)"><i class="fas fa-users"></i> Social Feeds</button>
+    <button class="tab-btn" onclick="switchTab('buzz',this)"><i class="fas fa-fire"></i> Community Buzz</button>
+  </div>
+
+  <!-- â•â• SOCIAL FEEDS TAB â•â• -->
+  <div id="tab-social" class="tab-pane active">
+    <div class="card">
+      <h2><i class="fas fa-plus-circle" style="color:var(--green)"></i> Add Social Feed Entry</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input id="sf-user" placeholder="e.g. Chidi A." />
+        </div>
+        <div class="form-group">
+          <label>Location</label>
+          <input id="sf-location" placeholder="e.g. Lagos" />
+        </div>
+        <div class="form-group">
+          <label>Product</label>
+          <select id="sf-product">
+            <option value="Reishi">Reishi</option>
+            <option value="Revive">Revive</option>
+            <option value="Golden Six">Golden Six</option>
+            <option value="Cardibetter">Cardibetter</option>
+            <option value="Magilim">Magilim</option>
+            <option value="Gastrifort">Gastrifort</option>
+            <option value="Jointeez">Jointeez</option>
+            <option value="Cordy Active">Cordy Active</option>
+            <option value="Eye Beta">Eye Beta</option>
+            <option value="Golden Hypha">Golden Hypha</option>
+            <option value="Constilease">Constilease</option>
+            <option value="Diawell">Diawell</option>
+            <option value="Vigor Essential">Vigor Essential</option>
+            <option value="Gynapharm">Gynapharm</option>
+            <option value="Lycovite">Lycovite</option>
+            <option value="Cello Q10">Cello Q10</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Product Image File</label>
+          <input id="sf-image" placeholder="e.g. Reishi.png" />
+        </div>
+        <div class="form-group">
+          <label>Rating (4 or 5)</label>
+          <select id="sf-rating">
+            <option value="5">â­â­â­â­â­ 5</option>
+            <option value="4">â­â­â­â­ 4</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Likes Count</label>
+          <input id="sf-likes" type="number" value="320" min="1" />
+        </div>
+        <div class="form-group" style="grid-column:1/-1">
+          <label>Review Text</label>
+          <textarea id="sf-review" placeholder="Customer's testimonialâ€¦"></textarea>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="addSocialFeed()"><i class="fas fa-save"></i> Save Entry</button>
+        <button class="btn" style="background:#f1f5f9;color:var(--muted)" onclick="clearSocialForm()"><i class="fas fa-times"></i> Clear</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-list" style="color:var(--gold)"></i> Social Feed Entries (<span id="sf-count">0</span>)</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th><th>User</th><th>Location</th><th>Product</th><th>Rating</th><th>Likes</th><th>Review</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="sf-table-body">
+            <tr><td colspan="8" class="empty-state">No entries yet. Add one above.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- â•â• BUZZ TAB â•â• -->
+  <div id="tab-buzz" class="tab-pane">
+    <div class="card">
+      <h2><i class="fas fa-plus-circle" style="color:var(--green)"></i> Add Community Buzz Item</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Member Name</label>
+          <input id="bz-user" placeholder="e.g. Amina" />
+        </div>
+        <div class="form-group">
+          <label>Location</label>
+          <input id="bz-location" placeholder="e.g. Abuja" />
+        </div>
+        <div class="form-group">
+          <label>Protocol Name</label>
+          <select id="bz-protocol">
+            <option>Immune Guard</option>
+            <option>Vitality Reset</option>
+            <option>Cellular Detox</option>
+            <option>Golden Six Protocol</option>
+            <option>Cardio Restore</option>
+            <option>Jointeez Relief</option>
+            <option>Vigor Performance</option>
+            <option>Pearl Beauty</option>
+            <option>Digestive Guard</option>
+            <option>Hormonal Balance</option>
+            <option>Diabetes Control</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Product Image File</label>
+          <input id="bz-image" placeholder="e.g. Reishi.png" />
+        </div>
+        <div class="form-group">
+          <label>Rating (4 or 5)</label>
+          <select id="bz-rating">
+            <option value="5">â­â­â­â­â­ 5</option>
+            <option value="4">â­â­â­â­ 4</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Likes Count</label>
+          <input id="bz-likes" type="number" value="540" min="1" />
+        </div>
+        <div class="form-group" style="grid-column:1/-1">
+          <label>Review Text</label>
+          <textarea id="bz-review" placeholder="Activation review textâ€¦"></textarea>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="addBuzz()"><i class="fas fa-save"></i> Save Item</button>
+        <button class="btn" style="background:#f1f5f9;color:var(--muted)" onclick="clearBuzzForm()"><i class="fas fa-times"></i> Clear</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fas fa-list" style="color:var(--gold)"></i> Community Buzz Items (<span id="bz-count">0</span>)</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th><th>User</th><th>Location</th><th>Protocol</th><th>Rating</th><th>Likes</th><th>Review</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="bz-table-body">
+            <tr><td colspan="8" class="empty-state">No items yet. Add one above.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="toast"></div>
+
+<script>
+// â”€â”€ Storage keys â”€â”€
+const KEYS = { social: 'kedi_admin_social', buzz: 'kedi_admin_buzz' };
+
+// â”€â”€ Load / Save â”€â”€
+const load = key => JSON.parse(localStorage.getItem(key) || '[]');
+const save = (key, data) => { localStorage.setItem(key, JSON.stringify(data)); };
+
+// â”€â”€ Tab switching â”€â”€
+function switchTab(name, el) {
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  el.classList.add('active');
+}
+
+// â”€â”€ Toast â”€â”€
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// â”€â”€ Stats â”€â”€
+function updateStats() {
+  const s = load(KEYS.social).length;
+  const b = load(KEYS.buzz).length;
+  document.getElementById('stat-social').textContent = s;
+  document.getElementById('stat-buzz').textContent = b;
+  document.getElementById('stat-total').textContent = s + b;
+}
+
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+//  SOCIAL FEEDS
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function addSocialFeed() {
+  const user     = document.getElementById('sf-user').value.trim();
+  const location = document.getElementById('sf-location').value.trim();
+  const product  = document.getElementById('sf-product').value;
+  const image    = document.getElementById('sf-image').value.trim() || product.replace(/\s/g, '_') + '.png';
+  const rating   = parseInt(document.getElementById('sf-rating').value);
+  const likes    = parseInt(document.getElementById('sf-likes').value) || 320;
+  const review   = document.getElementById('sf-review').value.trim();
+
+  if (!user || !location || !review) { toast('âš  Please fill in Name, Location and Review'); return; }
+
+  const feeds = load(KEYS.social);
+  feeds.push({
+    user, location, product,
+    image: 'assets/img/product/' + image,
+    rating, likes, review,
+    content: `Just received my ${product} shipment in ${location}. Exceptional quality!`,
+    time: 'Just now',
+    avatar: user[0] + (user.split(' ')[1]?.[0] || '')
+  });
+  save(KEYS.social, feeds);
+  renderSocialTable();
+  updateStats();
+  clearSocialForm();
+  toast('âœ… Social feed entry saved!');
+}
+
+function deleteSocialFeed(i) {
+  if (!confirm('Delete this entry?')) return;
+  const feeds = load(KEYS.social);
+  feeds.splice(i, 1);
+  save(KEYS.social, feeds);
+  renderSocialTable();
+  updateStats();
+  toast('ðŸ—‘ Entry deleted');
+}
+
+function renderSocialTable() {
+  const feeds = load(KEYS.social);
+  const tbody = document.getElementById('sf-table-body');
+  document.getElementById('sf-count').textContent = feeds.length;
+  if (!feeds.length) {
+    tbody.innerHTML = '<tr><td colspan="8" class="empty-state">No entries yet. Add one above.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = feeds.map((f, i) => `
+    <tr>
+      <td><b>${i+1}</b></td>
+      <td>${f.user}</td>
+      <td>${f.location}</td>
+      <td><b>${f.product}</b></td>
+      <td>${'â­'.repeat(f.rating)}</td>
+      <td>${f.likes}</td>
+      <td style="max-width:220px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${f.review}">${f.review}</td>
+      <td>
+        <button class="btn btn-danger btn-sm" onclick="deleteSocialFeed(${i})"><i class="fas fa-trash"></i></button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function clearSocialForm() {
+  ['sf-user','sf-location','sf-image','sf-review'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('sf-rating').value = '5';
+  document.getElementById('sf-likes').value = '320';
+}
+
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+//  COMMUNITY BUZZ
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function addBuzz() {
+  const user     = document.getElementById('bz-user').value.trim();
+  const location = document.getElementById('bz-location').value.trim();
+  const protocol = document.getElementById('bz-protocol').value;
+  const image    = document.getElementById('bz-image').value.trim() || 'Reishi.png';
+  const rating   = parseInt(document.getElementById('bz-rating').value);
+  const likes    = parseInt(document.getElementById('bz-likes').value) || 540;
+  const review   = document.getElementById('bz-review').value.trim();
+
+  if (!user || !location || !review) { toast('âš  Please fill in Name, Location and Review'); return; }
+
+  const buzz = load(KEYS.buzz);
+  buzz.push({
+    user, location, protocol,
+    image: 'assets/img/product/' + image,
+    rating, likes, review,
+    text: `New ${protocol} activated by ${user} in ${location}`
+  });
+  save(KEYS.buzz, buzz);
+  renderBuzzTable();
+  updateStats();
+  clearBuzzForm();
+  toast('âœ… Buzz item saved!');
+}
+
+function deleteBuzz(i) {
+  if (!confirm('Delete this buzz item?')) return;
+  const buzz = load(KEYS.buzz);
+  buzz.splice(i, 1);
+  save(KEYS.buzz, buzz);
+  renderBuzzTable();
+  updateStats();
+  toast('ðŸ—‘ Buzz item deleted');
+}
+
+function renderBuzzTable() {
+  const buzz = load(KEYS.buzz);
+  const tbody = document.getElementById('bz-table-body');
+  document.getElementById('bz-count').textContent = buzz.length;
+  if (!buzz.length) {
+    tbody.innerHTML = '<tr><td colspan="8" class="empty-state">No items yet. Add one above.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = buzz.map((b, i) => `
+    <tr>
+      <td><b>${i+1}</b></td>
+      <td>${b.user}</td>
+      <td>${b.location}</td>
+      <td><b>${b.protocol}</b></td>
+      <td>${'â­'.repeat(b.rating)}</td>
+      <td>${b.likes}</td>
+      <td style="max-width:220px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${b.review}">${b.review}</td>
+      <td>
+        <button class="btn btn-danger btn-sm" onclick="deleteBuzz(${i})"><i class="fas fa-trash"></i></button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function clearBuzzForm() {
+  ['bz-user','bz-location','bz-image','bz-review'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('bz-rating').value = '5';
+  document.getElementById('bz-likes').value = '540';
+}
+
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+//  EXPORT / IMPORT / CLEAR
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+function exportAll() {
+  const data = { social: load(KEYS.social), buzz: load(KEYS.buzz), exportedAt: new Date().toISOString() };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'kedi-community-data.json';
+  a.click();
+  toast('ðŸ“¦ Exported JSON successfully');
+}
+
+function importJSON(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (data.social) save(KEYS.social, data.social);
+      if (data.buzz)   save(KEYS.buzz, data.buzz);
+      renderSocialTable();
+      renderBuzzTable();
+      updateStats();
+      toast('âœ… JSON imported successfully');
+    } catch {
+      toast('âŒ Invalid JSON file');
+    }
+  };
+  reader.readAsText(file);
+  input.value = '';
+}
+
+function clearAll() {
+  if (!confirm('Delete ALL admin entries? Auto-generated feeds will still work as fallback.')) return;
+  localStorage.removeItem(KEYS.social);
+  localStorage.removeItem(KEYS.buzz);
+  renderSocialTable();
+  renderBuzzTable();
+  updateStats();
+  toast('ðŸ—‘ All admin data cleared');
+}
+
+// â”€â”€ Init â”€â”€
+renderSocialTable();
+renderBuzzTable();
+updateStats();
+</script>
+<script src="assets/js/mobile-wa.js" defer></script>
+<script src="assets/js/kedi-notify.js" defer></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Update Dynamic Dates
+            const dateEls = document.querySelectorAll('.header-date, .current-date');
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+            dateEls.forEach(el => el.innerHTML = '<i class="far fa-calendar-alt"></i> ' + dateStr);
+
+            // 2. Auth State Management
+            const userSession = JSON.parse(localStorage.getItem('kedi_user_session'));
+            const authLinks = document.querySelectorAll('a[href*="account.html"], a[href*="login"], a[href*="register"]');
+            
+            if (userSession) {
+                authLinks.forEach(link => {
+                    if (link.innerText.toLowerCase().includes('sign in') || link.innerText.toLowerCase().includes('register')) {
+                        link.innerHTML = '<i class="fas fa-user-circle"></i> ' + userSession.name.split(' ')[0];
+                        link.href = '#!';
+                        // Add logout listener
+                        link.title = 'Click to Logout';
+                        link.onclick = () => {
+                            if(confirm('Logout of clinical ecosystem?')) {
+                                localStorage.removeItem('kedi_user_session');
+                                window.location.reload();
+                            }
+                        };
+                    }
+                });
+            } else {
+                authLinks.forEach(link => {
+                    link.href = 'auth.html';
+                });
+            }
+        });
+    </script>
+
+    <script src="assets/js/cart.js"></script>
+<script src="assets/js/auth.js"></script><script src="assets/js/currency-manager.js"></script></body>
+</html>
+
+
+
+
+
+
+
+

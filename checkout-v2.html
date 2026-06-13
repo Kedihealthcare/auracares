@@ -1,0 +1,621 @@
+﻿﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aura Herbs â€” Secure Checkout</title>
+<meta name="description" content="Pay securely with Card, Bank Transfer, Pi Network, or Crypto.">
+<link rel="stylesheet" href="assets/css/kedi-optimise.css">
+<script src="https://js.stripe.com/v3/"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="assets/js/mobile-wa.js" defer></script>
+<style>
+:root{--kedi:#4d231c;--gold:#d4a017;--green:#10b981;--bg:#f8f6f3;--card:#fff;--border:#e8ddd6;--text:#1e293b;--muted:#64748b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.checkout-wrap{max-width:980px;margin:0 auto;padding:28px 16px 60px}
+.checkout-grid{display:grid;grid-template-columns:1fr 380px;gap:28px}
+@media(max-width:768px){.checkout-grid{grid-template-columns:1fr}}
+
+/* Header */
+.co-header{background:linear-gradient(135deg,var(--kedi),#2a1310);padding:16px 24px;display:flex;align-items:center;gap:14px;margin-bottom:28px;border-radius:16px}
+.co-header img{height:36px}
+.co-header h1{color:#fff;font-size:1.1rem;font-weight:900}
+.co-header span{color:var(--gold);font-size:.8rem;font-weight:700;margin-left:auto}
+
+/* Card */
+.card{background:var(--card);border-radius:16px;border:1px solid var(--border);padding:24px;margin-bottom:20px}
+.card h2{font-size:1rem;font-weight:900;color:var(--kedi);margin-bottom:18px}
+
+/* Payment tabs */
+.pay-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:24px}
+.pay-tab{padding:10px 6px;border:2px solid var(--border);border-radius:12px;background:var(--card);cursor:pointer;text-align:center;transition:.2s;font-size:.75rem;font-weight:700;color:var(--muted)}
+.pay-tab .icon{font-size:1.4rem;display:block;margin-bottom:4px}
+.pay-tab.active{border-color:var(--kedi);color:var(--kedi);background:#fdf8f6}
+.pay-pane{display:none}.pay-pane.active{display:block}
+
+/* Form */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.form-row.full{grid-template-columns:1fr}
+.form-group{display:flex;flex-direction:column;gap:5px}
+label{font-size:.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+input,select{padding:11px 14px;border-radius:10px;border:1.5px solid var(--border);font-size:.9rem;background:#fdfbf9;font-family:inherit;transition:.2s}
+input:focus,select:focus{outline:none;border-color:var(--kedi)}
+
+/* Stripe Elements container */
+#card-element{padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;background:#fdfbf9;min-height:44px}
+#card-element.StripeElement--focus{border-color:var(--kedi)}
+
+/* Buttons */
+.btn-pay{width:100%;padding:15px;border:none;border-radius:50px;background:var(--kedi);color:#fff;font-size:1rem;font-weight:900;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:6px}
+.btn-pay:hover{background:#3a1a14}
+.btn-pay:disabled{opacity:.5;cursor:not-allowed}
+.btn-secondary{width:100%;padding:13px;border:2px solid var(--border);border-radius:50px;background:var(--card);color:var(--text);font-size:.9rem;font-weight:700;cursor:pointer;margin-top:10px}
+
+/* Alert / Status */
+.alert{padding:12px 16px;border-radius:10px;font-size:.85rem;font-weight:600;margin-top:12px;display:none}
+.alert.success{background:#d1fae5;color:#065f46;display:block}
+.alert.error{background:#fee2e2;color:#dc2626;display:block}
+.alert.info{background:#dbeafe;color:#1d4ed8;display:block}
+
+/* Bank transfer instructions */
+.bank-detail{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#f8f6f3;border-radius:10px;margin-bottom:8px;font-size:.85rem}
+.bank-detail .lbl{font-weight:700;color:var(--muted);font-size:.75rem}
+.bank-detail .val{font-weight:900;color:var(--kedi)}
+.copy-btn{background:var(--gold);color:var(--kedi);border:none;padding:4px 12px;border-radius:50px;font-size:.72rem;font-weight:800;cursor:pointer}
+
+/* Crypto */
+#qr-canvas{margin:16px auto;display:flex;justify-content:center}
+.coin-select{display:flex;gap:8px;margin-bottom:16px}
+.coin-btn{flex:1;padding:10px;border:2px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;font-weight:700;font-size:.8rem;transition:.2s;text-align:center}
+.coin-btn.active{border-color:var(--kedi);background:#fdf8f6;color:var(--kedi)}
+.wallet-addr{font-size:.7rem;word-break:break-all;background:#f1f5f9;padding:10px;border-radius:8px;font-family:monospace;color:#1e293b;margin-bottom:12px}
+.rate-lock{font-size:.75rem;color:var(--muted);text-align:center;margin-bottom:14px}
+#crypto-timer{color:var(--kedi);font-weight:900}
+
+/* Pi Network */
+.pi-info{background:linear-gradient(135deg,#6d28d9,#4c1d95);color:#fff;border-radius:12px;padding:18px;margin-bottom:16px;font-size:.85rem;line-height:1.6}
+.pi-info strong{color:#c4b5fd}
+.pi-amount{font-size:1.6rem;font-weight:900;color:#a78bfa;text-align:center;margin:12px 0}
+
+/* Order summary */
+.summary-row{display:flex;justify-content:space-between;padding:8px 0;font-size:.88rem;border-bottom:1px solid var(--border)}
+.summary-row:last-child{border:none;font-weight:900;font-size:1rem;color:var(--kedi);padding-top:12px}
+.trust-badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
+.trust-badge{font-size:.7rem;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:5px}
+
+/* Spinner */
+.spinner{width:18px;height:18px;border:3px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+
+    <meta property="og:site_name" content="Aura Herbs">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="index, follow">
+                <!-- Firebase Integration -->
+    <script type="module" src="assets/js/firebase-init.js"></script>
+    <link rel="stylesheet" href="assets/css/responsive.css"/>
+</head>
+<body>
+
+<div class="checkout-wrap">
+  <div class="co-header">
+    <div>
+      <h1>Aura Herbs â€” Secure Checkout</h1>
+      <span>ðŸ”’ 256-bit SSL Encrypted</span>
+    </div>
+  </div>
+
+  <div class="checkout-grid">
+    <!-- LEFT: Payment -->
+    <div>
+      <!-- Contact -->
+      <div class="card">
+        <h2>ðŸ“‹ Contact Information</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input id="fname" placeholder="Amina" required>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input id="lname" placeholder="Okafor" required>
+          </div>
+        </div>
+        <div class="form-row full">
+          <div class="form-group">
+            <label>Email</label>
+            <input id="email" type="email" placeholder="amina@email.com" required>
+          </div>
+        </div>
+        <div class="form-row full">
+          <div class="form-group">
+            <label>Phone (WhatsApp)</label>
+            <input id="phone" type="tel" placeholder="+234 801 000 0000">
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment Method -->
+      <div class="card">
+        <h2>ðŸ’³ Payment Method</h2>
+
+        <div class="pay-tabs">
+          <div class="pay-tab active" onclick="switchPay('card',this)">
+            <span class="icon">ðŸ’³</span>Card
+          </div>
+          <div class="pay-tab" onclick="switchPay('bank',this)">
+            <span class="icon">ðŸ¦</span>Bank
+          </div>
+          <div class="pay-tab" onclick="switchPay('crypto',this)">
+            <span class="icon">â‚¿</span>Crypto
+          </div>
+          <div class="pay-tab" onclick="switchPay('pi',this)">
+            <span class="icon">Ï€</span>Pi Network
+          </div>
+        </div>
+
+        <!-- CARD -->
+        <div id="pane-card" class="pay-pane active">
+          <div class="form-group" style="margin-bottom:14px">
+            <label>Card Details</label>
+            <div id="card-element"></div>
+          </div>
+          <div id="card-error" class="alert error"></div>
+          <button class="btn-pay" id="btn-card" onclick="payWithCard()">
+            ðŸ”’ Pay <span id="card-amount" data-base-price="0">â‚¦0</span>
+          </button>
+          <div id="card-status" class="alert"></div>
+        </div>
+
+        <!-- BANK TRANSFER -->
+        <div id="pane-bank" class="pay-pane">
+          <p style="font-size:.85rem;color:var(--muted);margin-bottom:16px">
+            Stripe will generate a unique virtual account. Transfer the exact amount from your banking app and Stripe will confirm automatically.
+          </p>
+          <button class="btn-pay" id="btn-bank" onclick="requestBankTransfer()">
+            ðŸ¦ Generate Bank Account
+          </button>
+          <div id="bank-instructions" style="margin-top:16px;display:none">
+            <div class="bank-detail">
+              <div><div class="lbl">Bank Name</div><div class="val" id="bank-name">â€”</div></div>
+            </div>
+            <div class="bank-detail">
+              <div><div class="lbl">Account Number</div><div class="val" id="bank-accno">â€”</div></div>
+              <button class="copy-btn" onclick="copyText('bank-accno')">Copy</button>
+            </div>
+            <div class="bank-detail">
+              <div><div class="lbl">Sort Code / Reference</div><div class="val" id="bank-ref">â€”</div></div>
+              <button class="copy-btn" onclick="copyText('bank-ref')">Copy</button>
+            </div>
+            <div class="bank-detail">
+              <div><div class="lbl">Amount to Send</div><div class="val" id="bank-amount">â€”</div></div>
+            </div>
+          </div>
+          <div id="bank-status" class="alert"></div>
+        </div>
+
+        <!-- CRYPTO -->
+        <div id="pane-crypto" class="pay-pane">
+          <div class="coin-select">
+            <button class="coin-btn active" onclick="selectCoin('USDC',this)">USDC</button>
+            <button class="coin-btn" onclick="selectCoin('BTC',this)">BTC</button>
+            <button class="coin-btn" onclick="selectCoin('ETH',this)">ETH</button>
+          </div>
+          <p class="rate-lock">Rate locked for <strong id="crypto-timer">20:00</strong></p>
+          <div id="qr-canvas"></div>
+          <div class="wallet-addr" id="crypto-wallet">Loading wallet address...</div>
+          <div id="crypto-amount-display" style="text-align:center;font-size:1.1rem;font-weight:900;color:var(--kedi);margin-bottom:12px"></div>
+          <div class="form-group" style="margin-bottom:14px">
+            <label>Transaction Hash (after sending)</label>
+            <input id="crypto-txhash" placeholder="0x... or bc1...">
+          </div>
+          <button class="btn-pay" onclick="confirmCrypto()">âœ… Confirm Transaction</button>
+          <div id="crypto-status" class="alert"></div>
+        </div>
+
+        <!-- PI NETWORK -->
+        <div id="pane-pi" class="pay-pane">
+          <div class="pi-info">
+            <strong>âš  Pi Browser Required</strong><br>
+            Pi Network payments only work inside the <strong>Pi Browser</strong> app. Open this page in Pi Browser to pay with Ï€.
+            <div class="pi-amount" id="pi-amount-display">Ï€0.00</div>
+          </div>
+          <button class="btn-pay" style="background:linear-gradient(135deg,#6d28d9,#4c1d95)" onclick="payWithPi()">
+            Ï€ Pay with Pi Network
+          </button>
+          <div id="pi-status" class="alert"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Order Summary -->
+    <div>
+      <div class="card" style="position:sticky;top:20px">
+        <h2>ðŸ› Order Summary</h2>
+        <div id="summary-items">
+          <!-- Populated by JS from cart or URL params -->
+        </div>
+        <div class="summary-row">
+          <span>Subtotal</span><span id="sum-subtotal" data-base-price="0">â‚¦0</span>
+        </div>
+        <div class="summary-row">
+          <span>Delivery</span><span id="sum-delivery" data-base-price="1500">â‚¦1,500</span>
+        </div>
+        <div class="summary-row">
+          <span>Total</span><span id="sum-total" data-base-price="0">â‚¦0</span>
+        </div>
+        <div class="trust-badges">
+          <span class="trust-badge">ðŸ”’ SSL Secure</span>
+          <span class="trust-badge">âœ… Stripe Verified</span>
+          <span class="trust-badge">ðŸ“¦ Fast Delivery</span>
+          <span class="trust-badge">â†© Easy Returns</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* â”€â”€ Config â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+const API_BASE   = 'https://www.auraherbs.com/api'; // or http://localhost:3001
+const STRIPE_PK  = 'pk_test_YourStripePublishableKey';
+const WA_URL     = 'https://api.whatsapp.com/send/?phone=2349015092132&type=phone_number&app_absent=0';
+const DELIVERY   = 1500;
+
+/* â”€â”€ Order State â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+const order = {
+  items: JSON.parse(localStorage.getItem('kedi_cart') || '[]'),
+  get subtotal() { return this.items.reduce((s,i) => s + (parseFloat(i.price) * (parseInt(i.quantity)||1)), 0); },
+  get total()    { return this.subtotal + DELIVERY; },
+  get totalKobo(){ return this.total * 100; }
+};
+
+/* â”€â”€ Render Summary â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+function fmt(amount) {
+  return window.CurrencyManager ? window.CurrencyManager.format(amount) : '\u20a6' + amount.toLocaleString();
+}
+
+function renderSummary() {
+  const container = document.getElementById('summary-items');
+  if (!order.items.length) {
+    container.innerHTML = '<p style="color:var(--muted);font-size:.85rem;margin-bottom:16px">No items in cart. <a href="shop.html">Shop now</a></p>';
+    return;
+  }
+  container.innerHTML = order.items.map(i => {
+    const lineTotal = i.price * (i.quantity || 1);
+    return `
+    <div style="display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)">
+      <img src="${i.img||'assets/img/product/img_01.png'}" style="width:48px;height:48px;border-radius:8px;object-fit:contain;background:#f8f6f3">
+      <div style="flex:1">
+        <div style="font-size:.85rem;font-weight:700">${i.name}</div>
+        <div style="font-size:.75rem;color:var(--muted)">Qty: ${i.quantity||1}</div>
+      </div>
+      <div class="line-total" data-base-price="${lineTotal}" style="font-weight:900;font-size:.9rem">${fmt(lineTotal)}</div>
+    </div>`;
+  }).join('');
+  updateSummaryTotals();
+}
+
+function updateSummaryTotals() {
+  const sub = order.subtotal, tot = order.total;
+  const subtotalEl = document.getElementById('sum-subtotal');
+  const totalEl    = document.getElementById('sum-total');
+  const cardAmtEl  = document.getElementById('card-amount');
+  const piAmtEl    = document.getElementById('pi-amount-display');
+  if (subtotalEl) { subtotalEl.setAttribute('data-base-price', sub); subtotalEl.textContent = fmt(sub); }
+  if (totalEl)    { totalEl.setAttribute('data-base-price', tot);    totalEl.textContent    = fmt(tot); }
+  if (cardAmtEl)  { cardAmtEl.setAttribute('data-base-price', tot);  cardAmtEl.textContent  = fmt(tot); }
+  if (piAmtEl)    { piAmtEl.textContent = '\u03c0' + (tot / (314159 * 1500)).toFixed(10); }
+  document.querySelectorAll('.line-total[data-base-price]').forEach(el => {
+    el.textContent = fmt(parseFloat(el.getAttribute('data-base-price')));
+  });
+}
+
+/* â”€â”€ Tab switching â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+function switchPay(name, el) {
+  document.querySelectorAll('.pay-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.pay-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('pane-' + name).classList.add('active');
+  el.classList.add('active');
+  if (name === 'crypto') initCrypto();
+}
+
+/* â”€â”€ Alert helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+function showAlert(id, type, msg) {
+  const el = document.getElementById(id);
+  el.className = 'alert ' + type;
+  el.textContent = msg;
+}
+
+function copyText(elId) {
+  const v = document.getElementById(elId).textContent;
+  navigator.clipboard.writeText(v);
+  alert('Copied: ' + v);
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   STRIPE â€” CARD
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+const stripe   = Stripe(STRIPE_PK);
+const elements = stripe.elements();
+const cardEl   = elements.create('card', {
+  style: {
+    base: { fontSize:'16px', color:'#1e293b', '::placeholder': { color:'#94a3b8' } }
+  }
+});
+cardEl.mount('#card-element');
+cardEl.on('change', e => {
+  const err = document.getElementById('card-error');
+  err.className = e.error ? 'alert error' : 'alert';
+  err.textContent = e.error ? e.error.message : '';
+});
+
+async function payWithCard() {
+  const btn = document.getElementById('btn-card');
+  btn.disabled = true;
+  btn.innerHTML = '<div class="spinner"></div> Processing...';
+  try {
+    const r = await fetch(API_BASE + '/create-payment-intent', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ amount: order.totalKobo, currency:'ngn', customerEmail: document.getElementById('email').value, orderId: Date.now() })
+    });
+    const { clientSecret, error: apiErr } = await r.json();
+    if (apiErr) throw new Error(apiErr);
+
+    const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: cardEl,
+        billing_details: { name: `${document.getElementById('fname').value} ${document.getElementById('lname').value}`, email: document.getElementById('email').value }
+      }
+    });
+    if (error) throw new Error(error.message);
+    if (paymentIntent.status === 'succeeded') {
+      showAlert('card-status', 'success', 'âœ… Payment successful! Order confirmed.');
+      
+      // Send clinical confirmation email
+      if (window.KediEmail) {
+        KediEmail.orderConfirm({
+          email: document.getElementById('email').value,
+          name: `${document.getElementById('fname').value} ${document.getElementById('lname').value}`,
+          orderId: orderId || Date.now(),
+          items: order.items,
+          total: order.total,
+          paymentMethod: 'Card (Stripe)',
+          deliveryAddress: 'Default Profile Address'
+        });
+      }
+      
+      // Persist order for administrative tracking
+      const orders = JSON.parse(localStorage.getItem('kedi_orders') || '[]');
+      orders.push({
+        id: Date.now(),
+        customer: `${document.getElementById('fname').value} ${document.getElementById('lname').value}`,
+        email: document.getElementById('email').value,
+        amount: order.total,
+        method: 'Card (Stripe)',
+        status: 'Completed',
+        date: new Date().toISOString(),
+        items: order.items
+      });
+      localStorage.setItem('kedi_orders', JSON.stringify(orders));
+
+      localStorage.removeItem('kedi_cart'); // Clear cart
+      setTimeout(() => window.location.href = 'account.html', 3000);
+    }
+  } catch (err) {
+    showAlert('card-status', 'error', 'âŒ ' + err.message);
+  } finally {
+    btn.disabled = false;
+    btn.disabled = false; btn.innerHTML = '\ud83d\udd12 Pay ' + fmt(order.total);
+  }
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   STRIPE â€” BANK TRANSFER
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+async function requestBankTransfer() {
+  const btn = document.getElementById('btn-bank');
+  btn.disabled = true; btn.innerHTML = '<div class="spinner"></div> Generating...';
+  try {
+    const r = await fetch(API_BASE + '/create-bank-transfer', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ amount: order.totalKobo, currency:'gbp', customerEmail: document.getElementById('email').value, customerName: `${document.getElementById('fname').value} ${document.getElementById('lname').value}` })
+    });
+    const data = await r.json();
+    if (data.error) throw new Error(data.error);
+
+    const inst = data.instructions;
+    const accs = inst?.financial_addresses?.[0];
+    document.getElementById('bank-name').textContent   = accs?.sort_code?.bank_name || 'Stripe Payments';
+    document.getElementById('bank-accno').textContent  = accs?.sort_code?.account_number || 'See email';
+    document.getElementById('bank-ref').textContent    = inst?.reference || data.id;
+    document.getElementById('bank-amount').textContent = `â‚¦${order.total.toLocaleString()} (transfer equivalent)`;
+    document.getElementById('bank-instructions').style.display = 'block';
+    showAlert('bank-status', 'info', 'â„¹ Transfer the exact amount. Stripe detects it automatically.');
+  } catch (err) {
+    showAlert('bank-status', 'error', 'âŒ ' + err.message);
+  } finally {
+    btn.disabled = false; btn.innerHTML = 'ðŸ¦ Generate Bank Account';
+  }
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   CRYPTO
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+let selectedCoin = 'USDC';
+let cryptoData   = null;
+let cryptoTimer  = null;
+
+async function initCrypto() {
+  try {
+    const r = await fetch(API_BASE + '/crypto/get-address', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ coin: selectedCoin, amountNGN: order.total })
+    });
+    cryptoData = await r.json();
+    if (cryptoData.error) throw new Error(cryptoData.error);
+
+    document.getElementById('crypto-wallet').textContent = cryptoData.address;
+    document.getElementById('crypto-amount-display').textContent = `${cryptoData.cryptoAmount} ${selectedCoin}`;
+
+    // QR Code
+    document.getElementById('qr-canvas').innerHTML = '';
+    new QRCode(document.getElementById('qr-canvas'), { text: cryptoData.address, width:160, height:160, colorDark:'#4d231c' });
+
+    // Rate lock timer
+    clearInterval(cryptoTimer);
+    const expires = new Date(cryptoData.expiresAt).getTime();
+    cryptoTimer = setInterval(() => {
+      const rem = Math.max(0, Math.round((expires - Date.now()) / 1000));
+      const m = String(Math.floor(rem/60)).padStart(2,'0');
+      const s = String(rem%60).padStart(2,'0');
+      document.getElementById('crypto-timer').textContent = `${m}:${s}`;
+      if (rem === 0) { clearInterval(cryptoTimer); initCrypto(); }
+    }, 1000);
+  } catch(err) {
+    document.getElementById('crypto-wallet').textContent = 'Could not load. Use WhatsApp to order.';
+  }
+}
+
+function selectCoin(coin, el) {
+  selectedCoin = coin;
+  document.querySelectorAll('.coin-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  initCrypto();
+}
+
+async function confirmCrypto() {
+  const txhash = document.getElementById('crypto-txhash').value.trim();
+  if (!txhash) { showAlert('crypto-status','error','Please enter your transaction hash.'); return; }
+  try {
+    const r = await fetch(API_BASE + '/crypto/confirm', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ txHash: txhash, coin: selectedCoin, orderId: Date.now() })
+    });
+    const data = await r.json();
+    if (data.confirmed) showAlert('crypto-status','success','âœ… TX received! Blockchain confirmation takes 1â€“5 mins. We will contact you on WhatsApp.');
+    else showAlert('crypto-status','error','âš  Could not verify. Please contact us on WhatsApp.');
+  } catch(err) {
+    showAlert('crypto-status','error','âŒ ' + err.message);
+  }
+}
+
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   PI NETWORK
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+async function payWithPi() {
+  if (typeof Pi === 'undefined') {
+    showAlert('pi-status','error','âŒ Pi Network SDK not found. Open this page inside the Pi Browser app.');
+    return;
+  }
+
+  const piAmount = parseFloat((order.total / 1650).toFixed(4));
+  const memo     = `Aura Herbs Order - â‚¦${order.total.toLocaleString()}`;
+
+  try {
+    const payment = await Pi.createPayment({
+      amount: piAmount,
+      memo,
+      metadata: { orderId: Date.now() }
+    }, {
+      onReadyForServerApproval: async (paymentId) => {
+        const r = await fetch(API_BASE + '/pi/approve', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ paymentId })
+        });
+        const data = await r.json();
+        if (!data.approved) console.error('[Pi] Approval failed', data);
+      },
+      onReadyForServerCompletion: async (paymentId, txid) => {
+        const r = await fetch(API_BASE + '/pi/complete', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ paymentId, txid })
+        });
+        const data = await r.json();
+        if (data.completed) {
+          showAlert('pi-status', 'success', 'âœ… Pi payment confirmed! Order #' + (data.data?.identifier || 'N/A'));
+          
+          if (window.KediEmail) {
+            KediEmail.orderConfirm({
+              email: document.getElementById('email').value,
+              name: `${document.getElementById('fname').value} ${document.getElementById('lname').value}`,
+              orderId: data.data?.identifier || Date.now(),
+              items: order.items,
+              total: order.total,
+              paymentMethod: 'Pi Network',
+              deliveryAddress: 'Default Profile Address'
+            });
+          }
+          
+          localStorage.removeItem('kedi_cart');
+          setTimeout(() => window.location.href = 'account.html', 4000);
+        } else {
+          showAlert('pi-status', 'error', 'âš  Completion issue. Contact support.');
+        }
+      },
+      onCancel: (paymentId) => showAlert('pi-status','info','Payment cancelled.'),
+      onError: (err) => showAlert('pi-status','error','âŒ ' + err.message)
+    });
+  } catch(err) {
+    showAlert('pi-status','error','âŒ ' + err.message);
+  }
+}
+
+/* â”€â”€ Init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+renderSummary();
+
+// Re-render prices dynamically when currency changes
+window.addEventListener('auraCurrencyChanged', () => {
+  updateSummaryTotals();
+});
+</script>
+<script src="assets/js/kedi-notify.js" defer></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Update Dynamic Dates
+            const dateEls = document.querySelectorAll('.header-date, .current-date');
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+            dateEls.forEach(el => el.innerHTML = '<i class="far fa-calendar-alt"></i> ' + dateStr);
+
+            // 2. Auth State Management
+            const userSession = JSON.parse(localStorage.getItem('kedi_user_session'));
+            const authLinks = document.querySelectorAll('a[href*="account.html"], a[href*="login"], a[href*="register"]');
+            
+            if (userSession) {
+                authLinks.forEach(link => {
+                    if (link.innerText.toLowerCase().includes('sign in') || link.innerText.toLowerCase().includes('register')) {
+                        link.innerHTML = '<i class="fas fa-user-circle"></i> ' + userSession.name.split(' ')[0];
+                        link.href = '#!';
+                        // Add logout listener
+                        link.title = 'Click to Logout';
+                        link.onclick = () => {
+                            if(confirm('Logout of clinical ecosystem?')) {
+                                localStorage.removeItem('kedi_user_session');
+                                window.location.reload();
+                            }
+                        };
+                    }
+                });
+            } else {
+                authLinks.forEach(link => {
+                    link.href = 'auth.html';
+                });
+            }
+        });
+    </script>
+
+    <script src="assets/js/cart.js"></script>
+<script src="assets/js/auth.js"></script><script src="assets/js/currency-manager.js"></script></body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,446 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kedi Healthcare â€” Notification Centre</title>
+<link rel="shortcut icon" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/fontawesome.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/kedi-optimise.css">
+<script src="assets/js/kedi-notify.js" defer></script>
+<style>
+:root{--kedi:#4d231c;--gold:#d4a017;--green:#10b981;--bg:#f8f6f3;--card:#fff;--border:#e8ddd6;--text:#1e293b;--muted:#64748b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text)}
+
+.admin-header{background:linear-gradient(135deg,var(--kedi),#2a1310);padding:18px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.admin-header h1{color:#fff;font-size:1.15rem;font-weight:900;display:flex;align-items:center;gap:10px}
+.admin-header span{color:var(--gold);font-size:.78rem;font-weight:700}
+.badge-live{background:#10b981;color:#fff;padding:3px 10px;border-radius:50px;font-size:.7rem;font-weight:800;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.5}}
+
+.wrap{max-width:1200px;margin:0 auto;padding:28px 16px 60px}
+.grid{display:grid;grid-template-columns:1fr 380px;gap:24px}
+@media(max-width:768px){.grid{grid-template-columns:1fr}}
+
+.card{background:var(--card);border-radius:16px;border:1px solid var(--border);padding:22px;margin-bottom:20px}
+.card h2{font-size:.95rem;font-weight:900;color:var(--kedi);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+
+/* Type selector */
+.type-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:16px}
+.type-btn{padding:9px 4px;border:2px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;text-align:center;font-size:.7rem;font-weight:700;color:var(--muted);transition:.2s}
+.type-btn .ti{font-size:1.3rem;display:block;margin-bottom:3px}
+.type-btn.on{border-color:var(--kedi);color:var(--kedi);background:#fdf8f6}
+
+/* Form */
+.form-group{margin-bottom:14px}
+.form-group label{font-size:.73rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:5px}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:10px 14px;border-radius:10px;border:1.5px solid var(--border);font-size:.88rem;font-family:inherit;background:#fdfbf9;transition:.2s;resize:vertical}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--kedi)}
+
+/* Buttons */
+.btn-send{width:100%;padding:14px;border:none;border-radius:50px;background:var(--kedi);color:#fff;font-weight:900;font-size:.95rem;cursor:pointer;margin-bottom:10px;transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-send:hover{background:#3a1a14}
+.btn-send.gold{background:var(--gold);color:var(--kedi)}
+.btn-send.green{background:var(--green)}
+
+/* Quick templates */
+.tpl-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tpl-btn{padding:10px 12px;border:1.5px solid var(--border);border-radius:10px;background:var(--card);cursor:pointer;font-size:.75rem;font-weight:700;color:var(--text);text-align:left;transition:.2s;line-height:1.4}
+.tpl-btn:hover{border-color:var(--kedi);color:var(--kedi)}
+.tpl-btn .tl{display:block;color:var(--muted);font-size:.68rem;margin-bottom:2px}
+
+/* History feed */
+.notif-feed{display:flex;flex-direction:column;gap:8px;max-height:500px;overflow-y:auto}
+.notif-item{padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:var(--card);position:relative}
+.notif-item.info   {border-left:4px solid #3b82f6}
+.notif-item.success{border-left:4px solid #10b981}
+.notif-item.warning{border-left:4px solid #f59e0b}
+.notif-item.promo  {border-left:4px solid #d4a017}
+.notif-item.alert  {border-left:4px solid #ef4444}
+.notif-item .ni-title{font-size:.82rem;font-weight:800;color:var(--text);margin-bottom:3px}
+.notif-item .ni-body{font-size:.75rem;color:var(--muted);line-height:1.4}
+.notif-item .ni-meta{font-size:.65rem;color:#94a3b8;margin-top:5px}
+.del-btn{position:absolute;top:8px;right:8px;background:none;border:none;cursor:pointer;color:#94a3b8;font-size:.85rem}
+
+/* Stats */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.stat{background:var(--card);border-radius:12px;border:1px solid var(--border);padding:14px;text-align:center}
+.stat .sv{font-size:1.6rem;font-weight:900;color:var(--kedi)}
+.stat .sl{font-size:.72rem;color:var(--muted);font-weight:700;margin-top:2px}
+@media(max-width:480px){.stats-row{grid-template-columns:1fr 1fr}.type-grid{grid-template-columns:repeat(3,1fr)}.tpl-grid{grid-template-columns:1fr}}
+
+/* Scheduled panel */
+.sched-item{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#f8f6f3;border-radius:10px;margin-bottom:8px;font-size:.8rem}
+.sched-item .si-info{flex:1}
+.sched-item .si-cancel{background:none;border:none;cursor:pointer;color:#ef4444;font-size:.8rem;font-weight:700}
+
+/* Spinner */
+.spin{width:16px;height:16px;border:3px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;display:inline-block}
+@keyframes sp{to{transform:rotate(360deg)}}
+</style>
+
+    <meta property="og:title" content="Kedi Healthcare â€” Notification Centre">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.auraherbs.vercel.app/notifications.html">
+    <meta property="og:site_name" content="Kedi Healthcare (Kedi-J)">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="index, follow">
+                <!-- Firebase Integration -->
+    <script type="module" src="assets/js/firebase-init.js"></script>
+</head>
+<body>
+
+<div class="admin-header">
+  <h1>ðŸ”” Kedi Notification Centre <span class="badge-live">â— LIVE</span></h1>
+  <div style="display:flex;gap:10px;align-items:center">
+    <a href="home-3.html" style="color:rgba(255,255,255,.7);font-size:.8rem;text-decoration:none">â† Back to Site</a>
+    <span style="color:var(--gold);font-size:.78rem" id="perm-status">Push: checking...</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- Stats Row -->
+  <div class="stats-row">
+    <div class="stat"><div class="sv" id="stat-total">0</div><div class="sl">Total Sent</div></div>
+    <div class="stat"><div class="sv" id="stat-today">0</div><div class="sl">Sent Today</div></div>
+    <div class="stat"><div class="sv" id="stat-sched">0</div><div class="sl">Scheduled</div></div>
+    <div class="stat"><div class="sv" id="stat-perm">â€”</div><div class="sl">Push Status</div></div>
+  </div>
+
+  <div class="grid">
+
+    <!-- LEFT: Composer -->
+    <div>
+
+      <!-- Quick Templates -->
+      <div class="card">
+        <h2>âš¡ Quick Templates</h2>
+        <div class="tpl-grid">
+          <button class="tpl-btn" onclick="loadTpl('promo','ðŸŽ Perform & Win Award','Register this month â€” earn a Smart TV or AC with 25+ placements!','auth.html')">
+            <span class="tl">PROMO</span>ðŸŽ Perform & Win Award
+          </button>
+          <button class="tpl-btn" onclick="loadTpl('alert','ðŸ”¥ Flash Sale â€” Today Only','50% off Reishi Immune Guard for the next 3 hours only.','kedi.html')">
+            <span class="tl">FLASH SALE</span>ðŸ”¥ Flash Sale Alert
+          </button>
+          <button class="tpl-btn" onclick="loadTpl('info','ðŸ’Š Daily Health Tip','Take your Reishi capsules with warm water for maximum absorption.','kedi.html')">
+            <span class="tl">HEALTH TIP</span>ðŸ’Š Daily Health Tip
+          </button>
+          <button class="tpl-btn" onclick="loadTpl('success','âœ… Order Confirmed','Your Kedi order has been confirmed. We will contact you shortly.','account.html')">
+            <span class="tl">ORDER</span>âœ… Order Confirmed
+          </button>
+          <button class="tpl-btn" onclick="loadTpl('warning','âš ï¸ Low Stock Warning','Golden Hypha is almost sold out â€” only 3 packs remaining!','kedi.html')">
+            <span class="tl">STOCK</span>âš ï¸ Low Stock Alert
+          </button>
+          <button class="tpl-btn" onclick="loadTpl('info','ðŸ§ª New Protocol Available','The Kedi Cardio Restore protocol is now available. Check your quiz result.','quiz.html')">
+            <span class="tl">PROTOCOL</span>ðŸ§ª New Protocol
+          </button>
+        </div>
+      </div>
+
+      <!-- Composer -->
+      <div class="card">
+        <h2>âœï¸ Compose Notification</h2>
+
+        <div class="type-grid">
+          <div class="type-btn on" onclick="selType('info',this)"><span class="ti">â„¹ï¸</span>Info</div>
+          <div class="type-btn" onclick="selType('success',this)"><span class="ti">âœ…</span>Success</div>
+          <div class="type-btn" onclick="selType('warning',this)"><span class="ti">âš ï¸</span>Warning</div>
+          <div class="type-btn" onclick="selType('promo',this)"><span class="ti">ðŸŽ</span>Promo</div>
+          <div class="type-btn" onclick="selType('alert',this)"><span class="ti">ðŸ””</span>Alert</div>
+        </div>
+
+        <div class="form-group">
+          <label>Title</label>
+          <input id="n-title" placeholder="Notification headline..." maxlength="80">
+        </div>
+        <div class="form-group">
+          <label>Body Message</label>
+          <textarea id="n-body" rows="3" placeholder="Notification body text..." maxlength="200"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Link URL (optional)</label>
+          <input id="n-url" placeholder="kedi.html or https://...">
+        </div>
+        <div class="form-group">
+          <label>Display Duration (seconds)</label>
+          <select id="n-dur">
+            <option value="4000">4 seconds</option>
+            <option value="6000" selected>6 seconds</option>
+            <option value="10000">10 seconds</option>
+            <option value="15000">15 seconds</option>
+            <option value="0">Until dismissed</option>
+          </select>
+        </div>
+
+        <button class="btn-send" id="btn-send-now" onclick="sendNow()">
+          ðŸ“¡ Send to All Devices Now
+        </button>
+        <button class="btn-send gold" onclick="openScheduler()">
+          â° Schedule Notification
+        </button>
+        <button class="btn-send green" onclick="testToast()">
+          ðŸ‘ Preview Toast Only
+        </button>
+
+        <!-- Scheduler form (hidden) -->
+        <div id="sched-form" style="display:none;margin-top:16px;padding:16px;background:#f8f6f3;border-radius:12px">
+          <div class="form-group">
+            <label>Send After (minutes from now)</label>
+            <input type="number" id="sched-mins" placeholder="e.g. 30" min="1" max="1440">
+          </div>
+          <button class="btn-send" onclick="scheduleNow()">â° Schedule</button>
+        </div>
+
+        <div id="send-status" style="margin-top:12px;font-size:.82rem;color:var(--green);font-weight:700;display:none"></div>
+      </div>
+
+      <!-- Push Permission -->
+      <div class="card">
+        <h2>ðŸ“± Push Notification Access</h2>
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:14px">
+          Enable browser push so users receive notifications even when the site is in the background. Works on Chrome, Firefox, Edge, Android, and desktop.
+        </p>
+        <button class="btn-send" onclick="enablePush()">ðŸ”” Enable Push Notifications</button>
+        <div id="push-info" style="margin-top:10px;font-size:.8rem;color:var(--muted)"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: History + Scheduled -->
+    <div>
+      <div class="card">
+        <h2 style="justify-content:space-between">
+          ðŸ“œ Notification History
+          <button onclick="clearAll()" style="background:none;border:none;cursor:pointer;color:#ef4444;font-size:.75rem;font-weight:700">Clear All</button>
+        </h2>
+        <div class="notif-feed" id="notif-feed">
+          <div style="padding:24px;text-align:center;color:var(--muted);font-size:.85rem">No notifications sent yet.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>â° Scheduled Queue</h2>
+        <div id="sched-list">
+          <div style="font-size:.8rem;color:var(--muted)">No scheduled notifications.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let selectedType = 'info';
+const scheduledJobs = [];
+
+/* Type selector */
+function selType(t, el) {
+  selectedType = t;
+  document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('on'));
+  el.classList.add('on');
+}
+
+/* Load template */
+function loadTpl(type, title, body, url) {
+  document.getElementById('n-title').value = title;
+  document.getElementById('n-body').value = body;
+  document.getElementById('n-url').value = url;
+  const btns = document.querySelectorAll('.type-btn');
+  const typeMap = { info:0, success:1, warning:2, promo:3, alert:4 };
+  btns.forEach(b => b.classList.remove('on'));
+  btns[typeMap[type]]?.classList.add('on');
+  selectedType = type;
+}
+
+/* Build notification object */
+function buildNotif() {
+  const title = document.getElementById('n-title').value.trim();
+  const body  = document.getElementById('n-body').value.trim();
+  const url   = document.getElementById('n-url').value.trim();
+  const dur   = parseInt(document.getElementById('n-dur').value) || 6000;
+  if (!title || !body) { alert('Please enter a title and body message.'); return null; }
+  return { type: selectedType, title, body, url: url || undefined, duration: dur };
+}
+
+/* Send now */
+function sendNow() {
+  const n = buildNotif();
+  if (!n) return;
+  const btn = document.getElementById('btn-send-now');
+  btn.innerHTML = '<div class="spin"></div> Sending...';
+  btn.disabled = true;
+  setTimeout(() => {
+    KediNotify.broadcast(n);
+    addToFeed(n);
+    updateStats();
+    showSendStatus('âœ… Notification sent to all open tabs!');
+    btn.innerHTML = 'ðŸ“¡ Send to All Devices Now';
+    btn.disabled = false;
+  }, 600);
+}
+
+/* Preview toast only */
+function testToast() {
+  const n = buildNotif();
+  if (n) KediNotify.send(n);
+}
+
+/* Scheduler */
+function openScheduler() {
+  const sf = document.getElementById('sched-form');
+  sf.style.display = sf.style.display === 'none' ? 'block' : 'none';
+}
+
+function scheduleNow() {
+  const n = buildNotif();
+  const mins = parseInt(document.getElementById('sched-mins').value);
+  if (!n || !mins || mins < 1) { alert('Enter valid notification and delay (minutes).'); return; }
+  const ms = mins * 60 * 1000;
+  const fireAt = new Date(Date.now() + ms).toLocaleTimeString();
+  const job = { notif: n, fireAt, mins, id: Date.now() };
+  const timer = setTimeout(() => {
+    KediNotify.broadcast(n);
+    addToFeed(n);
+    updateStats();
+    removeSchedJob(job.id);
+  }, ms);
+  job.timer = timer;
+  scheduledJobs.push(job);
+  renderSchedList();
+  document.getElementById('sched-form').style.display = 'none';
+  showSendStatus(`â° Scheduled for ${fireAt} (${mins} mins)`);
+  updateStats();
+}
+
+function removeSchedJob(id) {
+  const i = scheduledJobs.findIndex(j => j.id === id);
+  if (i >= 0) { clearTimeout(scheduledJobs[i].timer); scheduledJobs.splice(i, 1); }
+  renderSchedList();
+  updateStats();
+}
+
+function renderSchedList() {
+  const el = document.getElementById('sched-list');
+  if (!scheduledJobs.length) { el.innerHTML = '<div style="font-size:.8rem;color:var(--muted)">No scheduled notifications.</div>'; return; }
+  el.innerHTML = scheduledJobs.map(j => `
+    <div class="sched-item">
+      <div class="si-info">
+        <div style="font-weight:800;font-size:.8rem">${j.notif.title}</div>
+        <div style="font-size:.72rem;color:var(--muted)">Fires at ${j.fireAt}</div>
+      </div>
+      <button class="si-cancel" onclick="removeSchedJob(${j.id})">âœ• Cancel</button>
+    </div>`).join('');
+}
+
+/* Feed */
+const typeIcons = { info:'â„¹ï¸', success:'âœ…', warning:'âš ï¸', promo:'ðŸŽ', alert:'ðŸ””' };
+const sentLog = [];
+
+function addToFeed(n) {
+  sentLog.unshift({ ...n, ts: new Date().toLocaleTimeString() });
+  const feed = document.getElementById('notif-feed');
+  if (feed.querySelector('div:only-child')) feed.innerHTML = '';
+  const item = document.createElement('div');
+  item.className = 'notif-item ' + (n.type || 'info');
+  item.dataset.id = Date.now();
+  item.innerHTML = `
+    <button class="del-btn" onclick="this.closest('.notif-item').remove()">âœ•</button>
+    <div class="ni-title">${typeIcons[n.type]||'ðŸ””'} ${n.title}</div>
+    <div class="ni-body">${n.body}</div>
+    <div class="ni-meta">${n.type.toUpperCase()} Â· ${new Date().toLocaleTimeString()}${n.url?' Â· <a href="'+n.url+'" style="color:#4d231c">'+n.url+'</a>':''}</div>`;
+  feed.prepend(item);
+}
+
+function clearAll() {
+  document.getElementById('notif-feed').innerHTML = '<div style="padding:24px;text-align:center;color:var(--muted);font-size:.85rem">No notifications sent yet.</div>';
+  KediNotify.clearHistory();
+  updateStats();
+}
+
+/* Status */
+function showSendStatus(msg) {
+  const el = document.getElementById('send-status');
+  el.textContent = msg; el.style.display = 'block';
+  setTimeout(() => el.style.display = 'none', 4000);
+}
+
+/* Stats */
+function updateStats() {
+  document.getElementById('stat-total').textContent = sentLog.length;
+  const today = sentLog.filter(n => new Date(n.ts).toDateString() === new Date().toDateString()).length;
+  document.getElementById('stat-today').textContent = today;
+  document.getElementById('stat-sched').textContent = scheduledJobs.length;
+}
+
+/* Push enable */
+async function enablePush() {
+  const ok = await KediNotify.requestPush();
+  const perm = Notification.permission;
+  document.getElementById('push-info').textContent = ok
+    ? 'âœ… Push enabled! Users will receive notifications even when the site is closed.'
+    : `âŒ Permission ${perm}. Users must allow notifications in browser settings.`;
+  document.getElementById('stat-perm').textContent = perm === 'granted' ? 'âœ… On' : 'âŒ Off';
+  document.getElementById('perm-status').textContent = 'Push: ' + (perm === 'granted' ? 'âœ… Enabled' : 'âŒ Blocked');
+}
+
+/* Init */
+(function init() {
+  const perm = window.Notification?.permission || 'unavailable';
+  document.getElementById('stat-perm').textContent = perm === 'granted' ? 'âœ… On' : (perm === 'denied' ? 'âŒ Off' : 'â“');
+  document.getElementById('perm-status').textContent = 'Push: ' + (perm === 'granted' ? 'âœ… Enabled' : perm === 'denied' ? 'âŒ Blocked' : 'ðŸ”” Click to enable');
+
+  // Load existing history from KediNotify
+  const history = window.KediNotify?.getHistory?.() || [];
+  history.slice(0, 10).forEach(n => addToFeed(n));
+  updateStats();
+})();
+</script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Update Dynamic Dates
+            const dateEls = document.querySelectorAll('.header-date, .current-date');
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+            dateEls.forEach(el => el.innerHTML = '<i class="far fa-calendar-alt"></i> ' + dateStr);
+
+            // 2. Auth State Management
+            const userSession = JSON.parse(localStorage.getItem('kedi_user_session'));
+            const authLinks = document.querySelectorAll('a[href*="account.html"], a[href*="login"], a[href*="register"]');
+            
+            if (userSession) {
+                authLinks.forEach(link => {
+                    if (link.innerText.toLowerCase().includes('sign in') || link.innerText.toLowerCase().includes('register')) {
+                        link.innerHTML = '<i class="fas fa-user-circle"></i> ' + userSession.name.split(' ')[0];
+                        link.href = '#!';
+                        // Add logout listener
+                        link.title = 'Click to Logout';
+                        link.onclick = () => {
+                            if(confirm('Logout of clinical ecosystem?')) {
+                                localStorage.removeItem('kedi_user_session');
+                                window.location.reload();
+                            }
+                        };
+                    }
+                });
+            } else {
+                authLinks.forEach(link => {
+                    link.href = 'auth.html';
+                });
+            }
+        });
+    </script>
+
+    <script src="assets/js/cart.js"></script>
+<script src="assets/js/auth.js"></script><script src="assets/js/currency-manager.js"></script></body>
+</html>
+
+
+
+
+
+
+
+

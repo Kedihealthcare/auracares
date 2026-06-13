@@ -1,0 +1,87 @@
+/* assets/css/responsive.css */
+/* Mobile‑first responsive utilities */
+
+:root {
+  /* Typography */
+  --font-base: 'Inter', sans-serif; /* keep current fonts */
+  --font-size-base: clamp(0.875rem, 1vw, 1rem); /* 14‑16px fluid */
+  --spacing-base: clamp(0.5rem, 1vw, 1rem);
+
+  /* Color palette (harmonious HSL) */
+  --color-primary: hsl(30, 94%, 58%);   /* warm amber */
+  --color-primary-dark: hsl(30, 94%, 38%);
+  --color-accent: hsl(200, 85%, 50%);   /* complementary cyan */
+  --color-bg: #ffffff;
+  --color-text: #212121;
+  --color-muted: hsl(0, 0%, 60%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #121212;
+    --color-text: #e0e0e0;
+    --color-primary: hsl(30, 94%, 38%);
+    --color-accent: hsl(200, 85%, 40%);
+  }
+}
+
+/* Global resets */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-base);
+  font-size: var(--font-size-base);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+/* Flex utilities */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+
+/* Grid utilities */
+.grid { display: grid; gap: var(--spacing-base); }
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 768px) { .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* Responsive spacing */
+.p-2 { padding: calc(var(--spacing-base) * 0.5); }
+.p-4 { padding: var(--spacing-base); }
+.md\:p-6 { padding: calc(var(--spacing-base) * 1.5); }
+
+/* Fluid headings */
+h1 { font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 700; margin: 0 0 0.5em; }
+h2 { font-size: clamp(1.25rem, 3.5vw, 2rem); font-weight: 600; margin: 0 0 0.5em; }
+h3 { font-size: clamp(1.125rem, 3vw, 1.75rem); margin: 0 0 0.5em; }
+
+/* Buttons */
+.button { display: inline-block; padding: 0.75em 1.5em; background: var(--color-primary); color: #fff; border: none; border-radius: 0.25rem; cursor: pointer; transition: background 0.3s; }
+.button:hover, .button:focus { background: var(--color-primary-dark); }
+
+/* Card layout – auto‑fit */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--spacing-base); }
+.card { background: var(--color-bg); border: 1px solid var(--color-muted); border-radius: 0.5rem; overflow: hidden; }
+.card img { width: 100%; height: auto; display: block; }
+.card-body { padding: var(--spacing-base); }
+
+/* Forms */
+input, select, textarea { width: 100%; padding: 0.5em; border: 1px solid var(--color-muted); border-radius: 0.25rem; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--color-primary); }
+
+/* Tables – mobile scroll */
+.table-responsive { overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; }
+.table th, .table td { padding: 0.75em; border: 1px solid var(--color-muted); text-align: left; }
+
+/* Gallery */
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--spacing-base); }
+.gallery img { width: 100%; height: auto; object-fit: cover; }
+
+/* Dark mode toggle (data-theme) – components will respect variables */
+[data-theme="dark"] { --color-bg: #121212; --color-text: #e0e0e0; }

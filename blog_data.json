@@ -1,0 +1,57 @@
+[
+  {
+    "id": "tcm-immune-defense",
+    "title": "Traditional Chinese Medicine: The Ultimate Guide to Immune Defense",
+    "category": "Immunity",
+    "date": "October 12, 2026",
+    "readTime": "5 min read",
+    "image": "assets/img/product/Reishi.png",
+    "excerpt": "Discover how Ganoderma Lucidum (Reishi) acts as an adaptogen to fundamentally reprogram and strengthen your body's innate immune response against viral threats.",
+    "content": "\n            <h3>The Science of Adaptogens</h3>\n            <p>Traditional Chinese Medicine (TCM) has utilized adaptogenic herbs for millennia. Unlike synthetic immune boosters that over-stimulate the system, adaptogens like Ganoderma Lucidum (found in Kedi Reishi) work by modulating the immune system—bringing it back into perfect balance.</p>\n            <p>Clinical studies show that the polysaccharides and triterpenes in Reishi activate macrophages and natural killer (NK) cells, dramatically increasing the body's defense mechanisms.</p>\n            <h3>Why Prevention is the Ultimate Cure</h3>\n            <p>In modern medicine, we often treat the symptom. In TCM, we treat the terrain. By continuously fortifying your immune terrain with daily Reishi supplementation, your body becomes an inhospitable environment for pathogens.</p>\n        ",
+    "upsell": "reishi"
+  },
+  {
+    "id": "metabolic-syndrome-reversal",
+    "title": "Reversing Metabolic Syndrome Naturally",
+    "category": "Metabolic Health",
+    "date": "October 05, 2026",
+    "readTime": "7 min read",
+    "image": "assets/img/product/Diawell.png",
+    "excerpt": "Metabolic syndrome is a cluster of conditions including high blood sugar and excess body fat. Learn how the Kedi Diawell protocol restores pancreatic function.",
+    "content": "\n            <h3>Understanding Insulin Resistance</h3>\n            <p>Insulin resistance is the root cause of metabolic syndrome and Type 2 Diabetes. When your cells stop responding to insulin, glucose builds up in the blood, leading to massive inflammatory cascades throughout the body.</p>\n            <h3>The Herbal Intervention</h3>\n            <p>The Diawell herbal protocol works fundamentally differently from standard hypoglycemic agents. Instead of just forcing blood sugar down temporarily, the active botanicals in Diawell support the regeneration of pancreatic beta cells and improve peripheral insulin sensitivity.</p>\n            <ul>\n                <li>Reduces fasting glucose levels naturally.</li>\n                <li>Mitigates sugar cravings by balancing hormonal leptin signals.</li>\n                <li>Protects micro-vessels from oxidative stress.</li>\n            </ul>\n        ",
+    "upsell": "diawell"
+  },
+  {
+    "id": "cardiovascular-health-micro-circulation",
+    "title": "The Silent Killer: Why Micro-Circulation Matters",
+    "category": "Cardiovascular",
+    "date": "September 28, 2026",
+    "readTime": "4 min read",
+    "image": "assets/img/product/Cardibetter.png",
+    "excerpt": "Heart attacks don't happen overnight. They are the result of years of poor micro-circulation. Learn how to clear blocked blood vessels safely.",
+    "content": "\n            <h3>The Anatomy of a Blockage</h3>\n            <p>Atherosclerosis is the buildup of fats, cholesterol, and other substances in and on the artery walls. Over time, these plaques harden and narrow the arteries, drastically restricting blood flow.</p>\n            <h3>Cardibetter: The Plaque Dissolver</h3>\n            <p>Formulated with Salvia miltiorrhiza (Danshen) and other potent cardiovascular herbs, Cardibetter acts as a powerful vasodilator. It improves micro-circulation, reduces blood viscosity, and gradually helps in softening hardened plaques, relieving chest pain and hypertension safely.</p>\n        ",
+    "upsell": "cardibetter"
+  },
+  {
+    "id": "detox-weight-loss-connection",
+    "title": "The Missing Link Between Detoxification and Weight Loss",
+    "category": "Wellness",
+    "date": "September 15, 2026",
+    "readTime": "6 min read",
+    "image": "assets/img/product/Magilim.png",
+    "excerpt": "Struggling to lose weight despite dieting? Your colon might be the problem. Discover how deep cellular detox unlocks metabolic fat burning.",
+    "content": "\n            <h3>The Toxic Burden</h3>\n            <p>When the colon is backed up with mucoid plaque and undigested waste, the liver has to work overtime to process recirculating toxins. A sluggish liver cannot burn fat efficiently.</p>\n            <h3>Konjac Glucomannan: The Miracle Fiber</h3>\n            <p>Kedi Magilim contains highly viscous Konjac glucomannan fiber. When ingested, it absorbs water and expands in the stomach, promoting immense satiety. More importantly, it sweeps through the gastrointestinal tract like a sponge, absorbing toxins, cholesterol, and heavy metals, pulling them safely out of the body.</p>\n            <p>Once the toxic burden is removed, your metabolism naturally accelerates, allowing for effortless, sustainable weight loss.</p>\n        ",
+    "upsell": "magilim"
+  },
+  {
+    "id": "male-vitality-beyond-the-pill",
+    "title": "Male Vitality: Fixing the Root Cause of Erectile Dysfunction",
+    "category": "Reproductive Health",
+    "date": "September 02, 2026",
+    "readTime": "8 min read",
+    "image": "assets/img/product/Revive.png",
+    "excerpt": "Synthetic blue pills only force blood flow. To achieve lasting vitality, stamina, and performance, you must nourish the Kidney essence.",
+    "content": "\n            <h3>The Danger of Synthetic Solutions</h3>\n            <p>Standard pharmaceutical solutions for erectile dysfunction work by forcing vasodilation. While effective in the moment, they can cause massive strain on the heart, leading to palpitations, headaches, and over time, a complete reliance on the pill.</p>\n            <h3>The TCM Approach to Vitality</h3>\n            <p>In Traditional Chinese Medicine, sexual vitality is directly governed by the Kidney system. If your Kidney 'Yang' is depleted from stress, age, or poor lifestyle, no amount of forced blood flow will fix the core exhaustion.</p>\n            <p>Kedi Re-Vive is designed to deeply nourish the Kidney essence. By restoring this foundational energy, men experience a natural, sustainable return of libido, stamina, and erectile strength without the dangerous cardiovascular side effects.</p>\n        ",
+    "upsell": "revive"
+  }
+]
